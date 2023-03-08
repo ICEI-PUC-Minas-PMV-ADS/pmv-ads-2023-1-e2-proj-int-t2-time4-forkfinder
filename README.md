@@ -1,29 +1,31 @@
 # FORKFINDER
 
-`CURSO`
+`Tecnólogo em Análise e Desenvolvimento de Sistemas`
 
-`DISCIPLINA`
+`Projeto: Desenvolvimento de uma Aplicação Interativa`
 
-`SEMESTRE`
+`1º/2023`
 
 Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
 
 ## Integrantes
 
-* Nome completo do aluno 1
-* Nome completo do aluno 2
+* Gabriel Alisson dos Santos Oliveira
+* Jansem Wallemberg Torquetti Maia
+* Lucas Filipe dos Reis 
 * Natan Candido Fpnseca
-* Nome completo do aluno 4
+* Neemias Junio Anjos Lopes 
+* Wellington Andrade Rolim 
 
 ## Orientador
 
-* Nome completo do professor 1
+* José Wilson da Costa
 
 ## Instruções de utilização
 
 Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.
 
-Não deixe de informar o link onde a aplicação estiver disponível para acesso (por exemplo: https://adota-pet.herokuapp.com/src/index.html).
+Não deixe de informar o link onde a aplicação estiver disponível para acesso por exemplo: https://forkfinder.herokuapp.com/src/index.html.
 
 Se houver usuário de teste, o login e a senha também deverão ser informados aqui (por exemplo: usuário - admin / senha - admin).
 
