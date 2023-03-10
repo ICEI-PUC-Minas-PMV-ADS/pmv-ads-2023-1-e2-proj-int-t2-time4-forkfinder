@@ -28,8 +28,17 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 
 |EU COMO... `PERSONA`| QUERO/PRECISO ... `FUNCIONALIDADE` |PARA ... `MOTIVO/VALOR`                 |
 |--------------------|------------------------------------|----------------------------------------|
-|Usuário do sistema  | Registrar minhas tarefas           | Não esquecer de fazê-las               |
-|Administrador       | Alterar permissões                 | Permitir que possam administrar contas |
+| Sarah D’aulizio | Agendar reservas em restaurantes com facilidade | Poder apreciar a diversidade gastronômica de sua cidade |
+| Leandro Battisti | Fazer reservas em diversos restaurantes em um só lugar | Ter um processo de reserva mais fácil e conveniente |
+| Luísa Amarantes | Encontrar mesas disponíveis em restaurantes populares com preços acessíveis | Encontrar ofertas especiais em restaurantes |
+| Amanda Rosemberg | Fazer reservas rapidamente em horários de pico | Ter mais tempo para aproveitar a companhia de sua família |
+| Amaury Júnior | Gerenciar todas as suas reservas em um único lugar | Encontrar restaurantes com áreas de acessibilidade |
+| Sarah D’aulizio | Poder visualizar imagens e avaliações de outros clientes que já visitaram o restaurante que estou planejando reservar | Para ter uma ideia melhor do que esperar |
+| Leandro Battisti | Poder encontrar informações detalhadas sobre os diferentes pratos e ingredientes em um menu, bem como as opções vegetarianas e sem glúten | Para que eu possa escolher com base em minhas necessidades alimentares |
+| Luísa Amarantes | Poder ver os preços dos pratos em um menu antes de fazer uma reserva | Para garantir que sejam acessíveis dentro do meu orçamento |
+| Amanda Rosemberg | Poder reservar mesas em restaurantes que oferecem áreas infantis | Para que as crianças possam se divertir enquanto a família desfrute do momento |
+| Amaury Júnior | A aplicação identifique e me mostre restaurantes com áreas de acessibilidade | Pois possuo mobilidade reduzida |
+| Amaury Júnior | Visualizar a disponibilidade dos estabelecimentos | Para que eu possa escolher o melhor horário de acordo com minha disponibilidade |
 
 Apresente aqui as histórias de usuário que são relevantes para o projeto de sua solução. As Histórias de Usuário consistem em uma ferramenta poderosa para a compreensão e elicitação dos requisitos funcionais e não funcionais da sua aplicação. Se possível, agrupe as histórias de usuário por contexto, para facilitar consultas recorrentes à essa parte do documento.
 
@@ -46,17 +55,37 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 ### Requisitos Funcionais
 
-|ID    | Descrição do Requisito  | Prioridade |
-|------|-----------------------------------------|----|
-|RF-001| Permitir que o usuário cadastre tarefas | ALTA | 
-|RF-002| Emitir um relatório de tarefas no mês   | MÉDIA |
+| ID | Descrição do Requisito | Prioridade |
+| --- | --- | --- |
+| RF-01 | A aplicação deve permitir ao usuário cadastrar uma conta. | ALTA |
+| RF-02 | A aplicação deve permitir aos donos/funcionários de restaurantes cadastrar uma conta com informações sobre o estabelecimento. | ALTA |
+| RF-03 | A aplicação deve permitir a pesquisa de restaurantes por localização, horário e disponibilidade. | ALTA |
+| RF-04 | A aplicação deve permitir a reserva de mesas de restaurantes de forma online e em tempo real. | ALTA |
+| RF-05 | A aplicação deve permitir o pagamento online e seguro das reservas realizadas. | ALTA |
+| RF-06 | A aplicação deve permitir o cancelamento de reservas por parte dos usuários. | ALTA |
+| RF-07 | A aplicação deve disponibilizar opções de idioma para os usuários. | BAIXA |
+| RF-08 | A aplicação deve fornecer confirmações de reserva e cancelamento de reservas via e-mail ou notificação no aplicativo. | MÉDIA |
+| RF-09 | A aplicação deve permitir o usuário o gerenciamento de preferências no perfil para sugestões personalizadas de restaurantes. | MÈDIA |
+| RF-10 | A aplicação deve permitir avaliações e comentários de usuários sobre restaurantes. | BAIXA |
+| RF-11 | A aplicação deve permitir a integração com plataformas de redes sociais para compartilhamento de informações e opiniões sobre restaurantes. | BAIXA |
+| RF-12 | A aplicação deve permitir a atualização e gestão de informações de restaurantes pelos próprios estabelecimentos. | MÉDIA |
+| RF-13 | A aplicação deve oferecer suporte ao cliente por meio de chat ou e-mail. | BAIXA |
+| RF-14 | A aplicação deve permitir a criação de listas de restaurantes favoritos e histórico de reservas. | BAIXA |
+| RF-15 | A aplicação deve oferecer uma funcionalidade de filtro/pesquisa para permitir ao usuário pesquisa por tipo de cozinha ou categoria de restaurante.. | ALTA |
 
 ### Requisitos não Funcionais
 
-|ID     | Descrição do Requisito  |Prioridade |
-|-------|-------------------------|----|
-|RNF-001| O sistema deve ser responsivo para rodar em um dispositivos móvel | MÉDIA | 
-|RNF-002| Deve processar requisições do usuário em no máximo 3s |  BAIXA | 
+| ID | Descrição do Requisito | Prioridade |
+| --- | --- | --- |
+| RFN-01 | A aplicação deve ser publicada em um ambiente acessível publicamente na Internet (Repl.it, GitHub Pages, Heroku); - ALTA | ALTA |
+| RFN-02 | A aplicação deve ter bom nível de contraste entre os elementos da tela em conformidade - MÉDIA | MÉDIA |
+| RFN-03 | A aplicação deve ser compatível com os principais navegadores do mercado (Google Chrome, Firefox, Microsoft Edge) - ALTA | ALTA |
+| RFN-01 | A aplicação deve disponibilizará às funcionalidades ao usuário de maneira simples e intuitiva - ALTA | MÉDIA |
+| RFN-05 | A aplicação deve ser responsivas para dispositivos mobile - ALTA | MÉDIA |
+| RFN-06 | A aplicação deve limitar o tempo de acesso ao sistema a fim de reduzir qualquer tipo de ameaça - BAIXA | MÉDIA |
+| RFN-07 | A aplicação deve cumprir com as regulamentações de privacidade de dados. | ALTA |
+| RFN-08 | A aplicação deve se comunicar com o banco SQL - ALTA | ALTA |
+| RFN-09 | A aplicação deve utilizar às linguagem C#, HTML, CSS e JavaScript - ALTA | ALTA |
 
 Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
 
@@ -79,8 +108,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O projeto deverá ser entregue até o final do semestre |
-|02| Não pode ser desenvolvido um módulo de backend        |
+|01| O projeto deverá ser entregue no meio do semestre letivo.|
+|02| A equipe não pode subcontratar o desenvolvimento do trabalho.|
+|03| O projeto deverá ser entregue até o final do semestre.|
 
 
 Enumere as restrições à sua solução. Lembre-se de que as restrições geralmente limitam a solução candidata.
