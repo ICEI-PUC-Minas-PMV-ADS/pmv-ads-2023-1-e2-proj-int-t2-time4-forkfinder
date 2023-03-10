@@ -1,46 +1,43 @@
 # Introdução
 
-Texto descritivo com a visão geral do projeto abordado. Inclui o contexto, o problema, os objetivos, a justificativa e o público-alvo do projeto.
+Com a crescente presença da tecnologia em nosso cotidiano, diversas atividades que antes eram complexas têm se tornado mais simples, e a gastronomia é uma das áreas que tem se beneficiado com esse avanço, especialmente em relação à reserva de restaurantes de alto padrão. Contudo, mesmo com esses avanços, ainda existem desafios a serem superados, como a dificuldade de encontrar disponibilidade em restaurantes em horários de pico ou datas comemorativas, bem como o processo de reserva que pode ser burocrático e demorado.  
+
+Nesse sentido, uma solução robusta para reserva de mesas, sugestão de pratos, e com armazenamento dos últimos pedidos de cada cliente, pode ser uma solução eficiente e conveniente para os clientes de diferentes partes do mundo. 
+
+A proposta de criar um ambiente inovador para a gastronomia, onde o cliente poderá filtrar sua busca por um alimento específico e a solução irá sugerir o restaurante para o seu estilo. 
 
 ## Problema
-Nesse momento você deve apresentar o problema que a sua aplicação deve  resolver. No entanto, não é a hora de comentar sobre a aplicação.
-
-Descreva também o contexto em que essa aplicação será usada, se  houver: empresa, tecnologias, etc. Novamente, descreva apenas o que de  fato existir, pois ainda não é a hora de apresentar requisitos  detalhados ou projetos.
-
-Nesse momento, o grupo pode optar por fazer uso  de ferramentas como Design Thinking, que permite um olhar de ponta a ponta para o problema.
-
-> **Links Úteis**:
-> - [Objetivos, Problema de pesquisa e Justificativa](https://medium.com/@versioparole/objetivos-problema-de-pesquisa-e-justificativa-c98c8233b9c3)
-> - [Matriz Certezas, Suposições e Dúvidas](https://medium.com/educa%C3%A7%C3%A3o-fora-da-caixa/matriz-certezas-suposi%C3%A7%C3%B5es-e-d%C3%BAvidas-fa2263633655)
-> - [Brainstorming](https://www.euax.com.br/2018/09/brainstorming/)
+A procura por um restaurante normalmente é algo complexo, a diversidade de opções que um cardápio pode ter, com a possibilidade de ser uma experiencia encantadora para uns e desastrosas para outros, já que trabalhar com sabores é algo muito complexo e subjetivo, a solução apresentada vem para filtrar e diminuir a dificuldade de encontrar um ambiente agradável para todos da mesa, onde será possível filtrar todos os alimentos que cada cliente gostaria de comer, como também oferecer uma solução automatizada e eficiente para a reserva em restaurantes, tornando o processo mais simples e rápido. 
 
 ## Objetivos
 
-Aqui você deve descrever os objetivos do trabalho indicando que o objetivo geral é desenvolver um software para solucionar o problema apresentado acima. 
+O objetivo principal deste projeto é desenvolver um ChatBot que possibilite a reserva de restaurantes de alto padrão de forma interativa, com um sistema de agendamento completo e um sistema de pagamento integrado. Além disso, serão considerados os seguintes objetivos:  
 
-Apresente também alguns (pelo menos 2) objetivos específicos dependendo de onde você vai querer concentrar a sua prática investigativa, ou como você vai aprofundar no seu trabalho.
+>	Proporcionar uma experiência mais agradável e eficiente para os usuários que desejam realizar reservas em restaurantes de alto padrão;  
+
+>	Reduzir o tempo e esforço necessário para realizar uma reserva em um restaurante de alto padrão;  
+
+>	Disponibilizar uma solução automatizada e integrada para a reserva de restaurantes de alto padrão. 
  
-> **Links Úteis**:
-> - [Objetivo geral e objetivo específico: como fazer e quais verbos utilizar](https://blog.mettzer.com/diferenca-entre-objetivo-geral-e-objetivo-especifico/)
 
 ## Justificativa
 
-Descreva a importância ou a motivação para trabalhar com esta aplicação que você escolheu. Indique as razões pelas quais você escolheu seus objetivos específicos ou as razões para aprofundar em certos aspectos do software.
+Acreditamos que o mercado da gastronomia por se tratar de um ramo altamente importante para nós humanos, decidimos transformar um pouco mais esse nicho com a implementação de tecnologia ao fazer reservas nos mais diversos tipos de restaurantes. 
 
-O grupo de trabalho pode fazer uso de questionários, entrevistas e dados estatísticos, que podem ser apresentados, com o objetivo de esclarecer detalhes do problema que será abordado pelo grupo.
+  
 
-> **Links Úteis**:
-> - [Como montar a justificativa](https://guiadamonografia.com.br/como-montar-justificativa-do-tcc/)
+Através dessa solução, desejamos alcançar o maior nível de satisfação, eficiência, praticidade e principalmente rapidez na realização de reservas, e claro, sem perder o requinte. 
+
+  
+
+O ChatBot é oferecido para aquele público que não tem muito tempo livre durante a jornada diária, mas precisa efetivar uma reserva para alguma ocasião, seja ela simples ou especial em um de nossos restaurantes parceiros de forma que com menos de 7 clicks, sua reserva já estará feita através de um ChatBot totalmente intuitivo e prático. 
+
+  
+
+Com esse projeto, queremos alcançar um nível acima na modernidade de nossa gastronomia, solucionando um dos fatores primordiais para se ter uma experiência excelente em um restaurante, a certeza de que irá ser recebido no local desejado com prontidão e excelência ao se assentar a mesa reservada. 
 
 ## Público-Alvo
 
-Descreva quem serão as pessoas que usarão a sua aplicação indicando os diferentes perfis. O objetivo aqui não é definir quem serão os clientes ou quais serão os papéis dos usuários na aplicação. A ideia é, dentro do possível, conhecer um pouco mais sobre o perfil dos usuários: conhecimentos prévios, relação com a tecnologia, relações
-hierárquicas, etc.
+Embora todas as pessoas possam se beneficiar da plataforma para reservar sua vaga em restaurantes, o foco da plataforma está no público que gosta de se planejar com antecedência e não possuem disponibilidade para acessar os sites de agendamento ou ligar para cada um dos restaurantes à procura de vagas para reserva, centralizando todos na plataforma de reservas. 
 
-Adicione informações sobre o público-alvo por meio de uma descrição textual, diagramas de personas e mapa de stakeholders.
-
-> **Links Úteis**:
-> - [Público-alvo](https://blog.hotmart.com/pt-br/publico-alvo/)
-> - [Como definir o público alvo](https://exame.com/pme/5-dicas-essenciais-para-definir-o-publico-alvo-do-seu-negocio/)
-> - [Público-alvo: o que é, tipos, como definir seu público e exemplos](https://klickpages.com.br/blog/publico-alvo-o-que-e/)
-> - [Qual a diferença entre público-alvo e persona?](https://rockcontent.com/blog/diferenca-publico-alvo-e-persona/)
+Desta forma, estabeleceu-se como público-alvo desta solução os homens e as mulheres entre 18 e 60 anos gostem de se planejar e buscam reservas de restaurantes de forma ágil e prática através do website. 
