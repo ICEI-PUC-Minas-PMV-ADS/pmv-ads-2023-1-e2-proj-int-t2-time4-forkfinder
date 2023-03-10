@@ -8,19 +8,18 @@ Apresente uma visão geral do que será abordado nesta parte do documento, enume
 
 ## Personas
 
-Pedro Paulo tem 26 anos, é arquiteto recém-formado e autônomo. Pensa em se desenvolver profissionalmente através de um mestrado fora do país, pois adora viajar, é solteiro e sempre quis fazer um intercâmbio. Está buscando uma agência que o ajude a encontrar universidades na Europa que aceitem alunos estrangeiros.
+| <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/docs/img/Personas/1.png?raw=true" title="Amaury Júnior" align="left"> | <h2 align="right"><b>Amaury Júnior</b></h2></br></br></br> <p align="left">Idade: 41 <br/><br/> Ocupação: Empresário jovem e bem-sucedido que gosta de frequentar restaurantes de alto padrão em seu tempo livre. <br/><br/> O usuário prefere uma aplicação que sinalize estabelecimentos com áreas de acessibilidade, pois ele possui mobilidade reduzida.</p> |
+| --- | --- |
+| Motivações <ul><li>Atendimento personalizado.</li><li>Valorização da comodidade.</li></ul> | Frustrações <br/> <ul><li>Falta de sinalização de acessibilidade.</li> <li>Reservas não confirmadas.</ul> |
+| <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/docs/img/Personas/2.png?raw=true" title="Amanda Rosemberg" align="left"> | <h2 align="right"><b>Amanda Rosemberg</b></h2></br></br></br> <p align="left">Idade: 45 <br/><br/> Ocupação: Amanda é uma mãe ocupada que gosta de planejar tudo com antecedência. <br/><br/> Ela adora comer fora com sua família, especialmente em ocasiões especiais, como aniversários e feriados. Ela acha difícil encontrar mesas disponíveis em restaurantes em horários de pico e muitas vezes acaba fazendo reservas com semanas de antecedência. Para economizar tempo, ela prefere usar um aplicativo fácil de usar que permita que ela faça suas reservas rapidamente e passe mais tempo aproveitando a companhia de sua família.</p> |
+| Motivações <ul><liSegurança.</li><li>Diversidade de restaurante.</li></ul> | Frustrações <br/> <ul><li>Problemas com reservas online.</li> <li>Dificuldade em encontrar informações.</ul> |
+| <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/docs/img/Personas/3.png?raw=true" title="Luísa Amarantes" align="left"> | <h2 align="right"><b>Luísa Amarantes</b></h2></br></br></br> <p align="left">Idade: 25 <br/><br/> Ocupação: Luísa é uma estudante universitária que trabalha meio período para pagar suas contas. <br/><br/> Ela gosta de sair para jantar com amigos e experimentar novos restaurantes, mas geralmente tem um orçamento limitado. Ela acha difícil encontrar mesas disponíveis em restaurantes populares com preços acessíveis, especialmente nos fins de semana. Ela prefere usar um aplicativo para procurar por restaurantes que se encaixem em seu orçamento e que ofereçam ofertas especiais.</p> |
+| Motivações <ul><li>Facilidade de uso.</li><li>Intuitividade.</li></ul> | Frustrações <br/> <ul><li>Falta de disponibilidade.</li> <li>Falta de ofertas ou valores comparativos.</ul> |
+| <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/docs/img/Personas/4.png?raw=true" title="Leandro Battisti" align="left"> | <h2 align="right"><b>Leandro Battisti</b></h2></br></br></br> <p align="left">Idade: 55 <br/><br/> Ocupação: Leandro é um homem aposentado que adora viajar pelo mundo e experimentar novas culturas e culinárias. <br/><br/> Ele fala vários idiomas, incluindo espanhol, francês e italiano. No entanto, a barreira linguística e a falta de familiaridade com o processo de reserva dificultam a realização de reservas em restaurantes em outros países. Para tornar o processo mais fácil e conveniente, ele prefere usar um aplicativo que permita fazer reservas em diferentes idiomas.</p> |
+| Motivações <ul><li>Sistema multilíngue.</li><li>Facilidade de cancelamento.</li></ul> | Frustrações <br/> <ul><li>Dificuldade em cancelar reservas online.</li> <li>Sistemas monolíngues.</ul> |
+| <img src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/docs/img/Personas/5.png?raw=true" title="Sarah D’aulizio" align="left"> | <h2 align="right"><b>Sarah D’aulizio</b></h2></br></br></br> <p align="left">Idade: 28 <br/><br/> Ocupação: Sarah é uma blogueira de gastronomia que adora experimentar novos restaurantes e compartilhar suas experiências em seu blog. <br/><br/> Sua presença ativa nas redes sociais a leva a compartilhar suas experiências com seus seguidores. Ela prefere usar uma aplicação para agendar suas reservas e permitir que ela compartilhe suas atividades com seus seguidores nas redes sociais. Além disso, ela valoriza as opções de idioma para experimentar restaurantes em outros países..</p> |
+| Motivações <ul><li>Experiência gastronômica.</li><li>Informações claras.</li></ul> | Frustrações <br/> <ul><li>Sistemas pouco intuitivos.</li> <li>Falta de opções para grupos grandes.</ul> |
 
-Enumere e detalhe as personas da sua solução. Para tanto, baseie-se tanto nos documentos disponibilizados na disciplina e/ou nos seguintes links:
-
-> **Links Úteis**:
-> - [Rock Content](https://rockcontent.com/blog/personas/)
-> - [Hotmart](https://blog.hotmart.com/pt-br/como-criar-persona-negocio/)
-> - [O que é persona?](https://resultadosdigitais.com.br/blog/persona-o-que-e/)
-> - [Persona x Público-alvo](https://flammo.com.br/blog/persona-e-publico-alvo-qual-a-diferenca/)
-> - [Mapa de Empatia](https://resultadosdigitais.com.br/blog/mapa-da-empatia/)
-> - [Mapa de Stalkeholders](https://www.racecomunicacao.com.br/blog/como-fazer-o-mapeamento-de-stakeholders/)
->
-Lembre-se que você deve ser enumerar e descrever precisamente e personalizada todos os clientes ideais que sua solução almeja.
 
 ## Histórias de Usuários
 
