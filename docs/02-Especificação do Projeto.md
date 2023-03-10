@@ -131,3 +131,6 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagrama de
 > - [Lucidchart](https://www.lucidchart.com/)
 > - [Astah](https://astah.net/)
 > - [Diagrams](https://app.diagrams.net/)
+
+![image](https://user-images.githubusercontent.com/114194318/224195990-296fae74-680f-47d9-a38d-c0706d395871.png)
+
