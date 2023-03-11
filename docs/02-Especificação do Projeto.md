@@ -46,9 +46,9 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | --- | --- | --- |
 | RF-01 | A aplicação deve permitir ao usuário cadastrar uma conta. | ALTA |
 | RF-02 | A aplicação deve permitir aos donos/funcionários de restaurantes cadastrar uma conta com informações sobre o estabelecimento. | ALTA |
-| RF-03 | A aplicação deve permitir a pesquisa de restaurantes por localização, horário e disponibilidade. | ALTA |
+| RF-03 | A aplicação deve permitir a pesquisa de restaurantes, por horário e disponibilidade. | ALTA |
 | RF-04 | A aplicação deve permitir a reserva de mesas de restaurantes de forma online e em tempo real. | ALTA |
-| RF-05 | A aplicação deve permitir o pagamento online e seguro das reservas realizadas. | ALTA |
+| RF-05 | A aplicação deve permitir o ******"pagamento"****** online e seguro das reservas realizadas. | ALTA |
 | RF-06 | A aplicação deve permitir o cancelamento de reservas por parte dos usuários. | ALTA |
 | RF-07 | A aplicação deve disponibilizar opções de idioma para os usuários. | BAIXA |
 | RF-08 | A aplicação deve fornecer confirmações de reserva e cancelamento de reservas via e-mail ou notificação no aplicativo. | MÉDIA |
@@ -56,23 +56,25 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | RF-10 | A aplicação deve permitir avaliações e comentários de usuários sobre restaurantes. | BAIXA |
 | RF-11 | A aplicação deve permitir a integração com plataformas de redes sociais para compartilhamento de informações e opiniões sobre restaurantes. | BAIXA |
 | RF-12 | A aplicação deve permitir a atualização e gestão de informações de restaurantes pelos próprios estabelecimentos. | MÉDIA |
-| RF-13 | A aplicação deve oferecer suporte ao cliente por meio de chat ou e-mail. | BAIXA |
-| RF-14 | A aplicação deve permitir a criação de listas de restaurantes favoritos e histórico de reservas. | BAIXA |
-| RF-15 | A aplicação deve oferecer uma funcionalidade de filtro/pesquisa para permitir ao usuário pesquisa por tipo de cozinha ou categoria de restaurante.. | ALTA |
+| RF-13 | A aplicação deve permitir a criação de listas de restaurantes favoritos e histórico de reservas. | BAIXA |
+| RF-14 | A aplicação deve oferecer uma funcionalidade de filtro/pesquisa para permitir ao usuário pesquisa por tipo de cozinha ou categoria de restaurante. | ALTA |
+| RF-15 | A aplicação deverá exibir quais os tipos de acessbilidades disponiveis. | ALTA |
+| RF-16 | A aplicação deverá permitir que o usuário faça observações na reserva. | ALTA |
 
 ### Requisitos não Funcionais
 
 | ID | Descrição do Requisito | Prioridade |
 | --- | --- | --- |
-| RFN-01 | A aplicação deve ser publicada em um ambiente acessível publicamente na Internet (Repl.it, GitHub Pages, Heroku); - ALTA | ALTA |
-| RFN-02 | A aplicação deve ter bom nível de contraste entre os elementos da tela em conformidade - MÉDIA | MÉDIA |
-| RFN-03 | A aplicação deve ser compatível com os principais navegadores do mercado (Google Chrome, Firefox, Microsoft Edge) - ALTA | ALTA |
-| RFN-01 | A aplicação deve disponibilizará às funcionalidades ao usuário de maneira simples e intuitiva - ALTA | MÉDIA |
-| RFN-05 | A aplicação deve ser responsivas para dispositivos mobile - ALTA | MÉDIA |
-| RFN-06 | A aplicação deve limitar o tempo de acesso ao sistema a fim de reduzir qualquer tipo de ameaça - BAIXA | MÉDIA |
-| RFN-07 | A aplicação deve cumprir com as regulamentações de privacidade de dados. | ALTA |
-| RFN-08 | A aplicação deve se comunicar com o banco SQL - ALTA | ALTA |
-| RFN-09 | A aplicação deve utilizar às linguagem C#, HTML, CSS e JavaScript - ALTA | ALTA |
+| RFN-01 | A aplicação deve ser publicada em um ambiente acessível publicamente na Internet (Repl.it, GitHub Pages, Heroku); | ALTA |
+| RFN-02 | A aplicação deve ter bom nível de contraste entre os elementos da tela em conformidade. | MÉDIA |
+| RFN-03 | A aplicação deve ser compatível com os principais navegadores do mercado (Google Chrome, Firefox, Microsoft Edge). | ALTA |
+| RFN-04 | A aplicação deve disponibilizar às funcionalidades ao usuário de maneira simples e intuitiva. | MÉDIA |
+| RFN-05 | A aplicação deve limitar o tempo de acesso ao sistema a fim de reduzir qualquer tipo de ameaça. | MÉDIA |
+| RFN-06 | A aplicação deve cumprir com as regulamentações de privacidade de dados. | ALTA |
+| RFN-07 | A aplicação deve se comunicar com o banco SQL. | ALTA |
+| RFN-08 | A aplicação deve utilizar às linguagem C#, HTML, CSS e JavaScript. | ALTA |
+| RFN-09 | A aplicação deverá estar disponível 100% do tempo. | ALTA |
+| RFN-10 | A aplicação se adaptará ao formato de tela do dispositivo utilizado, sem que ocorram distorções. | ALTA |
 
 ## Restrições
 
@@ -80,10 +82,9 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 |ID| Restrição                                             |
 |--|-------------------------------------------------------|
-|01| O rojeto deve ser desenvolvido como foco no Back-end
-|02| A equipe não pode subcontratar o desenvolvimento do trabalho.
-|03| O projeto deverá ser entregue até o final do semestre.
-|04| O site não pode conter conhecimentos além daqueles aprendidos durante o semestre
+|01| O projeto deve ser desenvolvido como foco no Back-end. |
+|02| A equipe não pode subcontratar o desenvolvimento do trabalho. |
+|03| O projeto deverá ser entregue até o final do semestre. |
 
 
 ## Diagrama de Casos de Uso
