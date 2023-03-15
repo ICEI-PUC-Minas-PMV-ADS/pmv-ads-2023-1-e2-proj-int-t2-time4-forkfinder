@@ -48,18 +48,14 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | RF-02 | A aplicação deve permitir aos donos/funcionários de restaurantes cadastrar uma conta com informações sobre o estabelecimento. | ALTA |
 | RF-03 | A aplicação deve permitir a pesquisa de restaurantes, por horário e disponibilidade. | ALTA |
 | RF-04 | A aplicação deve permitir a reserva de mesas de restaurantes de forma online e em tempo real. | ALTA |
-| RF-05 | A aplicação deve permitir o ******"pagamento"****** online e seguro das reservas realizadas. | ALTA |
-| RF-06 | A aplicação deve permitir o cancelamento de reservas por parte dos usuários. | ALTA |
-| RF-07 | A aplicação deve disponibilizar opções de idioma para os usuários. | BAIXA |
-| RF-08 | A aplicação deve fornecer confirmações de reserva e cancelamento de reservas via e-mail ou notificação no aplicativo. | MÉDIA |
-| RF-09 | A aplicação deve permitir o usuário o gerenciamento de preferências no perfil para sugestões personalizadas de restaurantes. | MÈDIA |
-| RF-10 | A aplicação deve permitir avaliações e comentários de usuários sobre restaurantes. | BAIXA |
-| RF-11 | A aplicação deve permitir a integração com plataformas de redes sociais para compartilhamento de informações e opiniões sobre restaurantes. | BAIXA |
-| RF-12 | A aplicação deve permitir a atualização e gestão de informações de restaurantes pelos próprios estabelecimentos. | MÉDIA |
-| RF-13 | A aplicação deve permitir a criação de listas de restaurantes favoritos e histórico de reservas. | BAIXA |
-| RF-14 | A aplicação deve oferecer uma funcionalidade de filtro/pesquisa para permitir ao usuário pesquisa por tipo de cozinha ou categoria de restaurante. | ALTA |
-| RF-15 | A aplicação deverá exibir quais os tipos de acessbilidades disponiveis. | ALTA |
-| RF-16 | A aplicação deverá permitir que o usuário faça observações na reserva. | ALTA |
+| RF-05 | A aplicação deve permitir o cancelamento de reservas por parte dos usuários. | ALTA |
+| RF-06 | A aplicação deve disponibilizar opções de idioma para os usuários. | BAIXA |
+| RF-07 | A aplicação deve permitir o usuário o gerenciamento de preferências no perfil para sugestões personalizadas de restaurantes. | MÈDIA |
+| RF-08 | A aplicação deve permitir avaliações e comentários de usuários sobre restaurantes. | BAIXA ||
+| RF-09 | A aplicação deve permitir a atualização e gestão de informações de restaurantes pelos próprios estabelecimentos. | MÉDIA |
+| RF-10 | A aplicação deve permitir a criação de listas de restaurantes favoritos e histórico de reservas. | BAIXA |
+| RF-11 | A aplicação deverá exibir quais os tipos de acessbilidades disponiveis. | ALTA |
+| RF-12 | A aplicação deverá permitir que o usuário faça observações na reserva. | ALTA |
 
 ### Requisitos não Funcionais
 
@@ -89,5 +85,5 @@ O projeto está restrito pelos itens apresentados na tabela a seguir.
 
 ## Diagrama de Casos de Uso
 
-![Diagrama de Casos de Uso](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/docs/img/Diagrama%20de%20casos%20de%20uso.png)
+![Diagrama de Casos de Uso]
 
