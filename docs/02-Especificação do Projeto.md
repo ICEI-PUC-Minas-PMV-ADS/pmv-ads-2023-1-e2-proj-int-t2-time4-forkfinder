@@ -55,7 +55,22 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | RF-09 | A aplicação deve permitir a atualização e gestão de informações de restaurantes pelos próprios estabelecimentos. | MÉDIA |
 | RF-10 | A aplicação deve permitir a criação de listas de restaurantes favoritos e histórico de reservas. | BAIXA |
 | RF-11 | A aplicação deverá exibir quais os tipos de acessbilidades disponiveis. | ALTA |
-| RF-12 | A aplicação deverá permitir que o usuário faça observações na reserva. | ALTA |
+| RF-12 | A aplicação deverá permitir acesso ao cardápio do respectivo restaurante. | ALTA |
+| RF-13 | A aplicação deverá permitir a conferência de preço pelo cardápio. | ALTA |
+| RF-14 | A aplicação deverá permitir que seja realizado uma reserva para um dia e horário específico. | ALTA |
+| RF-15 | A aplicação deverá permitir o acompanhamento do status da reserva. | MÉDIA |
+| RF-16 | A aplicação deverá permitir que seja filtrado os restaurantes por categoria de culinária. | MÉDIA |
+| RF-17 | A aplicação deverá permitir que seja filtrado o cardápio de acordo com aquilo que o cliente deseja comer. Ex; ( massas, doces, salgados e etc ). | MÉDIA |
+| RF-18 | A aplicação deverá permitir que seja recomendado sugestões de restaurantes de acordo com o costume/hábito do cliente. | MÉDIA |
+| RF-19 | A aplicação deverá permitir que seja recomendado sugestões de alimentos de acordo com os pedidos anteriores do cliente. | MÉDIA |
+| RF-20 | A aplicação deverá permitir uma imagem mapeada de cada restaurante cadastrado em nossa plataforma para se reservar o local desejado no estabelecimento. | MÉDIA |
+| RF-21 | A aplicação deverá permitir que seja recomendado restaurantes por meio de filtros no qual o cliente informa o que ele(a) está com vontade de comer. | ALTA |
+| RF-22 | A aplicação deverá permitir que o cliente filtre por estabelecimentos recomendados para pessoas com intolerâncias a certos tipos de alimentos. Ex: ( glutén, laticínios e etc ). | ALTA |
+| RF-23 | A aplicação deverá permitir que o cliente deixe um informativo no momento da reserva especificando se é uma data comemorativa, evento, reunião ou algum outro motivo particular. | MÉDIA |
+| RF-24 | A aplicação deverá permitir que seja solicitado com antecedência um local apropriado para pessoas com dificuldade de mobilidade ou acesso. | ALTA |
+| RF-25 | A aplicação deverá permitir que seja solicitado com antecedência uma mesa/assento para crianças. | ALTA |
+| RF-25 | A aplicação deverá permitir que seja registrado um feedback do cliente acerca do prato e do restaurante anteriormente visitado. | BAIXA |
+| RF-25 | A aplicação deverá possuir um campo no qual o cliente possa apoiar o projeto. | BAIXA |
 
 ### Requisitos não Funcionais
 
