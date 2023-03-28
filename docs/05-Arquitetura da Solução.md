@@ -14,7 +14,8 @@ O diagrama de classes ilustra graficamente como será a estrutura do software, e
 
 O Modelo ER representa através de um diagrama como as entidades se relacionam entre si na aplicação interativa.
 
-![Modelo Entidade Relacionamento - Projeto Conceitual](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/docs/img/Modelo%20Entidade%20Relacionamento%20-%20Projeto%20Conceitual.png)
+![MER Projeto (2)](https://user-images.githubusercontent.com/111004815/228392517-59766224-6fef-4ae7-909b-43212b84ce7a.png)
+
 
 ## Projeto da Base de Dados
 
