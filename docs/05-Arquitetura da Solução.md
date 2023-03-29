@@ -14,7 +14,7 @@ O diagrama de classes ilustra graficamente como será a estrutura do software, e
 
 O Modelo ER representa através de um diagrama como as entidades se relacionam entre si na aplicação interativa.
 
-![MER Projeto (2)](https://user-images.githubusercontent.com/111004815/228392517-59766224-6fef-4ae7-909b-43212b84ce7a.png)
+![MER Projeto (3)](https://user-images.githubusercontent.com/111004815/228393610-8db46400-6ca4-4d8a-a604-9020e2ab4c01.png)
 
 
 ## Projeto da Base de Dados
