@@ -1,9 +1,7 @@
 
 # Metodologia
 
-<span style="color:red">Pré-requisitos: <a href="2-Especificação do Projeto.md"> Documentação de Especificação</a></span>
-
-Descreva aqui a metodologia de trabalho do grupo para atacar o problema. Definições sobre os ambiente de trabalho utilizados pela  equipe para desenvolver o projeto. Abrange a relação de ambientes utilizados, a estrutura para gestão do código fonte, além da definição do processo e ferramenta através dos quais a equipe se organiza (Gestão de Times).
+A metodologia contempla as definições de ferramental utilizado pela equipe tanto para a manutenção dos códigos e demais artefatos quanto para a organização do time na execução das tarefas do projeto.
 
 ## Controle de Versão
 
@@ -26,52 +24,64 @@ etiquetas:
 - `enhancement`: uma funcionalidade precisa ser melhorada
 - `feature`: uma nova funcionalidade precisa ser introduzida
 
-Discuta como a configuração do projeto foi feita na ferramenta de versionamento escolhida. Exponha como a gerência de tags, merges, commits e branchs é realizada. Discuta como a gerência de issues foi realizada.
-
-> **Links Úteis**:
-> - [Tutorial GitHub](https://guides.github.com/activities/hello-world/)
-> - [Git e Github](https://www.youtube.com/playlist?list=PLHz_AreHm4dm7ZULPAmadvNhH6vk9oNZA)
->  - [Comparando fluxos de trabalho](https://www.atlassian.com/br/git/tutorials/comparing-workflows)
-> - [Understanding the GitHub flow](https://guides.github.com/introduction/flow/)
-> - [The gitflow workflow - in less than 5 mins](https://www.youtube.com/watch?v=1SXpE08hvGs)
-
 ## Gerenciamento de Projeto
 
 ### Divisão de Papéis
 
-Apresente a divisão de papéis entre os membros do grupo.
+A equipe está organizada da seguinte maneira:
 
-> **Links Úteis**:
-> - [11 Passos Essenciais para Implantar Scrum no seu 
-> Projeto](https://mindmaster.com.br/scrum-11-passos/)
-> - [Scrum em 9 minutos](https://www.youtube.com/watch?v=XfvQWnRgxG0)
+- Scrum Master: José Wilson da Costa.
 
+- Product Owner: Gabriel Alisson dos Santos Oliveira
+
+- Equipe de Desenvolvimento: 
+    - Gabriel Alisson dos Santos Oliveira
+    - Jansem Wallemberg Torquetti Maia
+    - Lucas Filipe dos Reis 
+    - Natan Candido Fonseca
+    - Neemias Junio Anjos Lopes 
+    - Wellington Andrade Rolim 
+
+- Equipe de Design:    
+    - Gabriel Alisson dos Santos Oliveira
+    - Jansem Wallemberg Torquetti Maia
+    - Lucas Filipe dos Reis 
+    - Natan Candido Fonseca
+    - Neemias Junio Anjos Lopes 
+    - Wellington Andrade Rolim 
+   
 ### Processo
 
-Coloque  informações sobre detalhes da implementação do Scrum seguido pelo grupo. O grupo poderá fazer uso de ferramentas on-line para acompanhar o andamento do projeto, a execução das tarefas e o status de desenvolvimento da solução.
- 
-> **Links Úteis**:
-> - [Project management, made simple](https://github.com/features/project-management/)
-> - [Sobre quadros de projeto](https://docs.github.com/pt/github/managing-your-work-on-github/about-project-boards)
-> - [Como criar Backlogs no Github](https://www.youtube.com/watch?v=RXEy6CFu9Hk)
-> - [Tutorial Slack](https://slack.com/intl/en-br/)
+Para organização e distribuição das tarefas do projeto, a equipe está utilizando o Trello, estruturado com as seguintes listas:
+
+- **Propriedades das Tarefas:** É a etiqueta das tarefas, ou a prioridade em que serão apresentadas sendo alta cor vermelha, média cor amarela ou baixa cor verde.
+
+- **Backlog:** Lista ordenada de todos os requisitos que se tem conhecimento de que precisam estar no produto. Cada tarefa está associada a um 'milestone', que pressupõe uma entrega final.
+
+- **A Fazer:** Tarefas que estão disponíveis para os desenvolvedores fazer e ninguém assumiu ainda, ou seja está separada para entrega e aguardadndo o desenvolvedor assumir a resposabilidade por ela;
+
+- **Em Andamento:** Quando uma tarefa do Sprint Backlog tiver sido iniciada, ela é movida para cá;
+
+- **Teste:** Aqui são movidos as tarefas prontas para teste.
+
+- **Conclído:** todas as tarefas do sprint que já foram concluídas pela equipe de desenvolvimento.
+
+- **Lembrete:** uma aba com as datas das próximas entregas e a referência delas. 
+
+O quadro KANBAN do grupo no Trello está disponível através da URL: https://trello.com/invite/b/WeK8D70i/ATTI2c61ba71039821b5c038dd88a8cc73acCA729208/forkfinder e é apresentado, no estado atual, na Figura abaixo.
+
+![Backlog-Trello](https://user-images.githubusercontent.com/114194318/228393369-cf048dc3-3c75-4e07-82ce-5007670d2a39.png)
 
 ### Ferramentas
+  Estão sendo importantes no processo de desenvolvimento desta aplicação: o github como versionador de código onde é armazenada as partes prontas do projeto e por possuir compatibilidade com o VS.Code. Foi escolhido o Trello, onde é organizado e separado as tarefas. O Figma como ferramenta de edição dos wireframes. 
+  Temos também os aplicativos e sites de comunicação com whattsap e discord, pois assim como em algumas empresas que atuam no chamado "home office" o curso é totalmente à distância nos forçando cada vez mais atuar com clareza em dadas ideias para o projeto.
 
-As ferramentas empregadas no projeto são:
 
-- Editor de código.
-- Ferramentas de comunicação
-- Ferramentas de desenho de tela (_wireframing_)
+As ferramentas empregadas no projeto estão descritas na tabela abaixo:
 
-O editor de código foi escolhido porque ele possui uma integração com o
-sistema de versão. As ferramentas de comunicação utilizadas possuem
-integração semelhante e por isso foram selecionadas. Por fim, para criar
-diagramas utilizamos essa ferramenta por melhor captar as
-necessidades da nossa solução.
-
-Liste quais ferramentas foram empregadas no desenvolvimento do projeto, justificando a escolha delas, sempre que possível.
- 
-> **Possíveis Ferramentas que auxiliarão no gerenciamento**: 
-> - [Slack](https://slack.com/)
-> - [Github](https://github.com/)
+|**FUNÇÃO**| **PLATAFORMA** |**LINK DE ACESSO**|
+|--------------------|------------------------------------|----------------------------------------|
+|**Repositório de Código Fonte**|**GitHub**|https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder|
+|**Projeto de Interface - Wireframe**|**Figma**|https://www.figma.com/proto/T1G6PGjM6qgGRo4Fx0HKfs/Fork-Finder?node-id=1-268&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A268 |
+|**Editor de Código**|**VS Code**|https://code.visualstudio.com/|
+|**Ferramentas de Comunição**|**Teams e WhatsApp**|https://teams.microsoft.com/ , https://web.whatsapp.com/ , https://discord.com/ , https://trello.com/|
