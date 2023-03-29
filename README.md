@@ -13,7 +13,7 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 * Gabriel Alisson dos Santos Oliveira
 * Jansem Wallemberg Torquetti Maia
 * Lucas Filipe dos Reis 
-* Natan Candido Fpnseca
+* Natan Candido Fonseca
 * Neemias Junio Anjos Lopes 
 * Wellington Andrade Rolim 
 
