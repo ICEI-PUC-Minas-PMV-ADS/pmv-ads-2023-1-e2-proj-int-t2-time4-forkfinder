@@ -21,7 +21,6 @@ Por exemplo:
 | Passos 	| - Acessar o navegador <br> - Informar o endereço do site (endereço do site )<br> - Clicar no botão "Entrar" <br> - Preencher o campo de e-mail <br> - Preencher o campo da senha <br> - Clicar em "Login" |
 |Critério de Êxito | - O login foi realizado com sucesso. |
 | **Caso de Teste** 	| **CT-03 – Escolha de prato ** 	|
-|:---:	|:---:	|
 |	Requisito Associado 	| RF-03 - A aplicação deve apresentar, na página principal, a funcionalidade de mostrar pratos de diversas culinarias  para os usuários para que esses consigam achar seu prato ou culinaria . |
 | Objetivo do Teste 	| Verificar se o usuário consegue buscar as  culinarias ou pratos desejados  . |
 | Passos 	| - Acessar o navegador <br> - Informar o endereço do site (endereço do site ) -navegar na home-page e buscar culinaria desejada  "" <br> - 
