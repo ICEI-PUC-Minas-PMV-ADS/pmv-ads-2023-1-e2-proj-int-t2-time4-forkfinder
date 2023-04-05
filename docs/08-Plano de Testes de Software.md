@@ -23,7 +23,7 @@ Por exemplo:
 | **Caso de Teste** 	| **CT-03 – Escolha de prato ** 	|
 |	Requisito Associado 	| RF-03 - A aplicação deve apresentar, na página principal, a funcionalidade de mostrar pratos de diversas culinarias  para os usuários para que esses consigam achar seu prato ou culinaria . |
 | Objetivo do Teste 	| Verificar se o usuário consegue buscar as  culinarias ou pratos desejados  . |
-| Passos 	| - Acessar o navegador <br> - Informar o endereço do site (endereço do site ) -navegar na home-page e buscar culinaria desejada  "" <br> - 
+| Passos 	| - Acessar o navegador <br> - acessar paginas de pratos forfinker -navegar na home-page e buscar culinaria desejada  "" <br> - 
 |Critério de Êxito | - busca da culinaria foi realizada com sucesso. |
 |  	|  	|
 | Caso de Teste 	| CT-04 – Reserva do Restaurante 
