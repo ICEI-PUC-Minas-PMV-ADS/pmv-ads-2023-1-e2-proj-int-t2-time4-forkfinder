@@ -49,13 +49,12 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | RF-03 | A aplicação deve permitir a pesquisa de restaurantes, por horário e disponibilidade. | ALTA |
 | RF-04 | A aplicação deve permitir a reserva de mesas de restaurantes de forma online e em tempo real. | ALTA |
 | RF-05 | A aplicação deve permitir o cancelamento de reservas por parte dos usuários. | ALTA |
-| RF-06 | A aplicação deve disponibilizar opções de idioma para os usuários. | BAIXA |
-| RF-07 | A aplicação deve permitir o usuário o gerenciamento de preferências no perfil para sugestões personalizadas de restaurantes. | MÈDIA |
-| RF-08 | A aplicação deve permitir avaliações e comentários de usuários sobre restaurantes. | BAIXA ||
-| RF-09 | A aplicação deve permitir a atualização e gestão de informações de restaurantes pelos próprios estabelecimentos. | MÉDIA |
-| RF-10 | A aplicação deve permitir a criação de listas de restaurantes favoritos e histórico de reservas. | BAIXA |
-| RF-11 | A aplicação deverá exibir quais os tipos de acessbilidades disponiveis. | ALTA |
-| RF-12 | A aplicação deverá permitir que o usuário faça observações na reserva. | ALTA |
+| RF-06 | A aplicação deve permitir o usuário o gerenciamento de preferências no perfil para sugestões personalizadas de restaurantes. | MÈDIA |
+| RF-07 | A aplicação deve permitir avaliações e comentários de usuários sobre restaurantes. | BAIXA ||
+| RF-08 | A aplicação deve permitir a atualização e gestão de informações de restaurantes pelos próprios estabelecimentos. | MÉDIA |
+| RF-09 | A aplicação deve permitir a criação de listas de restaurantes favoritos e histórico de reservas. | BAIXA |
+| RF-10 | A aplicação deverá exibir quais os tipos de acessbilidades disponiveis. | ALTA |
+| RF-11 | A aplicação deverá permitir que o usuário faça observações na reserva. | ALTA |
 
 ### Requisitos não Funcionais
 
