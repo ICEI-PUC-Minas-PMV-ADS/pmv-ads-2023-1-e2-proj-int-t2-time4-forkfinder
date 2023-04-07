@@ -26,14 +26,19 @@ Por exemplo:
 | Passos 	| - Acessar o navegador <br> - acessar paginas de pratos forfinker -navegar na home-page e buscar culinaria desejada  "" <br> - 
 |Critério de Êxito | - busca da culinaria foi realizada com sucesso. |
 |  	|  	|
-| Caso de Teste 	| CT-04 – Reserva do Restaurante |
-|
-|Requisito Associado | RF-04	- A aplicação deve possuir opção de fazer a reserva no restaurante escolhido , sendo necessario realizar o login com o endereço de e-mail e senha cadastrado  para que a reserva seja realizada com sucesso  . |
-| Objetivo do Teste 	| Verificar se o usuário consegue realizar a reserva no restaurante . |
-| **Caso de Teste** 	| **CT-05 – Escolha do horario  ** 	|
+
+| **Caso de Teste** 	| **CT-04 – Escolha do horario  ** 	|
 |:---:	|:---:	|
-|	Requisito Associado 	| RF-05 - A aplicação deve apresentar, na página de reserva do restaurante , a funcionalidade de mostrar os horarios disponivel   para os usuários para que esses consigam escolher o horario adequado para sua reserva  . |
+|	Requisito Associado 	| RF-04 - A aplicação deve apresentar, na página de reserva do restaurante , a funcionalidade de mostrar os horarios disponivel   para os usuários para que esses consigam escolher o horario adequado para sua reserva  . |
 | Objetivo do Teste 	| Verificar se o usuário consegue o registro do horario desejado   . |
+
+| **Caso de Teste** 	| **CT-05 –Reserva do Restaurante   ** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-05 - A aplicação deve possuir opção de fazer a reserva no restaurante escolhido , sendo necessario realizar o login com o endereço de e-mail e senha cadastrado  para que a reserva seja realizada com sucesso. |
+| Objetivo do Teste 	| Verificar se o usuário consegue realizar a reserva no restaurante . |
+
+
+
 
 
 
