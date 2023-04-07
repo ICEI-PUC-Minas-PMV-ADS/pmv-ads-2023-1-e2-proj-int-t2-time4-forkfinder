@@ -37,6 +37,12 @@ Por exemplo:
 |	Requisito Associado 	| RF-05 - A aplicação deve possuir opção de fazer a reserva no restaurante escolhido , sendo necessario realizar o login com o endereço de e-mail e senha cadastrado  para que a reserva seja realizada com sucesso. |
 | Objetivo do Teste 	| Verificar se o usuário consegue realizar a reserva no restaurante . |
 
+| **Caso de Teste** 	| **CT-05 –Troca de idioma   ** 	|
+|:---:	|:---:	|
+|	Requisito Associado 	| RF-05 - A aplicação deve possuir opção de fazer a troca de idioma ,optando por uma das tres linguagens oferecidas  para  seja realizada com sucesso a troca do idioma . |
+| Objetivo do Teste 	| Verificar se o usuário consegue realizar a a troca de idioma . |
+
+
 
 
 
