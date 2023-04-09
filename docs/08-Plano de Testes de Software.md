@@ -37,11 +37,18 @@ Por exemplo:
 |	Requisito Associado 	| RF-05 - A aplicação deve possuir opção de fazer a reserva no restaurante escolhido , sendo necessario realizar o login com o endereço de e-mail e senha cadastrado  para que a reserva seja realizada com sucesso. |
 | Objetivo do Teste 	| Verificar se o usuário consegue realizar a reserva no restaurante . |
 
-| **Caso de Teste** 	| **CT-05 –Troca de idioma   ** 	|
+
+| **Caso de Teste** 	| **CT-06 –Troca de idioma   ** 	|
 |:---:	|:---:	|
-|	Requisito Associado 	| RF-05 - A aplicação deve possuir opção de fazer a troca de idioma ,optando por uma das tres linguagens oferecidas  para  seja realizada com sucesso a troca do idioma . |
+|	Requisito Associado 	| RF-06 - A aplicação deve possuir opção de fazer a troca de idioma ,optando por  linguagens de li para  seja realizada com sucesso a troca do idioma . |
 | Objetivo do Teste 	| Verificar se o usuário consegue realizar a a troca de idioma . |
 
+ Caso de teste         | CT-07 - Cadastro e Login sem sucesso.|
+| --------------------- | -----------------|
+| Requisitos Associados | RF-03 - O site deve permitir ao usuário cadastrar e efetuar login.|
+| Passos                | Acessar a Sessão de login  na aba de navegação em qualquer uma das páginas disponíveis  
+| Objetivo do teste     | Verificar se a partir dos dados inseridos inválidos não é possível realizar do cadastro ou login.|
+| Critérios de êxito    | Não conseguir efetuar cadastro como um novo usuário e não conseguir efetuar o login com os dados informados apresentando uma mensagem de erro para os dados incorretos.|
 
 
 
