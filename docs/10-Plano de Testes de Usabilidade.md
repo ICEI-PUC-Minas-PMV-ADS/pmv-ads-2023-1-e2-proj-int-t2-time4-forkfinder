@@ -1,4 +1,4 @@
-#Plano de Testes de Usabilidade#
+#Plano de Testes de Usabilidade
 
 Com o objetivo de avaliar a qualidade da aplicação, elaboramos o seguinte roteiro abaixo.
 
