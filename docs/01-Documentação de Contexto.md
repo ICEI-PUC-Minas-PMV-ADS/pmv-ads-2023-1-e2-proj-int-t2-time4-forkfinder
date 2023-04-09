@@ -1,18 +1,18 @@
 # Introdução
 
-A comida é uma das coisas que mais nos conecta como seres humanos, pois é capaz de despertar sensações únicas em cada um de nós. E, para aqueles que amam descobrir novos sabores e experiências gastronômicas, nada é mais emocionante do que fazer uma reserva em um restaurante incrível. 
+A comida é uma das coisas que mais nos conecta como seres humanos, pois é capaz de despertar sensações únicas em cada um de nós. E, para aqueles que amam descobrir novos sabores e experiências gastronômicas, nada é mais emocionante do que fazer uma reserva em um restaurante incrível.
 
-Porém, muitas vezes, a ansiedade e a frustração podem surgir ao tentar reservar em um restaurante popular, especialmente em datas especiais ou horários de pico. É aí que a nossa solução torna o processo de reserva mais fácil e eficiente pode trazer alívio e satisfação. 
+Porém, muitas vezes, a ansiedade e a frustração podem surgir ao tentar realizar uma reservar em um bom restaurante, especialmente em datas especiais ou horários de pico. É aí que a nossa solução torna o processo de reserva mais fácil e eficiente trazendo alívio e satisfação aos clientes.
 
-Imagine poder filtrar sua busca por um tipo específico de alimento e receber sugestões de restaurantes que atendam ao seu gosto. Ou ter acesso aos seus últimos pedidos em diferentes restaurantes, tornando mais fácil escolher o que comer. Essas são apenas algumas das funcionalidades que a nossa aplicação pode oferecer. 
+Imagine poder filtrar sua busca por um tipo específico de alimento e receber sugestões de restaurantes que atendam ao seu gosto. Ou ter acesso aos seus últimos pedidos em diferentes restaurantes, tornando mais fácil escolher o que comer. Essas são apenas algumas das funcionalidades que a nossa aplicação pode oferecer.
 
-Com essa solução, é possível sentir-se mais seguro e confiante ao planejar um jantar romântico ou uma comemoração em família. E não importa o padrão do restaurante que você procura, a solução pode sugerir locais que atendam às suas preferências gastronômicas, sem limitações. 
+Com essa solução, é possível sentir-se mais seguro e confiante ao planejar um jantar romântico ou uma comemoração em família. E não importa o padrão do restaurante que você procura, a solução pode sugerir locais que atendam às suas preferências gastronômicas, sem limitações.
 
 Em suma, a tecnologia pode agregar ainda mais emoção e prazer às experiências gastronômicas, permitindo que você aproveite cada mordida com tranquilidade e satisfação.
 
 ## Problema
 
-A procura por um restaurante normalmente é algo complexo, com a variedade de opções que um cardápio pode ter, a possibilidade de ser uma experiencia encantadora para uns e desastrosas para outros, ou a chance de não conseguir a reserva no restaurante desejado, já que trabalhar com sabores é algo muito complexo e subjetivo, a aplicação apresentada vem para filtrar e diminuir a dificuldade de encontrar um ambiente agradável para todos da mesa, onde será possível filtrar todos os alimentos que cada cliente gostaria de comer, como também oferecer uma solução automatizada e eficiente para a reserva em restaurantes, tornando o processo mais simples e rápido. 
+A procura por um restaurante normalmente é algo complexo, com a variedade de opções que um cardápio pode ter, a possibilidade de ser uma experiência encantadora para uns e desastrosas para outros, ou a chance de não conseguir a reserva no restaurante desejado, já que trabalhar com sabores é algo muito complexo e subjetivo, a aplicação apresentada vem para filtrar e diminuir a dificuldade de encontrar um ambiente agradável para todos clientes, onde será possível filtrar pelas preferências alimentares de cada um, como também oferecer uma solução automatizada e eficiente para a reserva em restaurantes, tornando o processo mais simples e rápido.
 
 ## Objetivos
 
@@ -30,11 +30,11 @@ O objetivo principal deste projeto é desenvolver uma aplicação que possibilit
 
 ## Justificativa
 
-Acreditamos que o mercado da gastronomia por se tratar de um ramo altamente importante para nós, decidimos transformar um pouco mais esse nicho com a implementação de tecnologia ao fazer reservas nos mais diversos tipos de restaurantes. 
+Acreditamos que o mercado da gastronomia por se tratar de um ramo altamente importante para nós, decidimos transformar um pouco mais esse nicho com a implementação de tecnologia ao fazer reservas nos mais diversos tipos de restaurantes. 
 
-Através dessa solução, desejamos alcançar o maior nível de satisfação, eficiência, praticidade e principalmente rapidez na realização de reservas, e claro, sem perder o requinte. 
+Através dessa solução, desejamos alcançar o maior nível de satisfação, eficiência, praticidade e principalmente rapidez na realização de reservas. 
 
-A Aplicação é oferecida para aquele público que não tem muito tempo livre durante a jornada diária, mas precisa efetivar uma reserva para alguma ocasião, seja ela simples ou especial em um de nossos restaurantes parceiros de forma que com menos de 7 clicks, sua reserva já estará feita através de um sistema totalmente intuitivo e prático. 
+A Aplicação é oferecida para aquele público que não tem muito tempo livre durante a jornada diária, mas precisa efetivar uma reserva para alguma ocasião, seja ela simples ou especial em um de nossos restaurantes parceiros de forma que com menos de 7 clicks, sua reserva já estará feita através de um sistema totalmente intuitivo e prático. 
 
 Com esse projeto, queremos alcançar um nível acima na modernidade de nossa gastronomia, solucionando um dos fatores primordiais para se ter uma experiência excelente em um restaurante, a certeza de que irá ser recebido no local desejado com prontidão e excelência ao se assentar a mesa reservada.
 
