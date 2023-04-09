@@ -45,7 +45,7 @@ Por exemplo:
 
  Caso de teste         | CT-07 - Cadastro e Login sem sucesso.|
 | --------------------- | -----------------|
-| Requisitos Associados | RF-03 - O site deve permitir ao usuário cadastrar e efetuar login.|
+| Requisitos Associados | RF-07 - O site deve permitir ao usuário cadastrar e efetuar login.|
 | Passos                | Acessar a Sessão de login  na aba de navegação em qualquer uma das páginas disponíveis  
 | Objetivo do teste     | Verificar se a partir dos dados inseridos inválidos não é possível realizar do cadastro ou login.|
 | Critérios de êxito    | Não conseguir efetuar cadastro como um novo usuário e não conseguir efetuar o login com os dados informados apresentando uma mensagem de erro para os dados incorretos.|
