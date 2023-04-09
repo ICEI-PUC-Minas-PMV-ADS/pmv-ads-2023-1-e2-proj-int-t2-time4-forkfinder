@@ -1,15 +1,132 @@
-# Plano de Testes de Usabilidade
+#Plano de Testes de Usabilidade#
 
-Os testes de usabilidade permitem avaliar a qualidade da interface com o usuário da aplicação interativa.
+Com o objetivo de avaliar a qualidade da aplicação, elaboramos o seguinte roteiro abaixo.
 
-Um plano de teste de usabilidade deverá conter: o detalhamento dos objetivos (em função dos requisitos levantados/implementados), dos critérios que serão utilizados para a seleção dos participantes, dos procedimentos a serem adotados pelos condutores de teste (por exemplo: os testes serão presenciais ou remotos? o método será observação direta, medição ou avaliação?), das tarefas a serem executadas, dos dados a serem coletados (quantidade de cliques, número de erros, tempo etc.), a ordem de execução das tarefas e das etapas da sessão de teste, recursos demandados, métricas coletadas etc.
+Tem-se como ponto principal verificar se o usuário atinge os critérios de êxito elencados no plano de teste. Para isso, observou-se a conclusão de cada tarefa e o tempo necessário para executá-la.
 
-Para cada voluntário do teste, é fundamental coletar e apresentar todos os dados/métricas previamente definidos, mas não se esqueça: atendendo à LGPD (Lei Geral de Proteção de Dados), nenhum dado sensível, que permita identificar o voluntário, deverá ser apresentado).
+Perfil De Usuários Para Testes
 
-As referências abaixo irão auxiliá-lo na geração do artefato "Plano de Testes de Usabilidade".
+Os perfis selecionados para o teste são as personas descritas para este projeto, clientes em busca de reservas e restaurantes.
 
-> **Links Úteis**:
-> - [Teste De Usabilidade: O Que É e Como Fazer Passo a Passo (neilpatel.com)](https://neilpatel.com/br/blog/teste-de-usabilidade/)
-> - [Teste de usabilidade: tudo o que você precisa saber! | by Jon Vieira | Aela.io | Medium](https://medium.com/aela/teste-de-usabilidade-o-que-voc%C3%AA-precisa-saber-39a36343d9a6/)
-> - [Planejando testes de usabilidade: o que (e o que não) fazer | iMasters](https://imasters.com.br/design-ux/planejando-testes-de-usabilidade-o-que-e-o-que-nao-fazer/)
-> - [Ferramentas de Testes de Usabilidade](https://www.usability.gov/how-to-and-tools/resources/templates.html)
+Equipamentos e Softwares Utilizados Para os Testes
+
+Computadores ou Aparelhos mobiles
+Possuir conexão com a Internet e acesso aos principais navegadores da Web como Google Chrome, Mozilla Firefox, entre outros.
+
+Relatório De Dados
+
+Todos os testes de usabilidade serão realizados em ambiente remoto e os resultados recolhidos serão utilizados no preenchimento de um relatório ao final do teste.
+
+Teste 1 - Usabilidade da Página Inicial
+
+
+Usabilidade da Página Inicial
+A aplicação foi responsiva?
+O tempo de resposta da aplicação foi satisfatório?
+As informações foram claras?
+Simule clicar nos botões de Login, cadastro para acessar area tela de login e cadastro
+
+
+
+
+
+
+Simule clicar no botão de cardápio, no qual, deverá ser possível acessar restaurantes com tipos de cardápios desejado
+
+
+
+
+
+
+Simule clicar nos conteúdos com fotos de tipos de comidas para acessar restaurantes com o cardápio desejado
+
+
+
+
+
+
+
+
+
+
+
+
+
+Teste 2 - Cadastro e Login
+
+
+Cadastro e Login
+A aplicação foi responsiva?
+O tempo de resposta da aplicação foi satisfatório?
+As informações foram claras?
+O objetivo foi alcançado com sucesso?
+O usuário já cadastrado simulará seu login descrevendo seu E-mail e sua Senha cadastradas, em suas respectivas abas “Email” e “Senha”.
+
+
+
+
+
+
+
+
+O usuário irá realizar a simulação de criação de um novo cadastro preenchendo informações solicitadas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Teste 3 - Busca por cardápio e reserva em restaurante desejado
+
+
+Busca por cardápio e reserva em restaurante desejado
+A aplicação foi responsiva?
+O tempo de resposta da aplicação foi satisfatório?
+As informações foram claras?
+O objetivo foi alcançado com sucesso?
+O usuário simulará a busca pelo cardápio desejado através da tela inicial, selecionando a foto dos cardápios ou pelo menu cardápio.
+
+
+
+
+
+
+
+
+
+
+Após selecionado o cardápio desejado o usuário deverá simular a escolha de um dos restaurantes que possuam aquele cardápio.
+
+
+
+
+
+
+
+
+
+
+Após selecionado o restaurante desejado o usuário deverá simular a reserva do restaurante, clicando no botão reservar.
+
+
+
+
+
+
+
+
+
+
+
+
