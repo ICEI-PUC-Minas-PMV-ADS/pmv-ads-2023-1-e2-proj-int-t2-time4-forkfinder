@@ -8,13 +8,13 @@ A metodologia contempla as definições de ferramental utilizado pela equipe tan
 A ferramenta de controle de versão adotada no projeto foi o
 [Git](https://git-scm.com/), sendo que o [Github](https://github.com)
 foi utilizado para hospedagem do repositório.
-
+![Digrama de Controle de Versão](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/develop/docs/img/Diagramas/Controle%20de%20Vers%C3%A3o%20-%20ForkFinder.svg)
 O projeto segue a seguinte convenção para o nome de branches:
 
 - `main`: versão estável já testada do software
 - `unstable`: versão já testada do software, porém instável
 - `testing`: versão em testes do software
-- `dev`: versão de desenvolvimento do software
+- `develop`: versão de desenvolvimento do software
 
 Quanto à gerência de issues, o projeto adota a seguinte convenção para
 etiquetas:
@@ -44,11 +44,7 @@ A equipe está organizada da seguinte maneira:
 
 - Equipe de Design:    
     - Gabriel Alisson dos Santos Oliveira
-    - Jansem Wallemberg Torquetti Maia
     - Lucas Filipe dos Reis 
-    - Natan Candido Fonseca
-    - Neemias Junio Anjos Lopes 
-    - Wellington Andrade Rolim 
    
 ### Processo
 
@@ -84,4 +80,3 @@ As ferramentas empregadas no projeto estão descritas na tabela abaixo:
 |**Editor de Código**|**VS Code**|https://code.visualstudio.com/|
 |**Ferramentas de Comunição**|**Teams, Discord e WhatsApp**|https://teams.microsoft.com/ , https://web.whatsapp.com/ , https://discord.com/ , https://trello.com/|
 |**Diagramas**| **diagrams.net**| https://app.diagrams.net/|
-
