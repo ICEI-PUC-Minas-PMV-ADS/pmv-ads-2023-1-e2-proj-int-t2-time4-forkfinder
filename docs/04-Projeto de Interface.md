@@ -27,6 +27,10 @@ As referências abaixo irão auxiliá-lo na geração do artefato “Diagramas d
 > - **Tela do restaurante**:  ![Exemplo de Wireframe](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/docs/img/whires/Whire3.png)
 > - **Tela de login**:  ![Exemplo de Wireframe](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/docs/img/whires/wire4.png)
 
+## Link do protótipo
+> - **Tela de login**:  ![Exemplo de Wireframe](https://www.figma.com/proto/T1G6PGjM6qgGRo4Fx0HKfs/Fork-Finder?node-id=1-268&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A268)
+
+
 São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface.
  
 > **Links Úteis**:
