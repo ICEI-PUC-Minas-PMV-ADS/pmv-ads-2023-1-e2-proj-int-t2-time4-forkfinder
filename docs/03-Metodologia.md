@@ -8,18 +8,18 @@ A metodologia contempla as definições de ferramental utilizado pela equipe tan
 A ferramenta de controle de versão adotada no projeto foi o
 [Git](https://git-scm.com/), sendo que o [Github](https://github.com)
 foi utilizado para hospedagem do repositório.
-
+![Digrama de Controle de Versão](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/develop/docs/img/Diagramas/Controle%20de%20Vers%C3%A3o%20-%20ForkFinder.svg)
 O projeto segue a seguinte convenção para o nome de branches:
 
 - `main`: versão estável já testada do software
 - `unstable`: versão já testada do software, porém instável
 - `testing`: versão em testes do software
-- `dev`: versão de desenvolvimento do software
+- `develop`: versão de desenvolvimento do software
 
 Quanto à gerência de issues, o projeto adota a seguinte convenção para
 etiquetas:
 
-- `documentation`: melhorias ou acréscimos à documentação
+- `doc`: melhorias ou acréscimos à documentação
 - `bug`: uma funcionalidade encontra-se com problemas
 - `enhancement`: uma funcionalidade precisa ser melhorada
 - `feature`: uma nova funcionalidade precisa ser introduzida
@@ -44,11 +44,7 @@ A equipe está organizada da seguinte maneira:
 
 - Equipe de Design:    
     - Gabriel Alisson dos Santos Oliveira
-    - Jansem Wallemberg Torquetti Maia
     - Lucas Filipe dos Reis 
-    - Natan Candido Fonseca
-    - Neemias Junio Anjos Lopes 
-    - Wellington Andrade Rolim 
    
 ### Processo
 
@@ -60,13 +56,11 @@ Para organização e distribuição das tarefas do projeto, a equipe está utili
 
 - **A Fazer:** Tarefas que estão disponíveis para os desenvolvedores fazer e ninguém assumiu ainda, ou seja está separada para entrega e aguardadndo o desenvolvedor assumir a resposabilidade por ela;
 
-- **Em Andamento:** Quando uma tarefa do Sprint Backlog tiver sido iniciada, ela é movida para cá;
+- **Em Andamento:** Quando uma tarefa do Sprint A Fazer tiver sido iniciada, ela é movida para cá;
 
-- **Teste:** Aqui são movidos as tarefas prontas para teste.
+- **Em teste/Revisão:** Aqui são movidos as tarefas para teste e revisões.
 
-- **Conclído:** todas as tarefas do sprint que já foram concluídas pela equipe de desenvolvimento.
-
-- **Lembrete:** uma aba com as datas das próximas entregas e a referência delas. 
+- **Concluído:** todas as tarefas do sprint que já foram concluídas pela equipe de desenvolvimento.
 
 O quadro KANBAN do grupo no Trello está disponível através da URL: https://trello.com/invite/b/WeK8D70i/ATTI2c61ba71039821b5c038dd88a8cc73acCA729208/forkfinder e é apresentado, no estado atual, na Figura abaixo.
 
@@ -84,4 +78,5 @@ As ferramentas empregadas no projeto estão descritas na tabela abaixo:
 |**Repositório de Código Fonte**|**GitHub**|https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder|
 |**Projeto de Interface - Wireframe**|**Figma**|https://www.figma.com/proto/T1G6PGjM6qgGRo4Fx0HKfs/Fork-Finder?node-id=1-268&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A268 |
 |**Editor de Código**|**VS Code**|https://code.visualstudio.com/|
-|**Ferramentas de Comunição**|**Teams e WhatsApp**|https://teams.microsoft.com/ , https://web.whatsapp.com/ , https://discord.com/ , https://trello.com/|
+|**Ferramentas de Comunição**|**Teams, Discord e WhatsApp**|https://teams.microsoft.com/ , https://web.whatsapp.com/ , https://discord.com/ , https://trello.com/|
+|**Diagramas**| **diagrams.net**| https://app.diagrams.net/|

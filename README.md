@@ -1,4 +1,7 @@
-# FORKFINDER
+<div> 
+            <h2><img align="top"  height="50px" src="docs/img/logo.png" alt="logo">
+            <a href="#">ForkFinder</a></h2>
+</div><br>
 
 `Tecnólogo em Análise e Desenvolvimento de Sistemas`
 
@@ -6,7 +9,9 @@
 
 `1º/2023`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Desenvolvemos uma aplicação com a capacidade de personalizar a busca de restaurantes por preferências alimentares, disponibilidade, acessibilidade e avaliação de outros clientes. 
+A aplicação conta com uma plataforma de reservas online, que permite que o usuário agende, com antecedência, uma mesa em um restaurante de sua escolha, evitando assim o desperdício de tempo e a frustração de não conseguir uma mesa.
+Nossa ferramenta traz praticidade de realizar uma reserva de forma rápida e segura, sem precisar contatar diretamente o estabelecimento. Além de fornecer informações adicionais sobre o restaurante, tais como o cardápio, especialidades e ofertas.
 
 ## Integrantes
 

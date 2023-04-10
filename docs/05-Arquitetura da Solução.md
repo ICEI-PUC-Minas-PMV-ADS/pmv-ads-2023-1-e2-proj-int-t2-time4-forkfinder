@@ -8,20 +8,19 @@ Definição de como o software é estruturado em termos dos componentes que faze
 
 O diagrama de classes ilustra graficamente como será a estrutura do software, e como cada uma das classes da sua estrutura estarão interligadas. Essas classes servem de modelo para materializar os objetos que executarão na memória.
 
-![Diagrama de Classes](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/docs/img/Diagrama%20de%20Classes%20UML.png)
+![Diagrama de Classes](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/develop/docs/img/Diagramas/Diagrama%20de%20Classes%20-%20ForkFinder.svg)
 
 ## Modelo ER (Projeto Conceitual)
 
 O Modelo ER representa através de um diagrama como as entidades se relacionam entre si na aplicação interativa.
 
-![MER Projeto (3)](https://user-images.githubusercontent.com/111004815/228393610-8db46400-6ca4-4d8a-a604-9020e2ab4c01.png)
-
+![DER Projeto Conceitual](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/develop/docs/img/Diagramas/Diagrama%20DER%20-%20ForkFinder.svg)
 
 ## Projeto da Base de Dados
 
 O projeto da base de dados corresponde à representação das entidades e relacionamentos identificadas no Modelo ER, no formato de tabelas, com colunas e chaves primárias/estrangeiras necessárias para representar corretamente as restrições de integridade.
- 
-Para mais informações, consulte o microfundamento "Modelagem de Dados".
+
+![Projeto da Base de Dados](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/develop/docs/img/Diagramas/Projeto%20Base%20de%20Dados%20-%20ForkFinder.svg)
 
 ## Tecnologias Utilizadas
 
