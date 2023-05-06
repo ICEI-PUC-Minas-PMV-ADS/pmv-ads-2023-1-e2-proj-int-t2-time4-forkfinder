@@ -1,0 +1,38 @@
+﻿@model fork_finder.Models.Restaurante
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h4>Restaurante</h4>
+<hr />
+<div class="container">
+    
+    <div class="row">
+        <div class="col-4">
+            <dd class="col">
+                @Html.DisplayFor(model => model.RestauranteFotos)
+            </dd>
+        </div>
+        <div class="col-8">
+            
+            <div class="row">
+                <h3>
+                    @Html.DisplayFor(model => model.Nome)
+                </h3>
+                <h5>
+                    @Html.DisplayFor(model => model.RestauranteEspecialidade.NomeEspecialidade)
+                </h5>
+            </div>
+            
+                <p class="row">
+                    @Html.DisplayFor(model => model.DescricaoRestaurante)
+                </p>
+            
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
