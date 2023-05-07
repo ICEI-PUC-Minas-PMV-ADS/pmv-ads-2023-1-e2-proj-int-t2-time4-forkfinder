@@ -79,6 +79,7 @@ html {
 body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
+    height:max-content;
 }
 
 .footer {
@@ -95,19 +96,35 @@ h1 {
 }
 
 .categorias img {
+    position: relative;
     width: 100%;
     border-radius: 15px;
     transition: all 1.01s;
 }
 
-    .categorias img:hover {
+    .categorias img:hover{
         transform: scale(1.02);
         cursor: pointer;
         border: solid 4px #F6D136;
+        opacity: .3
     }
+#especialidade {
+    position: relative;
+    top: -100px;
+    display: block;
+    opacity: 0;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+.categorias:hover #especialidade{
+    opacity:1;
+}
 
 .mainEspecialidades, .linha1 {
     margin-top: 2em;
+    display: block;
 }
 
 div .row {
@@ -120,24 +137,17 @@ div .row {
 .formLogin input {
     background-color: #343A40;
     border: solid 2px#F6D136;
-    background-image: #343A40;
 }
 
-<<<<<<< Updated upstream
 .formLogin input:focus {
     background-color: #343A40;
-    background-image: #343A40;
     color: #ffffff;
 }
 
-=======
 .formLogin input:focus {
     background-color: #343A40;
-    background-image: #343A40;
     color: #ffffff;
 }
-
-> > > > > > > Stashed changes
 
 h1, h4 {
     color: #F6D136;
@@ -148,19 +158,24 @@ h1, h4 {
     color: #160000;
 }
 
-    #BTN:hover {
-        background-color: #343A40;
-        border: solid 2px #F6D136;
-        color: #F6D136;
-        <<<<<<< Updated upstream
-    }
-
-=======
+#BTN:hover {
+    background-color: #343A40;
+    border: solid 2px #F6D136;
+    color: #F6D136;
+    
 }
-> > > > > > > Stashed changes
+
+
+
 img .mascote{
-    position:absolute;
     width: 225px;
     height: 378px;
     right:0px;
+}
+.restauranteFoto {
+    width:300px;
+}
+.restauranteFotoA {
+    width: 50px;
+    height: 50px;
 }

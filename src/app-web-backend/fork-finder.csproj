@@ -7,9 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\**" />
     <Compile Remove="wwwroot\NovaPasta1\**" />
+    <Content Remove="Data\Migrations\**" />
     <Content Remove="wwwroot\NovaPasta1\**" />
+    <EmbeddedResource Remove="Data\Migrations\**" />
     <EmbeddedResource Remove="wwwroot\NovaPasta1\**" />
+    <None Remove="Data\Migrations\**" />
     <None Remove="wwwroot\NovaPasta1\**" />
   </ItemGroup>
 
@@ -65,11 +69,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="Areas\Identity\Pages\_ViewStart.cshtml" />
+    <None Include="Views\Especialidades\Create.cshtml" />
+    <None Include="Views\Especialidades\Delete.cshtml" />
+    <None Include="Views\Especialidades\Details.cshtml" />
+    <None Include="Views\Especialidades\Edit.cshtml" />
+    <None Include="Views\Especialidades\Index.cshtml" />
+    <None Include="Views\Especialidades\Tipo.cshtml" />
+    <None Include="Views\Home\Index.cshtml" />
+    <None Include="Views\Home\Privacy.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

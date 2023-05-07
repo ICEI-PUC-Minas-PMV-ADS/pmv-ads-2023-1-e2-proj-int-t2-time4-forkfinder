@@ -1,0 +1,39 @@
+﻿@model IEnumerable<fork_finder.Models.Especialidade>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<a asp-controller="Home" asp-action="Index" class="mx-2 btn bg-warning text-dark">Voltar</a>
+<div class="d-flex my-2">
+    <a asp-action="Create" class="mx-2 btn btn-outline-info">Adicionar nova Especialidade</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomeEspecialidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagemUpload)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NomeEspecialidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagemUpload)
+            </td>
+            <td>
+                <a class="btn btn-success"asp-action="Tipo" asp-route-id="@item.EspecialidadeId">Ver Todos</a> |
+                    <a class="btn btn-info" asp-action="Edit" asp-route-id="@item.EspecialidadeId">Editar</a> |
+                    <a class="btn btn-warning" asp-action="Details" asp-route-id="@item.EspecialidadeId">Detalhes</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.EspecialidadeId">Deletar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

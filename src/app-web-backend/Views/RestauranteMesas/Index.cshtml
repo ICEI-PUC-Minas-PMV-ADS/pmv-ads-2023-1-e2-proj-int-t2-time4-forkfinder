@@ -19,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.TamanhoMesa)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Restaurante)
+                @Html.DisplayNameFor(model => model.RestauranteReserva)
             </th>
             <th></th>
         </tr>
@@ -34,12 +34,12 @@
                 @Html.DisplayFor(modelItem => item.TamanhoMesa)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Restaurante.CNPJ)
+                @Html.DisplayFor(modelItem => item.RestauranteReserva.RestauranteReservaId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.RestauranteMesaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.RestauranteMesaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.RestauranteMesaId">Delete</a>
             </td>
         </tr>
 }
