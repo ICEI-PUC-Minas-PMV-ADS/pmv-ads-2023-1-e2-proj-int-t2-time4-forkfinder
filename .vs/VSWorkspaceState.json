@@ -2,7 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\app-web-backend"
+    "\\src\\app-web-backend",
+    "\\src\\app-web-backend\\bin"
   ],
   "SelectedNode": "\\src\\app-web-backend.sln",
   "PreviewInSolutionExplorer": false

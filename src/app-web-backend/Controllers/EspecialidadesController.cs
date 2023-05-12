@@ -34,6 +34,7 @@ namespace fork_finder.Controllers
             }
 
             var especialidade = await _context.Especialidades
+                .Include(p =>p.Restaurantes)
                 .FirstOrDefaultAsync(m => m.EspecialidadeId == id);
             if (especialidade == null)
             {

@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h4>@Html.DisplayFor(model => model.Especialidade.NomeEspecialidade)</h4>
+@*<h4>@Html.DisplayFor(model => model.)</h4>*@
 <a asp-controller="Home" asp-action="Index" class="btn bg-warning text-dark">Voltar</a>
 <hr />
 <div class="container">
@@ -16,7 +16,7 @@
             </div>
             <div>
 
-                <img class="restauranteFotoA" src="@Html.DisplayFor(model => model.RestauranteFotos)" alt="Fotos do Restaurante">
+                <img class="restauranteFotoA" src="@Html.DisplayFor(model => model.Fotos)" alt="Fotos do Restaurante">
 
             </div>
         </div>

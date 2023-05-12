@@ -22,7 +22,7 @@ namespace fork_finder.Controllers
         // GET: Produtos
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Produtos.Include(p => p.ProdutoCategoria);
+            var applicationDbContext = _context.Produtos.Include(p => p.Categoria);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,8 +35,8 @@ namespace fork_finder.Controllers
             }
 
             var produto = await _context.Produtos
-                .Include(p => p.ProdutoCategoria)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(p => p.Categoria)
+                .FirstOrDefaultAsync(m => m.ProdutoId == id);
             if (produto == null)
             {
                 return NotFound();
@@ -48,7 +48,7 @@ namespace fork_finder.Controllers
         // GET: Produtos/Create
         public IActionResult Create()
         {
-            ViewData["ProdutoCategoriaId"] = new SelectList(_context.ProdutoCategorias, "ProdutoCategoriaId", "Nome");
+            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descricao");
             return View();
         }
 
@@ -57,16 +57,16 @@ namespace fork_finder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NomeProduto,Descricao,Imagem,Preco,ProdutoCategoriaId,Id")] Produto produto)
+        public async Task<IActionResult> Create([Bind("ProdutoId,NomeProduto,Descricao,Imagem,Preco,CategoriaId")] Produto produto)
         {
             if (ModelState.IsValid)
             {
-                produto.Id = Guid.NewGuid();
+                produto.ProdutoId = Guid.NewGuid();
                 _context.Add(produto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProdutoCategoriaId"] = new SelectList(_context.ProdutoCategorias, "ProdutoCategoriaId", "Nome", produto.ProdutoCategoriaId);
+            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descricao", produto.CategoriaId);
             return View(produto);
         }
 
@@ -83,7 +83,7 @@ namespace fork_finder.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProdutoCategoriaId"] = new SelectList(_context.ProdutoCategorias, "ProdutoCategoriaId", "Nome", produto.ProdutoCategoriaId);
+            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descricao", produto.CategoriaId);
             return View(produto);
         }
 
@@ -92,9 +92,9 @@ namespace fork_finder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("NomeProduto,Descricao,Imagem,Preco,ProdutoCategoriaId,Id")] Produto produto)
+        public async Task<IActionResult> Edit(Guid id, [Bind("ProdutoId,NomeProduto,Descricao,Imagem,Preco,CategoriaId")] Produto produto)
         {
-            if (id != produto.Id)
+            if (id != produto.ProdutoId)
             {
                 return NotFound();
             }
@@ -108,7 +108,7 @@ namespace fork_finder.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProdutoExists(produto.Id))
+                    if (!ProdutoExists(produto.ProdutoId))
                     {
                         return NotFound();
                     }
@@ -119,7 +119,7 @@ namespace fork_finder.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProdutoCategoriaId"] = new SelectList(_context.ProdutoCategorias, "ProdutoCategoriaId", "Nome", produto.ProdutoCategoriaId);
+            ViewData["CategoriaId"] = new SelectList(_context.Categorias, "Id", "Descricao", produto.CategoriaId);
             return View(produto);
         }
 
@@ -132,8 +132,8 @@ namespace fork_finder.Controllers
             }
 
             var produto = await _context.Produtos
-                .Include(p => p.ProdutoCategoria)
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .Include(p => p.Categoria)
+                .FirstOrDefaultAsync(m => m.ProdutoId == id);
             if (produto == null)
             {
                 return NotFound();
@@ -155,7 +155,7 @@ namespace fork_finder.Controllers
 
         private bool ProdutoExists(Guid id)
         {
-            return _context.Produtos.Any(e => e.Id == id);
+            return _context.Produtos.Any(e => e.ProdutoId == id);
         }
     }
 }

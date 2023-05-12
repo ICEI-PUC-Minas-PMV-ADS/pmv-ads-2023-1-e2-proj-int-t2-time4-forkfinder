@@ -4,13 +4,11 @@
     ViewData["Title"] = "Index";
 }
 
-<h4>Cardápio</h4>
+<h1>Index</h1>
 
-    <a asp-controller="Home" asp-action="Index" class="mx-2 btn bg-warning text-dark">Voltar</a>
-<div class="d-flex my-2">
-    <a asp-action="Create" class="mx-2 btn btn-outline-info">Adicionar novo item ao cardápio</a>
-    <a asp-controller="ProdutoCategorias" asp-action="Index" class="mx-2 btn btn-outline-info">Nova Categoria de Produto</a>
-</div>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -27,7 +25,7 @@
                 @Html.DisplayNameFor(model => model.Preco)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ProdutoCategoria)
+                @Html.DisplayNameFor(model => model.Categoria)
             </th>
             <th></th>
         </tr>
@@ -48,12 +46,12 @@
                 @Html.DisplayFor(modelItem => item.Preco)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ProdutoCategoria.Descricao)
+                @Html.DisplayFor(modelItem => item.Categoria.Descricao)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ProdutoId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProdutoId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProdutoId">Delete</a>
             </td>
         </tr>
 }

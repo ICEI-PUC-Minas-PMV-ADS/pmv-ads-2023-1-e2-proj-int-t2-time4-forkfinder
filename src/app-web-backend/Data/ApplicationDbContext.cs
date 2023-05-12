@@ -5,11 +5,18 @@ using System;
 
 namespace fork_finder.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Avaliacao>()                
+         .HasAlternateKey(c => c.RestauranteId);
+            modelBuilder.Entity<Comentario>()
+         .HasAlternateKey(c => c.RestauranteId);
         }
         public DbSet<Restaurante> Restaurantes { get; set; }
         /*protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,16 +43,16 @@ namespace fork_finder.Data
                 });
         }*/
         public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<ClienteAvaliacao> ClienteAvaliacoes { get; set; }
-        public DbSet<ClientePerfil> ClientePerfils { get; set; }
-        public DbSet<ClienteComentario> ClienteComentarios { get; set; }
+        public DbSet<Avaliacao> Avaliacoes { get; set; }
+        public DbSet<Perfil> Perfils { get; set; }
+        public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Especialidade> Especialidades { get; set; }
         public DbSet<Produto> Produtos { get; set; }
-        public DbSet<ProdutoCategoria> ProdutoCategorias { get; set; }
-        public DbSet<RestauranteFoto> RestauranteFotos { get; set; }
-        public DbSet<RestauranteFuncionamento> RestauranteFuncionamentos { get; set; }
-        public DbSet<RestauranteMesa> RestauranteMesas { get; set; }
-        public DbSet<RestauranteReserva> RestauranteReservas { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Foto> Fotos { get; set; }
+        public DbSet<Funcionamento> Funcionamentos { get; set; }
+        public DbSet<Mesa> Mesas { get; set; }
+        public DbSet<Reserva> Reservas { get; set; }
     }
 }

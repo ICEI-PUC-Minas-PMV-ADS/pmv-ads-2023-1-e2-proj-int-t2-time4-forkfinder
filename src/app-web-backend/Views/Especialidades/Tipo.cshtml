@@ -19,7 +19,7 @@
             @foreach (var item in Model.Restaurantes)
             {
                 <div class="col-4">
-                    <a asp-controller="Restaurantes" asp-action="Details" asp-route-id="@item.RestauranteId">
+                    <a asp-controller="Restaurantes" asp-action="Details" asp-route-id="@item.Id">
                     <div class="row align-items-center justify-content-start border">
                         <div class="col-4">
 
@@ -33,8 +33,7 @@
                                     @Html.DisplayFor(modelItem => item.Nome)
                                 </div>
                                 <div>
-                                    <i class="bi bi-star-fill text-warning">@Html.DisplayFor(modelItem => item.ClienteAvaliacoes)</i>
-                                    @Html.DisplayFor(modelItem => item.Especialidade.NomeEspecialidade)
+                                    <i class="bi bi-star-fill text-warning">@Html.DisplayFor(modelItem => item.Avaliacoes)</i>
                                 </div>
                                 <div>
                                     @Html.DisplayFor(modelItem => item.Endereco)

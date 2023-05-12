@@ -30,10 +30,6 @@ namespace fork_finder
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
-
-            services.Configure<ConfigurationImagens>(Configuration.GetSection("ConfigurationPastaImagens"));
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

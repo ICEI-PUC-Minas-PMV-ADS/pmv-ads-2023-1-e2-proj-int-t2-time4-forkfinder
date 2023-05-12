@@ -19,224 +19,83 @@ namespace fork_finder.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
+            modelBuilder.Entity("EspecialidadeRestaurante", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("EspecialidadesEspecialidadeId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("RestaurantesId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.HasKey("EspecialidadesEspecialidadeId", "RestaurantesId");
 
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.HasIndex("RestaurantesId");
 
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex")
-                        .HasFilter("[NormalizedName] IS NOT NULL");
-
-                    b.ToTable("AspNetRoles");
+                    b.ToTable("EspecialidadeRestaurante");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
+            modelBuilder.Entity("fork_finder.Models.Avaliacao", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("ClienteId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("ClienteId1")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<DateTime>("DataCriacao")
+                        .HasColumnType("datetime2");
 
-                    b.Property<string>("RoleId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetRoleClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
+                    b.Property<int>("Estrela")
                         .HasColumnType("int");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("RestauranteId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.Property<Guid>("RestauranteId1")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("bit");
+                    b.HasKey("ClienteId");
 
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
+                    b.HasAlternateKey("RestauranteId");
 
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+                    b.HasIndex("ClienteId1");
 
-                    b.Property<string>("NormalizedEmail")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                    b.HasIndex("RestauranteId1");
 
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedEmail")
-                        .HasDatabaseName("EmailIndex");
-
-                    b.HasIndex("NormalizedUserName")
-                        .IsUnique()
-                        .HasDatabaseName("UserNameIndex")
-                        .HasFilter("[NormalizedUserName] IS NOT NULL");
-
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("Avaliacoes");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
+            modelBuilder.Entity("fork_finder.Models.Categoria", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
+                    b.Property<string>("Descricao")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Imagem")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RestauranteId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("RestauranteId");
 
-                    b.ToTable("AspNetUserClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
-
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
-
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserLogins");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("RestauranteRestauranteFoto", b =>
-                {
-                    b.Property<Guid>("RestauranteFotosRestauranteFotoId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("RestaurantesRestauranteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("RestauranteFotosRestauranteFotoId", "RestaurantesRestauranteId");
-
-                    b.HasIndex("RestaurantesRestauranteId");
-
-                    b.ToTable("RestauranteRestauranteFoto");
+                    b.ToTable("Categorias");
                 });
 
             modelBuilder.Entity("fork_finder.Models.Cliente", b =>
                 {
-                    b.Property<Guid>("ClienteId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
@@ -273,47 +132,20 @@ namespace fork_finder.Migrations
                     b.Property<int>("Telefone")
                         .HasColumnType("int");
 
-                    b.HasKey("ClienteId");
+                    b.HasKey("Id");
 
                     b.HasIndex("RestauranteId");
 
                     b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("fork_finder.Models.ClienteAvaliacao", b =>
+            modelBuilder.Entity("fork_finder.Models.Comentario", b =>
                 {
-                    b.Property<Guid>("ClienteAvaliacaoId")
+                    b.Property<Guid>("ClienteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ClienteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DataCriacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("Estrela")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("RestauranteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ClienteAvaliacaoId");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("RestauranteId");
-
-                    b.ToTable("ClienteAvaliacoes");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.ClienteComentario", b =>
-                {
-                    b.Property<Guid>("ClienteComentarioId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ClienteId")
+                    b.Property<Guid>("ClienteId1")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ConteudoComentario")
@@ -323,38 +155,26 @@ namespace fork_finder.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("ClienteComentarioId");
-
-                    b.HasIndex("ClienteId");
-
-                    b.ToTable("ClienteComentarios");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.ClientePerfil", b =>
-                {
-                    b.Property<Guid>("ClientePerfilId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("RestauranteId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ClienteId")
+                    b.Property<Guid>("RestauranteId1")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("FotoCliente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.HasKey("ClienteId");
 
-                    b.HasKey("ClientePerfilId");
+                    b.HasAlternateKey("RestauranteId");
 
-                    b.HasIndex("ClienteId")
-                        .IsUnique();
+                    b.HasIndex("ClienteId1");
 
-                    b.ToTable("ClientePerfils");
+                    b.HasIndex("RestauranteId1");
+
+                    b.ToTable("Comentarios");
                 });
 
             modelBuilder.Entity("fork_finder.Models.Endereco", b =>
                 {
-                    b.Property<Guid>("EnderecoId")
-                        .ValueGeneratedOnAdd()
+                    b.Property<Guid>("RestauranteId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Bairro")
@@ -387,13 +207,7 @@ namespace fork_finder.Migrations
                         .HasMaxLength(8)
                         .HasColumnType("nvarchar(8)");
 
-                    b.Property<Guid>("RestauranteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("EnderecoId");
-
-                    b.HasIndex("RestauranteId")
-                        .IsUnique();
+                    b.HasKey("RestauranteId");
 
                     b.ToTable("Enderecos");
                 });
@@ -407,9 +221,6 @@ namespace fork_finder.Migrations
                     b.Property<Guid?>("ClienteId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ClientePerfilId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 
@@ -421,19 +232,100 @@ namespace fork_finder.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("PerfilClienteId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("EspecialidadeId");
 
                     b.HasIndex("ClienteId");
 
-                    b.HasIndex("ClientePerfilId");
+                    b.HasIndex("PerfilClienteId");
 
                     b.ToTable("Especialidades");
                 });
 
-            modelBuilder.Entity("fork_finder.Models.Produto", b =>
+            modelBuilder.Entity("fork_finder.Models.Foto", b =>
+                {
+                    b.Property<Guid>("RestauranteId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FotosRestaurante")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("RestauranteId1")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("RestauranteId");
+
+                    b.HasIndex("RestauranteId1");
+
+                    b.ToTable("Fotos");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Funcionamento", b =>
+                {
+                    b.Property<Guid>("RestauranteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DiaDaSemana")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("HorarioFim")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("HorarioInicio")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("RestauranteId");
+
+                    b.ToTable("Funcionamentos");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Mesa", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("QuantidadeMesa")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("RestauranteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("TamanhoMesa")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RestauranteId");
+
+                    b.ToTable("Mesas");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Perfil", b =>
+                {
+                    b.Property<Guid>("ClienteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("FotoCliente")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ClienteId");
+
+                    b.ToTable("Perfils");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Produto", b =>
+                {
+                    b.Property<Guid>("ProdutoId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CategoriaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Descricao")
@@ -454,55 +346,60 @@ namespace fork_finder.Migrations
                     b.Property<decimal>("Preco")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<Guid>("ProdutoCategoriaId")
+                    b.HasKey("ProdutoId");
+
+                    b.HasIndex("CategoriaId");
+
+                    b.ToTable("Produtos");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Reserva", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ClienteId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DataHoraCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataHoraReserva")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("MesaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("RestauranteId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("Situacao")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ProdutoCategoriaId");
+                    b.HasIndex("ClienteId");
+
+                    b.HasIndex("MesaId");
 
                     b.HasIndex("RestauranteId");
 
-                    b.ToTable("Produtos");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.ProdutoCategoria", b =>
-                {
-                    b.Property<Guid>("ProdutoCategoriaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Imagem")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ProdutoCategoriaId");
-
-                    b.ToTable("ProdutoCategorias");
+                    b.ToTable("Reservas");
                 });
 
             modelBuilder.Entity("fork_finder.Models.Restaurante", b =>
                 {
-                    b.Property<Guid>("RestauranteId")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CNPJ")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("ClienteComentarioId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreateDate")
                         .HasColumnType("datetime2");
@@ -514,9 +411,6 @@ namespace fork_finder.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("EspecialidadeId")
-                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FotoPerfil")
                         .IsRequired()
@@ -534,9 +428,6 @@ namespace fork_finder.Migrations
                     b.Property<int>("Papel")
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("ProdutoCategoriaId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -544,182 +435,54 @@ namespace fork_finder.Migrations
                     b.Property<int>("Telefone")
                         .HasColumnType("int");
 
-                    b.HasKey("RestauranteId");
-
-                    b.HasIndex("ClienteComentarioId");
-
-                    b.HasIndex("EspecialidadeId");
-
-                    b.HasIndex("ProdutoCategoriaId");
+                    b.HasKey("Id");
 
                     b.ToTable("Restaurantes");
                 });
 
-            modelBuilder.Entity("fork_finder.Models.RestauranteFoto", b =>
+            modelBuilder.Entity("EspecialidadeRestaurante", b =>
                 {
-                    b.Property<Guid>("RestauranteFotoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("FotosRestaurante")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("RestauranteFotoId");
-
-                    b.ToTable("RestauranteFotos");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.RestauranteFuncionamento", b =>
-                {
-                    b.Property<Guid>("RestauranteFuncionamentoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DiaDaSemana")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("HorarioFim")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("HorarioInicio")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("RestauranteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("RestauranteFuncionamentoId");
-
-                    b.HasIndex("RestauranteId")
-                        .IsUnique();
-
-                    b.ToTable("Funcionamentos");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.RestauranteMesa", b =>
-                {
-                    b.Property<Guid>("RestauranteMesaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("QuantidadeMesa")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("RestauranteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("RestauranteReservaId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("TamanhoMesa")
-                        .HasColumnType("int");
-
-                    b.HasKey("RestauranteMesaId");
-
-                    b.HasIndex("RestauranteId");
-
-                    b.HasIndex("RestauranteReservaId");
-
-                    b.ToTable("RestauranteMesas");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.RestauranteReserva", b =>
-                {
-                    b.Property<Guid>("RestauranteReservaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("ClienteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("DataHoraCriacao")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("DataHoraReserva")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Descricao")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("RestauranteId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Situacao")
-                        .HasColumnType("bit");
-
-                    b.HasKey("RestauranteReservaId");
-
-                    b.HasIndex("ClienteId");
-
-                    b.HasIndex("RestauranteId");
-
-                    b.ToTable("RestauranteReservas");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
+                    b.HasOne("fork_finder.Models.Especialidade", null)
                         .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("RestauranteRestauranteFoto", b =>
-                {
-                    b.HasOne("fork_finder.Models.RestauranteFoto", null)
-                        .WithMany()
-                        .HasForeignKey("RestauranteFotosRestauranteFotoId")
+                        .HasForeignKey("EspecialidadesEspecialidadeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("fork_finder.Models.Restaurante", null)
                         .WithMany()
-                        .HasForeignKey("RestaurantesRestauranteId")
+                        .HasForeignKey("RestaurantesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Avaliacao", b =>
+                {
+                    b.HasOne("fork_finder.Models.Cliente", "Cliente")
+                        .WithMany("Avaliacoes")
+                        .HasForeignKey("ClienteId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("fork_finder.Models.Restaurante", "Restaurante")
+                        .WithMany("Avaliacoes")
+                        .HasForeignKey("RestauranteId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Cliente");
+
+                    b.Navigation("Restaurante");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Categoria", b =>
+                {
+                    b.HasOne("fork_finder.Models.Restaurante", "Restaurante")
+                        .WithMany("Categorias")
+                        .HasForeignKey("RestauranteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Restaurante");
                 });
 
             modelBuilder.Entity("fork_finder.Models.Cliente", b =>
@@ -729,43 +492,23 @@ namespace fork_finder.Migrations
                         .HasForeignKey("RestauranteId");
                 });
 
-            modelBuilder.Entity("fork_finder.Models.ClienteAvaliacao", b =>
+            modelBuilder.Entity("fork_finder.Models.Comentario", b =>
                 {
                     b.HasOne("fork_finder.Models.Cliente", "Cliente")
-                        .WithMany("ClienteAvaliacoes")
-                        .HasForeignKey("ClienteId")
+                        .WithMany("Comentarios")
+                        .HasForeignKey("ClienteId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("fork_finder.Models.Restaurante", "Restaurante")
-                        .WithMany("ClienteAvaliacoes")
-                        .HasForeignKey("RestauranteId");
+                        .WithMany("Comentarios")
+                        .HasForeignKey("RestauranteId1")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Cliente");
 
                     b.Navigation("Restaurante");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.ClienteComentario", b =>
-                {
-                    b.HasOne("fork_finder.Models.Cliente", "Cliente")
-                        .WithMany("ClienteComentarios")
-                        .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.ClientePerfil", b =>
-                {
-                    b.HasOne("fork_finder.Models.Cliente", "Cliente")
-                        .WithOne("Perfil")
-                        .HasForeignKey("fork_finder.Models.ClientePerfil", "ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("fork_finder.Models.Endereco", b =>
@@ -785,147 +528,134 @@ namespace fork_finder.Migrations
                         .WithMany()
                         .HasForeignKey("ClienteId");
 
-                    b.HasOne("fork_finder.Models.ClientePerfil", null)
+                    b.HasOne("fork_finder.Models.Perfil", null)
                         .WithMany("Especialidades")
-                        .HasForeignKey("ClientePerfilId");
+                        .HasForeignKey("PerfilClienteId");
+
+                    b.Navigation("Cliente");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Foto", b =>
+                {
+                    b.HasOne("fork_finder.Models.Restaurante", "Restaurante")
+                        .WithMany("Fotos")
+                        .HasForeignKey("RestauranteId1");
+
+                    b.Navigation("Restaurante");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Funcionamento", b =>
+                {
+                    b.HasOne("fork_finder.Models.Restaurante", "Restaurante")
+                        .WithOne("Funcionamento")
+                        .HasForeignKey("fork_finder.Models.Funcionamento", "RestauranteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Restaurante");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Mesa", b =>
+                {
+                    b.HasOne("fork_finder.Models.Restaurante", "Restaurante")
+                        .WithMany("Mesas")
+                        .HasForeignKey("RestauranteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Restaurante");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Perfil", b =>
+                {
+                    b.HasOne("fork_finder.Models.Cliente", "Cliente")
+                        .WithOne("Perfil")
+                        .HasForeignKey("fork_finder.Models.Perfil", "ClienteId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("fork_finder.Models.Produto", b =>
                 {
-                    b.HasOne("fork_finder.Models.ProdutoCategoria", "ProdutoCategoria")
+                    b.HasOne("fork_finder.Models.Categoria", "Categoria")
                         .WithMany("Produtos")
-                        .HasForeignKey("ProdutoCategoriaId")
+                        .HasForeignKey("CategoriaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("fork_finder.Models.Restaurante", null)
-                        .WithMany("Produtos")
-                        .HasForeignKey("RestauranteId");
-
-                    b.Navigation("ProdutoCategoria");
+                    b.Navigation("Categoria");
                 });
 
-            modelBuilder.Entity("fork_finder.Models.Restaurante", b =>
-                {
-                    b.HasOne("fork_finder.Models.ClienteComentario", "ClienteComentario")
-                        .WithMany("Restaurantes")
-                        .HasForeignKey("ClienteComentarioId");
-
-                    b.HasOne("fork_finder.Models.Especialidade", "Especialidade")
-                        .WithMany("Restaurantes")
-                        .HasForeignKey("EspecialidadeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("fork_finder.Models.ProdutoCategoria", null)
-                        .WithMany("Restaurantes")
-                        .HasForeignKey("ProdutoCategoriaId");
-
-                    b.Navigation("ClienteComentario");
-
-                    b.Navigation("Especialidade");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.RestauranteFuncionamento", b =>
-                {
-                    b.HasOne("fork_finder.Models.Restaurante", "Restaurante")
-                        .WithOne("Funcionamento")
-                        .HasForeignKey("fork_finder.Models.RestauranteFuncionamento", "RestauranteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Restaurante");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.RestauranteMesa", b =>
-                {
-                    b.HasOne("fork_finder.Models.Restaurante", null)
-                        .WithMany("RestauranteMesas")
-                        .HasForeignKey("RestauranteId");
-
-                    b.HasOne("fork_finder.Models.RestauranteReserva", "RestauranteReserva")
-                        .WithMany("RestauranteMesas")
-                        .HasForeignKey("RestauranteReservaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("RestauranteReserva");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.RestauranteReserva", b =>
+            modelBuilder.Entity("fork_finder.Models.Reserva", b =>
                 {
                     b.HasOne("fork_finder.Models.Cliente", "Cliente")
-                        .WithMany("RestauranteReservas")
+                        .WithMany("Reservas")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("fork_finder.Models.Restaurante", "Restaurante")
-                        .WithMany("RestauranteReservas")
-                        .HasForeignKey("RestauranteId")
+                    b.HasOne("fork_finder.Models.Mesa", "Mesa")
+                        .WithMany("Reservas")
+                        .HasForeignKey("MesaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("fork_finder.Models.Restaurante", null)
+                        .WithMany("Reservas")
+                        .HasForeignKey("RestauranteId");
+
                     b.Navigation("Cliente");
 
-                    b.Navigation("Restaurante");
+                    b.Navigation("Mesa");
+                });
+
+            modelBuilder.Entity("fork_finder.Models.Categoria", b =>
+                {
+                    b.Navigation("Produtos");
                 });
 
             modelBuilder.Entity("fork_finder.Models.Cliente", b =>
                 {
-                    b.Navigation("ClienteAvaliacoes");
+                    b.Navigation("Avaliacoes");
 
-                    b.Navigation("ClienteComentarios");
+                    b.Navigation("Comentarios");
 
                     b.Navigation("Perfil");
 
-                    b.Navigation("RestauranteReservas");
+                    b.Navigation("Reservas");
                 });
 
-            modelBuilder.Entity("fork_finder.Models.ClienteComentario", b =>
+            modelBuilder.Entity("fork_finder.Models.Mesa", b =>
                 {
-                    b.Navigation("Restaurantes");
+                    b.Navigation("Reservas");
                 });
 
-            modelBuilder.Entity("fork_finder.Models.ClientePerfil", b =>
+            modelBuilder.Entity("fork_finder.Models.Perfil", b =>
                 {
                     b.Navigation("Especialidades");
                 });
 
-            modelBuilder.Entity("fork_finder.Models.Especialidade", b =>
-                {
-                    b.Navigation("Restaurantes");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.ProdutoCategoria", b =>
-                {
-                    b.Navigation("Produtos");
-
-                    b.Navigation("Restaurantes");
-                });
-
             modelBuilder.Entity("fork_finder.Models.Restaurante", b =>
                 {
-                    b.Navigation("ClienteAvaliacoes");
+                    b.Navigation("Avaliacoes");
+
+                    b.Navigation("Categorias");
 
                     b.Navigation("Clientes");
 
+                    b.Navigation("Comentarios");
+
                     b.Navigation("Endereco");
+
+                    b.Navigation("Fotos");
 
                     b.Navigation("Funcionamento");
 
-                    b.Navigation("Produtos");
+                    b.Navigation("Mesas");
 
-                    b.Navigation("RestauranteMesas");
-
-                    b.Navigation("RestauranteReservas");
-                });
-
-            modelBuilder.Entity("fork_finder.Models.RestauranteReserva", b =>
-                {
-                    b.Navigation("RestauranteMesas");
+                    b.Navigation("Reservas");
                 });
 #pragma warning restore 612, 618
         }

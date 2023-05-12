@@ -19,7 +19,6 @@ namespace fork_finder.Models
         [ScaffoldColumn(false)]
         public DateTime DataCadastro { get; set; }
 
-
         /* Relacionamento Restaurante */
         public ICollection<Restaurante> Restaurantes { get; set; }
 

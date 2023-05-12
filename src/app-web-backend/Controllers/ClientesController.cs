@@ -34,7 +34,7 @@ namespace fork_finder.Controllers
             }
 
             var cliente = await _context.Clientes
-                .FirstOrDefaultAsync(m => m.ClienteId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (cliente == null)
             {
                 return NotFound();
@@ -58,7 +58,7 @@ namespace fork_finder.Controllers
         {
             if (ModelState.IsValid)
             {
-                cliente.ClienteId = Guid.NewGuid();
+                cliente.Id = Guid.NewGuid();
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -89,7 +89,7 @@ namespace fork_finder.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("ClienteId,CPF,Nome,Email,Senha,Telefone,Idioma,Papel")] Cliente cliente)
         {
-            if (id != cliente.ClienteId)
+            if (id != cliente.Id)
             {
                 return NotFound();
             }
@@ -103,7 +103,7 @@ namespace fork_finder.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ClienteExists(cliente.ClienteId))
+                    if (!ClienteExists(cliente.Id))
                     {
                         return NotFound();
                     }
@@ -126,7 +126,7 @@ namespace fork_finder.Controllers
             }
 
             var cliente = await _context.Clientes
-                .FirstOrDefaultAsync(m => m.ClienteId == id);
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (cliente == null)
             {
                 return NotFound();
@@ -148,7 +148,7 @@ namespace fork_finder.Controllers
 
         private bool ClienteExists(Guid id)
         {
-            return _context.Clientes.Any(e => e.ClienteId == id);
+            return _context.Clientes.Any(e => e.Id == id);
         }
     }
 }

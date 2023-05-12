@@ -5,10 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace fork_finder.Models
 {
-    public class Produto : Entity
+    public class Produto
     {
-        /*[Key]
-        public Guid ProdutoId { get; set; }*/
+        [Key]
+        public Guid ProdutoId { get; set; }
 
 
         [Display(Name = "Nome Produto")]
@@ -31,9 +31,9 @@ namespace fork_finder.Models
 
          /* Relacionamento Categoria */
 
-        public Guid ProdutoCategoriaId { get; set; }
-        [ForeignKey("ProdutoCategoriaId")]
-        public ProdutoCategoria ProdutoCategoria { get; set; }
+        public Guid CategoriaId { get; set; }
+        [ForeignKey("CategoriaId")]
+        public Categoria Categoria { get; set; }
 
      /*   public Guid RestauranteId { get; set; }
         [ForeignKey("RestauranteId")]

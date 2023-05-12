@@ -22,7 +22,7 @@ namespace fork_finder.Controllers
         // GET: Restaurantes
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Restaurantes.Include(r => r.Especialidade);
+            var applicationDbContext = _context.Restaurantes.Include(r => r.Especialidades);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,9 +35,9 @@ namespace fork_finder.Controllers
             }
 
             var restaurante = await _context.Restaurantes
-                .Include(r => r.Produtos)
-                .Include(r => r.Especialidade)
-                .FirstOrDefaultAsync(m => m.RestauranteId == id);
+                .Include(r => r.Categorias)
+                .Include(r => r.Especialidades)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (restaurante == null)
             {
                 return NotFound();
@@ -54,9 +54,9 @@ namespace fork_finder.Controllers
             }
 
             var restaurante = await _context.Restaurantes
-                .Include(r => r.Produtos)
-                .Include(r => r.Especialidade)
-                .FirstOrDefaultAsync(m => m.RestauranteId == id);
+                .Include(r => r.Categorias)
+                .Include(r => r.Especialidades)
+                .FirstOrDefaultAsync(m => m.Id == id);
                     if (restaurante == null)
                     {
                         return NotFound();
@@ -76,17 +76,18 @@ namespace fork_finder.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RestauranteId,CNPJ,FotoPerfil,DescricaoRestaurante,EspecialidadeId,Nome,Email,Senha,Telefone,Idioma,Papel")] Restaurante restaurante)
+
+        public async Task<IActionResult> Create([Bind("Id,CNPJ,FotoPerfil,DescricaoRestaurante,EspecialidadeId,Nome,Email,Senha,Telefone,Idioma,Papel")] Restaurante restaurante)
         {
             if (ModelState.IsValid)
             {
-                restaurante.RestauranteId = Guid.NewGuid();
-                restaurante.CreateDate = DateTime.Now;
+                restaurante.Id = Guid.NewGuid();
+                restaurante.CreateDate = DateTime.Now;                
                 _context.Add(restaurante);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EspecialidadeId"] = new SelectList(_context.Especialidades, "EspecialidadeId", "NomeEspecialidade", restaurante.EspecialidadeId);
+            ViewData["EspecialidadeId"] = new SelectList(_context.Especialidades, "EspecialidadeId", "NomeEspecialidade", restaurante.Id);
             return View(restaurante);
         }
 
@@ -139,7 +140,7 @@ namespace fork_finder.Controllers
             {
                 return NotFound();
             }
-            ViewData["EspecialidadeId"] = new SelectList(_context.Especialidades, "EspecialidadeId", "NomeEspecialidade", restaurante.EspecialidadeId);
+            ViewData["EspecialidadeId"] = new SelectList(_context.Especialidades, "EspecialidadeId", "NomeEspecialidade", restaurante.Id);
             return View(restaurante);
         }
 
@@ -150,7 +151,7 @@ namespace fork_finder.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("RestauranteId,CNPJ,FotoPerfil,DescricaoRestaurante,EspecialidadeId,Nome,Email,Senha,Telefone,Idioma,Papel")] Restaurante restaurante)
         {
-            if (id != restaurante.RestauranteId)
+            if (id != restaurante.Id)
             {
                 return NotFound();
             }
@@ -164,7 +165,7 @@ namespace fork_finder.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!RestauranteExists(restaurante.RestauranteId))
+                    if (!RestauranteExists(restaurante.Id))
                     {
                         return NotFound();
                     }
@@ -175,7 +176,7 @@ namespace fork_finder.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["EspecialidadeId"] = new SelectList(_context.Especialidades, "EspecialidadeId", "NomeEspecialidade", restaurante.EspecialidadeId);
+            ViewData["EspecialidadeId"] = new SelectList(_context.Especialidades, "EspecialidadeId", "NomeEspecialidade", restaurante.Id);
             return View(restaurante);
         }
 
@@ -188,8 +189,8 @@ namespace fork_finder.Controllers
             }
 
             var restaurante = await _context.Restaurantes
-                .Include(r => r.Especialidade)
-                .FirstOrDefaultAsync(m => m.RestauranteId == id);
+                .Include(r => r.Especialidades)
+                .FirstOrDefaultAsync(m => m.Id == id);
             if (restaurante == null)
             {
                 return NotFound();
@@ -211,7 +212,7 @@ namespace fork_finder.Controllers
 
         private bool RestauranteExists(Guid id)
         {
-            return _context.Restaurantes.Any(e => e.RestauranteId == id);
+            return _context.Restaurantes.Any(e => e.Id == id);
         }
     }
 }
