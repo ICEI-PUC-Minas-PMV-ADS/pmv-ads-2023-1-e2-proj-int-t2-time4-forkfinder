@@ -12,15 +12,15 @@ namespace ForkFinder.Models
 
         [Display(Name = "Horário de Início")]
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
-        public DateTime HorarioInicio { get; set; }
+        public string HorarioInicio { get; set; }
 
         [Display(Name = "Horário de Fim")]
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
-        public DateTime HorarioFim { get; set; }
+        public string HorarioFim { get; set; }
 
         [Display(Name = "Dia da Semana")]
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
-        public DateTime DiaDaSemana { get; set; }
+        public string DiaDaSemana { get; set; }
 
         /* Relacionamento Restaurante */        
         public int RestauranteId { get; set; }
