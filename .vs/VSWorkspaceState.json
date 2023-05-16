@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\ForkFinder"
   ],
-  "SelectedNode": "\\C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder",
+  "SelectedNode": "\\src\\ForkFinder\\ForkFinder.sln",
   "PreviewInSolutionExplorer": false
 }

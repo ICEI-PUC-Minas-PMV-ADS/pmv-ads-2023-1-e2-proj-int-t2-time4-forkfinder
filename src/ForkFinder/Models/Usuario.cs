@@ -10,13 +10,13 @@ namespace ForkFinder.Models
         [Display(Name = "Nome Completo")]
         public string Nome { get; set; }
 
-    /*    [Required(ErrorMessage = "O campo {0} é obrigatório!")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public string Senha { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
-        public int Telefone { get; set; }
+        /* public int Telefone { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public string Idioma { get; set; }
         [ScaffoldColumn(false)]
