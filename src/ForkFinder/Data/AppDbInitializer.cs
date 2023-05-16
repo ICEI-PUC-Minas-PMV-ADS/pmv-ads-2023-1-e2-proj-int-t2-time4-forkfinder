@@ -50,6 +50,20 @@ namespace ForkFinder.Data
                             CNPJ = "62.771.119/0001-15",
                             FotoPerfil = "https://blog.agenciadosite.com.br/wp-content/uploads/2017/01/logo-para-restaurante.jpg",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Porco na Brasa"
+                        },
+                            new Restaurante()
+                        {
+                            Nome = "Nau Frutos do Mar",
+                            CNPJ = "09.509.467/0001-36",
+                            FotoPerfil = "https://static.ifood-static.com.br/image/upload/t_medium/logosgde/06788a08-428b-4130-9d2c-b9e79725708e/202005281440_bTNt_.jpeg",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Nau Frutos do Mar"
+                        },
+                            new Restaurante()
+                        {
+                            Nome = "Mangai Comida Regional",
+                            CNPJ = "49.040.769/0001-22",
+                            FotoPerfil = "https://scontent.fjpa11-1.fna.fbcdn.net/v/t1.6435-9/60343892_2160827287327350_7286930952792571904_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=174925&_nc_ohc=zsMwXpUuvd4AX_tOPnY&_nc_ht=scontent.fjpa11-1.fna&oh=00_AfAdl2fABphiFftPkxLUw4f4IX_NX66sdmR-rQym-6qWCQ&oe=648AE71B",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
                         }
                     });
                     context.SaveChanges();
@@ -122,7 +136,7 @@ namespace ForkFinder.Data
                             DataCriacao = DateTime.Now.AddDays(-2),
                             ConteudoComentario = "Lorem ipsum volutpat dolor amet purus nibh rutrum phasellus tortor, suspendisse nam suspendisse etiam integer velit luctus. porta inceptos sit aliquet nullam nulla aliquam habitasse, porttitor felis diam dapibus et dictumst turpis, ornare sociosqu integer quis vulputate ut. nunc dolor facilisis vulputate risus cursus in adipiscing nunc donec nulla, tincidunt dui gravida fringilla turpis posuere curabitur mauris hac, augue curabitur quisque vulputate cras sit eu velit praesent. augue risus porttitor netus quisque arcu porta tempus condimentum accumsan sociosqu, tempus donec nunc tortor varius consequat id egestas dolor. sapien habitasse mollis auctor viverra sagittis nisl pulvinar, luctus bibendum nullam volutpat leo. ",
                             ClienteId = 3,
-                            RestauranteId = 5
+                            RestauranteId = 1
                         },
                         new Comentario()
                         {
@@ -149,7 +163,7 @@ namespace ForkFinder.Data
                         Bairro ="Jardim Liberdade",
                         Cidade = "Sertãozinho",
                         Estado = "SP",
-                        RestauranteId = 3
+                        RestauranteId = 1
 
                         },
                         new Endereco()
@@ -161,7 +175,7 @@ namespace ForkFinder.Data
                         Bairro ="Santa Maria",
                         Cidade = "Sete Lagoas",
                         Estado = "MG",
-                        RestauranteId = 4
+                        RestauranteId = 2
                         },
                         new Endereco()
                         {
@@ -172,7 +186,7 @@ namespace ForkFinder.Data
                         Bairro ="Frimisa",
                         Cidade = "Santa Luzia",
                         Estado = "MG",
-                        RestauranteId = 5
+                        RestauranteId = 3
                         },
                         new Endereco()
                         {
@@ -182,6 +196,28 @@ namespace ForkFinder.Data
                         CEP ="35024-840",
                         Bairro ="Sir",
                         Cidade = "Governador Valadares",
+                        Estado = "MG",
+                        RestauranteId = 4
+                        },
+                        new Endereco()
+                        {
+                        Logradouro ="Rua Wagner Melo Mendes",
+                        Numero = "532",
+                        Complemento = "",
+                        CEP ="31620-265",
+                        Bairro ="Europa",
+                        Cidade = "Belo Horizonte",
+                        Estado = "MG",
+                        RestauranteId = 5
+                        },
+                        new Endereco()
+                        {
+                        Logradouro ="Travessa Odilon Cristaldo",
+                        Numero = "934",
+                        Complemento = "",
+                        CEP ="38303-235",
+                        Bairro ="Residencial Portal dos Ipês",
+                        Cidade = "Ituiutaba",
                         Estado = "MG",
                         RestauranteId = 6
                         }
@@ -285,60 +321,559 @@ namespace ForkFinder.Data
                     context.SaveChanges();
                 }
 
-                /*//Especialidades_Restaurantes
-                if (!context.Restaurantes.Any())
+                //Especialidades_Restaurantes
+                if (!context.Especialidades_Restaurantes.Any())
                 {
-                    context.Clientes.AddRange(new List<Cliente>()
+                    context.Especialidades_Restaurantes.AddRange(new List<Especialidade_Restaurante>()
                     {
-
+                        new Especialidade_Restaurante ()
+                        {
+                            RestauranteId= 1,
+                            EspecialidadeId= 6,
+                        },
+                         new Especialidade_Restaurante ()
+                        {
+                            RestauranteId= 2,
+                            EspecialidadeId= 6,
+                        },
+                          new Especialidade_Restaurante ()
+                        {
+                            RestauranteId= 3,
+                            EspecialidadeId= 5,
+                        },
+                           new Especialidade_Restaurante ()
+                        {
+                            RestauranteId= 4,
+                            EspecialidadeId= 4,
+                        },
+                            new Especialidade_Restaurante ()
+                        {
+                            RestauranteId= 5,
+                            EspecialidadeId= 3,
+                        },
+                             new Especialidade_Restaurante ()
+                        {
+                            RestauranteId= 6,
+                            EspecialidadeId= 4,
+                        }
                     });
                 }
                 //Fotos
-                if (!context.Restaurantes.Any())
+                if (!context.Fotos.Any())
                 {
-                    context.Clientes.AddRange(new List<Cliente>()
+                    context.Fotos.AddRange(new List<Foto>()
                     {
-
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://cozil.com.br/wp-content/uploads/2019/05/restaurant-237060_1920-1920x960.jpg",
+                            RestauranteId= 1
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://casamadeira.com.br/wp-content/uploads/2019/11/restaurante-interno.jpg",
+                            RestauranteId= 1
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://thumbs.dreamstime.com/z/restaurante-moderno-44120392.jpg",
+                            RestauranteId= 2
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaG3qrtk62_8O49RB4gV0H6Wn-P5SEa4CU9w&usqp=CAU",
+                            RestauranteId= 2
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgwKEKwWYmWmawJgiR-fwFZkDX_teisTcU3Q&usqp=CAU",
+                            RestauranteId= 3
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCBOA8nLIUTkIUgsdDEJS94jIcXNgYGHaRbg&usqp=CAU",
+                            RestauranteId= 3
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYISfUnpEw948HYm0oEOxeWJNvzbnxz0gzzQ&usqp=CAU",
+                            RestauranteId= 4
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQN1_UgkzKax9FKe7qS1Jc5VDoFmqKh6jKNPQ&usqp=CAU",
+                            RestauranteId= 4
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD4ia9WPK2g-IQolxHZ1VSpXMaTcQYPZCPsQ&usqp=CAU",
+                            RestauranteId= 5
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeQT8uQFgJENQeOqCuKtPEWAZvhamFHVTHDg&usqp=CAU",
+                            RestauranteId= 5
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvOZb9VWK1UAInokxAJKzkm_7UOBy2rmsBpw&usqp=CAU",
+                            RestauranteId= 6
+                        },
+                        new Foto ()
+                        {
+                            FotosRestaurante="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Z03FK_JJ3b34AV6bngt5blnxFVdW7RTCZA&usqp=CAU",
+                            RestauranteId= 6
+                        },
                     });
 
                 }
                 //Funcionamentos
-                if (!context.Restaurantes.Any())
+                if (!context.Funcionamentos.Any())
                 {
-                    context.Clientes.AddRange(new List<Cliente>()
-                    {
+                    context.Funcionamentos.AddRange(new List<Funcionamento>()
+                    { 
+                        //restaurante 1//
+                        new Funcionamento ()
+                        {
+                            HorarioInicio= "Fechado",
+                            HorarioFim= "-",
+                            DiaDaSemana="Segunda-Feira",
+                            RestauranteId= 1
+                        },
+                        new Funcionamento ()
 
-                    });
+                        {
+                            HorarioInicio="11:00",
+                            HorarioFim="23:00",
+                            DiaDaSemana="Terça-Feira",
+                            RestauranteId= 1
+                        },
+                       
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="11:00",
+                            HorarioFim="23:00",
+                            DiaDaSemana="Quarta-Feira",
+                            RestauranteId= 1
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="11:00",
+                            HorarioFim="23:00",
+                            DiaDaSemana="Quinta-Feira",
+                            RestauranteId= 1
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="11:00",
+                            HorarioFim="23:00",
+                            DiaDaSemana="Sexta-Feira",
+                            RestauranteId= 1
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="11:00",
+                            HorarioFim="23:00",
+                            DiaDaSemana="Sábado",
+                            RestauranteId= 1
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="11:00",
+                            HorarioFim="23:00",
+                            DiaDaSemana="Domingo",
+                            RestauranteId= 1
+                        },
+                        //restaurante 2//
+                        new Funcionamento ()
+                        {
+                            HorarioInicio= "Fechado",
+                            HorarioFim= "-",
+                            DiaDaSemana="Segunda-Feira",
+                            RestauranteId= 2
+                        },
+                        new Funcionamento ()
+
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Terça-Feira",
+                            RestauranteId= 2
+                        },
+
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Quarta-Feira",
+                            RestauranteId= 2
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Quinta-Feira",
+                            RestauranteId= 2
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Sexta-Feira",
+                            RestauranteId= 2
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Sábado",
+                            RestauranteId= 2
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Domingo",
+                            RestauranteId= 2
+                        },
+
+                        //restaurante 3//
+                        new Funcionamento ()
+                        {
+                            HorarioInicio= "Fechado",
+                            HorarioFim= "-",
+                            DiaDaSemana="Segunda-Feira",
+                            RestauranteId= 3
+                        },
+                        new Funcionamento ()
+
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Terça-Feira",
+                            RestauranteId= 3
+                        },
+
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Quarta-Feira",
+                            RestauranteId= 3
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Quinta-Feira",
+                            RestauranteId= 3
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Sexta-Feira",
+                            RestauranteId= 3
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Sábado",
+                            RestauranteId= 3
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="22:00",
+                            DiaDaSemana="Domingo",
+                            RestauranteId= 3
+                        },
+
+                         //restaurante 4//
+                        new Funcionamento ()
+                        {
+                            HorarioInicio= "Fechado",
+                            HorarioFim= "-",
+                            DiaDaSemana="Segunda-Feira",
+                            RestauranteId= 4
+                        },
+                        new Funcionamento ()
+
+                        {
+                            HorarioInicio="12:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Terça-Feira",
+                            RestauranteId= 4
+                        },
+
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="12:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Quarta-Feira",
+                            RestauranteId= 4
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="12:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Quinta-Feira",
+                            RestauranteId= 4
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="12:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Sexta-Feira",
+                            RestauranteId= 4
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="12:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Sábado",
+                            RestauranteId= 4
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="12:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Domingo",
+                            RestauranteId= 4
+                        },
+
+                        //restaurante 5//
+                        new Funcionamento ()
+                        {
+                            HorarioInicio= "Fechado",
+                            HorarioFim= "-",
+                            DiaDaSemana="Segunda-Feira",
+                            RestauranteId= 5
+                        },
+                        new Funcionamento ()
+
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Terça-Feira",
+                            RestauranteId= 5
+                        },
+
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Quarta-Feira",
+                            RestauranteId= 5
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Quinta-Feira",
+                            RestauranteId= 5
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Sexta-Feira",
+                            RestauranteId= 5
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Sábado",
+                            RestauranteId= 5
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Domingo",
+                            RestauranteId= 5
+                        },
+
+                        //restaurante 6//
+                        new Funcionamento ()
+                        {
+                            HorarioInicio= "Fechado",
+                            HorarioFim= "-",
+                            DiaDaSemana="Segunda-Feira",
+                            RestauranteId= 6
+                        },
+                        new Funcionamento ()
+
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Terça-Feira",
+                            RestauranteId= 6
+                        },
+
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Quarta-Feira",
+                            RestauranteId= 6
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Quinta-Feira",
+                            RestauranteId= 6
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Sexta-Feira",
+                            RestauranteId= 6
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Sábado",
+                            RestauranteId= 6
+                        },
+                        new Funcionamento ()
+                        {
+                            HorarioInicio="10:00",
+                            HorarioFim="24:00",
+                            DiaDaSemana="Domingo",
+                            RestauranteId= 6
+                        }
+                    }); ;
 
                 }
                 //Mesas
-                if (!context.Restaurantes.Any())
+                if (!context.Mesas.Any())
                 {
-                    context.Clientes.AddRange(new List<Cliente>()
+                    context.Mesas.AddRange(new List<Mesa>()
                     {
-
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 10,
+                            TamanhoMesa= 5,
+                            RestauranteId= 1
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 15,
+                            TamanhoMesa= 8,
+                            RestauranteId= 2
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 20,
+                            TamanhoMesa= 4,
+                            RestauranteId= 3
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 18,
+                            TamanhoMesa= 6,
+                            RestauranteId= 4
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 30,
+                            TamanhoMesa= 4,
+                            RestauranteId= 5
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 18,
+                            TamanhoMesa= 4,
+                            RestauranteId= 6
+                        },
                     });
 
                 }
                 //Categorias
-                if (!context.Restaurantes.Any())
+                if (!context.Categorias.Any())
                 {
-                    context.Clientes.AddRange(new List<Cliente>()
+                    context.Categorias.AddRange(new List<Categoria>()
                     {
+                       new Categoria ()
+                       {
+                           Nome= "Carnes",
+                           Descricao= "Lorem",
+                           Imagem="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHuo1uPfHiVfXuFYi7ae4SAFBy7N3EtBE6Gg&usqp=CAU",
+                           RestauranteId= 6
+                       },
+                       new Categoria ()
+                       {
+                           Nome= "Frango",
+                           Descricao= "Lorem",
+                           Imagem="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDqnOUQ4wl8VajsPGN_kudMlVbkIK-RCTlJQ&usqp=CAU",
+                           RestauranteId= 6
+                       },
 
                     });
 
                 }
                 //Produtos
-                if (!context.Restaurantes.Any())
+                if (!context.Produtos.Any())
                 {
-                    context.Clientes.AddRange(new List<Cliente>()
+                    context.Produtos.AddRange(new List<Produto>()
                     {
-
+                        new Produto ()
+                        {
+                            NomeProduto="Filé ao Molho Madeira",
+                            Descricao="Arroz branco, filé mignon de 120g, molho madeira a base de vinho madeira e fritas",
+                            Imagem="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvmpTEuV1BwiYkzFYG5H6TZNF43165l7HUig&usqp=CAU",
+                            Preco= 60,
+                            CategoriaId= 1
+                        },
+                         new Produto ()
+                        {
+                            NomeProduto="Boeuf Bourguignon",
+                            Descricao="Receita clássica francesa, a carne é cortada em cubos marinada e cozida com vegetais e vinho tinto",
+                            Imagem="http://winechef.com.br/wp-content/uploads/2014/06/Boeuf-Bourguignon.jpg",
+                            Preco= 62,
+                            CategoriaId= 1
+                        },
+                          new Produto ()
+                        {
+                            NomeProduto="Tournedo ao vinho Tinto",
+                            Descricao="Tournedo de filé mignon, sobre cebolas caramelizadas em mel e ao vinho tinto Syrah.",
+                            Imagem="http://winechef.com.br/wp-content/uploads/2014/06/Tournedo-com-Caramelo-de-Syrah1-1030x696.jpg",
+                            Preco= 63,
+                            CategoriaId= 1
+                        },
+                          new Produto ()
+                        {
+                            NomeProduto="Frango Mole Poblano",
+                            Descricao="Prato tradicional do México, com molho feito com pimentas, ervas, oleaginosas e o docinho do chocolate",
+                            Imagem="https://www.lechef.com.br/wp-content/uploads/2022/04/mole-poblano.jpg",
+                            Preco= 55,
+                            CategoriaId= 2
+                        },
+                          new Produto ()
+                        {
+                            NomeProduto="Frango Kiev",
+                            Descricao="Prato típico da Ucrânia, peito de frango desossado que é recheado, tradicionalmente, com manteiga e ervas",
+                            Imagem="https://www.hojetemfrango.com.br/wp-content/uploads/2019/03/shutterstock_1032711094.jpg",
+                            Preco= 53,
+                            CategoriaId= 2
+                        },
+                          new Produto ()
+                        {
+                            NomeProduto="Frango Tikka Masala",
+                            Descricao="Prato típico da Índia, pedaços de frango servidos com um molho à base de curry que é cremoso, temperado e avermelhado",
+                            Imagem="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQaN3eX3C1UgTegM3ZPeWH23ShRA65PhC0UA&usqp=CAU",
+                            Preco= 50,
+                            CategoriaId= 2
+                        }
                     });
 
                 }
-                //Reservas
+/*                //Reservas
                 if (!context.Restaurantes.Any())
                 {
                     context.Clientes.AddRange(new List<Cliente>()
