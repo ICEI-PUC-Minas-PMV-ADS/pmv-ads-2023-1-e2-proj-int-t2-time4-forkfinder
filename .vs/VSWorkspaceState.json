@@ -2,8 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\ForkFinder"
+    "\\src\\ForkFinder",
+    "\\src\\ForkFinder\\Controllers",
+    "\\src\\ForkFinder\\Data",
+    "\\src\\ForkFinder\\Views",
+    "\\src\\ForkFinder\\Views\\Restaurantes"
   ],
-  "SelectedNode": "\\src\\ForkFinder\\ForkFinder.sln",
+  "SelectedNode": "\\src\\ForkFinder\\Views\\Restaurantes\\Restaurant_List.cshtml",
   "PreviewInSolutionExplorer": false
 }

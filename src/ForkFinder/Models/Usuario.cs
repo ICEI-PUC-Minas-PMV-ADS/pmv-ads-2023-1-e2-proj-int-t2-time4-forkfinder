@@ -14,23 +14,24 @@ namespace ForkFinder.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
+        [DataType(DataType.Password)]
         public string Senha { get; set; }
-        [Required(ErrorMessage = "O campo {0} é obrigatório!")]
+        /*[Required(ErrorMessage = "O campo {0} é obrigatório!")]*/
         /* public int Telefone { get; set; }
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public string Idioma { get; set; }
         [ScaffoldColumn(false)]
         public DateTime CreateDate { get; set; }
-
+        */
         [Required]
-        public Papel Papel { get; set; }*/
+        public Papel Papel { get; set; }
 
     }
-    /*public enum Papel
+    public enum Papel
     {
         Cliente = 0,
         Restaurante = 1,
         Admin = 2
-    }*/
+    }
 
 }

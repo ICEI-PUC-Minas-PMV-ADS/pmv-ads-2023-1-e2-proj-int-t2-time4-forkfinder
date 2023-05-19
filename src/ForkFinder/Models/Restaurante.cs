@@ -11,15 +11,15 @@ namespace ForkFinder.Models
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório!")]
+        //[Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public string CNPJ { get; set; }
 
         [Display(Name = "Foto Perfil")]
-        [Required(ErrorMessage = "O campo {0} é obrigatório!")]
+        //[Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public string FotoPerfil { get; set; }
 
         [Display(Name = "Descrição")]
-        [Required(ErrorMessage = "O campo {0} é obrigatório!")]
+        //[Required(ErrorMessage = "O campo {0} é obrigatório!")]
 
         public string DescricaoRestaurante { get; set; }
 
