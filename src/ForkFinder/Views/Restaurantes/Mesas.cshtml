@@ -1,0 +1,33 @@
+﻿@model Restaurante
+
+@{
+    ViewData["Title"] = "Restaurantes";
+}
+
+<h1>Mesas</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">    
+    <tbody>
+@foreach (var item in Model.Mesas) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantidadeMesa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TamanhoMesa)
+            </td>            
+            <td>
+                    <a asp-controller="Reservas" asp-action="Reservar" asp-route-id="@item.Id">Reservar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
