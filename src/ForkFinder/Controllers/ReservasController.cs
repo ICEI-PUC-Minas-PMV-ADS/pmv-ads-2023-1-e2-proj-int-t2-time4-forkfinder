@@ -19,8 +19,10 @@ namespace ForkFinder.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _context.Reservas.Include(n => n.Cliente).ToListAsync();
-            return View(data);
+           /* var data = await _context.Reservas.Include(n => n.Cliente).ToListAsync();*/
+            var clientesList = db.Clientes.Include(u => u.Mesas);
+            return View(await Clientes.ToListAsync());
+            /*return View(data);*/
         }
         public IActionResult Reservar()
         {
