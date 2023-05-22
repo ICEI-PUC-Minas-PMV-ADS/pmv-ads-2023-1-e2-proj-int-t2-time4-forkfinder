@@ -23,10 +23,9 @@ namespace ForkFinder.Models
 
         public string DescricaoRestaurante { get; set; }
 
-        //Relationships
+        //Relationships   
         public List<Especialidade_Restaurante> Especialidades_Restaurantes { get; set; }
         public List<Mesa> Mesas { get; set; }
-
         public List<Categoria> Categorias { get; set; }
         public List<Comentario> Comentarios { get; set; }
         public Funcionamento Funcionamento { get; set; }

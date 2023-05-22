@@ -3,24 +3,24 @@
 @inject UserManager<IdentityUser> UserManager*@
 
 <ul class="navbar-nav text-warning">
-@*@if (SignInManager.IsSignedIn(User))
-{*@
+@if (User.Identity.IsAuthenticated)
+{
     <li class="nav-item">
-        @*<a  class="nav-link text-light" asp-area="" asp-page="/Account/Manage/Index" title="Manage">Olá, @User.Identity.Name!</a>*@
+        <a  class="nav-link text-light" asp-area="" asp-page="/Account/Manage/Index" title="Manage">Olá, @User.Identity.Name!</a>
     </li>
     <li class="nav-item">
-        <form  class="form-inline" asp-area="" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <form class="form-inline" asp-area="" asp-controller="Clientes" asp-action="Logout">
             <button  type="submit" class="nav-link btn btn-link text-light">Sair</button>
         </form>
     </li>
-@*}
+}
 else
-{*@
+{
         <li class="nav-item px-2">
         <a class="btn btn-outline-light " asp-area="" asp-controller="Clientes" asp-action="Register">Cadastrar</a>
     </li>
     <li class="nav-item">
         <a class="btn bg-warning text-dark" asp-area="" asp-controller="Clientes" asp-action="Login">Login</a>
     </li>
-@*}*@
+}
 </ul>

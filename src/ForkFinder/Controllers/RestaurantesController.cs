@@ -19,7 +19,7 @@ namespace ForkFinder.Controllers
             var data = _context.Restaurantes.ToList();
             return View(data);
         }
-                
+
         [AllowAnonymous]
         public async Task<IActionResult> Restaurante(int? id)
         {
@@ -29,7 +29,8 @@ namespace ForkFinder.Controllers
             }
 
             var restaurante = await _context.Restaurantes
-                /*.Include(r => r.RestauranteEspecialidade)*/
+                /*.Include(r => r.Produtos)
+                    .Include(r => r.Especialidade)*/
                 .FirstOrDefaultAsync(r => r.Id == id);
             if (restaurante == null)
             {
@@ -37,7 +38,22 @@ namespace ForkFinder.Controllers
             }
 
             return View(restaurante);
+
+
         }
-        
+        [AllowAnonymous]        
+        public async Task<IActionResult> Mesas(int id)
+        {
+            var restaurante = await _context.Restaurantes
+                .Include(m => m.Mesas)
+                .FirstOrDefaultAsync(n => n.Id == id);
+            if (restaurante == null)
+            {
+                return NotFound();
+            }
+
+            return View(restaurante);
+        }
+
     }
 }

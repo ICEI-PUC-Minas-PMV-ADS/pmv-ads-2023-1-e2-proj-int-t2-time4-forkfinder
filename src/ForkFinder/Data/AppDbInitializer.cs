@@ -264,34 +264,44 @@ namespace ForkFinder.Data
                         new Especialidade() 
                         { 
                         NomeEspecialidade = "Brasileira",
-                        ImagemUpload = "",
+                        ImagemUpload = "./img/especialidade/Brasileira.png",
                         DataCadastro = DateTime.Now.AddDays(-2)
                         },
                         new Especialidade()
                         {
                         NomeEspecialidade = "Francesa",
-                        ImagemUpload = "",
+                        ImagemUpload = "./img/especialidade/Francesa.png",
                         DataCadastro = DateTime.Now.AddDays(-2)
                         },new Especialidade()
                         {
                         NomeEspecialidade = "Japonesa",
-                        ImagemUpload = "",
+                        ImagemUpload = "./img/especialidade/Japonesa.png",
                         DataCadastro = DateTime.Now.AddDays(-2)
                         },
                         new Especialidade()
                         {
                         NomeEspecialidade = "Árabe",
-                        ImagemUpload = "",
+                        ImagemUpload = "./img/especialidade/Arabe.png",
                         DataCadastro = DateTime.Now.AddDays(-2)
                         },new Especialidade()
                         {
-                        NomeEspecialidade = "Vegana",
-                        ImagemUpload = "",
+                        NomeEspecialidade = "Vegetariana",
+                        ImagemUpload = "./img/especialidade/Vegetariana.png",
+                        DataCadastro = DateTime.Now.AddDays(-2)
+                        },new Especialidade()
+                        {
+                        NomeEspecialidade = "Mexicana",
+                        ImagemUpload = "./img/especialidade/Mexicana.png",
+                        DataCadastro = DateTime.Now.AddDays(-2)
+                        },new Especialidade()
+                        {
+                        NomeEspecialidade = "Indiana",
+                        ImagemUpload = "./img/especialidade/Indiana.png",
                         DataCadastro = DateTime.Now.AddDays(-2)
                         },new Especialidade()
                         {
                         NomeEspecialidade = "Sobremesa",
-                        ImagemUpload = "",
+                        ImagemUpload = "./img/especialidade/Sobremesa.png",
                         DataCadastro = DateTime.Now.AddDays(-2)
                         }
 
@@ -347,7 +357,7 @@ namespace ForkFinder.Data
                         {
                             ClienteId = 5,
                             EspecialidadeId = 4
-                        },
+                        }
                     });
                     context.SaveChanges();
                 }
@@ -360,34 +370,35 @@ namespace ForkFinder.Data
                         new Especialidade_Restaurante ()
                         {
                             RestauranteId= 1,
-                            EspecialidadeId= 6,
+                            EspecialidadeId= 6
                         },
                          new Especialidade_Restaurante ()
                         {
                             RestauranteId= 2,
-                            EspecialidadeId= 6,
+                            EspecialidadeId= 6
                         },
                           new Especialidade_Restaurante ()
                         {
                             RestauranteId= 3,
-                            EspecialidadeId= 5,
+                            EspecialidadeId= 5
                         },
                            new Especialidade_Restaurante ()
                         {
                             RestauranteId= 4,
-                            EspecialidadeId= 4,
+                            EspecialidadeId= 4
                         },
                             new Especialidade_Restaurante ()
                         {
                             RestauranteId= 5,
-                            EspecialidadeId= 3,
+                            EspecialidadeId= 3
                         },
                              new Especialidade_Restaurante ()
                         {
                             RestauranteId= 6,
-                            EspecialidadeId= 4,
+                            EspecialidadeId= 4
                         }
                     });
+                    context.SaveChanges();
                 }
                 //Fotos
                 if (!context.Fotos.Any())
@@ -453,9 +464,9 @@ namespace ForkFinder.Data
                         {
                             FotosRestaurante="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2Z03FK_JJ3b34AV6bngt5blnxFVdW7RTCZA&usqp=CAU",
                             RestauranteId= 6
-                        },
+                        }
                     });
-
+                    context.SaveChanges();
                 }
                 //Funcionamentos
                 if (!context.Funcionamentos.Any())
@@ -778,8 +789,8 @@ namespace ForkFinder.Data
                             DiaDaSemana="Domingo",
                             RestauranteId= 6
                         }
-                    }); ;
-
+                    });
+                    context.SaveChanges();
                 }
                 //Mesas
                 if (!context.Mesas.Any())
@@ -821,9 +832,9 @@ namespace ForkFinder.Data
                             QuantidadeMesa= 18,
                             TamanhoMesa= 4,
                             RestauranteId= 6
-                        },
+                        }
                     });
-
+                    context.SaveChanges();
                 }
                 //Categorias
                 if (!context.Categorias.Any())
@@ -843,10 +854,9 @@ namespace ForkFinder.Data
                            Descricao= "Lorem",
                            Imagem="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDqnOUQ4wl8VajsPGN_kudMlVbkIK-RCTlJQ&usqp=CAU",
                            RestauranteId= 6
-                       },
-
+                       }
                     });
-
+                    context.SaveChanges();
                 }
                 //Produtos
                 if (!context.Produtos.Any())
@@ -902,7 +912,7 @@ namespace ForkFinder.Data
                             CategoriaId= 2
                         }
                     });
-
+                    context.SaveChanges();
                 }
 /*                //Reservas
                 if (!context.Restaurantes.Any())

@@ -10,8 +10,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
+
 namespace ForkFinder.Controllers
 {
+    [AllowAnonymous]
     public class ClientesController : Controller
     {
         private readonly AppDbContext _context;
@@ -24,13 +26,14 @@ namespace ForkFinder.Controllers
             var data = await _context.Clientes.ToListAsync();
             return View(data);
         }
-
+        
         public IActionResult Register()
         {
             return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public async Task<IActionResult> Register([Bind("Id,Email,Senha,Nome,CPF,Papel,CreatedDate")] Cliente cliente)
         {
             var checkExistingEmail = _context.Clientes.FirstOrDefault(stored => stored.Email == cliente.Email);
@@ -56,7 +59,7 @@ namespace ForkFinder.Controllers
                 cliente.Papel = 0;
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Login", "Clientes");
             }
             return View();
         }
@@ -117,5 +120,13 @@ namespace ForkFinder.Controllers
             ViewBag.Message = "Usuário e/ou Senha inválidos!";
             return View();
         }
+        [AllowAnonymous]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Login", "Clientes");
+        }
+
+       
     }
 }

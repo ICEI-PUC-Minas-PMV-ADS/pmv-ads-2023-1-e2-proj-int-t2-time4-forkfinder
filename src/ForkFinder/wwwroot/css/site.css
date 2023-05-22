@@ -9,7 +9,7 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #ffc107;
 }
 
 .btn-primary {
@@ -27,12 +27,16 @@ a {
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+    font-size: 14px;    
 }
 @media (min-width: 768px) {
   html {
     font-size: 16px;
   }
+}
+html a {
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .border-top {
@@ -68,4 +72,58 @@ body {
   width: 100%;
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
+}
+/*Categorias*/
+h1 {
+    color: #F6D136;
+}
+
+.categorias img {
+    position: relative;
+    width: 100%;
+    border-radius: 15px;
+    transition: all .8s;
+}
+
+.categorias:hover img {
+    transform: scale(1.02);
+    cursor: pointer;
+    border: solid 4px #F6D136;
+    opacity: .3
+}
+
+#especialidade {
+    position: relative;
+    font-weight: 700;
+    font-size: 35px;
+    top: -170px;
+    display: block;
+    opacity: 0;
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+}
+
+.categorias:hover #especialidade {
+    opacity: 1;
+}
+
+.mainEspecialidades a{
+    text-decoration:none;
+}
+
+img .mascote {
+    width: 225px;
+    height: 378px;
+    right: 0px;
+}
+
+.restauranteFoto {
+    width: 300px;
+}
+
+.restauranteFotoA {
+    width: 50px;
+    height: 50px;
 }

@@ -1,0 +1,62 @@
+﻿@model Especialidade
+
+@{
+    ViewData["Title"] = "Look";
+}
+
+<div>
+    <div class="row">
+        <div class="col-4 justify-content-start">
+            <a class="btn btn-warning" asp-controller="Especialidades" asp-action="Index">Voltar</a>
+        </div>
+        <div class="col-4 ms-auto">
+            <h6>Restaurantes por Especialidade</h6>
+        </div>        
+    </div>
+    <hr />
+    <div>
+        @*@if (User.IsInRole("Admin, Restaurante"))
+        {
+            <a class="btn btn-primary align-items-end" asp-action="Edit" asp-route-id="@Model">Editar</a>
+        }*@
+    </div>
+    <div class="container">
+        <div class="row align-items-center justify-content-start">
+
+            @foreach (var restaurantes in Model.Especialidades_Restaurantes)
+            {
+                <div class="col-4 m-0">
+                    <a asp-controller="Restaurantes" asp-action="Restaurante" asp-route-id="@restaurantes.RestauranteId">
+                        <div class="row align-items-center justify-content-start">
+                            <div class="col-3">
+                            <img class="rounded-circle" src="@Html.DisplayFor(modelItem => restaurantes.Restaurante.FotoPerfil)" style="max-width:100px; min-height:100px;" />
+                            </div>
+                            <div class="col-9">
+                                <div class="row align-items-center m-0">
+                                    <div class="col text-decoration-none">
+                                        <div class="row m-0">
+                                        @Html.DisplayFor(modelItem => restaurantes.Restaurante.Nome)
+                                    </div>
+                                    <div class="row m-0">
+                                        <div class="col-6">
+                                                <i class="bi bi-star-fill text-warning">@Html.DisplayFor(modelItem => restaurantes.Restaurante.Avaliacoes)</i>
+                                        </div>
+                                        <div class="col-6 px-2">
+                                            &#149; @Html.DisplayFor(modelItem => restaurantes.Especialidade.NomeEspecialidade)
+                                        </div>
+                                    </div>
+                                    <div class="row m-0">
+                                        @Html.DisplayFor(modelItem => restaurantes.Restaurante.Endereco.RestauranteId)
+                                        @Html.DisplayFor(modelItem => restaurantes.Restaurante.Endereco.Numero)
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>

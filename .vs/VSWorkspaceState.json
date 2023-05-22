@@ -5,9 +5,10 @@
     "\\src\\ForkFinder",
     "\\src\\ForkFinder\\Controllers",
     "\\src\\ForkFinder\\Data",
+    "\\src\\ForkFinder\\Models",
     "\\src\\ForkFinder\\Views",
-    "\\src\\ForkFinder\\Views\\Restaurantes"
+    "\\src\\ForkFinder\\Views\\Especialidades_Restaurantes"
   ],
-  "SelectedNode": "\\src\\ForkFinder\\Views\\Restaurantes\\Restaurant_List.cshtml",
+  "SelectedNode": "\\src\\ForkFinder\\Models\\Especialidade_Restaurante.cs",
   "PreviewInSolutionExplorer": false
 }

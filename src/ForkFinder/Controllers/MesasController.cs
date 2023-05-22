@@ -14,7 +14,7 @@ namespace ForkFinder.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var data = await _context.Mesas.ToListAsync();
+            var data = await _context.Especialidades.ToListAsync();
             return View(data);
         }
     }

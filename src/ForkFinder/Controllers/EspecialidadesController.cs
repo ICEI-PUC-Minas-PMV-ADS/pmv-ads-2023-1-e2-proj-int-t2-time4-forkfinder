@@ -1,6 +1,8 @@
 ﻿using ForkFinder.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Threading.Tasks;
 
 namespace ForkFinder.Controllers
@@ -17,5 +19,19 @@ namespace ForkFinder.Controllers
             var data = await _context.Especialidades.ToListAsync();
             return View(data);
         }
+        [AllowAnonymous]        
+        public async Task<IActionResult> Look(int id)
+        {
+            var especialidade = await _context.Especialidades                
+                .Include(am => am.Especialidades_Restaurantes).ThenInclude(a => a.Restaurante)
+                .FirstOrDefaultAsync(n => n.Id == id);
+            if (especialidade == null)
+            {
+                return NotFound();
+            }
+
+            return View(especialidade);
+        }       
+        
     }
 }
