@@ -14,10 +14,10 @@ namespace ForkFinder.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var clientesList = db.Clientes.Include(u => u.Mesas);
-            return View(await Clientes.ToListAsync());
-            /*var data = await _context.Especialidades.ToListAsync();
-            return View(data);*/
+            /*var clientesList = db.Clientes.Include(u => u.Mesas);
+            return View(await Clientes.ToListAsync());*/
+            var data = await _context.Mesas.ToListAsync();
+            return View(data);
         }
     }
 }

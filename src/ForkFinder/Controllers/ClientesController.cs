@@ -63,11 +63,24 @@ namespace ForkFinder.Controllers
             }
             return View();
         }
-
-        private bool ClienteExists(int id)
+        [AllowAnonymous]
+        public async Task<IActionResult> Reserved(int id)
         {
-            return _context.Clientes.Any(e => e.Id == id);
+            var reservas = await _context.Clientes
+                .Include(r => r.Reservas).ThenInclude(m => m.Mesa)
+                .FirstOrDefaultAsync(n => n.Id == id);
+            if (reservas == null)
+            {
+                return NotFound();
+            }
+
+            return View(reservas);
         }
+
+        /* private bool ClienteExists(int id)
+         {
+             return _context.Clientes.Any(e => e.Id == id);
+         }*/
 
 
         public IActionResult Login()
