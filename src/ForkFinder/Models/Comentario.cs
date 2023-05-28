@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ForkFinder.Models
 {
+    //Remover
     public class Comentario
     {
         [Key]

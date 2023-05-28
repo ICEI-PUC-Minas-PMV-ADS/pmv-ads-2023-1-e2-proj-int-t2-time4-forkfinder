@@ -20,9 +20,6 @@ namespace ForkFinder.Controllers
         public async Task<IActionResult> Index()
         {
             var data = await _context.Reservas.ToListAsync();
-            /*var data = await _context.Reservas.Include(n => n.Cliente).ToListAsync();
-            var clientesList = db.Clientes.Include(u => u.Mesas);
-            return View(await Clientes.ToListAsync());*/
             return View(data);
         }
         public IActionResult Reservar()
@@ -32,22 +29,20 @@ namespace ForkFinder.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Reservar([Bind("DataHoraReserva,Descricao,ClienteId")] Reserva reserva,Mesa mesa,Cliente cliente)
+        public async Task<IActionResult> Reservar([Bind("DataHoraReserva,Descricao")] Reserva reserva,Mesa mesa)
         {
-            /*if (ModelState.IsValid)
-            {*/
+            if (ModelState.IsValid)
+            {
                
                 reserva.DataHoraCriacao = DateTime.Now;                
-                reserva.Situacao = false;
-                reserva.ClienteId = cliente.Id;
+                reserva.Situacao = false;            
                 reserva.MesaId = mesa.Id;
-                
-
+                reserva.ClienteId = int.Parse(User.FindFirstValue("ClienteId"));
                 _context.Add(reserva);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            /*}
-            return View();*/
+                return RedirectToAction("Reserved", "Clientes");
+            }
+            return View();
         }
     }
 }

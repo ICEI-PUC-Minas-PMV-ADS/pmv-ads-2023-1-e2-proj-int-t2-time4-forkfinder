@@ -68,7 +68,7 @@ namespace ForkFinder.Controllers
         {
             var reservas = await _context.Clientes
                 .Include(r => r.Reservas).ThenInclude(m => m.Mesa)
-                .FirstOrDefaultAsync(n => n.Id == id);
+                .FirstOrDefaultAsync(n => n.ClienteId == int.Parse(User.FindFirstValue("ClienteId")));
             if (reservas == null)
             {
                 return NotFound();
@@ -110,7 +110,7 @@ namespace ForkFinder.Controllers
                         new Claim(ClaimTypes.Name, user.Nome),
                         new Claim(ClaimTypes.NameIdentifier, user.Nome),
                         new Claim(ClaimTypes.Role, user.Papel.ToString()),
-                        new Claim("Id", user.Id.ToString()),
+                        new Claim("ClienteId", user.ClienteId.ToString()),
                     };
 
                 var userIdentity = new ClaimsIdentity(claims, "login");

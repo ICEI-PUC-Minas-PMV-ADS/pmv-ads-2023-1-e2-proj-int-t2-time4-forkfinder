@@ -12,12 +12,17 @@
     <div class="row">
         <div class="col-6">
             <div class="col">
-                <img class="img-fluid" src="@Html.DisplayFor(model => model.FotoPerfil)" style="max-width:300px; min-height:500px;" alt="Foto Perfil Restaurante">
+                @*<img class="img-fluid" src="@Html.DisplayFor(model => model.FotoPerfil)" style="max-width:300px; min-height:500px;" alt="Foto Perfil Restaurante">*@
+                <div>
+                    <img class="img-fluid rounded" width="100%" id="ImageUrlPreview" />
+                </div>
             </div>
-            <div>
+            <div class="d-flex gap-2">
+                @foreach (var foto in Model.Fotos)
+            {
 
-                <img class="img-fluid" src="@Html.DisplayFor(model => model.Fotos)" alt="Fotos do Restaurante" style="max-width:100px; min-height:100px;">
-
+                    <img onclick="LoadImg(src)" id="ImageURL" class="img-fluid rounded mt-2 mr-5" src="@Html.DisplayFor(modelItem => foto.FotosRestaurante)" alt="Fotos do Restaurante" style="max-width:100px; min-height:100px;">
+            }
             </div>
         </div>
         <div class="col-6">
@@ -59,3 +64,44 @@
         </div>
     </div>
 </div>
+@section Scripts{  
+    <script>
+        window.onload = function LoadImg() {
+            document.getElementById("ImageURL").click();
+        }
+        var newImg = getElementById("ImageURL");
+        function LoadImg(newImg) {
+            $("#ImageUrlPreview").empty();
+            document.getElementById('ImageUrlPreview').src = newImg;
+        }
+    </script>
+    @if (ViewData["Avaliacoes"] != null)
+    {
+        var avaliacoes = ViewData["Avaliacoes"] as List<Avaliacao>;
+        if (avaliacoes.Count > 0)
+        {
+            <h4>Avaliações dos clientes</h4>
+            <hr />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Estrelas</th>
+                        <th>Comentário</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var avaliacao in avaliacoes)
+                    {
+                        <tr>
+                            <td>@avaliacao.ClienteId</td>
+                            <td>@avaliacao.Estrela</td>
+                            <td>@avaliacao.Comentario</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    }
+}
+

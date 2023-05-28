@@ -29,8 +29,8 @@ namespace ForkFinder.Controllers
             }
 
             var restaurante = await _context.Restaurantes
-                /*.Include(r => r.Produtos)
-                    .Include(r => r.Especialidade)*/
+                .Include(f => f.Fotos)
+                    //.Include(r => r.Especialidade)
                 .FirstOrDefaultAsync(r => r.Id == id);
             if (restaurante == null)
             {
