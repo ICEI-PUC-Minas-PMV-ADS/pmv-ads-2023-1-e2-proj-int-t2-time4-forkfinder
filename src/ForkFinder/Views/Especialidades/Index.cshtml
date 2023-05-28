@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 <div class="mainEspecialidades container text-center">
-    <div class="row row-cols-3">
+    <div class="row row-cols-4 m-auto">
 @foreach (var item in Model) {
 
             <a class="categorias col" asp-controller="Especialidades" asp-action="Look" asp-route-id="@item.Id">

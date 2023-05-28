@@ -20,8 +20,9 @@ namespace ForkFinder.Models
 
         [Display(Name = "Descrição")]
         //[Required(ErrorMessage = "O campo {0} é obrigatório!")]
-
         public string DescricaoRestaurante { get; set; }
+        public bool Acessibilidade { get; set; }
+        public float Avaliacao { get; set; }
 
         //Relationships   
         public List<Especialidade_Restaurante> Especialidades_Restaurantes { get; set; }

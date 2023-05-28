@@ -8,7 +8,7 @@ namespace ForkFinder.Models
     public class Cliente : Usuario
     {
         [Key]
-        public int Id { get; set; }
+        public int ClienteId { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public string CPF { get; set; }

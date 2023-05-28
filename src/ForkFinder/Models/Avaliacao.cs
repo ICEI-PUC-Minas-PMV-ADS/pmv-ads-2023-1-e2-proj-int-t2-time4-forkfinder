@@ -13,10 +13,10 @@ namespace ForkFinder.Models
 
         public DateTime DataCriacao { get; set; }
         public int Estrela { get; set; }
-
+        public string Comentario { get; set; }
 
         /* Relacionamento Restaurante */
-        
+
         public int ClienteId { get; set; }
         [ForeignKey("ClienteId")]
         public Cliente Cliente { get; set; }

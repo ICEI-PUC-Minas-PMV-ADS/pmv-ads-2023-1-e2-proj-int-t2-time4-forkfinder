@@ -4,11 +4,10 @@
     "\\src",
     "\\src\\ForkFinder",
     "\\src\\ForkFinder\\Controllers",
-    "\\src\\ForkFinder\\Data",
-    "\\src\\ForkFinder\\Models",
     "\\src\\ForkFinder\\Views",
-    "\\src\\ForkFinder\\Views\\Especialidades_Restaurantes"
+    "\\src\\ForkFinder\\Views\\Clientes",
+    "\\src\\ForkFinder\\Views\\Restaurantes"
   ],
-  "SelectedNode": "\\src\\ForkFinder\\Models\\Especialidade_Restaurante.cs",
+  "SelectedNode": "\\src\\ForkFinder\\Views\\Restaurantes\\Restaurante.cshtml",
   "PreviewInSolutionExplorer": false
 }
