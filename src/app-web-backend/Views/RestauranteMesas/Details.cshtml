@@ -1,0 +1,36 @@
+﻿@model fork_finder.Models.RestauranteMesa
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>RestauranteMesa</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.QuantidadeMesa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.QuantidadeMesa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TamanhoMesa)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TamanhoMesa)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RestauranteReserva)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RestauranteReserva.RestauranteReservaId)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.RestauranteMesaId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
