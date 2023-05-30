@@ -26,5 +26,7 @@ namespace ForkFinder.Models
         public Restaurante Restaurante { get; set; }
 
         public List<Reserva> Reservas { get; set; }
+
+        public List<Agenda> Agendas { get; set; }
     }
 }

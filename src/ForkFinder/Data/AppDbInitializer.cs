@@ -143,6 +143,7 @@ namespace ForkFinder.Data
                     });
                     context.SaveChanges();
                 }
+
                 //Comentarios
                 if (!context.Comentarios.Any())
                 {
@@ -800,6 +801,30 @@ namespace ForkFinder.Data
                         new Mesa ()
                         {
                             QuantidadeMesa= 10,
+                            TamanhoMesa= 4,
+                            RestauranteId= 1
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 10,
+                            TamanhoMesa= 6,
+                            RestauranteId= 1
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 10,
+                            TamanhoMesa= 8,
+                            RestauranteId= 1
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 10,
+                            TamanhoMesa= 7,
+                            RestauranteId= 1
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 10,
                             TamanhoMesa= 5,
                             RestauranteId= 1
                         },
@@ -914,24 +939,106 @@ namespace ForkFinder.Data
                     });
                     context.SaveChanges();
                 }
-/*                //Reservas
-                if (!context.Restaurantes.Any())
+                //Reservas
+                if (!context.Reservas.Any())
                 {
-                    context.Clientes.AddRange(new List<Cliente>()
+                    context.Reservas.AddRange(new List<Reserva> ()
                     {
-
+                        new Reserva()
+                        {
+                        DataHoraCriacao = DateTime.Now.AddDays(-10),
+                        DataHoraReserva = DateTime.Now.AddDays(-10),
+                        Descricao = "",
+                        Situacao = true,
+                        ClienteId = 1,
+                        MesaId = 1
+                        },
+                        new Reserva()
+                        {
+                        DataHoraCriacao = DateTime.Now.AddDays(-10),
+                        DataHoraReserva = DateTime.Now.AddDays(-10),
+                        Descricao = "",
+                        Situacao = true,
+                        ClienteId = 1,
+                        MesaId = 1
+                        },
+                        new Reserva()
+                        {
+                        DataHoraCriacao = DateTime.Now.AddDays(-10),
+                        DataHoraReserva = DateTime.Now.AddDays(-10),
+                        Descricao = "",
+                        Situacao = true,
+                        ClienteId = 1,
+                        MesaId = 1
+                        },
+                        new Reserva()
+                        {
+                        DataHoraCriacao = DateTime.Now.AddDays(-10),
+                        DataHoraReserva = DateTime.Now.AddDays(-10),
+                        Descricao = "",
+                        Situacao = true,
+                        ClienteId = 1,
+                        MesaId = 1
+                        },
                     });
-
+                    context.SaveChanges();
                 }
-                //Avaliacoes
-                if (!context.Restaurantes.Any())
+                //Agenda
+                if (!context.Agendas.Any())
                 {
-                    context.Clientes.AddRange(new List<Cliente>()
+                    context.Agendas.AddRange(new List<Agenda>()
                     {
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "13:00",
+                            MesaId = 1
+                        },
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "18:00",
+                            MesaId = 1
+                        },
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "20:00",
+                            MesaId = 1
+                        },
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "15:00",
+                            MesaId = 1
+                        },
 
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "12:00",
+                            MesaId = 2                            
+                        },
+
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "08:00",
+                            MesaId = 3
+                        },
                     });
+                    context.SaveChanges();                
+                }
+                                
+                                //Avaliacoes
+                               /* if (!context.Restaurantes.Any())
+                                {
+                                    context.Clientes.AddRange(new List<Cliente>()
+                                    {
 
-                }*/
+                                    });
+
+                                }*/
             }
         }
     }

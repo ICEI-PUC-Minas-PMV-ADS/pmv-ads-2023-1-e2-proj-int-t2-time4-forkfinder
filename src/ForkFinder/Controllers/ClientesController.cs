@@ -56,7 +56,7 @@ namespace ForkFinder.Controllers
                 cliente.Email = cliente.Email;
                 cliente.CPF = cliente.CPF;
                 cliente.Foto = "#";
-                cliente.Papel = 0;
+                cliente.Papel = (Papel)0;
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Login", "Clientes");

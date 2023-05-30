@@ -58,6 +58,7 @@ namespace ForkFinder.Data
         }*/
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Avaliacao> Avaliacoes { get; set; }
+        public DbSet<Agenda> Agendas { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Especialidade> Especialidades { get; set; }

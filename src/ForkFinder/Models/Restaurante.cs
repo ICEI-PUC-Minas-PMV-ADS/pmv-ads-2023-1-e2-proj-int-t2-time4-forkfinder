@@ -1,15 +1,14 @@
-﻿using ForkFinder.Data.Base;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ForkFinder.Models
 {
-    public class Restaurante : Usuario, IEntityBase
+    public class Restaurante : Usuario
     {
         [Key]
-        public int Id { get; set; }
+        public int RestauranteId { get; set; }
 
         //[Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public string CNPJ { get; set; }
@@ -26,6 +25,7 @@ namespace ForkFinder.Models
 
         //Relationships   
         public List<Especialidade_Restaurante> Especialidades_Restaurantes { get; set; }
+        public List<Agenda> Agendas { get; set; }
         public List<Mesa> Mesas { get; set; }
         public List<Categoria> Categorias { get; set; }
         public List<Comentario> Comentarios { get; set; }

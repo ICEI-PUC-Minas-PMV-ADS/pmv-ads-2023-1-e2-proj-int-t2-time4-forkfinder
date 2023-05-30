@@ -4,14 +4,16 @@ using ForkFinder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForkFinder.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230529021406_agendareserva")]
+    partial class agendareserva
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +35,7 @@ namespace ForkFinder.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("MesaId")
+                    b.Property<int>("ReservaId")
                         .HasColumnType("int");
 
                     b.Property<int?>("RestauranteId")
@@ -41,7 +43,7 @@ namespace ForkFinder.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("MesaId");
+                    b.HasIndex("ReservaId");
 
                     b.HasIndex("RestauranteId");
 
@@ -460,9 +462,9 @@ namespace ForkFinder.Migrations
 
             modelBuilder.Entity("ForkFinder.Models.Agenda", b =>
                 {
-                    b.HasOne("ForkFinder.Models.Mesa", "Mesa")
+                    b.HasOne("ForkFinder.Models.Reserva", "Reserva")
                         .WithMany("Agendas")
-                        .HasForeignKey("MesaId")
+                        .HasForeignKey("ReservaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -470,7 +472,7 @@ namespace ForkFinder.Migrations
                         .WithMany("Agendas")
                         .HasForeignKey("RestauranteId");
 
-                    b.Navigation("Mesa");
+                    b.Navigation("Reserva");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Avaliacao", b =>
@@ -659,9 +661,12 @@ namespace ForkFinder.Migrations
 
             modelBuilder.Entity("ForkFinder.Models.Mesa", b =>
                 {
-                    b.Navigation("Agendas");
-
                     b.Navigation("Reservas");
+                });
+
+            modelBuilder.Entity("ForkFinder.Models.Reserva", b =>
+                {
+                    b.Navigation("Agendas");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Restaurante", b =>

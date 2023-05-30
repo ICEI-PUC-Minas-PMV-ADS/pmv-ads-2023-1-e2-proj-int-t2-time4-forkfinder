@@ -23,7 +23,7 @@
             @foreach (var restaurantes in Model)
             {
                 <div class="col-4 m-0">
-                    <a asp-action="Restaurante" asp-route-id="@restaurantes.Id">
+                    <a asp-action="Restaurante" asp-route-id="@restaurantes.RestauranteId">
                         <div class="row align-items-center justify-content-start">
                                 <div class="col-3 p-3">
                                     <img class="rounded-circle" src="@Html.DisplayFor(modelItem => restaurantes.FotoPerfil)" style="max-width:100px; min-height:100px;" />
