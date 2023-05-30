@@ -1,7 +1,20 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\ForkFinder",
+    "\\src\\ForkFinder\\Controllers",
+    "\\src\\ForkFinder\\Data",
+    "\\src\\ForkFinder\\Models",
+    "\\src\\ForkFinder\\Views",
+    "\\src\\ForkFinder\\Views\\Clientes",
+    "\\src\\ForkFinder\\Views\\Reservas",
+    "\\src\\ForkFinder\\Views\\Restaurantes"
   ],
-  "SelectedNode": "\\C:\\Users\\Jansem\\OneDrive\\Área de Trabalho\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder",
+<<<<<<< HEAD
+  "SelectedNode": "\\src\\ForkFinder\\ForkFinder.sln",
+=======
+  "SelectedNode": "\\app-web-backend.sln",
+>>>>>>> 2f4abf84bea9ac0140257d7aee1cdd178193d854
   "PreviewInSolutionExplorer": false
 }

@@ -1,0 +1,54 @@
+﻿@model Cliente
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+<div class="justify-content-center">
+    <div class="row justify-content-center">
+
+        <div class="col-md-auto card" style="width: 26rem;">
+            <section>
+                <form id="account" method="post">
+                    <h4 class="py-3">Utilize suas credenciais para logar.</h4>
+                    <hr />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group py-2">
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group py-2">
+                        <label asp-for="Senha">Senha</label>
+                        <input asp-for="Senha" class="form-control" />
+                        <span asp-validation-for="Senha" class="text-danger"></span>
+                    </div>
+                    @*<div class="form-group py-2">
+                        <div class="checkbox">
+                            <label asp-for="Input.RememberMe">
+                                <input asp-for="Input.RememberMe" />
+                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                            </label>
+                        </div>
+                    </div>*@
+                    <div class="form-group text-end py-2">
+                        <button type="submit" class="btn btn-warning">Log in</button>
+                    </div>
+                    <div class="form-group text-center">
+                        @*<p>
+                            <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu a senha?</a>
+                        </p>*@
+                        <p>
+                            <a asp-action="Register">Novo cadastro</a>
+                        </p>
+                    </div>
+                </form>
+            </section>
+        </div>
+
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Especialidade>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="mainEspecialidades container text-center">
+    <div class="row row-cols-4 m-auto">
+@foreach (var item in Model) {
+
+            <a class="categorias col" asp-controller="Especialidades" asp-action="Look" asp-route-id="@item.Id">
+                <img class="img-fluid" id="especialidadeimg" src="@Html.DisplayFor(modelItem => item.ImagemUpload)"/>
+                <div id="especialidade" class="text-warning">
+                    <p>Comida @Html.DisplayFor(modelItem => item.NomeEspecialidade)</p>
+                </div>
+                
+            </a>       
+}
+    </div>
+</div>
+

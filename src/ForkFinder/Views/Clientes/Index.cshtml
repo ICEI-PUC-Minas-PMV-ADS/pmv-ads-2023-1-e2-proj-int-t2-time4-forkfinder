@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Cliente>
+@{
+    ViewData["Title"] = "List of Clientes";
+}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+    <table class="table">
+        <thead>
+            <tr class ="text-center">
+                <th>@Html.DisplayNameFor(model => model.Foto)</th>
+                <th>@Html.DisplayNameFor(model => model.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.CPF)</th>                
+                <th>@Html.DisplayNameFor(model => model.Especialidades_Clientes)</th>
+            </tr>
+        </thead>
+            
+        <tbody>
+            @foreach(var item in Model)
+            {
+            <tr>
+                <td class="align-middle">
+                <img class="rounded-circle" src="@item.Foto" alt="Foto de @item.Nome" style="max-width:150px"/>
+                    </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.CPF)
+                </td>
+                <td class="align-middle">
+                    @Html.DisplayFor(modelItem => item.Especialidades_Clientes)
+                </td>
+                        
+                    <td class="align-middle">
+                            <a class="btn btn-outline-primary" asp-controller="Clientes" asp-action="Reserved" asp-route-id="@item.ClienteId"><i class="bi bi-pencil-square"></i></a> |
+                           <a class="btn btn-outline-info"><i class="bi bi-eye"></i></a> |
+                           <a class="btn btn-danger text-white"><i class="bi bi-trash"></i></a>
+                    </td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+    </div>
+</div>

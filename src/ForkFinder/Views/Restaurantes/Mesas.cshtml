@@ -1,0 +1,76 @@
+﻿@model Restaurante
+
+@{
+    ViewData["Title"] = "Restaurantes";
+}
+
+<h1>Mesas</h1>
+
+<p>
+    <a asp-controller="Mesas" asp-action="Create">Adicionar nova mesa</a>
+</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-4 text-center">
+            Tamanho da mesa
+            @foreach (var mesa in Model.Mesas) {
+                <div class="row">
+                    @Html.DisplayFor(modelItem => mesa.Id)
+
+                    @Html.DisplayFor(modelItem => mesa.RestauranteId)
+
+                    @*@Html.DisplayFor(modelItem => mesa.TamanhoMesa)*@
+                </div>
+            }
+        </div>
+        <div class="col-8">
+            <div class="row">
+                <div class="col-3">Dia X</div>@*Ajax para alterar foreach - Acho que da pra por um Switch com o foreach dentro*@
+                @foreach (var agenda in Model.Agendas)
+                {
+                        <div class="col">
+                        @foreach (var mesa in Model.Mesas)
+                        {
+                            
+
+                            //@if ((modelItem => mesa.Id) == (modelItem => agenda.MesaId))                            
+                            //{
+                                <div class="row">
+                            @*@if (this.Model (modelItem => agenda.Horario))
+                            {
+                                //@Html.Raw("&nbsp;")
+                            }
+                            else
+                            {
+                                @Model.Agendas
+                            }*@
+                            <p>teste</p>
+                            @Html.DisplayFor(modelItem => agenda.Horario)
+                            </div>
+                            @*}*@
+                        }
+                        </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+    @*@foreach (var item in Model.Mesas) {
+            <div class="row">
+                <div class="col-6">
+                    @Html.DisplayFor(modelItem => item.TamanhoMesa)
+                </div>
+        </div>
+            <div class="row">
+                <div class="col-6">
+                    @Html.DisplayFor(modelItem => item.TamanhoMesa)
+                </div>
+            </div>                  
+           @* <td>
+                <a asp-controller="Reservas" asp-action="Reservar" asp-route-id="@item.Id">Reservar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>*@     
+@*}
+
+</div>*@
