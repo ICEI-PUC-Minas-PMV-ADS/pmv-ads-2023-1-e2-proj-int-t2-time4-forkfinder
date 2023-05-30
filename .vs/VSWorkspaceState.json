@@ -1,9 +1,14 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\src\\app-web-backend"
+    "\\src\\ForkFinder\\Controllers",
+    "\\src\\ForkFinder\\Data",
+    "\\src\\ForkFinder\\Models",
+    "\\src\\ForkFinder\\Views",
+    "\\src\\ForkFinder\\Views\\Clientes",
+    "\\src\\ForkFinder\\Views\\Reservas",
+    "\\src\\ForkFinder\\Views\\Restaurantes"
   ],
-  "SelectedNode": "\\src\\app-web-backend.sln",
+  "SelectedNode": "\\src",
   "PreviewInSolutionExplorer": false
 }
