@@ -77,7 +77,58 @@ namespace ForkFinder.Data
                             CNPJ = "49.040.769/0001-22",
                             FotoPerfil = "https://scontent.fjpa11-1.fna.fbcdn.net/v/t1.6435-9/60343892_2160827287327350_7286930952792571904_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=174925&_nc_ohc=zsMwXpUuvd4AX_tOPnY&_nc_ht=scontent.fjpa11-1.fna&oh=00_AfAdl2fABphiFftPkxLUw4f4IX_NX66sdmR-rQym-6qWCQ&oe=648AE71B",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
-                        }
+                        }, new Restaurante()
+                        {
+                            Nome = "Aladdin's Palace",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = "45.678.901/0001-04",
+                            FotoPerfil = https://img.freepik.com/vetores-premium/logotipo-do-cafe-e-restaurante-de-comida-arabe_18099-3719.jpg?w=2000,
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        },
+
+                              {
+                            Nome = "Falafel Oasis",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = "12.345.678/0001-01",
+                            FotoPerfil  "https://th.bing.com/th/id/R.395f8b006a3bd0d07131fa7e99db8d45?rik=NzmyyrNQipPDKg&riu=http%3A%2F%2F50graphics.com%2Fwp-content%2Fuploads%2F2019%2F04%2FDifferent-logo-designs-for-Arabian-restaurant.jpg&ehk=XRlSiJsTVyKPAKtMMggXKOQGNLgKEJSVQpib3tJKWaw%3D&risl=&pid=ImgRaw&r=2000",,
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        },
+                             {
+                            Nome = "Arabian Delights",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = "34.567.890/0001-03",
+                            FotoPerfil =https://marketing.dcassetcdn.com/blog/2018/August/62-arabic-logos/Brown-Cup.jpg,
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        },
+
+                            Nome = "Shawarma Heaven",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = "12.345.678/0001-01",
+                            FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        },
+                           
+                            Nome = "La Belle Époque",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = "90.123.456 / 0001 - 09",
+                            FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        },
+
+            },
+                            Nome = "La Petite Boulangerie",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = ". 78.901.234/0001-07",
+                            FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        },
+                        
                     });
                     context.SaveChanges();
                 }
@@ -251,7 +302,81 @@ namespace ForkFinder.Data
                         Cidade = "Ituiutaba",
                         Estado = "MG",
                         RestauranteId = 6
-                        }
+                        },
+                        new Endereco()
+                        {
+                        Logradouro ="Rua dos Sabores",
+                        Numero = "959",
+                        Complemento = "Loja 12",
+                        CEP ="98765-432",
+                        Bairro ="Gastronômico",
+                        Cidade = "São paulo",
+                        Estado = "SP",
+                        RestauranteId = 7
+
+                        },
+
+                          new Endereco()
+                        {
+                        Logradouro ="Rua das Estrelas,",
+                        Numero = "959",
+                        Complemento = "Loja 56",
+                        CEP =", 98765-321",
+                        Bairro ="Novo Horizonte",
+                        Cidade = "Sertãozinho",
+                        Estado = "AM",
+                        RestauranteId = 8
+
+                        },
+                           new Endereco()
+                        {
+                        Logradouro ="Avenida Central",
+                        Numero = "1045",
+                        Complemento = "Loja 45",
+                        CEP = " 10987-654",
+                        Bairro ="Vila dos Pássaros",
+                        Cidade = "Sertãozinho",
+                        Estado = "SP",
+                        RestauranteId = 9
+
+                        },
+                            new Endereco()
+                        {
+                        Logradouro ="Rua das Andorinhas",
+                        Numero = "1300",
+                        Complemento = "Loja 34",
+                        CEP ="14164-025",
+                        Bairro ="Loteamento Bela Vista",
+                        Cidade = "Santa Cruz",
+                        Estado = "GO",
+                        RestauranteId = 10
+
+                        },
+
+                        new Endereco()
+                        {
+                        Logradouro ="Rua das andorinhas",
+                        Numero = "045",
+                        Complemento = "Loja 9",
+                        CEP = " 104567-654",
+                        Bairro ="Vila dos chines",
+                        Cidade = "Selina",
+                        Estado = "SP",
+                        RestauranteId = 11
+
+                        },
+                         new Endereco()
+                        {
+                        Logradouro ="Rua das Andorinhas",
+                        Numero = "1300",
+                        Complemento = "Loja 34",
+                        CEP ="141447-025",
+                        Bairro ="Loteamento Bela Vista",
+                        Cidade = "Matuzinho ",
+                        Estado = "MG",
+                        RestauranteId = 12
+
+                        },
 
                     });
                     context.SaveChanges();
