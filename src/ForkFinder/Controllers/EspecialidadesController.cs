@@ -22,8 +22,10 @@ namespace ForkFinder.Controllers
         [AllowAnonymous]        
         public async Task<IActionResult> Look(int id)
         {
-            var especialidade = await _context.Especialidades                
-                .Include(am => am.Especialidades_Restaurantes).ThenInclude(a => a.Restaurante)
+            var especialidade = await _context.Especialidades
+                .Include(am => am.Especialidades_Restaurantes).ThenInclude(r => r.Restaurante)
+                .Include(am => am.Especialidades_Restaurantes).ThenInclude(r => r.Restaurante).ThenInclude(e=>e.Endereco)
+                .Include(am => am.Especialidades_Restaurantes).ThenInclude(r => r.Restaurante).ThenInclude(a=>a.Avaliacoes)
                 .FirstOrDefaultAsync(n => n.Id == id);
             if (especialidade == null)
             {

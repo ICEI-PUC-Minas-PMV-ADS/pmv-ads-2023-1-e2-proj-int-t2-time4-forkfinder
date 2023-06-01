@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using ForkFinder.ViewModels;
 
 namespace ForkFinder.Controllers
 {
@@ -19,11 +20,52 @@ namespace ForkFinder.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var data = _context.Restaurantes.ToList();
+            var data = await _context.Restaurantes
+                .Include(a => a.Avaliacoes)
+                .Include(er => er.Especialidades_Restaurantes).ThenInclude(es => es.Especialidade)
+                .ToListAsync();
+
             return View(data);
         }
+        /*[AllowAnonymous]
+        public async Task<IActionResult> Index(int id)
+        {
+            var restaurante = await _context.Restaurantes
+                .Include(am => am.Especialidades_Restaurantes).ThenInclude(r => r.Restaurante)
+                .Include(am => am.Especialidades_Restaurantes).ThenInclude(r => r.Restaurante).ThenInclude(e => e.Endereco)
+                .Include(am => am.Especialidades_Restaurantes).ThenInclude(r => r.Restaurante).ThenInclude(a => a.Avaliacoes)
+                .FirstOrDefaultAsync(n => n.RestauranteId == id);
+            if (restaurante == null)
+            {
+                return NotFound();
+            }
+
+            return View(restaurante);
+        }*/
+
+        [AllowAnonymous]
+        public async Task<IActionResult> Agenda(int id)
+        {
+            var restaurante = await _context.Restaurantes
+                .Include(r => r.Agendas).ThenInclude(d=>d.DataMesas)
+                .Include(r => r.Agendas)
+                .FirstOrDefaultAsync(n => n.RestauranteId == id);
+
+            if (restaurante == null)
+            {
+                return NotFound();
+            }
+
+            var viewModel = new AgendaViewModel
+            {
+                
+            };
+
+            return View(viewModel);
+        }
+
 
         [AllowAnonymous]
         public async Task<IActionResult> Restaurante(int? id)
@@ -35,6 +77,7 @@ namespace ForkFinder.Controllers
 
             var restaurante = await _context.Restaurantes
                 .Include(f => f.Fotos)
+                .Include(r => r.Avaliacoes)
                 //.Include(r => r.Agendas)
                 .FirstOrDefaultAsync(r => r.RestauranteId == id);
             if (restaurante == null)

@@ -401,6 +401,7 @@ namespace ForkFinder.Data
                     });
                     context.SaveChanges();
                 }
+
                 //Fotos
                 if (!context.Fotos.Any())
                 {
@@ -884,7 +885,7 @@ namespace ForkFinder.Data
                     context.SaveChanges();
                 }
                 //Produtos
-                if (!context.Produtos.Any())
+                /*if (!context.Produtos.Any())
                 {
                     context.Produtos.AddRange(new List<Produto>()
                     {
@@ -1155,7 +1156,7 @@ namespace ForkFinder.Data
                            
                     });
                     context.SaveChanges();
-                }
+                }*/
                 //Reservas
                 if (!context.Reservas.Any())
                 {
@@ -1201,7 +1202,7 @@ namespace ForkFinder.Data
                     context.SaveChanges();
                 }
                 //Agenda
-                if (!context.Agendas.Any())
+                /*if (!context.Agendas.Any())
                 {
                     context.Agendas.AddRange(new List<Agenda>()
                     {
@@ -1245,7 +1246,7 @@ namespace ForkFinder.Data
                         },
                     });
                     context.SaveChanges();                
-                }
+                }*/
                                 
                                 //Avaliacoes
                                /* if (!context.Restaurantes.Any())

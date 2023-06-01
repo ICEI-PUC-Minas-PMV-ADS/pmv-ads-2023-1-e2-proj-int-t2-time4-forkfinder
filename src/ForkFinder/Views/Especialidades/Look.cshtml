@@ -27,36 +27,63 @@
             {
                 <div class="col-4 m-0">
                     <a asp-controller="Restaurantes" asp-action="Restaurante" asp-route-id="@restaurantes.RestauranteId">
-                        <div class="row align-items-center justify-content-start">
+                        <div class="row align-items-center justify-content-start py-3">
                             <div class="col-3">
-                            <img class="rounded-circle" src="@Html.DisplayFor(modelItem => restaurantes.Restaurante.FotoPerfil)" style="max-width:100px; min-height:100px;" />
+                                <img class="rounded-circle" src="@Html.DisplayFor(modelItem => restaurantes.Restaurante.FotoPerfil)" style="max-width:100px; min-height:100px;" />
                             </div>
                             <div class="col-9">
                                 <div class="row align-items-center m-0">
                                     <div class="col text-decoration-none">
                                         <div class="row m-0">
-                                        @Html.DisplayFor(modelItem => restaurantes.Restaurante.Nome)
-                                    </div>
-                                    <div class="row m-0">
-                                        <div class="col-6">
-                                                <i class="bi bi-star-fill text-warning">@Html.DisplayFor(modelItem => restaurantes.Restaurante.Avaliacoes)</i>
+                                            <p class="px-2 m-0">@Html.DisplayFor(modelItem => restaurantes.Restaurante.Nome)</p>
                                         </div>
-                                        <div class="col-6 px-2">
-                                            &#149; @Html.DisplayFor(modelItem => restaurantes.Especialidade.NomeEspecialidade)
+                                        <div class="row m-0">
+                                            <div class="col-7 p-1">
+                                                @if (restaurantes.Restaurante.Avaliacoes.Count > 0)
+                                                {
+                                                    double mediaAvaliacoes = restaurantes.Restaurante.Avaliacoes.Average(a => a.Estrela);
+                                                    int quantidadeEstrelas = (int)Math.Round(mediaAvaliacoes);
+
+                                                    <div class="row">
+                                                        <p>
+                                                            @for (int i = 0; i < 5; i++)
+                                                            {
+                                                                if (i < quantidadeEstrelas)
+                                                                {
+                                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <i class="bi bi-star text-warning"></i>
+                                                                }
+                                                            }
+                                                        </p>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <p class="p-0 m-1 text-warning">Sem avaliações</p>                                                    
+                                                }
+                                            </div>
+                                            <div class="col-5">
+                                                <li class="py-2 m-0">@Html.DisplayFor(modelItem => restaurantes.Especialidade.NomeEspecialidade)</li>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="row m-0">
-                                        @Html.DisplayFor(modelItem => restaurantes.Restaurante.Endereco.RestauranteId)
-                                        @Html.DisplayFor(modelItem => restaurantes.Restaurante.Endereco.Numero)
+                                        <div class="row m-0">
+                                            <p class="px-2 m-0">
+                                                @Html.DisplayFor(modelItem => restaurantes.Restaurante.Endereco.Cidade),
+                                            @Html.DisplayFor(modelItem => restaurantes.Restaurante.Endereco.Bairro), 
+                                            @Html.DisplayFor(modelItem => restaurantes.Restaurante.Endereco.Numero)</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        
-                        </div>
                         </div>
                     </a>
                 </div>
             }
+
+
         </div>
     </div>
 </div>

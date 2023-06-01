@@ -13,6 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="ViewModels\AvaliacaoViewModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="Views\Clientes\Reservas.cshtml" />
   </ItemGroup>
 
@@ -26,6 +30,10 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Agenda\" />
   </ItemGroup>
 
 </Project>

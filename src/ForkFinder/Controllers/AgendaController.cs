@@ -37,7 +37,7 @@ namespace ForkFinder.Controllers
             var agendaViewModel = new AgendaViewModel
             {
                 Restaurante = restaurante,
-                Datas = GetAgendaDates(),
+                DataMesas = GetAgendaDates(),
                 Horarios = GetAgendaHorarios(),
                 Mesas = restaurante.Mesas
             };
@@ -86,30 +86,32 @@ namespace ForkFinder.Controllers
             return RedirectToAction("Index", new { restauranteId });
         }
 
-        private List<DateTime> GetAgendaDates()
+        private List<DataMesa> GetAgendaDates()
         {
-            // Lógica para obter as datas da agenda
-            // Pode ser um intervalo de dias, uma lista pré-definida, etc.
-            // Aqui, como exemplo, retornamos uma lista de 5 dias a partir da data atual
-
-            var datas = new List<DateTime>();
+            var datas = new List<DataMesa>();
             var currentDate = DateTime.Now.Date;
 
             for (int i = 0; i < 5; i++)
             {
-                datas.Add(currentDate.AddDays(i));
+                var dataMesa = new DataMesa
+                {
+                    Data = currentDate.AddDays(i)
+                };
+
+                datas.Add(dataMesa);
             }
 
             return datas;
         }
 
-        private List<string> GetAgendaHorarios()
+
+        private List<Horario> GetAgendaHorarios()
         {
             // Lógica para obter os horários da agenda
             // Pode ser uma lista pré-definida, com intervalos fixos, etc.
             // Aqui, como exemplo, retornamos uma lista de horários por hora
 
-            var horarios = new List<string>();
+            var horarios = new List<Horario>();
             var startTime = new TimeSpan(8, 0, 0);
             var endTime = new TimeSpan(18, 0, 0);
 

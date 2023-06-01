@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ForkFinder.Models
 {
+    [Table("Restaurantes")]
     public class Restaurante : Usuario
     {
         [Key]

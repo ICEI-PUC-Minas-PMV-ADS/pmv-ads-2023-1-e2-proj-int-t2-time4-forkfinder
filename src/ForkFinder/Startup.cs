@@ -80,6 +80,10 @@ namespace ForkFinder
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Especialidades}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "agenda",
+                    pattern: "agenda/{restauranteId}",
+                    defaults: new { controller = "Agenda", action = "Index" });
             });
             //Seed database
             AppDbInitializer.Seed(app);

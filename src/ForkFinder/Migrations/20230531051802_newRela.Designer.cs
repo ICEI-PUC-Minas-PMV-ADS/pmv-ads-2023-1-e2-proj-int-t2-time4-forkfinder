@@ -4,14 +4,16 @@ using ForkFinder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForkFinder.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230531051802_newRela")]
+    partial class newRela
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -167,27 +169,6 @@ namespace ForkFinder.Migrations
                     b.ToTable("Comentarios");
                 });
 
-            modelBuilder.Entity("ForkFinder.Models.DataMesa", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("AgendaId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Data")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AgendaId");
-
-                    b.ToTable("DataMesas");
-                });
-
             modelBuilder.Entity("ForkFinder.Models.Endereco", b =>
                 {
                     b.Property<int>("Id")
@@ -282,7 +263,12 @@ namespace ForkFinder.Migrations
                     b.Property<int>("RestauranteId")
                         .HasColumnType("int");
 
+                    b.Property<int>("AvaliacaoId")
+                        .HasColumnType("int");
+
                     b.HasKey("EspecialidadeId", "RestauranteId");
+
+                    b.HasIndex("AvaliacaoId");
 
                     b.HasIndex("RestauranteId");
 
@@ -563,17 +549,6 @@ namespace ForkFinder.Migrations
                     b.Navigation("Restaurante");
                 });
 
-            modelBuilder.Entity("ForkFinder.Models.DataMesa", b =>
-                {
-                    b.HasOne("ForkFinder.Models.Agenda", "Agenda")
-                        .WithMany("DataMesas")
-                        .HasForeignKey("AgendaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Agenda");
-                });
-
             modelBuilder.Entity("ForkFinder.Models.Endereco", b =>
                 {
                     b.HasOne("ForkFinder.Models.Restaurante", "Restaurante")
@@ -606,6 +581,12 @@ namespace ForkFinder.Migrations
 
             modelBuilder.Entity("ForkFinder.Models.Especialidade_Restaurante", b =>
                 {
+                    b.HasOne("ForkFinder.Models.Avaliacao", "Avaliacao")
+                        .WithMany("Especialidades_Restaurantes")
+                        .HasForeignKey("AvaliacaoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ForkFinder.Models.Especialidade", "Especialidade")
                         .WithMany("Especialidades_Restaurantes")
                         .HasForeignKey("EspecialidadeId")
@@ -617,6 +598,8 @@ namespace ForkFinder.Migrations
                         .HasForeignKey("RestauranteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Avaliacao");
 
                     b.Navigation("Especialidade");
 
@@ -699,9 +682,12 @@ namespace ForkFinder.Migrations
 
             modelBuilder.Entity("ForkFinder.Models.Agenda", b =>
                 {
-                    b.Navigation("DataMesas");
-
                     b.Navigation("Horarios");
+                });
+
+            modelBuilder.Entity("ForkFinder.Models.Avaliacao", b =>
+                {
+                    b.Navigation("Especialidades_Restaurantes");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Categoria", b =>
