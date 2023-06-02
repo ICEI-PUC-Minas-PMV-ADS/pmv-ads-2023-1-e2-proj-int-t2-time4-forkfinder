@@ -14,8 +14,8 @@ namespace ForkFinder.Models
         public string Hora { get; set; }
 
         // Relacionamento com Agenda
-        public int AgendaId { get; set; }
-        [ForeignKey("AgendaId")]
-        public Agenda Agenda { get; set; }
+        public int MesaId { get; set; }
+        [ForeignKey("MesaId")]
+        public Mesa Mesas { get; set; }
     }
 }

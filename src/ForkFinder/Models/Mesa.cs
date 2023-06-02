@@ -28,5 +28,6 @@ namespace ForkFinder.Models
         public List<Reserva> Reservas { get; set; }
 
         public List<Agenda> Agendas { get; set; }
+        public List<Horario> Horarios { get; set; }
     }
 }

@@ -4,8 +4,9 @@
     "\\src",
     "\\src\\ForkFinder",
     "\\src\\ForkFinder\\Controllers",
-    "\\src\\ForkFinder\\Models"
+    "\\src\\ForkFinder\\Models",
+    "\\src\\ForkFinder\\Views"
   ],
-  "SelectedNode": "\\src\\ForkFinder\\Controllers\\AgendaController.cs",
+  "SelectedNode": "\\src\\ForkFinder\\Models\\DataMesa.cs",
   "PreviewInSolutionExplorer": false
 }

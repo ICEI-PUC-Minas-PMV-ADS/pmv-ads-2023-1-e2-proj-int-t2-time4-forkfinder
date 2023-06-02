@@ -93,8 +93,9 @@ namespace ForkFinder.Controllers
         public async Task<IActionResult> Mesas(int id)
         {
             var restaurante = await _context.Restaurantes
-                .Include(m => m.Mesas)
+                .Include(m => m.Mesas).ThenInclude(ho => ho.Horarios)
                 .Include(r => r.Agendas)
+                .Include(r => r.Agendas).ThenInclude(ho=>ho.Horarios)
                 .FirstOrDefaultAsync(n => n.RestauranteId == id);
             if (restaurante == null)
             {

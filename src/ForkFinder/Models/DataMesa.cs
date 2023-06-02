@@ -10,7 +10,7 @@ namespace ForkFinder.Models
         [Key]
         public int Id { get; set; }
         
-        public List<DataMesa> DataMesas { get; set; }
+        public DateTime DataMesas { get; set; }
 
         // Relacionamento com Agenda
         public int AgendaId { get; set; }
