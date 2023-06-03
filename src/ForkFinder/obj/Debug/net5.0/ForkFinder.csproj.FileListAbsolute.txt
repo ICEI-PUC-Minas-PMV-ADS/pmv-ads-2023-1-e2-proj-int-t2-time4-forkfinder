@@ -448,4 +448,3 @@ C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\ob
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\ref\ForkFinder.dll
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Clientes\Reserved.cshtml.g.cs
 C:\Users\Jansem\source\repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Reservas\Index.cshtml.g.cs
-C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Restaurantes\Register.cshtml.g.cs
