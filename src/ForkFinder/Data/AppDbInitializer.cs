@@ -92,17 +92,17 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "12.345.678/0001-01",
-<<<<<<< HEAD
+
                             FotoPerfil = "htts://th.bing.com/th/id/R.395f8b006a3bd0d07131fa7e99db8d45?rik=NzmyyrNQipPDKg&riu=http%3A%2F%2F50graphics.com%2Fwp-content%2Fuploads%2F2019%2F04%2FDifferent-logo-designs-for-Arabian-restaurant.jpg&ehk=XRlSiJsTVyKPAKtMMggXKOQGNLgKEJSVQpib3tJKWaw%3D&risl=&pid=ImgRaw&r=2000",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
                         }, new Restaurante() {
                              
-=======
+
                             FotoPerfil = "https://50graphics.com/wp-content/uploads/2019/04/Different-logo-designs-for-Arabian-restaurant.jpg",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
                         }, new Restaurante() {
 
->>>>>>> develop-Jansem
+
                             Nome = "Arabian Delights",
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
@@ -127,26 +127,16 @@ namespace ForkFinder.Data
                             CNPJ = "90.123.456 / 0001 - 09",
                             FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
-<<<<<<< HEAD
+
                         }, new Restaurante() { 
-=======
-                        }, new Restaurante() {
->>>>>>> develop-Jansem
-
-
-
                             Nome = "La Petite Boulangerie",
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = ". 78.901.234/0001-07",
                             FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
-<<<<<<< HEAD
-                        },
-                        
-=======
+
                         }
->>>>>>> develop-Jansem
                     });
                     context.SaveChanges();
                 }
