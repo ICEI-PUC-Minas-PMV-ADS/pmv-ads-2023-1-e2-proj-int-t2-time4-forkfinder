@@ -39,9 +39,31 @@
                 <p class="text-warning">
                     @Html.DisplayFor(model => model.Endereco)
                 </p>
-                <p>
-                    <i class="bi bi-star-fill text-warning"></i>
-                </p>
+                @if (Model.Avaliacoes.Count > 0)
+                {
+                    double mediaAvaliacoes = Model.Avaliacoes.Average(a => a.Estrela);
+                    int quantidadeEstrelas = (int)Math.Round(mediaAvaliacoes);
+
+                    <div class="row">
+                        <p>
+                            @for (int i = 0; i < 5; i++)
+                            {
+                                if (i < quantidadeEstrelas)
+                                {
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-star text-warning"></i>
+                                }
+                            }
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <p>Ainda não há avaliações.</p>
+                }
                 <p>
                     <span class="material-symbols-outlined text-warning fs-1 align-content-center">
                         accessible
@@ -57,7 +79,7 @@
                         @*<a asp-controller="Produtos" asp-action="Create" class="btn btn-outline-info">Cardápio</a>*@
                     </div>
                     <div class="col justify-content-center">
-                        <a asp-controller="Restaurantes" asp-action="Mesas" asp-route-id="@Model.Id" class="btn bg-warning text-dark">Reservar</a>
+                        <a asp-controller="Restaurantes" asp-action="Mesas" asp-route-id="@Model.RestauranteId" class="btn bg-warning text-dark">Reservar</a>
                     </div>
                 </div>
             </div>

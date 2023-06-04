@@ -25,5 +25,6 @@ namespace ForkFinder.Models
         public int RestauranteId { get; set; }
         [ForeignKey("RestauranteId")]
         public Restaurante Restaurante { get; set; }
+        
     }
 }

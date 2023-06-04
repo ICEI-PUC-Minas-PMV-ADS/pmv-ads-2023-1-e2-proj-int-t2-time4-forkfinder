@@ -119,6 +119,9 @@ img .mascote {
     right: 0px;
     z-index:0;
 }
+.mascotemais {
+    min-height: calc(100vh + 378px);
+}
 
 .restauranteFoto {
     width: 300px;

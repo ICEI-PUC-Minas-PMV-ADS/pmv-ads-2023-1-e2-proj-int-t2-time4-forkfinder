@@ -92,10 +92,17 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "12.345.678/0001-01",
+<<<<<<< HEAD
                             FotoPerfil = "htts://th.bing.com/th/id/R.395f8b006a3bd0d07131fa7e99db8d45?rik=NzmyyrNQipPDKg&riu=http%3A%2F%2F50graphics.com%2Fwp-content%2Fuploads%2F2019%2F04%2FDifferent-logo-designs-for-Arabian-restaurant.jpg&ehk=XRlSiJsTVyKPAKtMMggXKOQGNLgKEJSVQpib3tJKWaw%3D&risl=&pid=ImgRaw&r=2000",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
                         }, new Restaurante() {
                              
+=======
+                            FotoPerfil = "https://50graphics.com/wp-content/uploads/2019/04/Different-logo-designs-for-Arabian-restaurant.jpg",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        }, new Restaurante() {
+
+>>>>>>> develop-Jansem
                             Nome = "Arabian Delights",
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
@@ -120,7 +127,11 @@ namespace ForkFinder.Data
                             CNPJ = "90.123.456 / 0001 - 09",
                             FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+<<<<<<< HEAD
                         }, new Restaurante() { 
+=======
+                        }, new Restaurante() {
+>>>>>>> develop-Jansem
 
 
 
@@ -130,8 +141,12 @@ namespace ForkFinder.Data
                             CNPJ = ". 78.901.234/0001-07",
                             FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+<<<<<<< HEAD
                         },
                         
+=======
+                        }
+>>>>>>> develop-Jansem
                     });
                     context.SaveChanges();
                 }
@@ -197,6 +212,7 @@ namespace ForkFinder.Data
                     });
                     context.SaveChanges();
                 }
+
                 //Comentarios
                 if (!context.Comentarios.Any())
                 {
@@ -528,6 +544,7 @@ namespace ForkFinder.Data
                     });
                     context.SaveChanges();
                 }
+
                 //Fotos
                 if (!context.Fotos.Any())
                 {
@@ -540,7 +557,7 @@ namespace ForkFinder.Data
                         },
                         new Foto ()
                         {
-                            FotosRestaurante="https://casamadeira.com.br/wp-content/uploads/2019/11/restaurante-interno.jpg",
+                            FotosRestaurante="https://img.freepik.com/fotos-gratis/uma-sala-de-restaurante-com-paredes-de-tijolo-vermelho-mesas-de-madeira-e-canos-no-teto_140725-8504.jpg?w=996&t=st=1685842371~exp=1685842971~hmac=fbb8e505dae2ea81a7365ebcd779099d6f557b72bcc99b622d58f7e9c9ec7bd7",
                             RestauranteId= 1
                         },
                         new Foto ()
@@ -928,6 +945,30 @@ namespace ForkFinder.Data
                         new Mesa ()
                         {
                             QuantidadeMesa= 10,
+                            TamanhoMesa= 4,
+                            RestauranteId= 1
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 10,
+                            TamanhoMesa= 6,
+                            RestauranteId= 1
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 10,
+                            TamanhoMesa= 8,
+                            RestauranteId= 1
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 10,
+                            TamanhoMesa= 7,
+                            RestauranteId= 1
+                        },
+                        new Mesa ()
+                        {
+                            QuantidadeMesa= 10,
                             TamanhoMesa= 5,
                             RestauranteId= 1
                         },
@@ -987,7 +1028,7 @@ namespace ForkFinder.Data
                     context.SaveChanges();
                 }
                 //Produtos
-                if (!context.Produtos.Any())
+                /*if (!context.Produtos.Any())
                 {
                     context.Produtos.AddRange(new List<Produto>()
                     {
@@ -1038,28 +1079,327 @@ namespace ForkFinder.Data
                             Imagem="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQaN3eX3C1UgTegM3ZPeWH23ShRA65PhC0UA&usqp=CAU",
                             Preco= 50,
                             CategoriaId= 2
-                        }
+                        },
+                          new Produto ()
+                        {
+                            NomeProduto="Churros de Doce de Leite",
+                            Descricao="Churros crocante com muito doce de leite",
+                            Imagem="https://www.kitano.com.br/wp-content/uploads/2019/07/SSP_2398-Churros-de-doce-de-leite-e-canela-1.jpg",
+                            Preco= 7,
+                            CategoriaId= 3
+                        },
+                          new Produto ()
+                        {
+                            NomeProduto="Churros de Chocolate",
+                            Descricao="Churros crocante com muito chocolate",
+                            Imagem="https://cdn0.tudoreceitas.com/pt/posts/9/0/2/churros_recheados_com_brigadeiro_6209_600.webp",
+                            Preco= 7,
+                            CategoriaId= 3
+                        },
+                          new Produto ()
+                        {
+                            NomeProduto="Churros de Chocolate",
+                            Descricao="Churros crocante com muito chocolate",
+                            Imagem="https://cdn0.tudoreceitas.com/pt/posts/9/0/2/churros_recheados_com_brigadeiro_6209_600.webp",
+                            Preco= 7,
+                            CategoriaId= 3
+                        },
+                          new Produto ()
+                        {
+                            NomeProduto="Churros de goiabada",
+                            Descricao="Churros crocante com muita goiabada",
+                            Imagem="https://static.ifood-static.com.br/image/upload/t_medium/pratos/c6e457eb-94f7-48b5-9902-ab7b9e771199/202003301851_rMxB_g.jpg",
+                            Preco= 7,
+                            CategoriaId= 3
+                        },
+                          new Produto ()
+                        {
+                            NomeProduto="Churros de nutella",
+                            Descricao="Churros crocante com muita nutella",
+                            Imagem="https://receitinhas.com.br/wp-content/uploads/2022/09/13962742_1662642220724015_7605727635270355408_n-730x365.jpg",
+                            Preco= 10,
+                            CategoriaId= 3
+                        },
+                           new Produto ()
+                        {
+                            NomeProduto="Café com leite",
+                            Descricao="quente e cremoso",
+                            Imagem="https://tudodereceitas.com.br/wp-content/uploads/2022/08/Cafe-com-leite-cremoso.jpg",
+                            Preco= 10,
+                            CategoriaId= 4
+                        },
+                           new Produto ()
+                        {
+                            NomeProduto="Capuccino",
+                            Descricao="muito cremoso",
+                            Imagem="https://images.tcdn.com.br/img/img_prod/832328/essencia_capuccino_express_2059_1_a11a826a0e884836ac931260a0a6885a.jpg",
+                            Preco= 10,
+                            CategoriaId= 4
+                        },
+                           new Produto ()
+                        {
+                            NomeProduto="Café expresso",
+                            Descricao="tradicional",
+                            Imagem="https://loucodocafe.com.br/wp-content/uploads/2019/09/cafe-expresso-02-e1568084083582-810x456.jpg",
+                            Preco= 5,
+                            CategoriaId= 4
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Café com nutella",
+                            Descricao="café com deliciosa cobertura de nutella",
+                            Imagem="https://www.rbsdirect.com.br/imagesrc/23490969.jpg?w=600",
+                            Preco= 15,
+                            CategoriaId= 4
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Café com chantilly",
+                            Descricao="café com deliciosa cobertura de chantilly",
+                            Imagem="https://cafemorrogrande.com.br/img/noticias/g_cafe-vienense.jpeg",
+                            Preco= 15,
+                            CategoriaId= 4
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Croissantt",
+                            Descricao="Delicioso Croissantt",
+                            Imagem="https://images.tcdn.com.br/img/img_prod/795791/croissant_artesanal_desfrute_do_sabor_frances_autentico_com_o_caminho_da_fazenda_347_1_d5980fbd4efb6408726616175b2e7731.jpg",
+                            Preco= 15,
+                            CategoriaId= 5
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Coxinha",
+                            Descricao="Deliciosa Coxinha de frango com requeijão",
+                            Imagem="https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2021/04/13/555044719-passo-a-passo-delicioso-de-como-fazer-massa-de-coxinha-fonte-pixabay-800x800.jpg",
+                            Preco= 10,
+                            CategoriaId= 5
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Pão de Queijo",
+                            Descricao="Delicioso Pão de Queijo",
+                            Imagem="https://vovopalmirinha.com.br/wp-content/uploads/2019/06/pao-de-queijo-702x336.jpg",
+                            Preco= 8,
+                            CategoriaId= 5
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Misto Quente",
+                            Descricao="Delicioso Misto Quente",
+                            Imagem="https://2.bp.blogspot.com/-n0BRuB8rVnM/Wwv2pb63PcI/AAAAAAAAM_E/gYTFlGH39zg95nDYtdwPteKhFc8vocccgCLcBGAs/s640/misto-quente-receita-1.jpeg",
+                            Preco= 18,
+                            CategoriaId= 5
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Pastel de Forno",
+                            Descricao="Delicioso Pastel de Forno de frango",
+                            Imagem="https://www.sabornamesa.com.br/media/k2/items/cache/73cfa97422fce7916e3facf08ef108b3_XL.jpg",
+                            Preco= 17,
+                            CategoriaId= 5
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Salada de Legumes",
+                            Descricao="Deliciosa Salada de Legumes fresco",
+                            Imagem="https://img.cybercook.com.br/receitas/960/salada-colorida-de-legumes-2-840x480.jpeg?q=75",
+                            Preco= 30,
+                            CategoriaId= 6
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Salada de Frango",
+                            Descricao="Deliciosa Salada de frango com legumes",
+                            Imagem="https://receitanatureba.com/wp-content/uploads/2020/09/Salada-com-Frango-Desfiado.jpg.webp",
+                            Preco= 38,
+                            CategoriaId= 6
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Salada de Rucula com manga",
+                            Descricao="Deliciosa Salada de Rucula com manga",
+                            Imagem="https://img.cybercook.com.br/receitas/725/salada-tropical-com-rucula-840x480.jpeg?q=75",
+                            Preco= 36,
+                            CategoriaId= 6
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Salada de Palmito",
+                            Descricao="Deliciosa Salada de palmito",
+                            Imagem="https://img-global.cpcdn.com/recipes/b675290f0bd9d0f5/680x482cq70/foto-principal-da-receita-queen-and-slim-salada-mix-de-folhas-tomate-e-palmito.jpg",
+                            Preco= 32,
+                            CategoriaId= 6
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Pernil de porco",
+                            Descricao="Delicioso Pernil de porco assado na brasa com farofa",
+                            Imagem="https://www.engeplus.com.br/cache/noticia/gastronomia/2012/sugestao-para-a-ceia-de-reveillon-pernil-suino-assado-na-brasa/sugestao-para-a-ceia-de-reveillon-pernil-suino-assado-na-brasa.jpg?t=20130924140648",
+                            Preco= 45,
+                            CategoriaId= 7
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Costela de porco",
+                            Descricao="Delicioso Costela de porco assado na brasa com farofa",
+                            Imagem="https://img.freepik.com/fotos-premium/costelinha-de-porco-na-brasa-para-cozinhar-carvoes-carne-fresca-de-porco-cozida-no-carvao-refeicao-caseira-de-verao-costelas-grelhadas_548821-10948.jpg?w=2000",
+                            Preco= 42,
+                            CategoriaId= 7
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Linguiça de porco",
+                            Descricao="Deliciosa Linguiça de porco assado na brasa com farofa",
+                            Imagem="https://conteudo.imguol.com.br/c/entretenimento/a5/2020/11/23/linguica-inteira-mantem-a-suculencia-mas-na-pressa-pode-ser-cortada-na-metade-1606137185589_v2_1170x540.jpg",
+                            Preco= 30,
+                            CategoriaId= 7
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Moqueca de Camarão",
+                            Descricao="Deliciosa moqueca de camarão",
+                            Imagem="https://p2.trrsf.com/image/fget/cf/774/0/images.terra.com/2020/11/02/caldeirada-frutos-do-mar-1-768x512.jpg",
+                            Preco= 55,
+                            CategoriaId= 8
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Risoto de Camarão",
+                            Descricao="Delicioso Risoto de camarão",
+                            Imagem="https://www.guiadasemana.com.br/contentFiles/image/opt_w768h768/2018/09/FEA/57977_shutterstock-1026870838.jpg",
+                            Preco= 55,
+                            CategoriaId= 8
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Risoto de Mexilhão",
+                            Descricao="Delicioso Risoto de Mexilhão",
+                            Imagem="https://marettimo.com.br/blog/wp-content/uploads/2019/05/frutos-do-mar-1.jpg",
+                            Preco= 55,
+                            CategoriaId= 8
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Lula grelhada",
+                            Descricao="Deliciosa Lula Grelhada",
+                            Imagem="https://www.anchieta.es.gov.br/uploads/filemanager/Festival%20Capixaba%20de%20Frutos%20do%20Mar/6a180a0c-dd87-499e-a5d8-3ce95c5216fe.jpg?1538741404970",
+                            Preco= 62,
+                            CategoriaId= 8
+                        },
+                            new Produto ()
+                        {
+                            NomeProduto="Lagosta na brasa",
+                            Descricao="Deliciosa Lagosta na Brasa",
+                            Imagem="http://imgsapp.df.divirtasemais.com.br/app/noticia_133890394703/2019/02/01/161056/20190131094838276825a.JPG",
+                            Preco= 100,
+                            CategoriaId= 8
+                        },
+                           
+                    });
+                    context.SaveChanges();
+                }*/
+                //Reservas
+                if (!context.Reservas.Any())
+                {
+                    context.Reservas.AddRange(new List<Reserva> ()
+                    {
+                        new Reserva()
+                        {
+                        DataHoraCriacao = DateTime.Now.AddDays(-10),
+                        DataHoraReserva = DateTime.Now.AddDays(-10),
+                        Descricao = "",
+                        Situacao = true,
+                        ClienteId = 1,
+                        MesaId = 1
+                        },
+                        new Reserva()
+                        {
+                        DataHoraCriacao = DateTime.Now.AddDays(-10),
+                        DataHoraReserva = DateTime.Now.AddDays(-10),
+                        Descricao = "",
+                        Situacao = true,
+                        ClienteId = 1,
+                        MesaId = 1
+                        },
+                        new Reserva()
+                        {
+                        DataHoraCriacao = DateTime.Now.AddDays(-10),
+                        DataHoraReserva = DateTime.Now.AddDays(-10),
+                        Descricao = "",
+                        Situacao = true,
+                        ClienteId = 1,
+                        MesaId = 1
+                        },
+                        new Reserva()
+                        {
+                        DataHoraCriacao = DateTime.Now.AddDays(-10),
+                        DataHoraReserva = DateTime.Now.AddDays(-10),
+                        Descricao = "",
+                        Situacao = true,
+                        ClienteId = 1,
+                        MesaId = 1
+                        },
                     });
                     context.SaveChanges();
                 }
-/*                //Reservas
-                if (!context.Restaurantes.Any())
+                //Agenda
+                /*if (!context.Agendas.Any())
                 {
-                    context.Clientes.AddRange(new List<Cliente>()
+                    context.Agendas.AddRange(new List<Agenda>()
                     {
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "13:00",
+                            MesaId = 1
+                        },
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "18:00",
+                            MesaId = 1
+                        },
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "20:00",
+                            MesaId = 1
+                        },
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "15:00",
+                            MesaId = 1
+                        },
 
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "12:00",
+                            MesaId = 2                            
+                        },
+
+                        new Agenda()
+                        {
+                            Data = DateTime.Now.AddDays(-10),
+                            Horario = "08:00",
+                            MesaId = 3
+                        },
                     });
-
-                }
-                //Avaliacoes
-                if (!context.Restaurantes.Any())
-                {
-                    context.Clientes.AddRange(new List<Cliente>()
-                    {
-
-                    });
-
+                    context.SaveChanges();                
                 }*/
+                                
+                                //Avaliacoes
+                               /* if (!context.Restaurantes.Any())
+                                {
+                                    context.Clientes.AddRange(new List<Cliente>()
+                                    {
+
+                                    });
+
+                                }*/
             }
         }
     }

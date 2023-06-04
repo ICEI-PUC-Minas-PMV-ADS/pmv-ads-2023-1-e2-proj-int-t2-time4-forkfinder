@@ -29,13 +29,13 @@ namespace ForkFinder.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Reservar([Bind("DataHoraReserva,Descricao")] Reserva reserva,Mesa mesa)
+        public async Task<IActionResult> Reservar([Bind("DataHoraReserva,Descricao")] Reserva reserva,Mesa mesa, Restaurante restaurante)
         {
             if (ModelState.IsValid)
             {
                
                 reserva.DataHoraCriacao = DateTime.Now;                
-                reserva.Situacao = false;            
+                reserva.Situacao = false;
                 reserva.MesaId = mesa.Id;
                 reserva.ClienteId = int.Parse(User.FindFirstValue("ClienteId"));
                 _context.Add(reserva);

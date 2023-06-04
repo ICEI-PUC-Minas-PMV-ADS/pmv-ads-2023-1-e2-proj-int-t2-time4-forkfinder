@@ -1,5 +1,4 @@
-﻿using eTickets.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -23,14 +22,9 @@ namespace ForkFinder.Models
         /* Relationships*/
         public int ClienteId { get; set; }
         [ForeignKey("ClienteId")]
-        public Cliente Cliente { get; set; }
-
-       
+        public Cliente Cliente { get; set; }       
        public int MesaId { get; set; }
         [ForeignKey("MesaId")]
         public Mesa Mesa { get; set; }
-        /*public string UserId { get; set; }
-        [ForeignKey(nameof(UserId))]
-        public ApplicationUser User { get; set; }*/
     }
 }

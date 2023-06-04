@@ -1,35 +1,51 @@
-﻿@model Reserva
-
+﻿@model IEnumerable<Reserva>
 @{
-    ViewData["Title"] = "Reservar";
+    ViewData["Title"] = "List of Reserva";
 }
-
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action="Reservar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="DataHoraReserva" class="control-label"></label>
-                <input asp-for="DataHoraReserva" class="form-control" />
-                <span asp-validation-for="DataHoraReserva" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>@Html.DisplayNameFor(model => model.DataHoraCriacao)</th>
+                    <th>@Html.DisplayNameFor(model => model.DataHoraReserva)</th>
+                    <th>@Html.DisplayNameFor(model => model.Descricao)</th>
+                    <th>@Html.DisplayNameFor(model => model.Situacao)</th>
+                    <th>@Html.DisplayNameFor(model => model.Mesa.TamanhoMesa)</th>
+                    <th>@Html.DisplayNameFor(model => model.Mesa.QuantidadeMesa)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.DataHoraCriacao)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.DataHoraReserva)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Descricao)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Mesa.TamanhoMesa)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Mesa.QuantidadeMesa)
+                        </td>
+                        <td class="align-middle">
+                            @Html.DisplayFor(modelItem => item.Situacao)
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a> |
+                            <a class="btn btn-outline-info"><i class="bi bi-eye"></i></a> |
+                            <a class="btn btn-danger text-white"><i class="bi bi-trash"></i></a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

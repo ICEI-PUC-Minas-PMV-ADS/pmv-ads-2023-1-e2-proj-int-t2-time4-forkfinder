@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ForkFinder.Models
 {
+    [Table("Enderecos")]
     public class Endereco
     {
 

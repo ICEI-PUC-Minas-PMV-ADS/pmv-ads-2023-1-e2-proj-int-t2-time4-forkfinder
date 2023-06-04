@@ -19,6 +19,31 @@ namespace ForkFinder.Migrations
                 .HasAnnotation("ProductVersion", "5.0.17")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ForkFinder.Models.Agenda", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("Data")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MesaId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RestauranteId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MesaId");
+
+                    b.HasIndex("RestauranteId");
+
+                    b.ToTable("Agendas");
+                });
+
             modelBuilder.Entity("ForkFinder.Models.Avaliacao", b =>
                 {
                     b.Property<int>("Id")
@@ -294,12 +319,40 @@ namespace ForkFinder.Migrations
                     b.ToTable("Funcionamentos");
                 });
 
+            modelBuilder.Entity("ForkFinder.Models.Horario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AgendaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("Hora")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MesaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgendaId");
+
+                    b.HasIndex("MesaId");
+
+                    b.ToTable("Horarios");
+                });
+
             modelBuilder.Entity("ForkFinder.Models.Mesa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("QuantidadeMesa")
                         .HasColumnType("int");
@@ -388,7 +441,7 @@ namespace ForkFinder.Migrations
 
             modelBuilder.Entity("ForkFinder.Models.Restaurante", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RestauranteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -424,9 +477,24 @@ namespace ForkFinder.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("RestauranteId");
 
                     b.ToTable("Restaurantes");
+                });
+
+            modelBuilder.Entity("ForkFinder.Models.Agenda", b =>
+                {
+                    b.HasOne("ForkFinder.Models.Mesa", "Mesa")
+                        .WithMany("Agendas")
+                        .HasForeignKey("MesaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ForkFinder.Models.Restaurante", null)
+                        .WithMany("Agendas")
+                        .HasForeignKey("RestauranteId");
+
+                    b.Navigation("Mesa");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Avaliacao", b =>
@@ -549,6 +617,21 @@ namespace ForkFinder.Migrations
                     b.Navigation("Restaurante");
                 });
 
+            modelBuilder.Entity("ForkFinder.Models.Horario", b =>
+                {
+                    b.HasOne("ForkFinder.Models.Agenda", null)
+                        .WithMany("Horarios")
+                        .HasForeignKey("AgendaId");
+
+                    b.HasOne("ForkFinder.Models.Mesa", "Mesas")
+                        .WithMany("Horarios")
+                        .HasForeignKey("MesaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Mesas");
+                });
+
             modelBuilder.Entity("ForkFinder.Models.Mesa", b =>
                 {
                     b.HasOne("ForkFinder.Models.Restaurante", "Restaurante")
@@ -590,6 +673,11 @@ namespace ForkFinder.Migrations
                     b.Navigation("Mesa");
                 });
 
+            modelBuilder.Entity("ForkFinder.Models.Agenda", b =>
+                {
+                    b.Navigation("Horarios");
+                });
+
             modelBuilder.Entity("ForkFinder.Models.Categoria", b =>
                 {
                     b.Navigation("Produtos");
@@ -615,11 +703,17 @@ namespace ForkFinder.Migrations
 
             modelBuilder.Entity("ForkFinder.Models.Mesa", b =>
                 {
+                    b.Navigation("Agendas");
+
+                    b.Navigation("Horarios");
+
                     b.Navigation("Reservas");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Restaurante", b =>
                 {
+                    b.Navigation("Agendas");
+
                     b.Navigation("Avaliacoes");
 
                     b.Navigation("Categorias");
