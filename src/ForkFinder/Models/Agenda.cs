@@ -20,6 +20,5 @@ namespace ForkFinder.Models
         public Mesa Mesa { get; set; }
 
         public List<Horario> Horarios { get; set; }
-        public List<DataMesa> DataMesas { get; set; }
     }
 }

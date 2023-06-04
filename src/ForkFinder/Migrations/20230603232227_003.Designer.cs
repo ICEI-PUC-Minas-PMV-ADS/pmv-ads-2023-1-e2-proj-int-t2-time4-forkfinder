@@ -4,14 +4,16 @@ using ForkFinder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForkFinder.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230603232227_003")]
+    partial class _003
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -165,6 +167,26 @@ namespace ForkFinder.Migrations
                     b.HasIndex("RestauranteId");
 
                     b.ToTable("Comentarios");
+                });
+
+            modelBuilder.Entity("ForkFinder.Models.DataMesa", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AgendaId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("DataMesas")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgendaId");
+
+                    b.ToTable("DataMesas");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Endereco", b =>
@@ -329,8 +351,9 @@ namespace ForkFinder.Migrations
                     b.Property<int?>("AgendaId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("Hora")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("Hora")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MesaId")
                         .HasColumnType("int");
@@ -424,6 +447,9 @@ namespace ForkFinder.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("HorarioId")
+                        .HasColumnType("int");
+
                     b.Property<int>("MesaId")
                         .HasColumnType("int");
 
@@ -433,6 +459,8 @@ namespace ForkFinder.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
+
+                    b.HasIndex("HorarioId");
 
                     b.HasIndex("MesaId");
 
@@ -544,6 +572,17 @@ namespace ForkFinder.Migrations
                     b.Navigation("Cliente");
 
                     b.Navigation("Restaurante");
+                });
+
+            modelBuilder.Entity("ForkFinder.Models.DataMesa", b =>
+                {
+                    b.HasOne("ForkFinder.Models.Agenda", "Agenda")
+                        .WithMany("DataMesas")
+                        .HasForeignKey("AgendaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Agenda");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Endereco", b =>
@@ -662,6 +701,12 @@ namespace ForkFinder.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ForkFinder.Models.Horario", "Horario")
+                        .WithMany()
+                        .HasForeignKey("HorarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ForkFinder.Models.Mesa", "Mesa")
                         .WithMany("Reservas")
                         .HasForeignKey("MesaId")
@@ -670,11 +715,15 @@ namespace ForkFinder.Migrations
 
                     b.Navigation("Cliente");
 
+                    b.Navigation("Horario");
+
                     b.Navigation("Mesa");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Agenda", b =>
                 {
+                    b.Navigation("DataMesas");
+
                     b.Navigation("Horarios");
                 });
 

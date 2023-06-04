@@ -67,7 +67,7 @@ namespace ForkFinder.Controllers
         public async Task<IActionResult> Reserved(int id)
         {
             var reservas = await _context.Clientes
-                .Include(r => r.Reservas).ThenInclude(m => m.Mesa)
+                //.Include(r => r.Reservas).ThenInclude(m => m.Mesa)
                 .FirstOrDefaultAsync(n => n.ClienteId == int.Parse(User.FindFirstValue("ClienteId")));
             if (reservas == null)
             {
@@ -76,12 +76,6 @@ namespace ForkFinder.Controllers
 
             return View(reservas);
         }
-
-        /* private bool ClienteExists(int id)
-         {
-             return _context.Clientes.Any(e => e.Id == id);
-         }*/
-
 
         public IActionResult Login()
         {

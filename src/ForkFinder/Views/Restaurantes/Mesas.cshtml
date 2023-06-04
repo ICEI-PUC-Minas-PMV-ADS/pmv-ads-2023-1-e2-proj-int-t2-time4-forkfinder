@@ -1,149 +1,88 @@
-﻿@*@model Restaurante
+﻿@model Restaurante
 
 @{
     ViewData["Title"] = "Restaurantes";
 }
 
-<h1>Mesas</h1>
+<h5>Selecione um horário em uma mesa</h5>
 
-<p>
+@*<p>
     <a asp-controller="Mesas" asp-action="Create">Adicionar nova mesa</a>
-</p>
+</p>*@
 
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-end">
+        <div class="col-10 justify-content-end">
+            <div class="col">
+                <div id="dateList" class="text-center mb-4">
+                    @foreach (var agenda in Model.Agendas.OrderBy(d => d.Data))
+                    {
+                        <a href="#" class="date-link btn btn-secondary m-2" data-date="@agenda.Data.ToString("dd/MM/yyyy")">@agenda.Data.ToString("dd/MM/yyyy")</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
         <div class="col">
-            <div id="dateCarousel" class="carousel slide mb-4" data-ride="carousel">
+            <div id="dateCarousel" class="carousel slide">
                 <div class="carousel-inner">
                     @for (int i = 0; i < Model.Agendas.Count; i++)
                     {
                         <div class="carousel-item @(i == 0 ? "active" : "")">
-                            <h4 class="text-center">@Model.Agendas[i].Data.ToString("dd/MM/yyyy")</h4>
+                            <h4 class="text-center d-none">@Model.Agendas[i].Data.ToString("dd/MM/yyyy")</h4>
+
+                            @foreach (var mesa in Model.Mesas)
+                            {
+                                <div class="row row-cols-auto">
+                                    <div class="col-2 p-3">Quant. Assentos @mesa.TamanhoMesa</div>
+
+                                    @foreach (var horario in Model.Agendas[i].Horarios.OrderBy(h => h.Hora))
+                                    {
+                                        @if (mesa.Horarios.Any(h => h.Id == horario.Id))
+                                        {
+                                            <div class="col row align-content-center m-1">
+                                                <div class="rounded btn btn-outline-secondary px-2">
+                                                    @*@horario.Hora*@
+                                                    @*<a href="@Url.Action("Reserva", "Restaurantes", new { restauranteId = Model.RestauranteId, mesaId = mesa.Id, horarioId = horario.Id, clienteId = "ClienteId" })" class="btn-reserva" data-mesa="@mesa.Id" data-horario="@horario.Hora">@horario.Hora</a>*@
+                                                    <a href="@Url.Action("Reserva", "Restaurantes", new { restauranteId = Model.RestauranteId, mesaId = mesa.Id, horarioId = horario.Id, clienteId = "ClienteId" })" class="btn-reserva" data-mesa="@mesa.Id" data-horario="@horario.Hora">@horario.Hora.ToString("HH:mm")</a>
+
+@*                                                    <a href="@Url.Action("Reserva", "Restaurantes", new { restauranteId = Model.RestauranteId, mesaId = mesa.Id, horarioId = horario.Id, clienteId = "ClienteId" })">@horario.Hora</a>
+*@
+                                                    
+</div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            }
                         </div>
                     }
                 </div>
-                <a class="carousel-control-prev" href="#dateCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#dateCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <tbody>
-                        @foreach (var mesa in Model.Mesas)
-                        {
-                            <tr>
-                                <th>@mesa.TamanhoMesa</th>
-                                @foreach (var agenda in Model.Agendas)
-                                {
-                                    <td>
-                                        @if (agenda.Horarios.Any(h => h.MesaId == mesa.Id))
-                                        {
-                                            var horario = agenda.Horarios.First(h => h.MesaId == mesa.Id);
-                                            <p>
-                                                <a href="@Url.Action("Reserva", "Agendamento", new { restauranteId = Model.Id, mesaId = mesa.Id, horarioId = horario.Id, clienteId = "seu_cliente_id" })">
-                                                    @horario.Hora
-                                                </a>
-                                            </p>
-                                        }
-                                        else
-                                        {
-                                            <p>Não disponível</p>
-                                        }
-                                    </td>
-                                }
-                            </tr>
-                        }
-                    </tbody>
-                </table>
             </div>
         </div>
     </div>
 </div>
 
-@section Scripts {
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(function () {
-            $("#dateCarousel").on("slid.bs.carousel", function () {
-                var activeDate = $(this).find(".carousel-item.active h4").text().trim();
-                var selectedDate = new Date(activeDate);
-            });
-        });
-    </script>
-}
-*@
-@model Restaurante
+<!-- Modal de confirmação de reserva -->
 
-@{
-    ViewData["Title"] = "Restaurantes";
-}
-
-<h1>Mesas</h1>
-
-<p>
-    <a asp-controller="Mesas" asp-action="Create">Adicionar nova mesa</a>
-</p>
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col">
-            <div id="dateCarousel" class="carousel slide mb-4">
-                <div class="carousel-inner">
-                    @for (int i = 0; i < Model.Agendas.Count; i++)
-                    {
-                        <div class="carousel-item @(i == 0 ? "active" : "")">
-                            <h4 class="text-center">@Model.Agendas[i].Data.ToString("dd/MM/yyyy")</h4>
-                            <div class="table-responsive">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>Mesa</th>
-                                            @*@foreach (var horario in Model.Agendas[i].Horarios.OrderBy(h => h.Hora))
-                                            {
-                                                <th>@horario.Hora</th>
-                                            }*@
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var mesa in Model.Mesas)
-                                        {
-                                            <tr>
-                                                <td>@mesa.TamanhoMesa</td>
-                                                @foreach (var horario in Model.Agendas[i].Horarios.OrderBy(h => h.Hora))
-                                                {
-                                                    <td>
-                                                        @horario.Hora
-                                                        @*@if (mesa.Horarios.Any(h => h.Id == horario.Id))
-                                                        {
-                                                            @horario.Hora
-                                                        }
-                                                        else
-                                                        {
-                                                            <p>Não disponível</p>
-                                                        }*@
-                                                    </td>   
-                                                }
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    }
-                </div>
-                <a class="carousel-control-prev" href="#dateCarousel" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#dateCarousel" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+<div class="modal fade" id="reservaModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="reservaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reservaModalLabel">Confirmação de Reserva</h5>
+                <button id="fecharModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <p>Por favor, confirme os detalhes da sua reserva:</p>
+                <p>Mesa: <strong id="mesaSelecionada"></strong></p>
+                <p>Data: <strong id="agendaSelecionada"></strong></p>
+                <p>Horário: <strong id="horarioSelecionado"></strong> horas</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="confirmarReserva">Confirmar Reserva</button>
             </div>
         </div>
     </div>
@@ -159,10 +98,55 @@
                 interval: false
             });
 
-            $("#dateCarousel").on("slid.bs.carousel", function () {
+            $("#dateCarousel").on( function () {
                 var activeItem = $(this).find(".carousel-item.active");
                 var activeDate = activeItem.find("h4").text().trim();
                 var selectedDate = new Date(activeDate);
+            });
+            $(".date-link").click(function (e) {
+                e.preventDefault();
+                var selectedDate = $(this).data("date");
+
+                // Encontrar o índice do item do carrossel correspondente à data selecionada
+                var index = -1;
+                $(".carousel-item").each(function (i) {
+                    if ($(this).find("h4").text().trim() === selectedDate) {
+                        index = i;
+                        return false; // Sai do loop quando encontrar a correspondência
+                    }
+                });
+
+                // Ativar o item correspondente no carrossel
+                if (index >= 0) {
+                    $("#dateCarousel").carousel(index);
+                }
+            });
+        });
+        </script>
+        <script>
+        $(function () {
+            $(".btn-reserva").click(function (e) {
+                e.preventDefault();
+
+                var mesaId = $(this).data("mesa");
+                var horario = new Date($(this).data("horario")).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                var agenda = $(this).data("agenda");
+
+                $("#mesaSelecionada").text(mesaId);
+                $("#horarioSelecionado").text(horario);
+                $("#agendaSelecionada").text(agenda);
+
+                $("#Modal-fade").modal("show");
+                $("#reservaModal").modal("show");
+                
+            });
+
+            $("#confirmarReserva").click(function () {
+              /*  Tela ou modal?*/
+            });
+            $("#fecharModal").click(function () {
+                $("#reservaModal").modal("hide");
+                $("#Modal-fade").modal("hide");
             });
         });
     </script>

@@ -77,6 +77,59 @@ namespace ForkFinder.Data
                             CNPJ = "49.040.769/0001-22",
                             FotoPerfil = "https://scontent.fjpa11-1.fna.fbcdn.net/v/t1.6435-9/60343892_2160827287327350_7286930952792571904_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=174925&_nc_ohc=zsMwXpUuvd4AX_tOPnY&_nc_ht=scontent.fjpa11-1.fna&oh=00_AfAdl2fABphiFftPkxLUw4f4IX_NX66sdmR-rQym-6qWCQ&oe=648AE71B",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        }, new Restaurante()
+                        {
+                            Nome = "Aladdin's Palace",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = "45.678.901/0001-04",
+                            FotoPerfil = "https://img.freepik.com/vetores-premium/logotipo-do-cafe-e-restaurante-de-comida-arabe_18099-3719.jpg?w=2000",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        }, new Restaurante()
+
+                              {
+                            Nome = "Falafel Oasis",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = "12.345.678/0001-01",
+                            FotoPerfil = "https://50graphics.com/wp-content/uploads/2019/04/Different-logo-designs-for-Arabian-restaurant.jpg",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        }, new Restaurante() {
+
+                            Nome = "Arabian Delights",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = "34.567.890/0001-03",
+                            FotoPerfil = "https://marketing.dcassetcdn.com/blog/2018/August/62-arabic-logos/Brown-Cup.jpg",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        }, new Restaurante() {
+
+                            Nome = "Shawarma Heaven",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = "12.345.678/0001-01",
+                            FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        }, new Restaurante()
+                        {
+
+
+                            Nome = "La Belle Époque",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = "90.123.456 / 0001 - 09",
+                            FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                        }, new Restaurante() {
+
+
+
+                            Nome = "La Petite Boulangerie",
+                            Email = "Teste",
+                            Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
+                            CNPJ = ". 78.901.234/0001-07",
+                            FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
                         }
                     });
                     context.SaveChanges();
@@ -414,7 +467,7 @@ namespace ForkFinder.Data
                         },
                         new Foto ()
                         {
-                            FotosRestaurante="https://casamadeira.com.br/wp-content/uploads/2019/11/restaurante-interno.jpg",
+                            FotosRestaurante="https://img.freepik.com/fotos-gratis/uma-sala-de-restaurante-com-paredes-de-tijolo-vermelho-mesas-de-madeira-e-canos-no-teto_140725-8504.jpg?w=996&t=st=1685842371~exp=1685842971~hmac=fbb8e505dae2ea81a7365ebcd779099d6f557b72bcc99b622d58f7e9c9ec7bd7",
                             RestauranteId= 1
                         },
                         new Foto ()

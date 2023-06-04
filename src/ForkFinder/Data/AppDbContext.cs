@@ -42,7 +42,7 @@ namespace ForkFinder.Data
         public DbSet<Restaurante> Restaurantes { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Avaliacao> Avaliacoes { get; set; }
-        public DbSet<Agenda> Agendas { get; set; }
+        public DbSet<Models.Agenda> Agendas { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Especialidade> Especialidades { get; set; }
@@ -52,7 +52,6 @@ namespace ForkFinder.Data
         public DbSet<Funcionamento> Funcionamentos { get; set; }
         public DbSet<Mesa> Mesas { get; set; }
         public DbSet<Horario> Horarios { get; set; }
-        public DbSet<DataMesa> DataMesas { get; set; }
         public DbSet<Reserva> Reservas { get; set; }
         public DbSet<Especialidade_Restaurante> Especialidades_Restaurantes { get; set; }
         public DbSet<Especialidade_Cliente> Especialidades_Clientes { get; set; }

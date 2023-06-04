@@ -24,6 +24,7 @@ namespace ForkFinder.Controllers
         {
             var data = await _context.Restaurantes
                 .Include(a => a.Avaliacoes)
+                .Include(e => e.Endereco)
                 .Include(er => er.Especialidades_Restaurantes).ThenInclude(es => es.Especialidade)
                 .ToListAsync();
 
@@ -49,7 +50,6 @@ namespace ForkFinder.Controllers
         public async Task<IActionResult> Agenda(int id)
         {
             var restaurante = await _context.Restaurantes
-                .Include(r => r.Agendas).ThenInclude(d=>d.DataMesas)
                 .Include(r => r.Agendas)
                 .FirstOrDefaultAsync(n => n.RestauranteId == id);
 
@@ -60,7 +60,7 @@ namespace ForkFinder.Controllers
 
             var viewModel = new AgendaViewModel
             {
-                
+
             };
 
             return View(viewModel);
@@ -94,8 +94,7 @@ namespace ForkFinder.Controllers
         {
             var restaurante = await _context.Restaurantes
                 .Include(m => m.Mesas).ThenInclude(ho => ho.Horarios)
-                .Include(r => r.Agendas)
-                .Include(r => r.Agendas).ThenInclude(ho=>ho.Horarios)
+                .Include(r => r.Agendas).ThenInclude(ho => ho.Horarios)
                 .FirstOrDefaultAsync(n => n.RestauranteId == id);
             if (restaurante == null)
             {
@@ -197,5 +196,49 @@ namespace ForkFinder.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login", "Restaurantes");
         }
+
+        /*-------------------------------------------*/
+
+
+        /*public IActionResult Reserva(int restauranteId, int mesaId, int horarioId, int clienteId)
+        {
+            // Lógica para registrar a reserva na tabela de reservas do banco de dados
+            var options = new DbContextOptionsBuilder<AppDbContext>()
+                .UseSqlServer("connectionString") // Substitua "connectionString" pela sua string de conexão real
+                .Options;
+
+            using (var dbContext = new AppDbContext(options))
+            {
+                var reserva = new Reserva
+                {
+                    RestauranteId = restauranteId,
+                    MesaId = mesaId,
+                    HorarioId = horarioId,
+                    ClienteId = clienteId,
+                    DataReserva = DateTime.Now,
+                    Situacao = false // Define a reserva como não aprovada inicialmente
+                };
+
+                var cliente = dbContext.Clientes.Find(clienteId);
+                if (cliente != null)
+                {
+                    cliente.Reservas.Add(reserva);
+                }
+
+                var restaurante = dbContext.Restaurantes.Find(restauranteId);
+                if (restaurante != null)
+                {
+                    restaurante.Reservas.Add(reserva);
+                }
+
+                dbContext.SaveChanges();
+            }
+
+            return RedirectToAction("ReservaRealizada");
+        }*/
+
+
+
+
     }
 }
