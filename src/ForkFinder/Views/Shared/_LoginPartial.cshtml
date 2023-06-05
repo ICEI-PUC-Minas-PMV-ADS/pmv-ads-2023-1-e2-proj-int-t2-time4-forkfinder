@@ -1,33 +1,38 @@
-﻿@using Microsoft.AspNetCore.Identity
-@using System.Security.Claims;
-
+﻿@using System.Security.Claims;
+@using ForkFinder.Data;
+@using Microsoft.EntityFrameworkCore;
+@inject AppDbContext _context
 <ul class="navbar-nav text-warning">
     @if (User.Identity.IsAuthenticated)
     {
         <li class="nav-item">
             @if (User.IsInRole("Cliente"))
             {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var cliente = _context.Clientes.FirstOrDefault(c => c.ClienteId.ToString() == userId);
+                byte[] fotoCliente = cliente != null ? Convert.FromBase64String(cliente.Foto) : null;
                 <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Perfil" title="Perfil">
-                    @if (!string.IsNullOrEmpty(((ClaimsIdentity)User.Identity).FindFirst("Foto")?.Value))
+                    @if (fotoCliente != null && fotoCliente.Length > 0)
                     {
-                        @*                        <img src="data:image;base64,@(((ClaimsIdentity)User.Identity).FindFirst("Foto")?.Value)" alt="Foto de Perfil" class="img-thumbnail" style="height: 30px; width: 30px; border-radius: 50%;" />*@                    }
-                        <img src="data:image;base64,@System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.FotoPerfil))" alt="Foto Perfil" class="img-thumbnail" />
-
-
+                        var imgSrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(fotoCliente));
+                        <img src="@imgSrc" alt="Foto de Perfil" class="img-thumbnail" style="height: 30px; width: 30px; border-radius: 50%;" />
+                    }
                     else
                     {
-                        <span>Olá, @User.Identity.Name!</span>
+                        <span>Olá Cliente, @User.Identity.Name!</span>
                     }
                 </a>
             }
             else if (User.IsInRole("Restaurante"))
             {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var restaurante = _context.Restaurantes.FirstOrDefault(r => r.RestauranteId.ToString() == userId);
+                byte[] fotoRestaurante = restaurante != null ? restaurante.FotoPerfil : null;
                 <a class="nav-link text-light" asp-area="" asp-controller="Restaurantes" asp-action="Perfil" title="Perfil">
-                    @if (!string.IsNullOrEmpty(((ClaimsIdentity)User.Identity).FindFirst("FotoPerfil")?.Value))
+                    @if (fotoRestaurante != null && fotoRestaurante.Length > 0)
                     {
-                        @*<img src="data:image;base64,@(((ClaimsIdentity)User.Identity).FindFirst("FotoPerfil")?.Value)" alt="Foto de Perfil" class="img-thumbnail" style="height: 30px; width: 30px; border-radius: 50%;" />*@
-                        <img src="data:image;base64,@System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.FotoPerfil))" alt="Foto Perfil" class="img-thumbnail" />
-
+                        var imgSrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(fotoRestaurante));
+                        <img src="@imgSrc" alt="Foto de Perfil" class="img-thumbnail" style="height: 30px; width: 30px; border-radius: 50%;" />
                     }
                     else
                     {
