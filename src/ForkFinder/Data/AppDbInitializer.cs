@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -27,11 +28,13 @@ namespace ForkFinder.Data
                         new Restaurante()
                         {
                             Nome = "Churros Gourmet",
-                            Email = "Teste",
+                            Email = "Churros",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "58.337.334/0001-35",
-                            FotoPerfil = "https://img.freepik.com/vetores-premium/logotipo-do-restaurante-retro_23-2148474404.jpg?w=2000",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Churros Gourmet"
+                            FotoPerfil = DownloadImageAsBytes("https://img.freepik.com/vetores-premium/logotipo-do-restaurante-retro_23-2148474404.jpg?w=2000"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Churros Gourmet",
+                            Avaliacao = 5,
+                            Papel = (Papel)1
                         },
                         new Restaurante()
                         {
@@ -39,8 +42,10 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "89.743.180/0001-05",
-                            FotoPerfil = "https://img.freepik.com/vetores-premium/modelo-de-design-de-logotipo-de-restaurante_79169-56.jpg",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Romeu & Juliet Bistrô"
+                            FotoPerfil = DownloadImageAsBytes("https://img.freepik.com/vetores-premium/modelo-de-design-de-logotipo-de-restaurante_79169-56.jpg"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Romeu & Juliet Bistrô",
+                            Avaliacao = 5,
+                            Papel = (Papel)1
                         },
                             new Restaurante()
                         {
@@ -48,8 +53,10 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "95.943.397/0001-61",
-                            FotoPerfil = "https://elements-cover-images-0.imgix.net/65db9b50-ecda-464e-aa91-a8196a4352be?auto=compress%2Cformat&fit=max&w=900&s=c1b54c18723a51bc1b2fc5823cca4d45",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Gosto Verde"
+                            FotoPerfil = DownloadImageAsBytes("https://elements-cover-images-0.imgix.net/65db9b50-ecda-464e-aa91-a8196a4352be?auto=compress%2Cformat&fit=max&w=900&s=c1b54c18723a51bc1b2fc5823cca4d45"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Gosto Verde",
+                            Avaliacao = 4,
+                            Papel = (Papel)1
                         },
                             new Restaurante()
                         {
@@ -57,8 +64,10 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "62.771.119/0001-15",
-                            FotoPerfil = "https://blog.agenciadosite.com.br/wp-content/uploads/2017/01/logo-para-restaurante.jpg",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Porco na Brasa"
+                            FotoPerfil = DownloadImageAsBytes("https://blog.agenciadosite.com.br/wp-content/uploads/2017/01/logo-para-restaurante.jpg"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Porco na Brasa",
+                            Avaliacao = 5,
+                            Papel = (Papel)1
                         },
                             new Restaurante()
                         {
@@ -66,8 +75,10 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "09.509.467/0001-36",
-                            FotoPerfil = "https://static.ifood-static.com.br/image/upload/t_medium/logosgde/06788a08-428b-4130-9d2c-b9e79725708e/202005281440_bTNt_.jpeg",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Nau Frutos do Mar"
+                            FotoPerfil = DownloadImageAsBytes("https://static.ifood-static.com.br/image/upload/t_medium/logosgde/06788a08-428b-4130-9d2c-b9e79725708e/202005281440_bTNt_.jpeg"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Nau Frutos do Mar",
+                            Avaliacao = 5,
+                            Papel = (Papel)1
                         },
                             new Restaurante()
                         {
@@ -75,16 +86,20 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "49.040.769/0001-22",
-                            FotoPerfil = "https://scontent.fjpa11-1.fna.fbcdn.net/v/t1.6435-9/60343892_2160827287327350_7286930952792571904_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=174925&_nc_ohc=zsMwXpUuvd4AX_tOPnY&_nc_ht=scontent.fjpa11-1.fna&oh=00_AfAdl2fABphiFftPkxLUw4f4IX_NX66sdmR-rQym-6qWCQ&oe=648AE71B",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                            FotoPerfil = DownloadImageAsBytes("https://scontent.fjpa11-1.fna.fbcdn.net/v/t1.6435-9/60343892_2160827287327350_7286930952792571904_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=174925&_nc_ohc=zsMwXpUuvd4AX_tOPnY&_nc_ht=scontent.fjpa11-1.fna&oh=00_AfAdl2fABphiFftPkxLUw4f4IX_NX66sdmR-rQym-6qWCQ&oe=648AE71B"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional",
+                            Avaliacao = 5,
+                            Papel = (Papel)1
                         }, new Restaurante()
                         {
                             Nome = "Aladdin's Palace",
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "45.678.901/0001-04",
-                            FotoPerfil = "https://img.freepik.com/vetores-premium/logotipo-do-cafe-e-restaurante-de-comida-arabe_18099-3719.jpg?w=2000",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                            FotoPerfil = DownloadImageAsBytes("https://img.freepik.com/vetores-premium/logotipo-do-cafe-e-restaurante-de-comida-arabe_18099-3719.jpg?w=2000"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional",
+                            Avaliacao = 4,
+                            Papel = (Papel)1
                         }, new Restaurante()
 
                               {
@@ -92,24 +107,30 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "12.345.678/0001-01",
-                            FotoPerfil = "https://50graphics.com/wp-content/uploads/2019/04/Different-logo-designs-for-Arabian-restaurant.jpg",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                            FotoPerfil = DownloadImageAsBytes("https://50graphics.com/wp-content/uploads/2019/04/Different-logo-designs-for-Arabian-restaurant.jpg"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional",
+                            Avaliacao = 3,
+                            Papel = (Papel)1
                         }, new Restaurante() {
 
                             Nome = "Arabian Delights",
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "34.567.890/0001-03",
-                            FotoPerfil = "https://marketing.dcassetcdn.com/blog/2018/August/62-arabic-logos/Brown-Cup.jpg",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                            FotoPerfil = DownloadImageAsBytes("https://marketing.dcassetcdn.com/blog/2018/August/62-arabic-logos/Brown-Cup.jpg"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional",
+                            Avaliacao = 3,
+                            Papel = (Papel)1
                         }, new Restaurante() {
 
                             Nome = "Shawarma Heaven",
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "12.345.678/0001-01",
-                            FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                            FotoPerfil = DownloadImageAsBytes("https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional",
+                            Avaliacao = 5,
+                            Papel = (Papel)1
                         }, new Restaurante()
                         {
 
@@ -118,8 +139,10 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "90.123.456 / 0001 - 09",
-                            FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                            FotoPerfil = DownloadImageAsBytes("https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional",
+                            Avaliacao = 4,
+                            Papel = (Papel)1
                         }, new Restaurante() {
 
 
@@ -128,8 +151,10 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = ". 78.901.234/0001-07",
-                            FotoPerfil = "https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0",
-                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
+                            FotoPerfil = DownloadImageAsBytes("https://th.bing.com/th/id/R.5ee1ee3f5c2bd3e475c9307a65cf1383?rik=%2BSMjp1%2BPDvr7WA&riu=http%3A%2F%2Fruidosonoro.com%2Fwp-content%2Fuploads%2F2015%2F12%2F12265705_920887074627899_2005055234051443471_o.jpg&ehk=hLkZKbpJvTINnqYJxTIa7xNpushjRp9KQy7HgrJzj9Y%3D&risl=&pid=ImgRaw&r=0"),
+                            DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional",
+                            Avaliacao = 5,
+                            Papel = (Papel)1
                         }
                     });
                     context.SaveChanges();
@@ -1218,7 +1243,6 @@ namespace ForkFinder.Data
                         new Reserva()
                         {
                         DataHoraCriacao = DateTime.Now.AddDays(-10),
-                        DataHoraReserva = DateTime.Now.AddDays(-10),
                         Descricao = "",
                         Situacao = true,
                         ClienteId = 1,
@@ -1227,7 +1251,6 @@ namespace ForkFinder.Data
                         new Reserva()
                         {
                         DataHoraCriacao = DateTime.Now.AddDays(-10),
-                        DataHoraReserva = DateTime.Now.AddDays(-10),
                         Descricao = "",
                         Situacao = true,
                         ClienteId = 1,
@@ -1236,7 +1259,6 @@ namespace ForkFinder.Data
                         new Reserva()
                         {
                         DataHoraCriacao = DateTime.Now.AddDays(-10),
-                        DataHoraReserva = DateTime.Now.AddDays(-10),
                         Descricao = "",
                         Situacao = true,
                         ClienteId = 1,
@@ -1245,7 +1267,6 @@ namespace ForkFinder.Data
                         new Reserva()
                         {
                         DataHoraCriacao = DateTime.Now.AddDays(-10),
-                        DataHoraReserva = DateTime.Now.AddDays(-10),
                         Descricao = "",
                         Situacao = true,
                         ClienteId = 1,
@@ -1300,16 +1321,25 @@ namespace ForkFinder.Data
                     });
                     context.SaveChanges();                
                 }*/
-                                
-                                //Avaliacoes
-                               /* if (!context.Restaurantes.Any())
-                                {
-                                    context.Clientes.AddRange(new List<Cliente>()
-                                    {
 
-                                    });
+                //Avaliacoes
+                /* if (!context.Restaurantes.Any())
+                 {
+                     context.Clientes.AddRange(new List<Cliente>()
+                     {
 
-                                }*/
+                     });
+
+                 }*/
+                
+            }
+            
+        }
+        private static byte[] DownloadImageAsBytes(string imageUrl)
+        {
+            using (var webClient = new WebClient())
+            {
+                return webClient.DownloadData(imageUrl);
             }
         }
     }

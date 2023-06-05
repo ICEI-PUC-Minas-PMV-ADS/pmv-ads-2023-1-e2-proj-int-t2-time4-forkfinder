@@ -15,8 +15,8 @@ namespace ForkFinder.Models
         public string CNPJ { get; set; }
 
         [Display(Name = "Foto Perfil")]
-        //[Required(ErrorMessage = "O campo {0} é obrigatório!")]
-        public string FotoPerfil { get; set; }
+        public byte[] FotoPerfil { get; set; }
+
 
         [Display(Name = "Descrição")]
         //[Required(ErrorMessage = "O campo {0} é obrigatório!")]
@@ -27,7 +27,8 @@ namespace ForkFinder.Models
         //Relationships   
         public List<Especialidade_Restaurante> Especialidades_Restaurantes { get; set; }
         public List<Agenda> Agendas { get; set; }
-        public List<Mesa> Mesas { get; set; }
+        public virtual List<Mesa> Mesas { get; set; }
+        public virtual List<Reserva> Reservas { get; set; }
         public List<Categoria> Categorias { get; set; }
         public List<Comentario> Comentarios { get; set; }
         public Funcionamento Funcionamento { get; set; }

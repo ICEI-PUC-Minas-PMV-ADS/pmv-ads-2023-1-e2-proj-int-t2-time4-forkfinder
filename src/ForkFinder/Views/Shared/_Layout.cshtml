@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     
 </head>
-<body class="bg-body-secondary d-flex flex-column h-100 mb-378" data-bs-theme="dark">
+<body class="bg-body-secondary d-flex flex-column h-100" data-bs-theme="dark">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark box-shadow mb-3">
             @*bg-body-tertiary*@
@@ -28,7 +28,16 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between ">
 
                     <ul class="navbar-nav flex-grow-1 justify-content-end px-2">
-                    
+                        @{
+                            var restauranteIdClaim = User.FindFirst("RestauranteId")?.Value;
+                        }
+
+                        @if (User.Identity.IsAuthenticated && int.TryParse(restauranteIdClaim, out int restauranteId))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-warning" asp-area="" asp-controller="Reservas" asp-action="Index">Reservas</a>
+                            </li>
+                        }
                        @* <li class="nav-item">
                             <a class="nav-link text-warning" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>*@

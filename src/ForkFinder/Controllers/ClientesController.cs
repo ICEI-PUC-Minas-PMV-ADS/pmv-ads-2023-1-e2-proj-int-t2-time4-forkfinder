@@ -33,22 +33,27 @@ namespace ForkFinder.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
         public async Task<IActionResult> Register([Bind("Id,Email,Senha,Nome,CPF,Papel,CreatedDate")] Cliente cliente)
         {
-            var checkExistingEmail = _context.Clientes.FirstOrDefault(stored => stored.Email == cliente.Email);
+            var checkExistingEmail = await _context.Clientes.FirstOrDefaultAsync(stored => stored.Email == cliente.Email);
+            var checkExistingNome = await _context.Clientes.FirstOrDefaultAsync(stored => stored.Nome == cliente.Nome);
             var validatePasswordLength = cliente.Senha.Length >= 8;
-            
 
             if (checkExistingEmail != null)
             {
-                ModelState.AddModelError("Email", "E-mai já cadastrado");
+                ModelState.AddModelError("Email", "E-mail já cadastrado.");
+            }
+
+            if (checkExistingNome != null)
+            {
+                ModelState.AddModelError("Nome", "Nome já cadastrado.");
             }
 
             if (!validatePasswordLength)
             {
                 ModelState.AddModelError("Senha", "A senha deve ter pelo menos 8 caracteres.");
             }
+
             if (ModelState.IsValid)
             {
                 cliente.Senha = BCrypt.Net.BCrypt.HashPassword(cliente.Senha);

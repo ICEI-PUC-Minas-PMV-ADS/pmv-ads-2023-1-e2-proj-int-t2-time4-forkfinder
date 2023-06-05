@@ -1,26 +1,54 @@
 ﻿@using Microsoft.AspNetCore.Identity
-@*@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager*@
+@using System.Security.Claims;
 
 <ul class="navbar-nav text-warning">
-@if (User.Identity.IsAuthenticated)
-{
-    <li class="nav-item">
-        <a  class="nav-link text-light" asp-area="" asp-page="/Account/Manage/Index" title="Manage">Olá, @User.Identity.Name!</a>
-    </li>
-    <li class="nav-item">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item">
+            @if (User.IsInRole("Cliente"))
+            {
+                <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Perfil" title="Perfil">
+                    @if (!string.IsNullOrEmpty(((ClaimsIdentity)User.Identity).FindFirst("Foto")?.Value))
+                    {
+                        @*                        <img src="data:image;base64,@(((ClaimsIdentity)User.Identity).FindFirst("Foto")?.Value)" alt="Foto de Perfil" class="img-thumbnail" style="height: 30px; width: 30px; border-radius: 50%;" />*@                    }
+                        <img src="data:image;base64,@System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.FotoPerfil))" alt="Foto Perfil" class="img-thumbnail" />
+
+
+                    else
+                    {
+                        <span>Olá, @User.Identity.Name!</span>
+                    }
+                </a>
+            }
+            else if (User.IsInRole("Restaurante"))
+            {
+                <a class="nav-link text-light" asp-area="" asp-controller="Restaurantes" asp-action="Perfil" title="Perfil">
+                    @if (!string.IsNullOrEmpty(((ClaimsIdentity)User.Identity).FindFirst("FotoPerfil")?.Value))
+                    {
+                        @*<img src="data:image;base64,@(((ClaimsIdentity)User.Identity).FindFirst("FotoPerfil")?.Value)" alt="Foto de Perfil" class="img-thumbnail" style="height: 30px; width: 30px; border-radius: 50%;" />*@
+                        <img src="data:image;base64,@System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(Model.FotoPerfil))" alt="Foto Perfil" class="img-thumbnail" />
+
+                    }
+                    else
+                    {
+                        <span>Olá, @User.Identity.Name!</span>
+                    }
+                </a>
+            }
+        </li>
+        <li class="nav-item">
             <form class="form-inline" asp-area="" asp-controller="Clientes" asp-action="Logout">
-            <button  type="submit" class="nav-link btn btn-link text-light">Sair</button>
-        </form>
-    </li>
-}
-else
-{
+                <button type="submit" class="nav-link btn btn-link text-light">Sair</button>
+            </form>
+        </li>
+    }
+    else
+    {
         <li class="nav-item px-2">
-        <a class="btn btn-outline-light " asp-area="" asp-controller="Clientes" asp-action="Register">Cadastrar</a>
-    </li>
-    <li class="nav-item">
-        <a class="btn bg-warning text-dark" asp-area="" asp-controller="Clientes" asp-action="Login">Login</a>
-    </li>
-}
+            <a class="btn btn-outline-light" asp-area="" asp-controller="Clientes" asp-action="Register">Cadastrar</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn bg-warning text-dark" asp-area="" asp-controller="Clientes" asp-action="Login">Login</a>
+        </li>
+    }
 </ul>
