@@ -95,12 +95,12 @@ namespace ForkFinder.Data
 
                             FotoPerfil = "htts://th.bing.com/th/id/R.395f8b006a3bd0d07131fa7e99db8d45?rik=NzmyyrNQipPDKg&riu=http%3A%2F%2F50graphics.com%2Fwp-content%2Fuploads%2F2019%2F04%2FDifferent-logo-designs-for-Arabian-restaurant.jpg&ehk=XRlSiJsTVyKPAKtMMggXKOQGNLgKEJSVQpib3tJKWaw%3D&risl=&pid=ImgRaw&r=2000",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
-                        }, new Restaurante() {
+                        },/* new Restaurante() {
                              
 
                             FotoPerfil = "https://50graphics.com/wp-content/uploads/2019/04/Different-logo-designs-for-Arabian-restaurant.jpg",
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional"
-                        }, new Restaurante() {
+                        }, */new Restaurante() {
 
 
                             Nome = "Arabian Delights",
@@ -312,7 +312,7 @@ namespace ForkFinder.Data
                         Estado = "MG",
                         RestauranteId = 6
                         },
-                        new Endereco()
+                        /*new Endereco()
                         {
                         Logradouro ="Rua dos Sabores",
                         Numero = "959",
@@ -385,7 +385,7 @@ namespace ForkFinder.Data
                         Estado = "MG",
                         RestauranteId = 12
 
-                        },
+                        },*/
 
                     });
                     context.SaveChanges();
