@@ -10,6 +10,10 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using ForkFinder.ViewModels;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Identity;
 
 namespace ForkFinder.Controllers
 {
@@ -30,21 +34,6 @@ namespace ForkFinder.Controllers
 
             return View(data);
         }
-        /*[AllowAnonymous]
-        public async Task<IActionResult> Index(int id)
-        {
-            var restaurante = await _context.Restaurantes
-                .Include(am => am.Especialidades_Restaurantes).ThenInclude(r => r.Restaurante)
-                .Include(am => am.Especialidades_Restaurantes).ThenInclude(r => r.Restaurante).ThenInclude(e => e.Endereco)
-                .Include(am => am.Especialidades_Restaurantes).ThenInclude(r => r.Restaurante).ThenInclude(a => a.Avaliacoes)
-                .FirstOrDefaultAsync(n => n.RestauranteId == id);
-            if (restaurante == null)
-            {
-                return NotFound();
-            }
-
-            return View(restaurante);
-        }*/
 
         [AllowAnonymous]
         public async Task<IActionResult> Agenda(int id)
@@ -125,20 +114,117 @@ namespace ForkFinder.Controllers
             {
                 ModelState.AddModelError("Senha", "A senha deve ter pelo menos 8 caracteres.");
             }
-            if (ModelState.IsValid)
+            if (ModelState.IsValid || (!string.IsNullOrEmpty(restaurante.Senha)))
             {
+                string iconPath = "path/do/icone/user.png"; // Caminho do arquivo de imagem do ícone
+                byte[] iconBytes = System.IO.File.ReadAllBytes(iconPath);
                 restaurante.Senha = BCrypt.Net.BCrypt.HashPassword(restaurante.Senha);
                 restaurante.Nome = restaurante.Nome;
                 restaurante.Email = restaurante.Email;
                 restaurante.CNPJ = restaurante.CNPJ;
-                restaurante.FotoPerfil = "#";
+                restaurante.FotoPerfil = iconBytes;
                 restaurante.Papel = (Papel)1;
                 _context.Add(restaurante);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Login", "Restaurantes");
+                return RedirectToAction("Perfil", restaurante);
             }
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> EditarPerfil(Restaurante restaurante, IFormFile fotoPerfil)
+        {
+            // Recuperar o restaurante do banco de dados
+            var restauranteIdClaim = User.FindFirst("RestauranteId")?.Value;
+            if (restauranteIdClaim != null && int.TryParse(restauranteIdClaim, out int restauranteId))
+            {
+                var restauranteExistente = await _context.Restaurantes.FindAsync(restauranteId);
+
+                // Verificar se o restaurante existe
+                if (restauranteExistente != null)
+                {
+                    // Atualizar os campos do restaurante com os dados do formulário
+                    restauranteExistente.Nome = restaurante.Nome;
+                    restauranteExistente.CNPJ = restaurante.CNPJ;                    
+                    restauranteExistente.DescricaoRestaurante = restaurante.DescricaoRestaurante;
+                    restauranteExistente.Acessibilidade = restaurante.Acessibilidade;
+                    restauranteExistente.Papel = (Papel)1;
+
+                    // Consultar a senha atual do restaurante no banco de dados
+                    var senhaAtual = await _context.Restaurantes
+                        .Where(r => r.RestauranteId == restauranteId)
+                        .Select(r => r.Senha)
+                        .FirstOrDefaultAsync();
+
+                    // Atribuir a senha atual ao restaurante sendo atualizado
+                    restaurante.Senha = senhaAtual;
+                    /*restauranteExistente.Senha = BCrypt.Net.BCrypt.HashPassword(restaurante.Senha);
+                    */
+                    if (fotoPerfil != null)
+                {
+                    // Processar e salvar a imagem de perfil
+                    restauranteExistente.FotoPerfil = await ProcessarImagemPerfil(fotoPerfil);
+                }
+
+                // Verificar a validade do modelo após a atualização dos dados
+                if (ModelState.IsValid)
+                {
+                    _context.Update(restauranteExistente);
+                    await _context.SaveChangesAsync();
+
+                    return RedirectToAction("Perfil", new { id = restauranteExistente.RestauranteId });
+                }
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    var errorMessage = error.ErrorMessage;
+                    var exception = error.Exception;
+                    // Faça o tratamento adequado das mensagens de erro
+                }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Restaurante não encontrado.");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "RestauranteId inválido ou não fornecido.");
+            }
+
+            // Se o ModelState não for válido ou o restaurante não existir, retorne a view com os dados do restaurante
+            return View(restaurante);
+        }
+
+
+        private async Task<byte[]> ProcessarImagemPerfil(IFormFile fotoPerfil)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await fotoPerfil.CopyToAsync(memoryStream);
+                return memoryStream.ToArray();
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> PreencherPerfil(Restaurante restaurante, IFormFile fotoPerfilFile)
+        {
+            if (fotoPerfilFile != null)
+            {
+                using (var memoryStream = new MemoryStream())
+                {
+                    await fotoPerfilFile.CopyToAsync(memoryStream);
+                    restaurante.FotoPerfil = memoryStream.ToArray();
+                }
+            }
+
+            // Salvar o objeto Restaurante no banco de dados
+            _context.Restaurantes.Add(restaurante);
+            await _context.SaveChangesAsync();
+
+            // Redirecionar para a página de sucesso ou outra página relevante
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Login()
         {
             return View();
@@ -148,12 +234,11 @@ namespace ForkFinder.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login([Bind("Email,Senha")] Restaurante restaurante)
         {
-            var user = await _context.Restaurantes
-                .FirstOrDefaultAsync(m => m.Email == restaurante.Email);
+            var user = await _context.Restaurantes.FirstOrDefaultAsync(m => m.Email == restaurante.Email);
 
             if (user == null)
             {
-                ViewBag.Message = "Usuário e/ou Senha inválidos!";
+                ModelState.AddModelError(string.Empty, "Usuário e/ou senha inválidos.");
                 return View();
             }
 
@@ -162,83 +247,63 @@ namespace ForkFinder.Controllers
             if (isSenhaOk)
             {
                 var claims = new List<Claim>
-                    {
-                        new Claim(ClaimTypes.Name, user.Nome),
-                        new Claim(ClaimTypes.NameIdentifier, user.Nome),
-                        new Claim(ClaimTypes.Role, user.Papel.ToString()),
-                        new Claim("RestauranteId", user.RestauranteId.ToString()),
-                    };
-
+        {
+            new Claim(ClaimTypes.Name, user.Nome),
+            new Claim(ClaimTypes.NameIdentifier, user.Nome),
+            new Claim(ClaimTypes.Role, user.Papel.ToString()),
+            new Claim("RestauranteId", user.RestauranteId.ToString()),
+        };
                 var userIdentity = new ClaimsIdentity(claims, "login");
-
                 ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
-
                 var props = new AuthenticationProperties
                 {
                     AllowRefresh = true,
                     ExpiresUtc = DateTime.Now.ToLocalTime().AddDays(7),
                     IsPersistent = true
                 };
-
                 await HttpContext.SignInAsync(principal, props);
-
                 return Redirect("/");
-
             }
 
-            ViewBag.Message = "Usuário e/ou Senha inválidos!";
+            ModelState.AddModelError(string.Empty, "Usuário e/ou senha inválidos.");
             return View();
-
         }
+
         [AllowAnonymous]
         public async Task<IActionResult> Logout()
         {
             await HttpContext.SignOutAsync();
             return RedirectToAction("Login", "Restaurantes");
         }
-
-        /*-------------------------------------------*/
-
-
-        /*public IActionResult Reserva(int restauranteId, int mesaId, int horarioId, int clienteId)
+        [Authorize]
+        public async Task<IActionResult> Reserva(int mesaId, DateTime horarioId, DateTime dataReserva, int clienteId, int agendaId)
         {
-            // Lógica para registrar a reserva na tabela de reservas do banco de dados
-            var options = new DbContextOptionsBuilder<AppDbContext>()
-                .UseSqlServer("connectionString") // Substitua "connectionString" pela sua string de conexão real
-                .Options;
-
-            using (var dbContext = new AppDbContext(options))
+            var reserva = new Reserva
             {
-                var reserva = new Reserva
-                {
-                    RestauranteId = restauranteId,
-                    MesaId = mesaId,
-                    HorarioId = horarioId,
-                    ClienteId = clienteId,
-                    DataReserva = DateTime.Now,
-                    Situacao = false // Define a reserva como não aprovada inicialmente
-                };
+                MesaId = mesaId,
+                DataHoraReserva = horarioId,
+                ClienteId = int.Parse(User.FindFirstValue("ClienteId")),
+                DataHoraCriacao = DateTime.Now,
+                //AgendaId = agendaId,
+                Situacao = false // Define a reserva como não aprovada inicialmente
+            };
 
-                var cliente = dbContext.Clientes.Find(clienteId);
-                if (cliente != null)
-                {
-                    cliente.Reservas.Add(reserva);
-                }
-
-                var restaurante = dbContext.Restaurantes.Find(restauranteId);
-                if (restaurante != null)
-                {
-                    restaurante.Reservas.Add(reserva);
-                }
-
-                dbContext.SaveChanges();
+            var cliente = _context.Clientes.Find(clienteId);
+            if (cliente != null)
+            {
+                cliente.Reservas.Add(reserva);
             }
 
-            return RedirectToAction("ReservaRealizada");
-        }*/
+            _context.Add(reserva);
+            await _context.SaveChangesAsync();
 
-
-
+            return RedirectToAction("Reserved", "Clientes", new { id = clienteId });
+        }
+        public IActionResult Perfil(Restaurante restaurante)
+        {
+            return View(restaurante);
+        }
 
     }
+
 }

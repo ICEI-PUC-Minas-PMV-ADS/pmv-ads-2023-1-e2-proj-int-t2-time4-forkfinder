@@ -1,0 +1,53 @@
+﻿@model List<ForkFinder.Models.Reserva>
+
+@{
+    ViewData["Title"] = "Reservas";
+}
+
+<h2 class="text-center">@ViewData["Title"]</h2>
+
+@if (Model.Count > 0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Data e Hora da Reserva</th>
+                <th>Complemento</th>
+                <th>Situação</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reserva in Model)
+            {
+                <tr>
+                    <td>@reserva.Cliente.Nome</td>
+                    <td>@reserva.DataHoraReserva.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@reserva.Descricao</td>
+                    <td>@(reserva.Situacao ? "Aprovada" : "Pendente")</td>
+                    <td>
+                        @if (!reserva.Situacao)
+                        {
+                            <button class="btn btn-primary" onclick="aprovarReserva('@reserva.Id'); mostrarAlertaReservaAprovada();">Aprovar</button>
+
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Não há reservas disponíveis.</p>
+}
+
+@section Scripts {
+    <script>
+        function mostrarAlertaReservaAprovada() {
+            alert('Reserva aprovada com sucesso!');
+        }
+    </script>
+}
+

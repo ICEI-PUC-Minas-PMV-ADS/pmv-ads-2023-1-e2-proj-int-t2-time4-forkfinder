@@ -1,26 +1,59 @@
-﻿@using Microsoft.AspNetCore.Identity
-@*@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager*@
-
+﻿@using System.Security.Claims;
+@using ForkFinder.Data;
+@using Microsoft.EntityFrameworkCore;
+@inject AppDbContext _context
 <ul class="navbar-nav text-warning">
-@if (User.Identity.IsAuthenticated)
-{
-    <li class="nav-item">
-        <a  class="nav-link text-light" asp-area="" asp-page="/Account/Manage/Index" title="Manage">Olá, @User.Identity.Name!</a>
-    </li>
-    <li class="nav-item">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item">
+            @if (User.IsInRole("Cliente"))
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var cliente = _context.Clientes.FirstOrDefault(c => c.ClienteId.ToString() == userId);
+                byte[] fotoCliente = cliente != null ? Convert.FromBase64String(cliente.Foto) : null;
+                <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Perfil" title="Perfil">
+                    @if (fotoCliente != null && fotoCliente.Length > 0)
+                    {
+                        var imgSrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(fotoCliente));
+                        <img src="@imgSrc" alt="Foto de Perfil" class="img-thumbnail" style="height: 30px; width: 30px; border-radius: 50%;" />
+                    }
+                    else
+                    {
+                        <span>Olá Cliente, @User.Identity.Name!</span>
+                    }
+                </a>
+            }
+            else if (User.IsInRole("Restaurante"))
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var restaurante = _context.Restaurantes.FirstOrDefault(r => r.RestauranteId.ToString() == userId);
+                byte[] fotoRestaurante = restaurante != null ? restaurante.FotoPerfil : null;
+                <a class="nav-link text-light" asp-area="" asp-controller="Restaurantes" asp-action="Perfil" title="Perfil">
+                    @if (fotoRestaurante != null && fotoRestaurante.Length > 0)
+                    {
+                        var imgSrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(fotoRestaurante));
+                        <img src="@imgSrc" alt="Foto de Perfil" class="img-thumbnail" style="height: 30px; width: 30px; border-radius: 50%;" />
+                    }
+                    else
+                    {
+                        <span>Olá, @User.Identity.Name!</span>
+                    }
+                </a>
+            }
+        </li>
+        <li class="nav-item">
             <form class="form-inline" asp-area="" asp-controller="Clientes" asp-action="Logout">
-            <button  type="submit" class="nav-link btn btn-link text-light">Sair</button>
-        </form>
-    </li>
-}
-else
-{
+                <button type="submit" class="nav-link btn btn-link text-light">Sair</button>
+            </form>
+        </li>
+    }
+    else
+    {
         <li class="nav-item px-2">
-        <a class="btn btn-outline-light " asp-area="" asp-controller="Clientes" asp-action="Register">Cadastrar</a>
-    </li>
-    <li class="nav-item">
-        <a class="btn bg-warning text-dark" asp-area="" asp-controller="Clientes" asp-action="Login">Login</a>
-    </li>
-}
+            <a class="btn btn-outline-light" asp-area="" asp-controller="Clientes" asp-action="Register">Cadastrar</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn bg-warning text-dark" asp-area="" asp-controller="Clientes" asp-action="Login">Login</a>
+        </li>
+    }
 </ul>

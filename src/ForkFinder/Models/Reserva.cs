@@ -23,8 +23,19 @@ namespace ForkFinder.Models
         public int ClienteId { get; set; }
         [ForeignKey("ClienteId")]
         public Cliente Cliente { get; set; }       
-       public int MesaId { get; set; }
+        public int MesaId { get; set; }
         [ForeignKey("MesaId")]
         public Mesa Mesa { get; set; }
+
+        /*New*/
+        /*public int RestauranteId { get; set; }
+        [ForeignKey("RestauranteId")]
+        public Restaurante Restaurante { get; set; }
+        public int HorarioId { get; set; }
+        [ForeignKey("HorarioId")]
+        public Horario Horario { get; set; }
+        public int AgendaId { get; set; }
+        [ForeignKey("AgendaId")]
+        public Agenda Agenda { get; set; }*/
     }
 }

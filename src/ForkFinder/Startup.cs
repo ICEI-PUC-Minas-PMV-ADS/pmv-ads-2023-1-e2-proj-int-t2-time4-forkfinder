@@ -8,13 +8,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ForkFinder.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace ForkFinder
 {
@@ -31,14 +32,19 @@ namespace ForkFinder
         public void ConfigureServices(IServiceCollection services)
         {
             //DbContext configuration
-            services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString
-                ("DefaultConnection")));
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                /*options.EnableSensitiveDataLogging();*/
+            });
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+            /*services.AddIdentity<Usuario, IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();*/
 
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
@@ -46,7 +52,12 @@ namespace ForkFinder
                     options.AccessDeniedPath = "/Usuarios/AccessDenied/";
                     options.LoginPath = "/Usuarios/Login/";
                 });
-            services.AddControllersWithViews();            
+            services.AddControllersWithViews();
+            services.AddDbContext<AppDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.EnableSensitiveDataLogging();
+            });
         }
 
 

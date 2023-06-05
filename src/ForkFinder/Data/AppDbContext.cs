@@ -9,7 +9,10 @@ namespace ForkFinder.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.EnableSensitiveDataLogging();
+        }*/
         protected override void OnModelCreating(ModelBuilder modelBuilder)        {
             
             modelBuilder.Entity<Especialidade_Restaurante>().HasKey(er => new
@@ -35,7 +38,12 @@ namespace ForkFinder.Data
 
             modelBuilder.Entity<Especialidade_Cliente>().HasOne(e => e.Especialidade)
                 .WithMany(ec => ec.Especialidades_Clientes).HasForeignKey(e => e.EspecialidadeId);
-
+            /*modelBuilder.Entity<Reserva>()
+                .HasOne(r => r.Restaurante)
+                .WithMany()
+                .HasForeignKey(r => r.RestauranteId)
+                .OnDelete(DeleteBehavior.NoAction);
+*/
             base.OnModelCreating(modelBuilder);
         }
 
