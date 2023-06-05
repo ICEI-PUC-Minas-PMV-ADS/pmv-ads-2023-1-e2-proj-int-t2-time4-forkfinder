@@ -8,6 +8,10 @@
     "\\src\\ForkFinder\\Views",
     "\\src\\ForkFinder\\Views\\Restaurantes"
   ],
+<<<<<<< HEAD
   "SelectedNode": "\\src\\ForkFinder\\Views\\Restaurantes\\Mesas.cshtml",
+=======
+  "SelectedNode": "\\ForkFinder.sln",
+>>>>>>> origin/develop-Jansem
   "PreviewInSolutionExplorer": false
 }

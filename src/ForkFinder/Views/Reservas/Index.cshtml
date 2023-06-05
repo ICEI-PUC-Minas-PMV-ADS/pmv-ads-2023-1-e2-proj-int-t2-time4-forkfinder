@@ -1,51 +1,63 @@
-﻿@model IEnumerable<Reserva>
-@{
-    ViewData["Title"] = "List of Reserva";
-}
-<div class="row">
-    <div class="col-md-8 offset-md-2">
-        <table class="table">
-            <thead>
-                <tr class="text-center">
-                    <th>@Html.DisplayNameFor(model => model.DataHoraCriacao)</th>
-                    <th>@Html.DisplayNameFor(model => model.DataHoraReserva)</th>
-                    <th>@Html.DisplayNameFor(model => model.Descricao)</th>
-                    <th>@Html.DisplayNameFor(model => model.Situacao)</th>
-                    <th>@Html.DisplayNameFor(model => model.Mesa.TamanhoMesa)</th>
-                    <th>@Html.DisplayNameFor(model => model.Mesa.QuantidadeMesa)</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.DataHoraCriacao)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.DataHoraReserva)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Descricao)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Mesa.TamanhoMesa)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Mesa.QuantidadeMesa)
-                        </td>
-                        <td class="align-middle">
-                            @Html.DisplayFor(modelItem => item.Situacao)
-                        </td>
-                        <td class="align-middle">
-                            <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i></a> |
-                            <a class="btn btn-outline-info"><i class="bi bi-eye"></i></a> |
-                            <a class="btn btn-danger text-white"><i class="bi bi-trash"></i></a>
-                        </td>
+﻿@model List<ForkFinder.ViewModels.MesaComReservas>
 
+<h2>Reservas</h2>
+
+@if (Model.Count > 0)
+{
+    foreach (var mesa in Model)
+    {
+        <h4>Mesa de: @mesa.Mesa.TamanhoMesa lugares</h4>
+
+        if (mesa.Reservas.Count > 0)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Data da Reserva</th>
+                        <th>Cliente</th>
+                        <th>Descrição</th>
+                        <th>Situação</th>
+                        <th></th>
                     </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>
+                </thead>
+                <tbody>
+                    @foreach (var reserva in mesa.Reservas)
+                    {
+                        <tr>
+                            <td>@reserva.DataHoraReserva</td>
+                            <td>@reserva.Cliente.Nome</td>
+                            <td>@reserva.Descricao</td>
+                            <td>@(reserva.Situacao ? "Aprovada" : "Pendente")</td>
+                            <td>
+                                @if (!reserva.Situacao)
+                                {
+                                    <a href="@Url.Action("AprovarReserva", new { id = reserva.Id })">Aprovar</a>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p>Nenhuma reserva para esta mesa.</p>
+        }
+
+        <hr />
+    }
+}
+else
+{
+    <p>Nenhuma reserva encontrada.</p>
+}
+
+
+@if (ViewBag.ReservaAprovada != null && ViewBag.ReservaAprovada)
+{
+    <script>
+        window.onload = function () {
+            alert('Reserva aprovada com sucesso!');
+        };
+    </script>
+}

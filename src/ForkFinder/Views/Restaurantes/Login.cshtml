@@ -13,7 +13,7 @@
                 <form id="account" method="post">
                     <h4 class="py-3">Utilize suas credenciais para logar.</h4>
                     <hr />
-                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <span asp-validation-summary="ModelOnly" class="text-danger"></span>
                     <div class="form-group py-2">
                         <label asp-for="Email"></label>
                         <input asp-for="Email" class="form-control" />
@@ -24,21 +24,10 @@
                         <input asp-for="Senha" class="form-control" />
                         <span asp-validation-for="Senha" class="text-danger"></span>
                     </div>
-                    @*<div class="form-group py-2">
-                        <div class="checkbox">
-                            <label asp-for="Input.RememberMe">
-                                <input asp-for="Input.RememberMe" />
-                                @Html.DisplayNameFor(m => m.Input.RememberMe)
-                            </label>
-                        </div>
-                    </div>*@
                     <div class="form-group text-end py-2">
                         <button type="submit" class="btn btn-warning">Log in</button>
                     </div>
                     <div class="form-group text-center">
-                        @*<p>
-                            <a id="forgot-password" asp-page="./ForgotPassword">Esqueceu a senha?</a>
-                        </p>*@
                         <p>
                             <a asp-action="Register">Novo cadastro</a>
                         </p>
