@@ -54,7 +54,7 @@ namespace ForkFinder.Controllers
                 ModelState.AddModelError("Senha", "A senha deve ter pelo menos 8 caracteres.");
             }
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid || (!string.IsNullOrEmpty(cliente.Senha)))
             {
                 cliente.Senha = BCrypt.Net.BCrypt.HashPassword(cliente.Senha);
                 cliente.Nome = cliente.Nome;

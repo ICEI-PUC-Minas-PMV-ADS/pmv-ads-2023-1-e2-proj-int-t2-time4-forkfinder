@@ -35,5 +35,18 @@ namespace ForkFinder.Models
         public Endereco Endereco { get; set; }
         public List<Foto> Fotos { get; set; }
         public List<Avaliacao> Avaliacoes { get; set; }
+        public string FotoPerfilBase64
+        {
+            get
+            {
+                if (FotoPerfil != null && FotoPerfil.Length > 0)
+                {
+                    return "data:image;base64," + Convert.ToBase64String(FotoPerfil);
+                }
+                return null;
+            }
+        }
+
     }
+
 }

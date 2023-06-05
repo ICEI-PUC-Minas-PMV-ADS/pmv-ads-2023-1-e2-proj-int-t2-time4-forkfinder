@@ -13,6 +13,7 @@ using ForkFinder.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Identity;
 
 namespace ForkFinder.Controllers
 {
@@ -113,16 +114,15 @@ namespace ForkFinder.Controllers
             {
                 ModelState.AddModelError("Senha", "A senha deve ter pelo menos 8 caracteres.");
             }
-            if (ModelState.IsValid)
+            if (ModelState.IsValid || (!string.IsNullOrEmpty(restaurante.Senha)))
             {
-                //string iconPath = "path/do/icone/user.png"; // Caminho do arquivo de imagem do ícone
-                //byte[] iconBytes = File.ReadAllBytes(iconPath);
-
+                string iconPath = "path/do/icone/user.png"; // Caminho do arquivo de imagem do ícone
+                byte[] iconBytes = System.IO.File.ReadAllBytes(iconPath);
                 restaurante.Senha = BCrypt.Net.BCrypt.HashPassword(restaurante.Senha);
                 restaurante.Nome = restaurante.Nome;
                 restaurante.Email = restaurante.Email;
                 restaurante.CNPJ = restaurante.CNPJ;
-                //restaurante.FotoPerfil = iconBytes;
+                restaurante.FotoPerfil = iconBytes;
                 restaurante.Papel = (Papel)1;
                 _context.Add(restaurante);
                 await _context.SaveChangesAsync();
@@ -133,32 +133,67 @@ namespace ForkFinder.Controllers
         [HttpPost]
         public async Task<IActionResult> EditarPerfil(Restaurante restaurante, IFormFile fotoPerfil)
         {
-            if (ModelState.IsValid)
+            // Recuperar o restaurante do banco de dados
+            var restauranteIdClaim = User.FindFirst("RestauranteId")?.Value;
+            if (restauranteIdClaim != null && int.TryParse(restauranteIdClaim, out int restauranteId))
             {
-                // Atualizar os campos do restaurante com os dados do formulário
-                var restauranteExistente = await _context.Restaurantes.FindAsync(restaurante.RestauranteId);
+                var restauranteExistente = await _context.Restaurantes.FindAsync(restauranteId);
 
+                // Verificar se o restaurante existe
                 if (restauranteExistente != null)
                 {
-                    restauranteExistente.CNPJ = restaurante.CNPJ;
+                    // Atualizar os campos do restaurante com os dados do formulário
+                    restauranteExistente.Nome = restaurante.Nome;
+                    restauranteExistente.CNPJ = restaurante.CNPJ;                    
                     restauranteExistente.DescricaoRestaurante = restaurante.DescricaoRestaurante;
                     restauranteExistente.Acessibilidade = restaurante.Acessibilidade;
+                    restauranteExistente.Papel = (Papel)1;
 
+                    // Consultar a senha atual do restaurante no banco de dados
+                    var senhaAtual = await _context.Restaurantes
+                        .Where(r => r.RestauranteId == restauranteId)
+                        .Select(r => r.Senha)
+                        .FirstOrDefaultAsync();
+
+                    // Atribuir a senha atual ao restaurante sendo atualizado
+                    restaurante.Senha = senhaAtual;
+                    /*restauranteExistente.Senha = BCrypt.Net.BCrypt.HashPassword(restaurante.Senha);
+                    */
                     if (fotoPerfil != null)
-                    {
-                        // Processar e salvar a imagem de perfil
-                        restauranteExistente.FotoPerfil = await ProcessarImagemPerfil(fotoPerfil);
-                    }
+                {
+                    // Processar e salvar a imagem de perfil
+                    restauranteExistente.FotoPerfil = await ProcessarImagemPerfil(fotoPerfil);
+                }
 
+                // Verificar a validade do modelo após a atualização dos dados
+                if (ModelState.IsValid)
+                {
                     _context.Update(restauranteExistente);
                     await _context.SaveChangesAsync();
 
-                    return RedirectToAction("EditarPerfil", new { id = restauranteExistente.RestauranteId });
+                    return RedirectToAction("Perfil", new { id = restauranteExistente.RestauranteId });
+                }
+                foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    var errorMessage = error.ErrorMessage;
+                    var exception = error.Exception;
+                    // Faça o tratamento adequado das mensagens de erro
+                }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "Restaurante não encontrado.");
                 }
             }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "RestauranteId inválido ou não fornecido.");
+            }
 
+            // Se o ModelState não for válido ou o restaurante não existir, retorne a view com os dados do restaurante
             return View(restaurante);
         }
+
 
         private async Task<byte[]> ProcessarImagemPerfil(IFormFile fotoPerfil)
         {
@@ -263,6 +298,10 @@ namespace ForkFinder.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Reserved", "Clientes", new { id = clienteId });
+        }
+        public IActionResult Perfil(Restaurante restaurante)
+        {
+            return View(restaurante);
         }
 
     }
