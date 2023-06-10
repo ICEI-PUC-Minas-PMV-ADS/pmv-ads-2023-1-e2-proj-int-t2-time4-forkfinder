@@ -29,7 +29,18 @@
                     <a asp-controller="Restaurantes" asp-action="Restaurante" asp-route-id="@restaurantes.RestauranteId">
                         <div class="row align-items-center justify-content-start py-3">
                             <div class="col-3">
-                                <img class="rounded-circle" src="@Html.DisplayFor(modelItem => restaurantes.Restaurante.FotoPerfil)" style="max-width:100px; min-height:100px;" />
+                                <div>
+                                    @if (restaurantes.Restaurante.FotoPerfil != null)
+                                    {
+                                        var base64String = Convert.ToBase64String(restaurantes.Restaurante.FotoPerfil);
+                                        var imgSrc = string.Format("data:image/jpeg;base64,{0}", base64String);
+                                        <img class="rounded-circle" src="@imgSrc" style="max-width:100px; min-height:100px;" />
+                                    }
+                                    else
+                                    {
+                                        <span>Nenhuma imagem disponível</span>
+                                    }
+                                </div>
                             </div>
                             <div class="col-9">
                                 <div class="row align-items-center m-0">

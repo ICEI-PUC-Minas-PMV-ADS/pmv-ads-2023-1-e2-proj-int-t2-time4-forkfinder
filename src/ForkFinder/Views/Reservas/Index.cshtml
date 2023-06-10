@@ -8,9 +8,9 @@
     {
         <h4>Mesa de: @mesa.Mesa.TamanhoMesa lugares</h4>
 
-        if (mesa.Reservas.Count > 0)
+        @if (mesa.Reservas.Count > 0)
         {
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>Data da Reserva</th>
@@ -31,7 +31,7 @@
                             <td>
                                 @if (!reserva.Situacao)
                                 {
-                                    <a href="@Url.Action("AprovarReserva", new { id = reserva.Id })">Aprovar</a>
+                                    <a href="@Url.Action("AprovarReserva", new { id = reserva.Id })" class="btn btn-success">Aprovar</a>
                                 }
                             </td>
                         </tr>
@@ -44,7 +44,7 @@
             <p>Nenhuma reserva para esta mesa.</p>
         }
 
-        <hr />
+        <hr class="my-4">
     }
 }
 else

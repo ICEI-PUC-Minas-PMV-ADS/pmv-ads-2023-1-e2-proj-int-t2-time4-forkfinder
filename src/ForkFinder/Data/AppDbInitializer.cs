@@ -876,70 +876,81 @@ namespace ForkFinder.Data
                 if (!context.Mesas.Any())
                 {
                     context.Mesas.AddRange(new List<Mesa>()
-                    {
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 10,
-                            TamanhoMesa= 4,
-                            RestauranteId= 1
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 10,
-                            TamanhoMesa= 6,
-                            RestauranteId= 1
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 10,
-                            TamanhoMesa= 8,
-                            RestauranteId= 1
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 10,
-                            TamanhoMesa= 7,
-                            RestauranteId= 1
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 10,
-                            TamanhoMesa= 5,
-                            RestauranteId= 1
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 15,
-                            TamanhoMesa= 8,
-                            RestauranteId= 2
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 20,
-                            TamanhoMesa= 4,
-                            RestauranteId= 3
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 18,
-                            TamanhoMesa= 6,
-                            RestauranteId= 4
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 30,
-                            TamanhoMesa= 4,
-                            RestauranteId= 5
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 18,
-                            TamanhoMesa= 4,
-                            RestauranteId= 6
-                        }
-                    });
+    {
+        new Mesa()
+        {
+            QuantidadeMesa = 10,
+            TamanhoMesa = 4,
+            RestauranteId = 1,
+            Ativa = true
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 10,
+            TamanhoMesa = 6,
+            RestauranteId = 1,
+            Ativa = true
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 10,
+            TamanhoMesa = 8,
+            RestauranteId = 1,
+            Ativa = false
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 10,
+            TamanhoMesa = 7,
+            RestauranteId = 1,
+            Ativa = false
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 10,
+            TamanhoMesa = 5,
+            RestauranteId = 1,
+            Ativa = true
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 15,
+            TamanhoMesa = 8,
+            RestauranteId = 2,
+            Ativa = true
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 20,
+            TamanhoMesa = 4,
+            RestauranteId = 3,
+            Ativa = false
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 18,
+            TamanhoMesa = 6,
+            RestauranteId = 4,
+            Ativa = true
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 30,
+            TamanhoMesa = 4,
+            RestauranteId = 5,
+            Ativa = false
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 18,
+            TamanhoMesa = 4,
+            RestauranteId = 6,
+            Ativa = true
+        }
+    });
                     context.SaveChanges();
                 }
+
                 //Categorias
                 if (!context.Categorias.Any())
                 {

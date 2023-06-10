@@ -29,5 +29,6 @@ namespace ForkFinder.Models
 
         public List<Agenda> Agendas { get; set; }
         public List<Horario> Horarios { get; set; }
+        public bool Ativa { get; internal set; }
     }
 }

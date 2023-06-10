@@ -35,7 +35,7 @@ namespace ForkFinder.Controllers
             return View(data);
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Cliente")]
         public async Task<IActionResult> Agenda(int id)
         {
             var restaurante = await _context.Restaurantes
@@ -67,6 +67,8 @@ namespace ForkFinder.Controllers
             var restaurante = await _context.Restaurantes
                 .Include(f => f.Fotos)
                 .Include(r => r.Avaliacoes)
+                .Include(r => r.Especialidades_Restaurantes)
+                .ThenInclude(er => er.Especialidade)
                 //.Include(r => r.Agendas)
                 .FirstOrDefaultAsync(r => r.RestauranteId == id);
             if (restaurante == null)
@@ -302,6 +304,68 @@ namespace ForkFinder.Controllers
         public IActionResult Perfil(Restaurante restaurante)
         {
             return View(restaurante);
+        }
+        public async Task<IActionResult> AddMesas()
+        {
+            var restauranteIdClaim = User.FindFirst("RestauranteId")?.Value;
+
+            if (restauranteIdClaim == null)
+            {
+                // Lidar com o caso em que o ID do restaurante não está presente no usuário logado
+                // Por exemplo, redirecionar para uma página de erro ou retornar uma mensagem de erro
+                return RedirectToAction("Error", "Home");
+            }
+
+            if (!int.TryParse(restauranteIdClaim, out int restauranteId))
+            {
+                // Lidar com o caso em que o ID do restaurante não é um valor inteiro válido
+                // Por exemplo, redirecionar para uma página de erro ou retornar uma mensagem de erro
+                return RedirectToAction("Error", "Home");
+            }
+
+            var mesas = await _context.Mesas
+                .Where(m => m.RestauranteId == restauranteId)
+                .ToListAsync();
+
+            return View(mesas);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: /Mesas/Create
+        [HttpPost]
+        public async Task<IActionResult> Create([Bind("TamanhoMesa,QuantidadeMesa")] Mesa mesa)
+        {
+            if (ModelState.IsValid)
+            {
+                var restauranteIdClaim = User.FindFirst("RestauranteId")?.Value;
+                if (int.TryParse(restauranteIdClaim, out int restauranteId))
+                {
+                    var restaurante = await _context.Restaurantes.FindAsync(restauranteId);
+                    if (restaurante != null)
+                    {
+                        /*var mesa = new Mesa
+                        {*/
+                        mesa.TamanhoMesa = mesa.TamanhoMesa;
+                        mesa.QuantidadeMesa = mesa.QuantidadeMesa;
+                        mesa.Ativa = false;
+                        mesa.Descricao = "";
+                        mesa.RestauranteId = restaurante.RestauranteId;
+                        /*};*/
+
+                        _context.Mesas.Add(mesa);
+                        await _context.SaveChangesAsync();
+
+                        return RedirectToAction("Index", "Mesas");
+                    }
+                }
+            }
+
+            return View();
         }
 
     }

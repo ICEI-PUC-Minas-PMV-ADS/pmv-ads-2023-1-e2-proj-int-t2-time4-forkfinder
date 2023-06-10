@@ -1,0 +1,145 @@
+﻿@model MesaViewModel
+
+@{
+    ViewData["Title"] = "AddMesas";
+}
+
+<div class="container">
+    <div class="row justify-content-end mb-3">
+        <div class="col-auto">
+            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalCriarMesa">
+                <i class="bi bi-plus-lg"></i> Adicionar Mesa
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h2>Lista de Mesas</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Tamanho</th>
+                        <th>Quantidade</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var mesa in Model.Mesas)
+                    {
+                        <tr>
+                            <td>@mesa.TamanhoMesa</td>
+                            <td>@mesa.QuantidadeMesa</td>
+                            <td>@(mesa.Ativa ? "Ativa" : "Inativa")</td>
+                            <td>
+                                @if (mesa.Ativa)
+                                {
+                                    <button class="btn btn-danger" onclick="desativarMesa(@mesa.Id)">Desativar</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-success" onclick="ativarMesa(@mesa.Id)">Ativar</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal de criação de mesas -->
+    <div class="modal fade" id="modalCriarMesa" tabindex="-1" aria-labelledby="modalCriarMesaLabel" aria-hidden="true">
+        <form asp-action="Create" method="post">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalCriarMesaLabel">Adicionar Mesa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="tamanhoMesa" class="form-label">Tamanho:</label>
+                                <input type="text" class="form-control" id="tamanhoMesa" asp-for="TamanhoMesa" placeholder="Digite o tamanho da mesa">
+                            </div>
+                            <div class="col">
+                                <label for="quantidadeMesa" class="form-label">Quantidade:</label>
+                                <input type="number" class="form-control" id="quantidadeMesa" asp-for="QuantidadeMesa" min="1" value="1">
+                            </div>
+                        </div>
+                        @{
+
+                            int i = 0;
+                        }
+                        @foreach (var mesa in Model.Mesas)
+                        {
+                            <input type="hidden" asp-for="Mesas[i].Id" value="@mesa.Id" />
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label">Tamanho:</label>
+                                    <input type="text" class="form-control" asp-for="Mesas[i].TamanhoMesa" placeholder="Digite o tamanho da mesa">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Quantidade:</label>
+                                    <input type="number" class="form-control" asp-for="Mesas[i].QuantidadeMesa" min="1" value="@mesa.QuantidadeMesa">
+                                </div>
+                            </div>
+                            i++;
+                        }
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+    @section scripts {
+        <script>
+            // Função para adicionar mesas
+            function acrescentarMesa(quantidade) {
+                var inputQuantidade = document.getElementById('quantidadeMesa');
+                var novaQuantidade = parseInt(inputQuantidade.value) + quantidade;
+                inputQuantidade.value = novaQuantidade;
+            }
+
+            // Função para retirar mesas
+            function retirarMesa(quantidade) {
+                var inputQuantidade = document.getElementById('quantidadeMesa');
+                var novaQuantidade = parseInt(inputQuantidade.value) - quantidade;
+                if (novaQuantidade < 1) {
+                    novaQuantidade = 1;
+                }
+                inputQuantidade.value = novaQuantidade;
+            }
+
+            // Função para salvar as mesas no banco de dados
+            function salvarMesas() {
+                // Lógica para enviar o formulário e salvar as mesas no banco de dados
+            }
+
+            // Função para ativar uma mesa
+            function ativarMesa(mesaId) {
+                // Lógica para ativar a mesa com o ID fornecido
+                // Você pode usar AJAX, Fetch ou outro método para enviar a requisição para o servidor
+            }
+
+            // Função para desativar uma mesa
+            function desativarMesa(mesaId) {
+                // Lógica para desativar a mesa com o ID fornecido
+                // Você pode usar AJAX, Fetch ou outro método para enviar a requisição para o servidor
+            }
+        </script>
+    }
+</div>

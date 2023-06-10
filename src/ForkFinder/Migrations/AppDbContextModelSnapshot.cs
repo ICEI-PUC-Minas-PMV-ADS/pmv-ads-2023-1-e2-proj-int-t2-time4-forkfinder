@@ -130,7 +130,6 @@ namespace ForkFinder.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Senha")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ClienteId");
@@ -351,6 +350,9 @@ namespace ForkFinder.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Ativa")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
@@ -427,6 +429,9 @@ namespace ForkFinder.Migrations
                     b.Property<int>("MesaId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("RestauranteId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Situacao")
                         .HasColumnType("bit");
 
@@ -435,6 +440,8 @@ namespace ForkFinder.Migrations
                     b.HasIndex("ClienteId");
 
                     b.HasIndex("MesaId");
+
+                    b.HasIndex("RestauranteId");
 
                     b.ToTable("Reservas");
                 });
@@ -462,8 +469,8 @@ namespace ForkFinder.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FotoPerfil")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("FotoPerfil")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -474,7 +481,6 @@ namespace ForkFinder.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Senha")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("RestauranteId");
@@ -668,6 +674,10 @@ namespace ForkFinder.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ForkFinder.Models.Restaurante", null)
+                        .WithMany("Reservas")
+                        .HasForeignKey("RestauranteId");
+
                     b.Navigation("Cliente");
 
                     b.Navigation("Mesa");
@@ -729,6 +739,8 @@ namespace ForkFinder.Migrations
                     b.Navigation("Funcionamento");
 
                     b.Navigation("Mesas");
+
+                    b.Navigation("Reservas");
                 });
 #pragma warning restore 612, 618
         }

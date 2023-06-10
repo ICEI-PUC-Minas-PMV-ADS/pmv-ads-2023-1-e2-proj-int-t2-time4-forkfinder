@@ -4,8 +4,8 @@
     ViewData["Title"] = "Página Restaurante";
 }
 
-@*<h4>@Html.DisplayFor(model => model.Especialidade.NomeEspecialidade)</h4>*@
-<a href="javascript: history.go(-1)" class="btn bg-warning text-dark">Voltar</a>
+@*<h4>@Model.Especialidades_Restaurantes.FirstOrDefault().Especialidade.NomeEspecialidade</h4>
+*@<a href="javascript: history.go(-1)" class="btn bg-warning text-dark">Voltar</a>
 <hr />
 <div class="container">
 
@@ -79,7 +79,10 @@
                         @*<a asp-controller="Produtos" asp-action="Create" class="btn btn-outline-info">Cardápio</a>*@
                     </div>
                     <div class="col justify-content-center">
-                        <a asp-controller="Restaurantes" asp-action="Mesas" asp-route-id="@Model.RestauranteId" class="btn bg-warning text-dark">Reservar</a>
+                        @if (User.IsInRole("Cliente"))
+                        {
+                            <a asp-controller="Restaurantes" asp-action="Mesas" asp-route-id="@Model.RestauranteId" class="btn bg-warning text-dark">Reservar</a>
+                        }
                     </div>
                 </div>
             </div>
