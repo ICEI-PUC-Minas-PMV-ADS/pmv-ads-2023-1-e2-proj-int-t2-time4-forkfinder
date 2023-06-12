@@ -38,12 +38,27 @@ namespace ForkFinder.Data
 
             modelBuilder.Entity<Especialidade_Cliente>().HasOne(e => e.Especialidade)
                 .WithMany(ec => ec.Especialidades_Clientes).HasForeignKey(e => e.EspecialidadeId);
-            /*modelBuilder.Entity<Reserva>()
+            modelBuilder.Entity<Reserva>()
+                .HasOne(r => r.Mesa)
+                .WithMany(m => m.Reservas)
+                .HasForeignKey(r => r.MesaId)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Reserva>()
                 .HasOne(r => r.Restaurante)
-                .WithMany()
+                .WithMany(m => m.Reservas)
                 .HasForeignKey(r => r.RestauranteId)
                 .OnDelete(DeleteBehavior.NoAction);
-*/
+            modelBuilder.Entity<Reserva>()
+                .HasOne(r => r.Horario)
+                .WithMany()
+                .HasForeignKey(r => r.HorarioId)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Reserva>()
+                .HasOne(r => r.Agenda)
+                .WithMany()
+                .HasForeignKey(r => r.AgendaId)
+                .OnDelete(DeleteBehavior.NoAction);
+
             base.OnModelCreating(modelBuilder);
         }
 

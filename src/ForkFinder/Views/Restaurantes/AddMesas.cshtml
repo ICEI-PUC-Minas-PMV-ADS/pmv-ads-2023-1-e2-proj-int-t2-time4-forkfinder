@@ -36,17 +36,7 @@
                         <tr>
                             <td>@mesa.TamanhoMesa</td>
                             <td>@mesa.QuantidadeMesa</td>
-                            <td>@(mesa.Ativa ? "Ativa" : "Inativa")</td>
-                            <td>
-                                @if (mesa.Ativa)
-                                {
-                                    <button class="btn btn-danger" onclick="desativarMesa(@mesa.Id)">Desativar</button>
-                                }
-                                else
-                                {
-                                    <button class="btn btn-success" onclick="ativarMesa(@mesa.Id)">Ativar</button>
-                                }
-                            </td>
+                            
                         </tr>
                     }
                 </tbody>

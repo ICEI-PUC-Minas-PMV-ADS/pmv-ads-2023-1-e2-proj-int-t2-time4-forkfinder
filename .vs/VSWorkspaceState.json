@@ -1,19 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\ForkFinder"
   ],
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  "SelectedNode": "\\ForkFinder.sln",
-=======
   "SelectedNode": "\\src\\ForkFinder\\ForkFinder.sln",
->>>>>>> Stashed changes
-=======
-  "SelectedNode": "\\src\\ForkFinder\\ForkFinder.sln",
->>>>>>> Stashed changes
-=======
-  "SelectedNode": "\\src\\ForkFinder\\ForkFinder.sln",
->>>>>>> Stashed changes
   "PreviewInSolutionExplorer": false
 }

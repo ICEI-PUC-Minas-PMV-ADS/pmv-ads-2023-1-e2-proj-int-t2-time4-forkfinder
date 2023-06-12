@@ -278,29 +278,55 @@ namespace ForkFinder.Controllers
             return RedirectToAction("Login", "Restaurantes");
         }
         [Authorize]
-        public async Task<IActionResult> Reserva(int mesaId, DateTime horarioId, DateTime dataReserva, int clienteId, int agendaId)
+        [HttpPost]
+        public IActionResult Reserva(int restauranteId, int mesaId, int horarioId, int agendaId, string descricao)
         {
-            var reserva = new Reserva
-            {
-                MesaId = mesaId,
-                DataHoraReserva = horarioId,
-                ClienteId = int.Parse(User.FindFirstValue("ClienteId")),
-                DataHoraCriacao = DateTime.Now,
-                //AgendaId = agendaId,
-                Situacao = false // Define a reserva como não aprovada inicialmente
-            };
+            // Recupere o nome do cliente logado usando o mecanismo de autenticação do ASP.NET Core
+            var nomeCliente = User.Identity.Name;
 
-            var cliente = _context.Clientes.Find(clienteId);
-            if (cliente != null)
+            // Verifique se os parâmetros são válidos e realize as operações de reserva
+            if (!string.IsNullOrEmpty(nomeCliente) && restauranteId > 0 && mesaId > 0 && horarioId > 0 && agendaId > 0)
             {
-                cliente.Reservas.Add(reserva);
+                // Consultar o banco de dados para obter o ID do cliente com base no nome
+                var cliente = _context.Clientes.FirstOrDefault(c => c.Nome == nomeCliente);
+
+                if (cliente != null)
+                {
+                    // Consultar o banco de dados para obter as entidades relacionadas (restaurante, mesa, horario, agenda)
+                    var restaurante = _context.Restaurantes.FirstOrDefault(r => r.RestauranteId == restauranteId);
+                    var mesa = _context.Mesas.FirstOrDefault(m => m.Id == mesaId);
+                    var horario = _context.Horarios.FirstOrDefault(h => h.Id == horarioId);
+                    var agenda = _context.Agendas.FirstOrDefault(a => a.Id == agendaId);
+
+                    if (restaurante != null && mesa != null && horario != null && agenda != null)
+                    {
+                        // Crie uma nova reserva e atribua as entidades relacionadas
+                        var reserva = new Reserva
+                        {
+                            Restaurante = restaurante,
+                            Mesa = mesa,
+                            Horario = horario,
+                            Agenda = agenda,
+                            ClienteId = cliente.ClienteId,
+                            Descricao = descricao
+                        };
+                        horario.Agendado = true;
+
+                        // Salve a nova reserva no banco de dados
+                        _context.Reservas.Add(reserva);
+                        _context.SaveChanges();
+
+                        // Retorna uma resposta de sucesso para a chamada AJAX
+                        return Ok();
+                    }
+                }
             }
 
-            _context.Add(reserva);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Reserved", "Clientes", new { id = clienteId });
+            // Retorna uma resposta de erro para a chamada AJAX
+            return BadRequest();
         }
+
+
         public IActionResult Perfil(Restaurante restaurante)
         {
             return View(restaurante);
@@ -352,7 +378,7 @@ namespace ForkFinder.Controllers
                         {*/
                         mesa.TamanhoMesa = mesa.TamanhoMesa;
                         mesa.QuantidadeMesa = mesa.QuantidadeMesa;
-                        mesa.Ativa = false;
+                        mesa.Agendada = false;
                         mesa.Descricao = "";
                         mesa.RestauranteId = restaurante.RestauranteId;
                         /*};*/
@@ -367,6 +393,8 @@ namespace ForkFinder.Controllers
 
             return View();
         }
+        
+
 
     }
 

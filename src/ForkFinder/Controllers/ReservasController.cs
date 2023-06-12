@@ -29,35 +29,54 @@ namespace ForkFinder.Controllers
                 var restaurante = await _context.Restaurantes.FindAsync(restauranteId);
                 if (restaurante != null && restaurante.Papel == Papel.Restaurante)
                 {
-                    // Buscar as mesas do restaurante com suas reservas
+                    // Buscar as mesas do restaurante com suas reservas e relacionamento com Cliente
                     var mesas = _context.Mesas.Where(m => m.RestauranteId == restaurante.RestauranteId)
-                        .Include(m => m.Reservas).ThenInclude(c=>c.Cliente)
-                .Select(m => new MesaComReservas
-                {
-                    Mesa = m,
-                    Reservas = _context.Reservas.Where(r => r.MesaId == m.Id).ToList()
-                })
-                .ToList();
+                        .Include(m => m.Reservas).ThenInclude(r => r.Cliente)
+                        .Include(m => m.Reservas).ThenInclude(r => r.Agenda)
+                        .Select(m => new MesaComReservas
+                        {
+                            Mesa = m,
+                            Reservas = _context.Reservas.Where(r => r.MesaId == m.Id).ToList()
+                        })
+                        .ToList();
+
                     ViewBag.ReservaAprovada = reservaAprovada;
 
                     return View(mesas);
-
                 }
                 return RedirectToAction("Index");
-
             }
             return RedirectToAction("Login", "Restaurantes");
-
         }
+
         public IActionResult AprovarReserva(int id)
         {
             Reserva reserva = _context.Reservas.Find(id);
             if (reserva != null)
             {
-                reserva.Situacao = true;
+                reserva.Situacao = (Situacao)1;
                 _context.SaveChanges();
             }
             return RedirectToAction("Index", new { reservaAprovada = true });
         }
+        public ActionResult RecusarReserva(int id)
+        {
+            Reserva reserva = _context.Reservas.Find(id);
+
+            if (reserva != null)
+            {
+                reserva.Situacao = (Situacao)2;
+                // Atualize a coluna "Agendado" para "false" na tabela "Horario"
+                var horario = _context.Horarios.FirstOrDefault(h => h.Id == reserva.HorarioId);
+                if (horario != null)
+                {
+                    horario.Agendado = false;
+                    _context.SaveChanges();
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

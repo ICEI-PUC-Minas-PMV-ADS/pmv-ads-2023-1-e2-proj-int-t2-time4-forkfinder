@@ -74,7 +74,7 @@ namespace ForkFinder.Controllers
                             {
                                 TamanhoMesa = mesa.TamanhoMesa,
                                 QuantidadeMesa = mesa.QuantidadeMesa,
-                                Ativa = false,
+                                Agendada = false,
                                 Descricao = "",
                                 RestauranteId = restaurante.RestauranteId
                             };
@@ -102,7 +102,7 @@ namespace ForkFinder.Controllers
             if (mesa != null)
             {
                 // Lógica para ativar a mesa
-                mesa.Ativa = true;
+                mesa.Agendada = true;
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction("Index");
@@ -115,7 +115,7 @@ namespace ForkFinder.Controllers
             if (mesa != null)
             {
                 // Lógica para desativar a mesa
-                mesa.Ativa = false;
+                mesa.Agendada = false;
                 await _context.SaveChangesAsync();
             }
             return RedirectToAction("Index");

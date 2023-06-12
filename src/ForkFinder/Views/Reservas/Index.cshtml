@@ -24,17 +24,58 @@
                     @foreach (var reserva in mesa.Reservas)
                     {
                         <tr>
-                            <td>@reserva.DataHoraReserva</td>
+                            <td>@reserva.Agenda.Data</td>
                             <td>@reserva.Cliente.Nome</td>
                             <td>@reserva.Descricao</td>
-                            <td>@(reserva.Situacao ? "Aprovada" : "Pendente")</td>
+                            <td>@reserva.Situacao</td>
                             <td>
-                                @if (!reserva.Situacao)
+                                @if (reserva.Situacao == Situacao.Pendente)
                                 {
-                                    <a href="@Url.Action("AprovarReserva", new { id = reserva.Id })" class="btn btn-success">Aprovar</a>
+                                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalAprovarReserva_@reserva.Id">Aprovar</a>
+                                    <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalRecusarReserva_@reserva.Id">Recusar</a>
                                 }
                             </td>
                         </tr>
+                        <!-- Modal de Aprovação -->
+                        <div class="modal fade" id="modalAprovarReserva_@reserva.Id" tabindex="-1" role="dialog" aria-labelledby="modalAprovarReservaLabel_@reserva.Id" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalAprovarReservaLabel_@reserva.Id">Aprovar Reserva</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Deseja realmente aprovar a reserva?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <a href="@Url.Action("AprovarReserva", new { id = reserva.Id })" class="btn btn-success">Confirmar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal de Recusa -->
+                        <div class="modal fade" id="modalRecusarReserva_@reserva.Id" tabindex="-1" role="dialog" aria-labelledby="modalRecusarReservaLabel_@reserva.Id" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modalRecusarReservaLabel_@reserva.Id">Recusar Reserva</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Deseja realmente recusar a reserva?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <a href="@Url.Action("RecusarReserva", new { id = reserva.Id })" class="btn btn-danger">Confirmar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     }
                 </tbody>
             </table>
@@ -50,14 +91,4 @@
 else
 {
     <p>Nenhuma reserva encontrada.</p>
-}
-
-
-@if (ViewBag.ReservaAprovada != null && ViewBag.ReservaAprovada)
-{
-    <script>
-        window.onload = function () {
-            alert('Reserva aprovada com sucesso!');
-        };
-    </script>
 }

@@ -4,14 +4,16 @@ using ForkFinder.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ForkFinder.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230610052213_confirmação de agenda")]
+    partial class confirmaçãodeagenda
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -417,9 +419,6 @@ namespace ForkFinder.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AgendaId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
@@ -438,15 +437,13 @@ namespace ForkFinder.Migrations
                     b.Property<int>("MesaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RestauranteId")
+                    b.Property<int?>("RestauranteId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Situacao")
-                        .HasColumnType("int");
+                    b.Property<bool>("Situacao")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AgendaId");
 
                     b.HasIndex("ClienteId");
 
@@ -675,12 +672,6 @@ namespace ForkFinder.Migrations
 
             modelBuilder.Entity("ForkFinder.Models.Reserva", b =>
                 {
-                    b.HasOne("ForkFinder.Models.Agenda", "Agenda")
-                        .WithMany()
-                        .HasForeignKey("AgendaId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("ForkFinder.Models.Cliente", "Cliente")
                         .WithMany("Reservas")
                         .HasForeignKey("ClienteId")
@@ -690,30 +681,24 @@ namespace ForkFinder.Migrations
                     b.HasOne("ForkFinder.Models.Horario", "Horario")
                         .WithMany()
                         .HasForeignKey("HorarioId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ForkFinder.Models.Mesa", "Mesa")
                         .WithMany("Reservas")
                         .HasForeignKey("MesaId")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ForkFinder.Models.Restaurante", "Restaurante")
+                    b.HasOne("ForkFinder.Models.Restaurante", null)
                         .WithMany("Reservas")
-                        .HasForeignKey("RestauranteId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Agenda");
+                        .HasForeignKey("RestauranteId");
 
                     b.Navigation("Cliente");
 
                     b.Navigation("Horario");
 
                     b.Navigation("Mesa");
-
-                    b.Navigation("Restaurante");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Agenda", b =>
