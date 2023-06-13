@@ -6,9 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Agenda\**" />
     <Compile Remove="wwwroot\img\produtos\**" />
+    <Content Remove="Views\Agenda\**" />
     <Content Remove="wwwroot\img\produtos\**" />
+    <EmbeddedResource Remove="Views\Agenda\**" />
     <EmbeddedResource Remove="wwwroot\img\produtos\**" />
+    <None Remove="Views\Agenda\**" />
     <None Remove="wwwroot\img\produtos\**" />
   </ItemGroup>
 
@@ -35,10 +39,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Agenda\" />
   </ItemGroup>
 
 </Project>

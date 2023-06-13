@@ -3,22 +3,24 @@
 @{
     ViewData["Title"] = "Index";
 }
+
 <div class="my-2 p-2">
-<h4 class="text-center">Plataforma de reserva de mesa em restaurantes.<br />
-    Busque por preferência alimentar, disponibilidade, acessibilidade ou avaliação de outros clientes.</h4>
+    <h4 class="text-center">
+        Plataforma de reserva de mesa em restaurantes.<br />
+        Busque por especialidade, disponibilidade, acessibilidade ou avaliação de outros clientes.
+    </h4>
 </div>
+
 <div class="mainEspecialidades container text-center my-2">
     <div class="row row-cols-4 m-auto">
-@foreach (var item in Model) {
-
+        @foreach (var item in Model)
+        {
             <a class="categorias col" asp-controller="Especialidades" asp-action="Look" asp-route-id="@item.Id">
-                <img class="img-fluid" id="especialidadeimg" src="@Html.DisplayFor(modelItem => item.ImagemUpload)"/>
+                <img class="img-fluid" id="especialidadeimg" src="@Html.DisplayFor(modelItem => item.ImagemUpload)" />
                 <div id="especialidade" class="text-warning">
                     <p>Comida @Html.DisplayFor(modelItem => item.NomeEspecialidade)</p>
                 </div>
-                
-            </a>       
-}
+            </a>
+        }
     </div>
 </div>
-

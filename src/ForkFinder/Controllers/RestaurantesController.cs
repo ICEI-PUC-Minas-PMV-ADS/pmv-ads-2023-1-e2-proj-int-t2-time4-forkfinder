@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using Microsoft.AspNetCore.Identity;
+using System.Dynamic;
 
 namespace ForkFinder.Controllers
 {
@@ -24,16 +25,75 @@ namespace ForkFinder.Controllers
         {
             _context = context;
         }
-        public async Task<IActionResult> Index()
+        /* public async Task<IActionResult> Index()
+         {
+             var data = await _context.Restaurantes
+                 .Include(a => a.Avaliacoes)
+                 .Include(e => e.Endereco)
+                 .Include(er => er.Especialidades_Restaurantes).ThenInclude(es => es.Especialidade)
+                 .ToListAsync();
+
+             return View(data);
+         }*/
+
+        public async Task<IActionResult> Index(string especialidade, int? disponibilidade, bool? acessibilidade, int? avaliacao)
         {
-            var data = await _context.Restaurantes
+            var especialidades = _context.Especialidades.ToList();
+            var horarios = _context.Horarios.ToList();
+            dynamic context = new ExpandoObject();
+            context.Especialidades = especialidades;
+            context.Horarios = horarios;
+            ViewBag.Context = context;
+
+
+            var query = _context.Restaurantes
                 .Include(a => a.Avaliacoes)
                 .Include(e => e.Endereco)
                 .Include(er => er.Especialidades_Restaurantes).ThenInclude(es => es.Especialidade)
-                .ToListAsync();
+                .AsEnumerable(); // Alterado para AsEnumerable()
+
+            if (!string.IsNullOrEmpty(especialidade))
+            {
+                query = query.Where(e => e.Especialidades_Restaurantes
+                    .Any(r => r.Especialidade.NomeEspecialidade.ToLower().Contains(especialidade.ToLower())));
+            }
+
+            if (disponibilidade.HasValue)
+            {
+
+                var horarioSelecionado = await _context.Horarios.FirstOrDefaultAsync(h => h.Id == disponibilidade.Value);
+                if (horarioSelecionado != null)
+                {
+                    var horariosDistintos = await _context.Horarios
+                        .Where(h => h.Hora != horarioSelecionado.Hora)
+                        .ToListAsync();
+
+                    query = query.Where(e => e.Especialidades_Restaurantes
+                    .Any(r => r.Restaurante.Mesas != null && r.Restaurante.Mesas
+                        .Any(m => m.Horarios != null && m.Horarios.Any(h => horariosDistintos.Any(d => d.Id == h.Id)))));
+
+                }
+            }
+
+            if (acessibilidade.HasValue)
+            {
+                query = query.Where(e => e.Especialidades_Restaurantes
+                    .Any(r => r.Restaurante.Acessibilidade == acessibilidade.Value));
+            }
+
+            if (avaliacao.HasValue)
+            {
+                query = query.Where(e => e.Especialidades_Restaurantes
+                 .Any(r => r.Restaurante.Avaliacoes.Any() && r.Restaurante.Avaliacoes.Average(a => a.Estrela) >= avaliacao.Value));
+
+            }
+
+            var data = query.ToList(); // Alterado para ToList()
 
             return View(data);
         }
+
+
 
         [Authorize(Roles = "Cliente")]
         public async Task<IActionResult> Agenda(int id)

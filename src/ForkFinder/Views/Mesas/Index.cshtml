@@ -26,16 +26,14 @@
                     <tr>
                         <th>Tamanho</th>
                         <th>Quantidade</th>
-                        <th>Status</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var mesa in Model.Mesas)
+                    @foreach (var mesaGroup in Model.Mesas.Where(m => !m.Agendada).GroupBy(m => m.TamanhoMesa).OrderBy(g => g.Key))
                     {
                         <tr>
-                            <td>@mesa.TamanhoMesa</td>
-                            <td>@mesa.QuantidadeMesa</td>
+                            <td>@mesaGroup.Key</td>
+                            <td>@mesaGroup.Sum(m => m.QuantidadeMesa)</td>
                         </tr>
                     }
                 </tbody>
@@ -63,7 +61,9 @@
                                 <input type="number" class="form-control" id="quantidadeMesa" asp-for="QuantidadeMesa" min="1" value="1">
                             </div>
                         </div>
-                        @if (Model.Mesas != null)
+                        <button type="button" class="btn btn-primary" onclick="adicionarMesa()">Adicionar Mesa</button>
+
+                        @*@if (Model.Mesas != null)
                         {
                             for (int i = 0; i < Model.Mesas.Count; i++)
                             {
@@ -84,7 +84,7 @@
                         else
                         {
                             <p>Nenhuma mesa disponível para exibir.</p>
-                        }
+                        }*@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" onclick="salvarMesas()">Salvar</button>

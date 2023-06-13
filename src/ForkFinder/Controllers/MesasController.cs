@@ -68,12 +68,12 @@ namespace ForkFinder.Controllers
                     var restaurante = await _context.Restaurantes.FindAsync(restauranteId);
                     if (restaurante != null)
                     {
-                        foreach (var mesa in mesaViewModel.Mesas)
+                        for (int i = 0; i < mesaViewModel.QuantidadeMesa; i++)
                         {
                             var novaMesa = new Mesa
                             {
-                                TamanhoMesa = mesa.TamanhoMesa,
-                                QuantidadeMesa = mesa.QuantidadeMesa,
+                                TamanhoMesa = int.Parse(mesaViewModel.TamanhoMesa),
+                                QuantidadeMesa = 1,
                                 Agendada = false,
                                 Descricao = "",
                                 RestauranteId = restaurante.RestauranteId
@@ -87,7 +87,12 @@ namespace ForkFinder.Controllers
                         return RedirectToAction("Index", "Mesas");
                     }
                 }
+
+
+
+
             }
+
 
             // Se ocorrer um erro, retorne a view com o modelo inválido para exibir os erros de validação
             return View(mesaViewModel);
