@@ -28,7 +28,6 @@
           }
         }
       },
-<<<<<<< HEAD
       "Microsoft.AspNetCore.Cryptography.Internal/5.0.17": {
         "type": "package",
         "compile": {
@@ -58,8 +57,6 @@
           }
         }
       },
-=======
->>>>>>> develop
       "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
         "type": "package",
         "dependencies": {
@@ -76,7 +73,6 @@
           }
         }
       },
-<<<<<<< HEAD
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore/5.0.17": {
         "type": "package",
         "dependencies": {
@@ -94,8 +90,6 @@
           }
         }
       },
-=======
->>>>>>> develop
       "Microsoft.AspNetCore.Mvc.Razor.Extensions/5.0.17": {
         "type": "package",
         "dependencies": {
@@ -732,7 +726,6 @@
           }
         }
       },
-<<<<<<< HEAD
       "Microsoft.Extensions.Identity.Core/5.0.17": {
         "type": "package",
         "dependencies": {
@@ -769,8 +762,6 @@
           }
         }
       },
-=======
->>>>>>> develop
       "Microsoft.Extensions.Logging/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -2527,7 +2518,6 @@
         "logo.png"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.AspNetCore.Cryptography.Internal/5.0.17": {
       "sha512": "JwAsHM9YfQ7rbtsXZ1iyy0pKOxldRS0Bc7BEEP5kYObGGYOwclW1jRn1aKG1eE2nZoA7vXfJrKrydk07zrv6eg==",
       "type": "package",
@@ -2566,8 +2556,6 @@
         "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
       ]
     },
-=======
->>>>>>> develop
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
       "sha512": "Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
       "type": "package",
@@ -2581,7 +2569,6 @@
         "microsoft.aspnetcore.html.abstractions.nuspec"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.AspNetCore.Identity.EntityFrameworkCore/5.0.17": {
       "sha512": "Ptdhz86gV2XCbEChGX/ji4FQpAgnN/ctaegUQVbWgExLnyEoy2go+8NkYgIfEKUXBVaIewl/HYDeIK6GACKN9Q==",
       "type": "package",
@@ -2599,8 +2586,6 @@
         "microsoft.aspnetcore.identity.entityframeworkcore.nuspec"
       ]
     },
-=======
->>>>>>> develop
     "Microsoft.AspNetCore.Mvc.Razor.Extensions/5.0.17": {
       "sha512": "wLdOlzlUg7r21g4CowBfacP9Zm8ML1IlEXK1GjOWiq0YM6Qqtx9c9RgPmGFCrLfvxY2R8gnRjuS2SgI4P0189g==",
       "type": "package",
@@ -3381,7 +3366,6 @@
         "version.txt"
       ]
     },
-<<<<<<< HEAD
     "Microsoft.Extensions.Identity.Core/5.0.17": {
       "sha512": "JRtQ8YTzuuuinR+/DOLt86apUB4ibm3Oi3JOGV5/rJGsI568VT3jHOxHGiBSXASwuI9j/aC3lPuy7205tX99MQ==",
       "type": "package",
@@ -3420,8 +3404,6 @@
         "microsoft.extensions.identity.stores.nuspec"
       ]
     },
-=======
->>>>>>> develop
     "Microsoft.Extensions.Logging/5.0.0": {
       "sha512": "MgOwK6tPzB6YNH21wssJcw/2MKwee8b2gI7SllYfn6rvTpIrVvVS5HAjSU2vqSku1fwqRvWP0MdIi14qjd93Aw==",
       "type": "package",
@@ -7799,10 +7781,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "BCrypt.Net-Next >= 4.0.2",
-<<<<<<< HEAD
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 5.0.17",
-=======
->>>>>>> develop
       "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation >= 5.0.17",
       "Microsoft.EntityFrameworkCore >= 5.0.17",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.17",
@@ -7811,27 +7790,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Jansem\\.nuget\\packages\\": {}
+    "C:\\Users\\natan\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "c:\\Users\\Jansem\\OneDrive\\Documentos\\GitHub\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\ForkFinder.csproj",
+      "projectUniqueName": "C:\\Users\\natan\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\ForkFinder.csproj",
       "projectName": "ForkFinder",
-      "projectPath": "c:\\Users\\Jansem\\OneDrive\\Documentos\\GitHub\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\ForkFinder.csproj",
-      "packagesPath": "C:\\Users\\Jansem\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\Jansem\\OneDrive\\Documentos\\GitHub\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\ForkFinder.csproj",
-      "projectName": "ForkFinder",
-      "projectPath": "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\ForkFinder.csproj",
-      "packagesPath": "C:\\Users\\Jansem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\obj\\",
->>>>>>> develop
+      "projectPath": "C:\\Users\\natan\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\ForkFinder.csproj",
+      "packagesPath": "C:\\Users\\natan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\natan\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Jansem\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\natan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7839,6 +7810,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7861,13 +7834,10 @@
             "target": "Package",
             "version": "[4.0.2, )"
           },
-<<<<<<< HEAD
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
             "target": "Package",
             "version": "[5.0.17, )"
           },
-=======
->>>>>>> develop
           "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
             "target": "Package",
             "version": "[5.0.17, )"
@@ -7910,8 +7880,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema ao ler o arquivo de cache C:\\Users\\natan\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
