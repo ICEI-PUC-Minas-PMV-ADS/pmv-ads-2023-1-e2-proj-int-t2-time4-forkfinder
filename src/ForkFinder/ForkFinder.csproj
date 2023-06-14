@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <Content Remove="Views\Clientes\Reservas.cshtml" />
+    <Content Remove="Views\Mesas\Mesas.cshtml" />
     <Content Remove="Views\Reservas\Reservas.cshtml" />
     <Content Remove="Views\Restaurantes\Index1.cshtml" />
   </ItemGroup>

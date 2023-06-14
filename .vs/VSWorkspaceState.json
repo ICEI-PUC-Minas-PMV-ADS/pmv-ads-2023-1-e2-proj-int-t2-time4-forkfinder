@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\src",
-    "\\src\\ForkFinder"
+    ""
   ],
-  "SelectedNode": "\\src\\ForkFinder\\ForkFinder.sln",
+  "SelectedNode": "\\ForkFinder.sln",
   "PreviewInSolutionExplorer": false
 }

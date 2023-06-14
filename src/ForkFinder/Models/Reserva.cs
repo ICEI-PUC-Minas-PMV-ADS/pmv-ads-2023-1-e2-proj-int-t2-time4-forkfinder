@@ -37,6 +37,9 @@ namespace ForkFinder.Models
         public int AgendaId { get; set; }
         [ForeignKey("AgendaId")]
         public Agenda Agenda { get; set; }
+        public int EspecialidadeId { get; set; }
+        [ForeignKey("EspecialidadeId")]
+        public Especialidade Especialidade { get; set; }
     }
     public enum Situacao
     {

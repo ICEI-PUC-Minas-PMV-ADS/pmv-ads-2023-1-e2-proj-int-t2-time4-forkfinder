@@ -120,11 +120,8 @@ C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bi
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.Abstractions.dll
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\refs\Microsoft.Extensions.Hosting.dll
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\refs\Microsoft.Extensions.Http.dll
-<<<<<<< HEAD
-=======
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\refs\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\refs\Microsoft.Extensions.Identity.Stores.dll
->>>>>>> develop
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.Abstractions.dll
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\refs\Microsoft.Extensions.Localization.dll
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\refs\Microsoft.Extensions.Logging.Abstractions.dll
@@ -433,10 +430,7 @@ C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\ob
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Mesas\Index.cshtml.g.cs
-<<<<<<< HEAD
-=======
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Reservas\Reservar.cshtml.g.cs
->>>>>>> develop
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Restaurantes\Index.cshtml.g.cs
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Restaurantes\Mesas.cshtml.g.cs
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Restaurantes\Restaurante.cshtml.g.cs
@@ -460,7 +454,6 @@ C:\Users\Jansem\source\repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\ob
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Restaurantes\Agenda.cshtml.g.cs
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Restaurantes\Login.cshtml.g.cs
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Restaurantes\Register.cshtml.g.cs
-<<<<<<< HEAD
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\bin\Debug\net5.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -929,5 +922,4 @@ c:\Users\Jansem\OneDrive\Documentos\GitHub\pmv-ads-2023-1-e2-proj-int-t2-time4-f
 c:\Users\Jansem\OneDrive\Documentos\GitHub\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\src\ForkFinder\bin\Debug\net5.0\refs\System.Xml.XPath.dll
 c:\Users\Jansem\OneDrive\Documentos\GitHub\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\src\ForkFinder\bin\Debug\net5.0\refs\System.Xml.XPath.XDocument.dll
 c:\Users\Jansem\OneDrive\Documentos\GitHub\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\src\ForkFinder\bin\Debug\net5.0\refs\WindowsBase.dll
-=======
->>>>>>> develop
+C:\Users\Jansem\Source\Repos\ICEI-PUC-Minas-PMV-ADS\ForkFinder\src\ForkFinder\obj\Debug\net5.0\Razor\Views\Clientes\Reserva.cshtml.g.cs
