@@ -7795,11 +7795,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\ForkFinder.csproj",
+      "projectUniqueName": "c:\\Users\\Jansem\\OneDrive\\Documentos\\GitHub\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\ForkFinder.csproj",
       "projectName": "ForkFinder",
-      "projectPath": "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\ForkFinder.csproj",
+      "projectPath": "c:\\Users\\Jansem\\OneDrive\\Documentos\\GitHub\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\ForkFinder.csproj",
       "packagesPath": "C:\\Users\\Jansem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\obj\\",
+      "outputPath": "c:\\Users\\Jansem\\OneDrive\\Documentos\\GitHub\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Jansem\\AppData\\Roaming\\NuGet\\NuGet.Config",
