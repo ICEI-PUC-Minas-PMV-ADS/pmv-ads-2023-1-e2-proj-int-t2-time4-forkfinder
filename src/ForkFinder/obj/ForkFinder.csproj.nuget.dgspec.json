@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "c:\\Users\\Jansem\\OneDrive\\Documentos\\GitHub\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\ForkFinder.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "c:\\Users\\Jansem\\OneDrive\\Documentos\\GitHub\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\ForkFinder.csproj",
         "packagesPath": "C:\\Users\\Jansem\\.nuget\\packages\\",
         "outputPath": "c:\\Users\\Jansem\\OneDrive\\Documentos\\GitHub\\pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder\\src\\ForkFinder\\obj\\",
+=======
+    "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\ForkFinder.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\ForkFinder.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\ForkFinder.csproj",
+        "projectName": "ForkFinder",
+        "projectPath": "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\ForkFinder.csproj",
+        "packagesPath": "C:\\Users\\Jansem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Jansem\\Source\\Repos\\ICEI-PUC-Minas-PMV-ADS\\ForkFinder\\src\\ForkFinder\\obj\\",
+>>>>>>> develop
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Jansem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -44,10 +58,13 @@
               "target": "Package",
               "version": "[4.0.2, )"
             },
+<<<<<<< HEAD
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.17, )"
             },
+=======
+>>>>>>> develop
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[5.0.17, )"
