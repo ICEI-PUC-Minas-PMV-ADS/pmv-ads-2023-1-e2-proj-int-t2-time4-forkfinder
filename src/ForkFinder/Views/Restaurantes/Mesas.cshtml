@@ -49,23 +49,16 @@
 
                                     @foreach (var horario in Model.Agendas[i].Horarios.OrderBy(h => h.Hora))
                                     {
-                                        @if (mesa.Horarios.Any(h => h.Id == horario.Id))
+                                        if (mesa.Horarios.Any(h => h.Id == horario.Id && !h.Agendado)) // Verifica se o horário não está agendado
                                         {
                                             <div class="col row align-content-center m-1">
                                                 <div class="rounded btn btn-outline-secondary px-2">
-                                                    @*@horario.Hora*@
-                                                    @*<a href="@Url.Action("Reserva", "Restaurantes", new { restauranteId = Model.RestauranteId, mesaId = mesa.Id, horarioId = horario.Id, clienteId = "ClienteId" })" class="btn-reserva" data-mesa="@mesa.Id" data-horario="@horario.Hora">@horario.Hora</a>*@
-                                                    <a href="@Url.Action("Reserva", "Restaurantes", new { restauranteId = Model.RestauranteId, mesaId = mesa.Id, horarioId = horario.Id, agendaId = @Model.Agendas[i].Id, clienteId = "ClienteId" })" class="btn-reserva" data-mesa="@mesa.Id" data-horario="@horario.Hora" data-indice="@i">@horario.Hora.ToString("HH:mm")</a>
-
-
-
-@*                                                    <a href="@Url.Action("Reserva", "Restaurantes", new { restauranteId = Model.RestauranteId, mesaId = mesa.Id, horarioId = horario.Id, clienteId = "ClienteId" })">@horario.Hora</a>
-*@
-                                                    
-</div>
+                                                    <a href="@Url.Action("Reserva", "Restaurantes"@*, new { restauranteId = Model.RestauranteId, mesaId = mesa.Id, horarioId = horario.Id, agendaId = Model.Agendas[i].Id, clienteId = "ClienteId" }*@)" class="btn-reserva" data-mesa="@mesa.Id" data-horario="@horario.Id" data-agendaid="@Model.Agendas[i].Id">@horario.Hora.ToString("HH:mm")</a>
+                                                </div>
                                             </div>
                                         }
                                     }
+
                                 </div>
                             }
                         </div>
@@ -77,7 +70,6 @@
 </div>
 
 <!-- Modal de confirmação de reserva -->
-
 <div class="modal fade" id="reservaModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="reservaModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -90,10 +82,35 @@
                 <p>Mesa: <strong id="mesaSelecionada"></strong></p>
                 <p>Data: <strong id="agendaSelecionada"></strong></p>
                 <p>Horário: <strong id="horarioSelecionado"></strong> horas</p>
+                <div class="form-group">
+                    <label for="descricao">Descrição:</label>
+                    <textarea class="form-control" id="descricao" rows="3"></textarea>
+                </div>
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-primary" id="confirmarReserva">Confirmar Reserva</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de reserva confirmada -->
+<div class="modal fade" id="reservaConfirmadaModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="reservaConfirmadaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reservaConfirmadaModalLabel">Reserva Confirmada</h5>
+                <button id="fecharConfirmacaoModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body text-center">
+                <div class="circle-icon-container">
+                    <i class="bi bi-check-circle-fill bg-success"></i>
+                </div>
+                <h4>Reserva Confirmada com Sucesso</h4>
+                <p>Você será redirecionado em <span id="redirecionamentoTempo">5</span> segundos.</p>
+                <p>Caso não seja redirecionado automaticamente, <a href="/Clientes/Reservas">clique aqui</a>.</p>
             </div>
         </div>
     </div>
@@ -138,38 +155,47 @@
                 e.preventDefault();
 
                 var mesaId = $(this).data("mesa");
-                var horario = new Date($(this).data("horario")).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                var indice = $(this).data("indice");
+                var horarioId = $(this).data("horario");
+                var horario = $(this).text();
+                var agendaId = $(this).data("agendaid");
                 var activeItem = $(this).closest(".carousel-item");
                 var activeDate = activeItem.find("h4").text().trim();
-                var agenda = new Date(activeDate);
 
                 $("#mesaSelecionada").text(mesaId);
                 $("#horarioSelecionado").text(horario);
                 $("#agendaSelecionada").text(activeDate);
-                    $("#reservaModal").modal("show");
+                $("#reservaModal").modal("show");
 
-                    $("#confirmarReserva").click(function () {
-                        // Obter os valores dos atributos de dados do botão de reserva
-                        var restauranteId = @Model.RestauranteId;
-                        var mesaId = $(this).data("mesa");
-                        var horarioId = $(this).data("horario");
-                        var indice = $(this).data("indice");
-                        var clienteId = "ClienteId";
+                $("#confirmarReserva").click(function () {
+                    var restauranteId = @Model.RestauranteId;
+                    var descricao = $("#descricao").val(); // Obtém o valor do campo de descrição
+                    var url = '@Url.Action("Reserva", "Restaurantes")';
 
-                        // Definir a URL de destino
-                        var url = '@Url.Action("Reserva", "Restaurantes", new { restauranteId = "__RESTAURANTE_ID__", mesaId = "__MESA_ID__", horarioId = "__HORARIO_ID__", agendaId = "__AGENDA_ID__", clienteId = "__CLIENTE_ID__" })';
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: {
+                            restauranteId: restauranteId,
+                            mesaId: mesaId,
+                            horarioId: horarioId,
+                            agendaId: agendaId,
+                            descricao: descricao // Inclui o valor do campo de descrição nos dados enviados
+                        },
+                        success: function (data) {
+                            $("#reservaModal").modal("hide");
+                            // Exibir o modal de reserva bem-sucedida
+                            $("#reservaConfirmadaModal").modal("show");
 
-                        // Substituir os marcadores de posição pelos valores corretos
-                        url = url.replace("__RESTAURANTE_ID__", restauranteId);
-                        url = url.replace("__MESA_ID__", mesa.Id);
-                        url = url.replace("__HORARIO_ID__", horario.Id);
-                        url = url.replace("__AGENDA_ID__", indice);
-                        url = url.replace("__CLIENTE_ID__", clienteId);
-
-                        // Redirecionar para a URL
-                        window.location.href = url;
+                            // Redirecionar para a página "Clientes/Reservas" após 5 segundos
+                            setTimeout(function () {
+                                window.location.href = "/Clientes/Reservas";
+                            }, 5000);
+                        },
+                        error: function () {
+                            // Exibir mensagem de erro, se necessário
+                        }
                     });
+                });
             });
 
             $("#fecharModal").click(function () {
@@ -177,5 +203,4 @@
             });
         });
     </script>
-
 }

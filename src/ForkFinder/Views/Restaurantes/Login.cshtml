@@ -7,8 +7,23 @@
 <h2 class="text-center">@ViewData["Title"]</h2>
 <div class="justify-content-center">
     <div class="row justify-content-center">
+        <div class="col-md-auto card py-3" style="width: 26rem;">
 
-        <div class="col-md-auto card" style="width: 26rem;">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link text-warning" id="profile-tab" data-bs-toggle="tab" data-bs-href="/Clientes/Login"
+                            type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+                        Cliente
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active text-warning" data-bs-toggle="tab"
+                            type="button" role="tab" aria-controls="profile-tab-pane"
+                            aria-selected="false">
+                        Restaurante
+                    </button>
+                </li>
+            </ul>
             <section>
                 <form id="account" method="post">
                     <h4 class="py-3">Utilize suas credenciais para logar.</h4>
@@ -40,4 +55,12 @@
 </div>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $("#profile-tab").on("click", function () {
+                var href = $(this).data("bs-href");
+                window.location.href = href;
+            });
+        });
+    </script>
 }

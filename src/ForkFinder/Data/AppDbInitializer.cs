@@ -876,70 +876,81 @@ namespace ForkFinder.Data
                 if (!context.Mesas.Any())
                 {
                     context.Mesas.AddRange(new List<Mesa>()
-                    {
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 10,
-                            TamanhoMesa= 4,
-                            RestauranteId= 1
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 10,
-                            TamanhoMesa= 6,
-                            RestauranteId= 1
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 10,
-                            TamanhoMesa= 8,
-                            RestauranteId= 1
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 10,
-                            TamanhoMesa= 7,
-                            RestauranteId= 1
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 10,
-                            TamanhoMesa= 5,
-                            RestauranteId= 1
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 15,
-                            TamanhoMesa= 8,
-                            RestauranteId= 2
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 20,
-                            TamanhoMesa= 4,
-                            RestauranteId= 3
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 18,
-                            TamanhoMesa= 6,
-                            RestauranteId= 4
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 30,
-                            TamanhoMesa= 4,
-                            RestauranteId= 5
-                        },
-                        new Mesa ()
-                        {
-                            QuantidadeMesa= 18,
-                            TamanhoMesa= 4,
-                            RestauranteId= 6
-                        }
-                    });
+    {
+        new Mesa()
+        {
+            QuantidadeMesa = 10,
+            TamanhoMesa = 4,
+            RestauranteId = 1,
+            Agendada = true
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 10,
+            TamanhoMesa = 6,
+            RestauranteId = 1,
+            Agendada = true
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 10,
+            TamanhoMesa = 8,
+            RestauranteId = 1,
+            Agendada = false
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 10,
+            TamanhoMesa = 7,
+            RestauranteId = 1,
+            Agendada = false
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 10,
+            TamanhoMesa = 5,
+            RestauranteId = 1,
+            Agendada = true
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 15,
+            TamanhoMesa = 8,
+            RestauranteId = 2,
+            Agendada = true
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 20,
+            TamanhoMesa = 4,
+            RestauranteId = 3,
+            Agendada = false
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 18,
+            TamanhoMesa = 6,
+            RestauranteId = 4,
+            Agendada = true
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 30,
+            TamanhoMesa = 4,
+            RestauranteId = 5,
+            Agendada = false
+        },
+        new Mesa()
+        {
+            QuantidadeMesa = 18,
+            TamanhoMesa = 4,
+            RestauranteId = 6,
+            Agendada = true
+        }
+    });
                     context.SaveChanges();
                 }
+
                 //Categorias
                 if (!context.Categorias.Any())
                 {
@@ -1235,105 +1246,174 @@ namespace ForkFinder.Data
                     });
                     context.SaveChanges();
                 }*/
-                //Reservas
+                // Reservas
                 if (!context.Reservas.Any())
                 {
-                    context.Reservas.AddRange(new List<Reserva> ()
+                    var horarios = new List<Horario>();
+
+                    // Gerar horários aleatórios
+                    var randomHorario = new Random();
+                    var horaInicial = TimeSpan.FromHours(8); // Hora inicial (por exemplo, 8:00)
+                    var intervaloHoras = 2; // Intervalo de horas entre os horários
+                    var quantidadeHorarios = 5; // Quantidade de horários a serem gerados
+
+                    for (int i = 0; i < quantidadeHorarios; i++)
                     {
-                        new Reserva()
+                        var hora = horaInicial.Add(TimeSpan.FromHours(intervaloHoras * i));
+
+                        var horario = new Horario
                         {
-                        DataHoraCriacao = DateTime.Now.AddDays(-10),
-                        Descricao = "",
-                        Situacao = true,
-                        ClienteId = 1,
-                        MesaId = 1
-                        },
-                        new Reserva()
-                        {
-                        DataHoraCriacao = DateTime.Now.AddDays(-10),
-                        Descricao = "",
-                        Situacao = true,
-                        ClienteId = 1,
-                        MesaId = 1
-                        },
-                        new Reserva()
-                        {
-                        DataHoraCriacao = DateTime.Now.AddDays(-10),
-                        Descricao = "",
-                        Situacao = true,
-                        ClienteId = 1,
-                        MesaId = 1
-                        },
-                        new Reserva()
-                        {
-                        DataHoraCriacao = DateTime.Now.AddDays(-10),
-                        Descricao = "",
-                        Situacao = true,
-                        ClienteId = 1,
-                        MesaId = 1
-                        },
-                    });
+                            Hora = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, hora.Hours, hora.Minutes, hora.Seconds),
+                            MesaId = i + 1 // Atribuir MesaId correspondente ao índice (assumindo que os IDs das mesas são sequenciais)
+                        };
+
+                        horarios.Add(horario);
+                    }
+
+                    context.Horarios.AddRange(horarios);
                     context.SaveChanges();
-                }
-                //Agenda
-                /*if (!context.Agendas.Any())
-                {
-                    context.Agendas.AddRange(new List<Agenda>()
+
+                    // Verificar se existem horários, mesas e agendas disponíveis
+                    if (!context.Horarios.Any() || !context.Mesas.Any() || !context.Agendas.Any())
                     {
-                        new Agenda()
-                        {
-                            Data = DateTime.Now.AddDays(-10),
-                            Horario = "13:00",
-                            MesaId = 1
-                        },
-                        new Agenda()
-                        {
-                            Data = DateTime.Now.AddDays(-10),
-                            Horario = "18:00",
-                            MesaId = 1
-                        },
-                        new Agenda()
-                        {
-                            Data = DateTime.Now.AddDays(-10),
-                            Horario = "20:00",
-                            MesaId = 1
-                        },
-                        new Agenda()
-                        {
-                            Data = DateTime.Now.AddDays(-10),
-                            Horario = "15:00",
-                            MesaId = 1
-                        },
+                        Console.WriteLine("Não há horários, mesas ou agendas disponíveis.");
+                        return;
+                    }
 
-                        new Agenda()
-                        {
-                            Data = DateTime.Now.AddDays(-10),
-                            Horario = "12:00",
-                            MesaId = 2                            
-                        },
+                    // Gerar mesas aleatórias
+                    var mesas = new List<Mesa>();
 
-                        new Agenda()
-                        {
-                            Data = DateTime.Now.AddDays(-10),
-                            Horario = "08:00",
-                            MesaId = 3
-                        },
-                    });
-                    context.SaveChanges();                
-                }*/
+                    var randomMesa = new Random();
+                    var quantidadeMesas = 5; // Quantidade de mesas a serem geradas
 
-                //Avaliacoes
-                /* if (!context.Restaurantes.Any())
-                 {
-                     context.Clientes.AddRange(new List<Cliente>()
+                    for (int i = 0; i < quantidadeMesas; i++)
+                    {
+                        var mesa = new Mesa
+                        {
+                            QuantidadeMesa = i + 1, // Atribuir QuantidadeMesa correspondente ao índice (assumindo que os IDs das mesas são sequenciais)
+                            TamanhoMesa = randomMesa.Next(2, 10), // Gerar tamanho de mesa aleatório entre 2 e 10
+                            Descricao = "Mesa " + (i + 1), // Descrição da mesa
+                            RestauranteId = 1 // Atribuir RestauranteId correspondente (neste caso, 1)
+                        };
+
+                        mesas.Add(mesa);
+                    }
+
+                    context.Mesas.AddRange(mesas);
+                    context.SaveChanges();
+
+                    // Gerar agendas aleatórias
+                    var agendas = new List<Agenda>();
+
+                    var randomAgenda = new Random();
+                    var dataInicial = DateTime.Now.Date; // Data inicial (hoje)
+                    var intervaloDias = 2; // Intervalo de dias entre as agendas
+                    var quantidadeAgendas = 5; // Quantidade de agendas a serem geradas
+
+                    for (int i = 0; i < quantidadeAgendas; i++)
+                    {
+                        var data = dataInicial.AddDays(intervaloDias * i);
+
+                        var agenda = new Agenda
+                        {
+                            Data = data,
+                            MesaId = mesas[randomAgenda.Next(0, mesas.Count)].Id // Atribuir MesaId aleatório a partir das mesas geradas
+                        };
+
+                        agendas.Add(agenda);
+                    }
+
+                    context.Agendas.AddRange(agendas);
+                    context.SaveChanges();
+
+                    // Obter os horários, mesas e agendas disponíveis
+                    var horariosDisponiveis = context.Horarios.ToList();
+                    var mesasDisponiveis = context.Mesas.ToList();
+                    var agendasDisponiveis = context.Agendas.ToList();
+                    // Obter os restaurantes disponíveis
+                    var restaurantesDisponiveis = context.Restaurantes.Select(r => r.RestauranteId).ToList();
+
+                    // Gerar e atribuir as reservas
+                    for (int i = 0; i < 5; i++)
+                    {
+                        var reserva = new Reserva()
+                        {
+                            DataHoraCriacao = DateTime.Now.AddDays(-10),
+                            Descricao = "Rerserva gerada automaticamente",
+                            Situacao = (Situacao)1,
+                            ClienteId = 1,
+                            MesaId = mesasDisponiveis[i % mesasDisponiveis.Count].Id,
+                            HorarioId = horariosDisponiveis[i % horariosDisponiveis.Count].Id,
+                            AgendaId = agendasDisponiveis[i % agendasDisponiveis.Count].Id,
+                            RestauranteId = restaurantesDisponiveis[i % restaurantesDisponiveis.Count]
+                        };
+
+                        context.Reservas.Add(reserva);
+                    }
+
+                    context.SaveChanges();
+
+                }
+
+                    //Agenda
+                    /*if (!context.Agendas.Any())
+                    {
+                        context.Agendas.AddRange(new List<Agenda>()
+                        {
+                            new Agenda()
+                            {
+                                Data = DateTime.Now.AddDays(-10),
+                                Horario = "13:00",
+                                MesaId = 1
+                            },
+                            new Agenda()
+                            {
+                                Data = DateTime.Now.AddDays(-10),
+                                Horario = "18:00",
+                                MesaId = 1
+                            },
+                            new Agenda()
+                            {
+                                Data = DateTime.Now.AddDays(-10),
+                                Horario = "20:00",
+                                MesaId = 1
+                            },
+                            new Agenda()
+                            {
+                                Data = DateTime.Now.AddDays(-10),
+                                Horario = "15:00",
+                                MesaId = 1
+                            },
+
+                            new Agenda()
+                            {
+                                Data = DateTime.Now.AddDays(-10),
+                                Horario = "12:00",
+                                MesaId = 2                            
+                            },
+
+                            new Agenda()
+                            {
+                                Data = DateTime.Now.AddDays(-10),
+                                Horario = "08:00",
+                                MesaId = 3
+                            },
+                        });
+                        context.SaveChanges();                
+                    }*/
+
+                    //Avaliacoes
+                    /* if (!context.Restaurantes.Any())
                      {
+                         context.Clientes.AddRange(new List<Cliente>()
+                         {
 
-                     });
+                         });
 
-                 }*/
-                
-            }
-            
+                     }*/
+
+                }
+
         }
         private static byte[] DownloadImageAsBytes(string imageUrl)
         {

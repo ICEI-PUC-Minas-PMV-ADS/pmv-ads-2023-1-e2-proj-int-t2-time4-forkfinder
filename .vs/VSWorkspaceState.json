@@ -4,14 +4,6 @@
     "\\src",
     "\\src\\ForkFinder"
   ],
-<<<<<<< HEAD
   "SelectedNode": "\\src\\ForkFinder\\ForkFinder.sln",
-=======
-<<<<<<< HEAD
-  "SelectedNode": "\\src\\ForkFinder\\Views\\Restaurantes\\Mesas.cshtml",
-=======
-  "SelectedNode": "\\ForkFinder.sln",
->>>>>>> origin/develop-Jansem
->>>>>>> 2c3838d1c3dfcc476851a15d5a88dc9192d1abec
   "PreviewInSolutionExplorer": false
 }

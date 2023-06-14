@@ -18,5 +18,6 @@ namespace ForkFinder.Models
         public int MesaId { get; set; }
         [ForeignKey("MesaId")]
         public Mesa Mesas { get; set; }
+        public bool Agendado { get; set; }
     }
 }
