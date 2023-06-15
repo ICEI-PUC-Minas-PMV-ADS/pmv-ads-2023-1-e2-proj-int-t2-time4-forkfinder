@@ -2,8 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\ForkFinder"
+    "\\src\\ForkFinder",
+    "\\src\\ForkFinder\\Controllers"
   ],
-  "SelectedNode": "\\src\\ForkFinder\\ForkFinder.sln",
   "PreviewInSolutionExplorer": false
 }
