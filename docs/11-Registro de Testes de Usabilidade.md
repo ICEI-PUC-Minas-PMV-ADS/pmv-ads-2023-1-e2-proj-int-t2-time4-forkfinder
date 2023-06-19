@@ -16,3 +16,13 @@ Abaixo segue respostas realizadas por 4 pessoas diferentes:
 [Testes de usabilidade - Neemias - Formulários Google.pdf](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/files/11415209/Testes.de.usabilidade.-.Neemias.-.Formularios.Google.pdf)
 
 [Testes de usabilidade - Lucas - Formulários Google.pdf](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/files/11415212/Testes.de.usabilidade.-.Lucas.-.Formularios.Google.pdf)
+
+Abaixo segue novos registros de teste de funcionalidade:
+
+[Teste de funcionalidade 01.pdf](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/files/11790348/Teste.de.funcionalidade.01.pdf)
+
+[Teste de funcionalidade 02.pdf](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/files/11790352/Teste.de.funcionalidade.02.pdf)
+
+[Teste de funcionalidade 04.pdf](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/files/11790351/Teste.de.funcionalidade.04.pdf)
+
+[Teste de funcionalidade 03.pdf](https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/files/11790350/Teste.de.funcionalidade.03.pdf)
