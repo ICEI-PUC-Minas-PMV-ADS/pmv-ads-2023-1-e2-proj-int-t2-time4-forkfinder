@@ -11,40 +11,61 @@
                 var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 var cliente = _context.Clientes.FirstOrDefault(c => c.ClienteId.ToString() == userId);
                 byte[] fotoCliente = cliente != null ? Convert.FromBase64String(cliente.Foto) : null;
-                <a class="nav-link text-light" asp-area="" asp-controller="Clientes" asp-action="Perfil" title="Perfil">
-                    @if (fotoCliente != null && fotoCliente.Length > 0)
-                    {
-                        var imgSrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(fotoCliente));
-                        <img src="@imgSrc" alt="Foto de Perfil" class="img-thumbnail" style="height: 30px; width: 30px; border-radius: 50%;" />
-                    }
-                    else
-                    {
-                        <span>Olá Cliente, @User.Identity.Name!</span>
-                    }
-                </a>
-            }
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @if (fotoCliente != null && fotoCliente.Length > 0)
+                            {
+                                var imgSrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(fotoCliente));
+                            <img src="@imgSrc" alt="Foto de Perfil" class="rounded-circle" style="width: 30px; height: 30px;" />
+                            }
+                            else
+                            {
+                            <span>@User.Identity.Name</span>
+                            }
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" asp-area="" asp-controller="Clientes" asp-action="Perfil">Perfil</a></li>
+                        <li><a class="dropdown-item" asp-area="" asp-controller="Clientes" asp-action="Reserva">Minhas Reservas</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a class="form-inline" asp-area="" asp-controller="Clientes" asp-action="Logout">
+                                Sair
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }            
             else if (User.IsInRole("Restaurante"))
             {
-                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-                var restaurante = _context.Restaurantes.FirstOrDefault(r => r.RestauranteId.ToString() == userId);
-                byte[] fotoRestaurante = restaurante != null ? restaurante.FotoPerfil : null;
-                <a class="nav-link text-light" asp-area="" asp-controller="Restaurantes" asp-action="Perfil" title="Perfil">
-                    @if (fotoRestaurante != null && fotoRestaurante.Length > 0)
-                    {
-                        var imgSrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(fotoRestaurante));
-                        <img src="@imgSrc" alt="Foto de Perfil" class="img-thumbnail" style="height: 30px; width: 30px; border-radius: 50%;" />
-                    }
-                    else
-                    {
-                        <span>Olá, @User.Identity.Name!</span>
-                    }
+
+                var restauranteId = User.FindFirstValue("RestauranteId");
+                var restaurante = _context.Restaurantes.FirstOrDefault(r => r.RestauranteId.ToString() == restauranteId);
+
+            <li class="nav-item dropdown-center">
+                <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @if (restaurante != null && restaurante.FotoPerfil != null && restaurante.FotoPerfil.Length > 0)
+                        {
+                            var imgSrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(restaurante.FotoPerfil));
+                        <img src="@imgSrc" alt="Foto de Perfil" class="rounded-circle" style="width: 30px; height: 30px;" />
+                        }
+                        else
+                        {
+                        <span>@User.Identity.Name</span>
+                        }
                 </a>
+                <ul class="dropdown-menu dropdown-menu-md-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Restaurantes" asp-action="Perfil">Perfil</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="dropdown-item">
+                        <a class="form-inline" asp-area="" asp-controller="Clientes" asp-action="Logout">
+                            Sair
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
             }
-        </li>
-        <li class="nav-item">
-            <form class="form-inline" asp-area="" asp-controller="Clientes" asp-action="Logout">
-                <button type="submit" class="nav-link btn btn-link text-light">Sair</button>
-            </form>
         </li>
     }
     else

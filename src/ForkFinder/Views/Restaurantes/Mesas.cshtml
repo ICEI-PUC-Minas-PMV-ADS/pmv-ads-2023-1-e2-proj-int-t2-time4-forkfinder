@@ -35,36 +35,48 @@
     <hr />
     <div class="row">
         <div class="col">
-            <div id="dateCarousel" class="carousel slide">
-                <div class="carousel-inner" id="datavar">
-                    @for (int i = 0; i < Model.Agendas.Count; i++)
-                    {
-                        <div class="carousel-item @(i == 0 ? "active" : "")">
-                            <h4 class="text-center d-none">@Model.Agendas[i].Data.ToString("dd/MM/yyyy")</h4>
+            <div class="col">
+                <div id="dateCarousel" class="carousel slide">
+                    <div class="carousel-inner" id="datavar">
+                        @for (int i = 0; i < Model.Agendas.Count; i++)
+                        {
+                            <div class="carousel-item @(i == 0 ? "active" : "")">
+                                <h4 class="text-center d-none">@Model.Agendas[i].Data.ToString("dd/MM/yyyy")</h4>
 
-                            @foreach (var mesa in Model.Mesas)
-                            {
-                                <div class="row row-cols-auto">
-                                    <div class="col-2 p-3">Quant. Assentos @mesa.TamanhoMesa</div>
+                                @foreach (var mesa in Model.Mesas)
+                                {
+                                    var horariosDisponiveis = mesa.Horarios
+                                    .Where(h => Model.Agendas.Any(a => a.Horarios.Any(ha => ha.Id == h.Id && !ha.Agendado)));
 
-                                    @foreach (var horario in Model.Agendas[i].Horarios.OrderBy(h => h.Hora))
+                                    if (horariosDisponiveis.Any())
                                     {
-                                        if (mesa.Horarios.Any(h => h.Id == horario.Id && !h.Agendado)) // Verifica se o horário não está agendado
-                                        {
-                                            <div class="col row align-content-center m-1">
-                                                <div class="rounded btn btn-outline-secondary px-2">
-                                                    <a href="@Url.Action("Reserva", "Restaurantes"@*, new { restauranteId = Model.RestauranteId, mesaId = mesa.Id, horarioId = horario.Id, agendaId = Model.Agendas[i].Id, clienteId = "ClienteId" }*@)" class="btn-reserva" data-mesa="@mesa.Id" data-horario="@horario.Id" data-agendaid="@Model.Agendas[i].Id">@horario.Hora.ToString("HH:mm")</a>
-                                                </div>
-                                            </div>
-                                        }
-                                    }
+                                        <div class="row row-cols-auto">
+                                            <div class="col-2 p-3">Quant. Assentos @mesa.TamanhoMesa</div>
 
-                                </div>
-                            }
-                        </div>
-                    }
+                                            @foreach (var horario in horariosDisponiveis.OrderBy(h => h.Hora))
+                                            {
+                                                <div class="col row align-content-center m-1">
+                                                    <div class="rounded btn btn-outline-secondary px-2">
+                                                        <a href="@Url.Action("Reserva", "Restaurantes")" class="btn-reserva" data-mesa="@mesa.Id" data-horario="@horario.Id" data-agendaid="@Model.Agendas.First(a => a.Horarios.Any(ha => ha.Id == horario.Id)).Id">@horario.Hora.ToString("HH:mm")</a>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                }
+
+
+
+
+
+
+
+                            </div>
+                        }
+                    </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
@@ -117,9 +129,7 @@
 </div>
 
 @section Scripts {
-    @*<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>*@
+    
     <script>
         $(function () {
             $("#dateCarousel").carousel({
@@ -188,7 +198,7 @@
 
                             // Redirecionar para a página "Clientes/Reservas" após 5 segundos
                             setTimeout(function () {
-                                window.location.href = "/Clientes/Reservas";
+                                window.location.href = "/Clientes/Reserva";
                             }, 5000);
                         },
                         error: function () {

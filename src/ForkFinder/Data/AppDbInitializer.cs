@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ForkFinder.Data
 {
@@ -75,7 +73,7 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "09.509.467/0001-36",
-                            FotoPerfil = DownloadImageAsBytes("https://static.ifood-static.com.br/image/upload/t_medium/logosgde/06788a08-428b-4130-9d2c-b9e79725708e/202005281440_bTNt_.jpeg"),
+                            FotoPerfil = DownloadImageAsBytes("https://img.freepik.com/vetores-premium/logotipo-do-cafe-e-restaurante-de-comida-arabe_18099-3719.jpg?w=2000"),
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Nau Frutos do Mar",
                             Avaliacao = 5,
                             Papel = (Papel)1
@@ -86,7 +84,7 @@ namespace ForkFinder.Data
                             Email = "Teste",
                             Senha = BCrypt.Net.BCrypt.HashPassword("Teste"),
                             CNPJ = "49.040.769/0001-22",
-                            FotoPerfil = DownloadImageAsBytes("https://scontent.fjpa11-1.fna.fbcdn.net/v/t1.6435-9/60343892_2160827287327350_7286930952792571904_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=174925&_nc_ohc=zsMwXpUuvd4AX_tOPnY&_nc_ht=scontent.fjpa11-1.fna&oh=00_AfAdl2fABphiFftPkxLUw4f4IX_NX66sdmR-rQym-6qWCQ&oe=648AE71B"),
+                            FotoPerfil = DownloadImageAsBytes("https://img.freepik.com/vetores-premium/logotipo-do-cafe-e-restaurante-de-comida-arabe_18099-3719.jpg?w=2000"),
                             DescricaoRestaurante = "Isto é uma descrição do restaurante Mangai Comida Regional",
                             Avaliacao = 5,
                             Papel = (Papel)1
@@ -551,403 +549,128 @@ namespace ForkFinder.Data
                 //Funcionamentos
                 if (!context.Funcionamentos.Any())
                 {
-                    context.Funcionamentos.AddRange(new List<Funcionamento>()
-                    { 
-                        //restaurante 1//
-                        new Funcionamento ()
-                        {
-                            HorarioInicio= "Fechado",
-                            HorarioFim= "-",
-                            DiaDaSemana="Segunda-Feira",
-                            RestauranteId= 1
-                        },
-                        new Funcionamento ()
+                    var restaurantesIds = new List<int> { 1, 2, 3, 4, 5, 6 }; // Lista com os IDs dos restaurantes
 
+                    var diasDaSemana = new List<string>
                         {
-                            HorarioInicio="11:00",
-                            HorarioFim="23:00",
-                            DiaDaSemana="Terça-Feira",
-                            RestauranteId= 1
-                        },
-                       
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="11:00",
-                            HorarioFim="23:00",
-                            DiaDaSemana="Quarta-Feira",
-                            RestauranteId= 1
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="11:00",
-                            HorarioFim="23:00",
-                            DiaDaSemana="Quinta-Feira",
-                            RestauranteId= 1
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="11:00",
-                            HorarioFim="23:00",
-                            DiaDaSemana="Sexta-Feira",
-                            RestauranteId= 1
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="11:00",
-                            HorarioFim="23:00",
-                            DiaDaSemana="Sábado",
-                            RestauranteId= 1
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="11:00",
-                            HorarioFim="23:00",
-                            DiaDaSemana="Domingo",
-                            RestauranteId= 1
-                        },
-                        //restaurante 2//
-                        new Funcionamento ()
-                        {
-                            HorarioInicio= "Fechado",
-                            HorarioFim= "-",
-                            DiaDaSemana="Segunda-Feira",
-                            RestauranteId= 2
-                        },
-                        new Funcionamento ()
+                            "Segunda-Feira",
+                            "Terça-Feira",
+                            "Quarta-Feira",
+                            "Quinta-Feira",
+                            "Sexta-Feira",
+                            "Sábado",
+                            "Domingo"
+                        }; // Lista com os dias da semana
 
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Terça-Feira",
-                            RestauranteId= 2
-                        },
+                    var funcionamentos = new List<Funcionamento>();
 
-                        new Funcionamento ()
+                    foreach (var restauranteId in restaurantesIds)
+                    {
+                        foreach (var diaDaSemana in diasDaSemana)
                         {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Quarta-Feira",
-                            RestauranteId= 2
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Quinta-Feira",
-                            RestauranteId= 2
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Sexta-Feira",
-                            RestauranteId= 2
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Sábado",
-                            RestauranteId= 2
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Domingo",
-                            RestauranteId= 2
-                        },
+                            string horarioInicio, horarioFim;
 
-                        //restaurante 3//
-                        new Funcionamento ()
-                        {
-                            HorarioInicio= "Fechado",
-                            HorarioFim= "-",
-                            DiaDaSemana="Segunda-Feira",
-                            RestauranteId= 3
-                        },
-                        new Funcionamento ()
+                            if (diaDaSemana == "Segunda-Feira" || diaDaSemana == "Domingo")
+                            {
+                                horarioInicio = "Fechado";
+                                horarioFim = "-";
+                            }
+                            else
+                            {
+                                horarioInicio = "10:00";
+                                horarioFim = "22:00";
+                            }
 
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Terça-Feira",
-                            RestauranteId= 3
-                        },
-
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Quarta-Feira",
-                            RestauranteId= 3
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Quinta-Feira",
-                            RestauranteId= 3
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Sexta-Feira",
-                            RestauranteId= 3
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Sábado",
-                            RestauranteId= 3
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="22:00",
-                            DiaDaSemana="Domingo",
-                            RestauranteId= 3
-                        },
-
-                         //restaurante 4//
-                        new Funcionamento ()
-                        {
-                            HorarioInicio= "Fechado",
-                            HorarioFim= "-",
-                            DiaDaSemana="Segunda-Feira",
-                            RestauranteId= 4
-                        },
-                        new Funcionamento ()
-
-                        {
-                            HorarioInicio="12:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Terça-Feira",
-                            RestauranteId= 4
-                        },
-
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="12:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Quarta-Feira",
-                            RestauranteId= 4
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="12:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Quinta-Feira",
-                            RestauranteId= 4
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="12:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Sexta-Feira",
-                            RestauranteId= 4
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="12:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Sábado",
-                            RestauranteId= 4
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="12:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Domingo",
-                            RestauranteId= 4
-                        },
-
-                        //restaurante 5//
-                        new Funcionamento ()
-                        {
-                            HorarioInicio= "Fechado",
-                            HorarioFim= "-",
-                            DiaDaSemana="Segunda-Feira",
-                            RestauranteId= 5
-                        },
-                        new Funcionamento ()
-
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Terça-Feira",
-                            RestauranteId= 5
-                        },
-
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Quarta-Feira",
-                            RestauranteId= 5
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Quinta-Feira",
-                            RestauranteId= 5
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Sexta-Feira",
-                            RestauranteId= 5
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Sábado",
-                            RestauranteId= 5
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Domingo",
-                            RestauranteId= 5
-                        },
-
-                        //restaurante 6//
-                        new Funcionamento ()
-                        {
-                            HorarioInicio= "Fechado",
-                            HorarioFim= "-",
-                            DiaDaSemana="Segunda-Feira",
-                            RestauranteId= 6
-                        },
-                        new Funcionamento ()
-
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Terça-Feira",
-                            RestauranteId= 6
-                        },
-
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Quarta-Feira",
-                            RestauranteId= 6
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Quinta-Feira",
-                            RestauranteId= 6
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Sexta-Feira",
-                            RestauranteId= 6
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Sábado",
-                            RestauranteId= 6
-                        },
-                        new Funcionamento ()
-                        {
-                            HorarioInicio="10:00",
-                            HorarioFim="24:00",
-                            DiaDaSemana="Domingo",
-                            RestauranteId= 6
+                            funcionamentos.Add(new Funcionamento
+                            {
+                                HorarioInicio = horarioInicio,
+                                HorarioFim = horarioFim,
+                                DiaDaSemana = diaDaSemana,
+                                RestauranteId = restauranteId
+                            });
                         }
-                    });
+                    }
+
+                    context.Funcionamentos.AddRange(funcionamentos);
                     context.SaveChanges();
                 }
+
                 //Mesas
                 if (!context.Mesas.Any())
                 {
                     context.Mesas.AddRange(new List<Mesa>()
-    {
-        new Mesa()
-        {
-            QuantidadeMesa = 10,
-            TamanhoMesa = 4,
-            RestauranteId = 1,
-            Agendada = true
-        },
-        new Mesa()
-        {
-            QuantidadeMesa = 10,
-            TamanhoMesa = 6,
-            RestauranteId = 1,
-            Agendada = true
-        },
-        new Mesa()
-        {
-            QuantidadeMesa = 10,
-            TamanhoMesa = 8,
-            RestauranteId = 1,
-            Agendada = false
-        },
-        new Mesa()
-        {
-            QuantidadeMesa = 10,
-            TamanhoMesa = 7,
-            RestauranteId = 1,
-            Agendada = false
-        },
-        new Mesa()
-        {
-            QuantidadeMesa = 10,
-            TamanhoMesa = 5,
-            RestauranteId = 1,
-            Agendada = true
-        },
-        new Mesa()
-        {
-            QuantidadeMesa = 15,
-            TamanhoMesa = 8,
-            RestauranteId = 2,
-            Agendada = true
-        },
-        new Mesa()
-        {
-            QuantidadeMesa = 20,
-            TamanhoMesa = 4,
-            RestauranteId = 3,
-            Agendada = false
-        },
-        new Mesa()
-        {
-            QuantidadeMesa = 18,
-            TamanhoMesa = 6,
-            RestauranteId = 4,
-            Agendada = true
-        },
-        new Mesa()
-        {
-            QuantidadeMesa = 30,
-            TamanhoMesa = 4,
-            RestauranteId = 5,
-            Agendada = false
-        },
-        new Mesa()
-        {
-            QuantidadeMesa = 18,
-            TamanhoMesa = 4,
-            RestauranteId = 6,
-            Agendada = true
-        }
-    });
+                {
+                    new Mesa()
+                    {
+                        QuantidadeMesa = 10,
+                        TamanhoMesa = 4,
+                        RestauranteId = 1,
+                        Agendada = true
+                    },
+                    new Mesa()
+                    {
+                        QuantidadeMesa = 10,
+                        TamanhoMesa = 6,
+                        RestauranteId = 1,
+                        Agendada = true
+                    },
+                    new Mesa()
+                    {
+                        QuantidadeMesa = 10,
+                        TamanhoMesa = 8,
+                        RestauranteId = 1,
+                        Agendada = false
+                    },
+                    new Mesa()
+                    {
+                        QuantidadeMesa = 10,
+                        TamanhoMesa = 7,
+                        RestauranteId = 1,
+                        Agendada = false
+                    },
+                    new Mesa()
+                    {
+                        QuantidadeMesa = 10,
+                        TamanhoMesa = 5,
+                        RestauranteId = 1,
+                        Agendada = true
+                    },
+                    new Mesa()
+                    {
+                        QuantidadeMesa = 15,
+                        TamanhoMesa = 8,
+                        RestauranteId = 2,
+                        Agendada = true
+                    },
+                    new Mesa()
+                    {
+                        QuantidadeMesa = 20,
+                        TamanhoMesa = 4,
+                        RestauranteId = 3,
+                        Agendada = false
+                    },
+                    new Mesa()
+                    {
+                        QuantidadeMesa = 18,
+                        TamanhoMesa = 6,
+                        RestauranteId = 4,
+                        Agendada = true
+                    },
+                    new Mesa()
+                    {
+                        QuantidadeMesa = 30,
+                        TamanhoMesa = 4,
+                        RestauranteId = 5,
+                        Agendada = false
+                    },
+                    new Mesa()
+                    {
+                        QuantidadeMesa = 18,
+                        TamanhoMesa = 4,
+                        RestauranteId = 6,
+                        Agendada = true
+                    }
+                });
                     context.SaveChanges();
                 }
 
@@ -1345,7 +1068,8 @@ namespace ForkFinder.Data
                             MesaId = mesasDisponiveis[i % mesasDisponiveis.Count].Id,
                             HorarioId = horariosDisponiveis[i % horariosDisponiveis.Count].Id,
                             AgendaId = agendasDisponiveis[i % agendasDisponiveis.Count].Id,
-                            RestauranteId = restaurantesDisponiveis[i % restaurantesDisponiveis.Count]
+                            RestauranteId = restaurantesDisponiveis[i % restaurantesDisponiveis.Count],
+                            EspecialidadeId = 1
                         };
 
                         context.Reservas.Add(reserva);
@@ -1353,65 +1077,7 @@ namespace ForkFinder.Data
 
                     context.SaveChanges();
 
-                }
-
-                    //Agenda
-                    /*if (!context.Agendas.Any())
-                    {
-                        context.Agendas.AddRange(new List<Agenda>()
-                        {
-                            new Agenda()
-                            {
-                                Data = DateTime.Now.AddDays(-10),
-                                Horario = "13:00",
-                                MesaId = 1
-                            },
-                            new Agenda()
-                            {
-                                Data = DateTime.Now.AddDays(-10),
-                                Horario = "18:00",
-                                MesaId = 1
-                            },
-                            new Agenda()
-                            {
-                                Data = DateTime.Now.AddDays(-10),
-                                Horario = "20:00",
-                                MesaId = 1
-                            },
-                            new Agenda()
-                            {
-                                Data = DateTime.Now.AddDays(-10),
-                                Horario = "15:00",
-                                MesaId = 1
-                            },
-
-                            new Agenda()
-                            {
-                                Data = DateTime.Now.AddDays(-10),
-                                Horario = "12:00",
-                                MesaId = 2                            
-                            },
-
-                            new Agenda()
-                            {
-                                Data = DateTime.Now.AddDays(-10),
-                                Horario = "08:00",
-                                MesaId = 3
-                            },
-                        });
-                        context.SaveChanges();                
-                    }*/
-
-                    //Avaliacoes
-                    /* if (!context.Restaurantes.Any())
-                     {
-                         context.Clientes.AddRange(new List<Cliente>()
-                         {
-
-                         });
-
-                     }*/
-
+                    }
                 }
 
         }
