@@ -1,12 +1,39 @@
 # Registro de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="3-Projeto de Interface.md"> Projeto de Interface</a></span>, <a href="8-Plano de Testes de Software.md"> Plano de Testes de Software</a>
+Casos de Testes (CT-01, CT-02, CT-03, CT-04 )
+- CT-01 - HomePage - teste de responsividade , O teste falhou pois a aplicação apresenta erros  na responsividade   (mobile )
+segue o erro que foi apresentando no teste de responsividade
+<div>
+<img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_20339_localhost.jpeg?raw=true"><p></p>
 
-Para cada caso de teste definido no Plano de Testes de Software, realize o registro das evidências dos testes feitos na aplicação pela equipe, que comprovem que o critério de êxito foi alcançado (ou não!!!). Para isso, utilize uma ferramenta de captura de tela que mostre cada um dos casos de teste definidos (obs.: cada caso de teste deverá possuir um vídeo do tipo _screencast_ para caracterizar uma evidência do referido caso).
+  <img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_2045_localhost.jpeg?raw=true">
+</div>
+- CT-02 -# Teste de cadastro como Cliente
 
-## Avaliação
+ Teste feito com sucesso , pois foi possível fazer o cadastro como cliente preenchendo todas as credencias do formulário..
+<div>
+<img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_202437_localhost.jpeg?raw=true">
+</div>
 
-Discorra sobre os resultados do teste. Ressaltando pontos fortes e fracos identificados na solução. Comente como o grupo pretende atacar esses pontos nas próximas iterações. Apresente as falhas detectadas e as melhorias geradas a partir dos resultados obtidos nos testes.
+- CT-03 - Entrar com as credencias cadastrada
 
-> **Links Úteis**:
-> - [Ferramentas de Test para Java Script](https://geekflare.com/javascript-unit-testing/)
+ teste feito com sucesso pois conseguimos entrar com as credencias cadastradas
+<div>
+<img align="center" width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_202517_localhost.jpeg?raw=true">
+</div>
+
+</div>
+
+ CT-04 - Tela logada , Como Cliente logada com sucesso .
+<div>
+<img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_202527_localhost.jpeg?raw=true">
+</div>
+
+ CT-05 - # Cadastro como Restaurante
+
+Ao realizar teste encontramos um erro , onde não foi possivel prosseguir com o cadastro como Restaurante
+<div>
+<img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_20268_localhost.jpeg?raw=true"><p></p>
+
+  <img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_202619_localhost.jpeg?raw=true">
+</div>

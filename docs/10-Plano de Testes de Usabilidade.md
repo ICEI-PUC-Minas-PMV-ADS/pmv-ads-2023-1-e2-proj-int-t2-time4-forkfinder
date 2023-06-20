@@ -20,7 +20,7 @@ Todos os testes de usabilidade serão realizados em ambiente remoto e os resulta
 # Teste 1 - Usabilidade da Página Inicial
 ||||||
 |--|--|--|--|--|
-|**Usabilidade da Página Inicial**|A aplicação foi responsiva?|A aplicação foi responsiva?|O tempo de resposta da aplicação foi satisfatório?|As informações foram claras?|
+|**Usabilidade da Página Inicial**|A aplicação foi responsiva?|O tempo de resposta da aplicação foi satisfatório?|As informações foram claras?|
 |Simule clicar nos botões de Login, cadastro para acessar area tela de login e cadastro|||||
 |Simule clicar no botão de cardápio, no qual, deverá ser possível acessar restaurantes com tipos de cardápios desejado|||||
 |Simule clicar nos conteúdos com fotos de tipos de comidas para acessar restaurantes com o cardápio desejado|||||
@@ -28,14 +28,14 @@ Todos os testes de usabilidade serão realizados em ambiente remoto e os resulta
 # Teste 2 - Cadastro e Login
 ||||||
 |--|--|--|--|--|
-|**Cadastro e Login**|A aplicação foi responsiva?|A aplicação foi responsiva?|O tempo de resposta da aplicação foi satisfatório?|As informações foram claras?|
+|**Cadastro e Login**|A aplicação foi responsiva?|O tempo de resposta da aplicação foi satisfatório?|As informações foram claras?|
 |O usuário já cadastrado simulará seu login descrevendo seu E-mail e sua Senha cadastradas, em suas respectivas abas “Email” e “Senha”|||||
 |O usuário irá realizar a simulação de criação de um novo cadastro preenchendo informações solicitadas.|||||
 
 # Teste 3 - Busca por cardápio e reserva em restaurante desejado
 ||||||
 |--|--|--|--|--|
-|**Busca por cardápio e reserva em restaurante desejado**|A aplicação foi responsiva?|A aplicação foi responsiva?|O tempo de resposta da aplicação foi satisfatório?|As informações foram claras?|
+|**Busca por cardápio e reserva em restaurante desejado**|A aplicação foi responsiva?|O tempo de resposta da aplicação foi satisfatório?|As informações foram claras?|
 |O usuário simulará a busca pelo cardápio desejado através da tela inicial, selecionando a foto dos cardápios ou pelo menu cardápio.|||||
 |Após selecionado o cardápio desejado o usuário deverá simular a escolha de um dos restaurantes que possuam aquele cardápio.|||||
 |Após selecionado o restaurante desejado o usuário deverá simular a reserva do restaurante, clicando no botão reservar.|||||
