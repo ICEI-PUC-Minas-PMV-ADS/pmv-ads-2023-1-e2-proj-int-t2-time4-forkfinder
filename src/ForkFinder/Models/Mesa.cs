@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,7 +9,6 @@ namespace ForkFinder.Models
         [Key]
         public int Id { get; set; }
 
-
         [Display(Name = "Quantidade de Mesa")]
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public int QuantidadeMesa { get; set; }
@@ -19,6 +17,8 @@ namespace ForkFinder.Models
         [Required(ErrorMessage = "O campo {0} é obrigatório!")]
         public int TamanhoMesa { get; set; }
 
+        [Display(Name = "Descrição da Mesa")]
+        public string Descricao { get; set; }
 
         /* Relacionamento Restaurante */
         public int RestauranteId { get; set; }
@@ -28,5 +28,7 @@ namespace ForkFinder.Models
         public List<Reserva> Reservas { get; set; }
 
         public List<Agenda> Agendas { get; set; }
+        public List<Horario> Horarios { get; set; }
+        public bool Agendada { get; set; }
     }
 }

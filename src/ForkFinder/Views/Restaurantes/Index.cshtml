@@ -2,56 +2,149 @@
 @{
     ViewData["Title"] = "List of Restaurantes";
 }
+
 <div>
     <div class="row">
         <div class="col-4 justify-content-start">
             <a class="btn btn-warning" asp-controller="Especialidades" asp-action="Index">Voltar</a>
         </div>
         <div class="col-4 ms-auto">
-            <h6>Restaurantes</h6>
+            <h6>Todos Restaurantes</h6>
         </div>
     </div>
     <hr />
     <div>
-        @*@if (User.IsInRole("Admin, Restaurante"))
-        {
-        <a class="btn btn-primary align-items-end" asp-action="Edit" asp-route-id="@Model">Editar</a>
-        }*@
+        <div class="container text-center my-2">
+            <form asp-controller="Restaurantes" asp-action="Index" method="get">
+                <div class="row justify-content-center">
+                    <div class="form-group col-md-3">
+                        <label for="especialidade">Especialidade</label>
+                        <select id="especialidades" name="especialidade" class="form-control">
+                            <option value="">Todas</option>
+                            @foreach (var especialidade in (IEnumerable<ForkFinder.Models.Especialidade>)((dynamic)ViewBag.Context).Especialidades)
+                            {
+                                <option value="@especialidade.Id">@especialidade.NomeEspecialidade</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group col-md-3">
+                        <label for="horario">Horário</label>
+                        <select id="horario" name="disponibilidade" class="form-control">
+                            <option value="">Qualquer</option>
+                            @foreach (var horario in (IEnumerable<ForkFinder.Models.Horario>)((dynamic)ViewBag.Context).Horarios)
+                            {
+                                <option value="@horario.Id">@horario.Hora</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="acessibilidade">Acessibilidade</label>
+                        <select id="acessibilidade" name="acessibilidade" class="form-control">
+                            <option value="">Todas</option>
+                            <option value="True">Sim</option>
+                            <option value="False">Não</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="avaliacao">Avaliação</label>
+                        <select id="avaliacao" name="avaliacao" class="form-control">
+                            <option value="">Todas</option>
+                            <option value="1">1 estrela</option>
+                            <option value="2">2 estrelas</option>
+                            <option value="3">3 estrelas</option>
+                            <option value="4">4 estrelas</option>
+                            <option value="5">5 estrelas</option>
+                        </select>
+                    </div>
+                    <div class="form-group d-flex justify-content-end">
+                        <button type="submit" class="btn btn-primary">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
     <div class="container">
         <div class="row align-items-center justify-content-start">
-            @foreach (var restaurantes in Model)
+            @foreach (var restaurante in Model)
             {
                 <div class="col-4 m-0">
-                    <a asp-action="Restaurante" asp-route-id="@restaurantes.RestauranteId">
-                        <div class="row align-items-center justify-content-start">
-                                <div class="col-3 p-3">
-                                    <img class="rounded-circle" src="@Html.DisplayFor(modelItem => restaurantes.FotoPerfil)" style="max-width:100px; min-height:100px;" />
-                                </div>
-                                <div class="col-9">
-                                    <div class="row align-items-center m-2">
-                                        <div class="col text-decoration-none">
-                                            <div class="row m-0">
-                                                @Html.DisplayFor(modelItem => restaurantes.Nome)
-                                            </div>
-                                            <div class="row m-0">
-                                                <div class="col-6">
-                                                    <i class="bi bi-star-fill text-warning">@Html.DisplayFor(modelItem => restaurantes.Avaliacoes)</i>
-                                                </div>
-                                            </div>
-                                            <div class="row m-0">
-                                                @Html.DisplayFor(modelItem => restaurantes.Endereco.RestauranteId)
-                                                @Html.DisplayFor(modelItem => restaurantes.Endereco.Numero)
-                                            </div>
-                                        </div>
-                                    </div>
-
+                    <a asp-controller="Restaurantes" asp-action="Restaurante" asp-route-id="@restaurante.RestauranteId">
+                        <div class="row align-items-center justify-content-start py-3">
+                            <div class="col-3">
+                                <div>
+                                    @if (restaurante.FotoPerfil != null)
+                                    {
+                                        var base64String = Convert.ToBase64String(restaurante.FotoPerfil);
+                                        var imgSrc = string.Format("data:image/jpeg;base64,{0}", base64String);
+                                        <img class="rounded-circle" src="@imgSrc" style="max-width:100px; min-height:100px;" />
+                                    }
+                                    else
+                                    {
+                                        <span>Nenhuma imagem disponível</span>
+                                    }
                                 </div>
                             </div>
-                        </a>
-                    </div>          
-          
-            }
+                            <div class="col-9">
+                                <div class="row align-items-center m-0">
+                                    <div class="col text-decoration-none">
+                                        <div class="row m-0">
+                                            <p class="px-2 m-0">@Html.DisplayFor(modelItem => restaurante.Nome)</p>
+                                        </div>
+                                        <div class="row m-0">
+                                            <div class="col-7 p-1">
+                                                @if (restaurante.Avaliacoes.Count > 0)
+                                                {
+                                                    double mediaAvaliacoes = restaurante.Avaliacoes.Average(a => a.Estrela);
+                                                    int quantidadeEstrelas = (int)Math.Round(mediaAvaliacoes);
 
+                                                    <div class="row">
+                                                        <p>
+                                                            @for (int i = 0; i < 5; i++)
+                                                            {
+                                                                if (i < quantidadeEstrelas)
+                                                                {
+                                                                    <i class="bi bi-star-fill text-warning"></i>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <i class="bi bi-star text-warning"></i>
+                                                                }
+                                                            }
+                                                        </p>
+                                                    </div>
+                                                }
+                                                else
+                                                {
+                                                    <p class="p-0 m-1 text-info">Sem avaliações</p>
+                                                }
+                                            </div>
+                                            <div class="col-5">
+                                                @if (restaurante.Especialidades_Restaurantes.Count > 0)
+                                                {
+                                                    var especialidadeRestaurante = restaurante.Especialidades_Restaurantes[0];
+                                                    <p class="py-2 m-0">@especialidadeRestaurante.Especialidade?.NomeEspecialidade</p>
+                                                }
+                                                else
+                                                {
+                                                    <p class="py-2 m-0">Sem especialidade</p>
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="row m-0">
+                                            <p class="px-2 m-0">
+                                                @Html.DisplayFor(modelItem => restaurante.Endereco.Cidade),
+                                                @Html.DisplayFor(modelItem => restaurante.Endereco.Bairro),
+                                                @Html.DisplayFor(modelItem => restaurante.Endereco.Numero)
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
     </div>
 </div>

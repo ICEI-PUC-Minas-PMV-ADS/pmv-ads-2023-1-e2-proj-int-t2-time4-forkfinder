@@ -6,17 +6,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Agenda\**" />
     <Compile Remove="wwwroot\img\produtos\**" />
+    <Content Remove="Views\Agenda\**" />
     <Content Remove="wwwroot\img\produtos\**" />
+    <EmbeddedResource Remove="Views\Agenda\**" />
     <EmbeddedResource Remove="wwwroot\img\produtos\**" />
+    <None Remove="Views\Agenda\**" />
     <None Remove="wwwroot\img\produtos\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Clientes\Reservas.cshtml" />
+    <Compile Remove="ViewModels\AvaliacaoViewModel.cs" />
+    <Compile Remove="Views\Reservas\RegistroReservas.cs" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Clientes\Reservas.cshtml" />
+    <Content Remove="Views\Mesas\Mesas.cshtml" />
+    <Content Remove="Views\Reservas\Reservas.cshtml" />
+    <Content Remove="Views\Restaurantes\Index1.cshtml" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
+	</ItemGroup>
+
+	<ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />

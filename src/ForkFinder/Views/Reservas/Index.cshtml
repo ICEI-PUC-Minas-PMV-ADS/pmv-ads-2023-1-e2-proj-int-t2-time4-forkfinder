@@ -1,37 +1,127 @@
-﻿@model Reserva
+﻿@model List<ForkFinder.ViewModels.MesaComReservas>
 
-@{
-    ViewData["Title"] = "Reservar";
-}
+<div class="container text-center">
+    <h2 class="mt-5">Reservas em Análise</h2>
+    <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active text-warning" data-bs-toggle="tab" data-bs-href="/Reservas/Index"
+                    type="button" role="tab" aria-controls="reserva-tab-pane" aria-selected="true">
+                Reservas em Análise
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link text-warning" id="reserva-tab" data-bs-toggle="tab" data-bs-href="/Reservas/RegistroReservas"
+                    type="button" role="tab" aria-controls="reserva-tab-pane"
+                    aria-selected="false">
+                Registro de Reservas
+            </button>
+        </li>
+    </ul>
+    @if (Model.Count > 0)
+    {
+        var mesasAgrupadas = Model.GroupBy(m => m.Mesa.TamanhoMesa).OrderByDescending(g => g.Any(r => r.Reservas.Any(rr => rr.Situacao == Situacao.Pendente))).ThenBy(g => g.Key);
+        @foreach (var mesaGroup in mesasAgrupadas)
+        {
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h4 class="card-title">Mesa de: @mesaGroup.Key lugares</h4>
+                </div>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Reservar">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="DataHoraReserva" class="control-label"></label>
-                <input asp-for="DataHoraReserva" class="form-control" />
-                <span asp-validation-for="DataHoraReserva" class="text-danger"></span>
+                @{
+                    var mesasComReservasPendentes = mesaGroup.Where(m => m.Reservas.Any(r => r.Situacao == Situacao.Pendente));
+                }
+
+                @if (mesasComReservasPendentes.Any())
+                {
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Data da Reserva</th>
+                                <th>Cliente</th>
+                                <th>Descrição</th>
+                                <th>Situação</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var mesa in mesasComReservasPendentes)
+                            {
+                                var reservasPendentes = mesa.Reservas.Where(r => r.Situacao == Situacao.Pendente);
+                                foreach (var reserva in reservasPendentes)
+                                {
+                                    <tr>
+                                        <td>@reserva.Agenda.Data</td>
+                                        <td>@reserva.Cliente.Nome</td>
+                                        <td>@reserva.Descricao</td>
+                                        <td>@reserva.Situacao</td>
+                                        <td>
+                                            <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modalAprovarReserva_@reserva.Id">Aprovar</a>
+                                            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modalRecusarReserva_@reserva.Id">Recusar</a>
+                                        </td>
+                                    </tr>
+                                    <!-- Modal de Aprovação -->
+                                    <div class="modal fade" id="modalAprovarReserva_@reserva.Id" tabindex="-1" role="dialog" aria-labelledby="modalAprovarReservaLabel_@reserva.Id" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalAprovarReservaLabel_@reserva.Id">Aprovar Reserva</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Deseja realmente aprovar a reserva?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                    <a href="@Url.Action("AprovarReserva", new { id = reserva.Id })" class="btn btn-success">Confirmar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal de Recusa -->
+                                    <div class="modal fade" id="modalRecusarReserva_@reserva.Id" tabindex="-1" role="dialog" aria-labelledby="modalRecusarReservaLabel_@reserva.Id" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="modalRecusarReservaLabel_@reserva.Id">Recusar Reserva</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Deseja realmente recusar a reserva?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                    <a href="@Url.Action("RecusarReserva", new { id = reserva.Id })" class="btn btn-danger">Confirmar</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="card-body">
+                        <p class="text-muted">Nenhuma reserva para mesas de @mesaGroup.Key lugares.</p>
+                    </div>
+                }
             </div>
-            <div class="form-group">
-                <label asp-for="Descricao" class="control-label"></label>
-                <input asp-for="Descricao" class="form-control" />
-                <span asp-validation-for="Descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            <hr class="my-4">
+        }
     }
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function () {
+            $("#reserva-tab").on("click", function () {
+                var href = $(this).data("bs-href");
+                window.location.href = href;
+            });
+        });
+    </script>
 }

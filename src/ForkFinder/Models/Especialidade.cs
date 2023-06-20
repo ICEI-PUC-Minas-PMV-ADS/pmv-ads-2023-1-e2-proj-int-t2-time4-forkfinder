@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ForkFinder.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -24,5 +25,6 @@ namespace ForkFinder.Models
 
         /* Relacionamento Cliente */
         public List<Especialidade_Cliente> Especialidades_Clientes { get; set; }
+
     }
 }

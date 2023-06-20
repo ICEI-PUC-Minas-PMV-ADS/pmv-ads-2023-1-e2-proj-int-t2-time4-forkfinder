@@ -1,0 +1,172 @@
+﻿@model Restaurante
+
+@{
+    ViewData["Title"] = "Restaurantes";
+}
+
+<h5>Selecione um horário em uma mesa</h5>
+
+<div class="container">
+    <div class="row justify-content-end">
+        <div class="col-10 justify-content-end">
+            <div class="col">
+                <div id="dateList" class="text-center mb-4">
+                    @{
+                        DateTime? lastDate = null;
+                    }
+
+                    @foreach (var agenda in Model.Agendas.OrderBy(d => d.Data))
+                    {
+                        if (lastDate != agenda.Data)
+                        {
+                            <a href="#" class="date-link btn btn-secondary m-2" data-date="@agenda.Data.ToString("dd/MM/yyyy")">@agenda.Data.ToString("dd/MM/yyyy")</a>
+                        }
+                        lastDate = agenda.Data;
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+    <div class="row">
+        <div class="col">
+            <div id="dateCarousel" class="carousel slide">
+                <div class="carousel-inner" id="datavar">
+                    @for (int i = 0; i < Model.Agendas.Count; i++)
+                    {
+                        <div class="carousel-item @(i == 0 ? "active" : "")">
+                            <h4 class="text-center d-none">@Model.Agendas[i].Data.ToString("dd/MM/yyyy")</h4>
+
+                            @foreach (var mesa in Model.Mesas)
+                            {
+                                <div class="row row-cols-auto">
+                                    <div class="col-2 p-3">Quant. Assentos @mesa.TamanhoMesa</div>
+
+                                    @foreach (var horario in Model.Agendas[i].Horarios.OrderBy(h => h.Hora))
+                                    {
+                                        @if (mesa.Horarios.Any(h => h.Id == horario.Id))
+                                        {
+                                            <div class="col row align-content-center m-1">
+                                                <div class="rounded btn btn-outline-secondary px-2">
+                                                    <a href="#" class="btn-reserva" data-mesa="@mesa.Id" data-horario="@horario.Id" data-agenda="@Model.Agendas[i].Id">@horario.Hora.ToString("HH:mm")</a>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de confirmação de reserva -->
+
+<div class="modal fade" id="reservaModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="reservaModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="reservaModalLabel">Confirmação de Reserva</h5>
+                <button id="fecharModal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <p>Por favor, confirme os detalhes da sua reserva:</p>
+                <p>Mesa: <strong id="mesaSelecionada"></strong></p>
+                <p>Data: <strong id="agendaSelecionada"></strong></p>
+                <p>Horário: <strong id="horarioSelecionado"></strong> horas</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" id="confirmarReserva">Confirmar Reserva</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(function () {
+            $("#dateCarousel").carousel({
+                interval: false
+            });
+
+            $("#dateCarousel").on('slide.bs.carousel', function () {
+                var activeItem = $(this).find(".carousel-item.active");
+                var activeDate = activeItem.find("h4").text().trim();
+                var selectedDate = new Date(activeDate);
+            });
+
+            $(".date-link").click(function (e) {
+                e.preventDefault();
+                var selectedDate = $(this).data("date");
+
+                // Encontrar o índice do item do carrossel correspondente à data selecionada
+                var index = -1;
+                $(".carousel-item").each(function (i) {
+                    if ($(this).find("h4").text().trim() === selectedDate) {
+                        index = i;
+                        return false; // Sai do loop quando encontrar a correspondência
+                    }
+                });
+
+                // Ativar o item correspondente no carrossel
+                if (index >= 0) {
+                    $("#dateCarousel").carousel(index);
+                }
+            });
+
+            $(".btn-reserva").click(function (e) {
+                e.preventDefault();
+
+                var mesaId = $(this).data("mesa");
+                var horarioId = $(this).data("horario");
+                var agendaId = $(this).data("agenda");
+                var horario = $(this).text().trim();
+                var mesaSelecionada = $("#mesaSelecionada");
+                var horarioSelecionado = $("#horarioSelecionado");
+                var agendaSelecionada = $("#agendaSelecionada");
+
+                mesaSelecionada.text(mesaId);
+                horarioSelecionado.text(horario);
+                agendaSelecionada.text(agendaId);
+
+                $("#reservaModal").modal("show");
+
+                $("#confirmarReserva").click(function () {
+                    // Obter os valores dos atributos de dados do botão de reserva
+                    var restauranteId = @Model.RestauranteId;
+                    var clienteId = "ClienteId";
+
+                    // Enviar os dados da reserva para a ação "Reserva" da controller
+                    $.post('@Url.Action("Reserva", "Restaurantes")', {
+                        restauranteId: restauranteId,
+                        mesaId: mesaId,
+                        horarioId: horarioId,
+                        agendaId: agendaId,
+                        clienteId: clienteId
+                    })
+                        .done(function (data) {
+                            // Exibir uma mensagem de sucesso ou redirecionar para uma página de confirmação
+                            alert("Reserva realizada com sucesso!");
+                        })
+                        .fail(function (error) {
+                            // Exibir uma mensagem de erro ou lidar com o erro de alguma forma
+                            alert("Erro ao realizar a reserva.");
+                        })
+                        .always(function () {
+                            // Fechar o modal
+                            $("#reservaModal").modal("hide");
+                        });
+                });
+            });
+
+            $("#fecharModal").click(function () {
+                $("#reservaModal").modal("hide");
+            });
+        });
+    </script>
+}

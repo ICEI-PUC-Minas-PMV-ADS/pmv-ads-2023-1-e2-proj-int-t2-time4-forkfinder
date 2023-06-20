@@ -1,26 +1,80 @@
-﻿@using Microsoft.AspNetCore.Identity
-@*@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager*@
-
+﻿@using System.Security.Claims;
+@using ForkFinder.Data;
+@using Microsoft.EntityFrameworkCore;
+@inject AppDbContext _context
 <ul class="navbar-nav text-warning">
-@if (User.Identity.IsAuthenticated)
-{
-    <li class="nav-item">
-        <a  class="nav-link text-light" asp-area="" asp-page="/Account/Manage/Index" title="Manage">Olá, @User.Identity.Name!</a>
-    </li>
-    <li class="nav-item">
-            <form class="form-inline" asp-area="" asp-controller="Clientes" asp-action="Logout">
-            <button  type="submit" class="nav-link btn btn-link text-light">Sair</button>
-        </form>
-    </li>
-}
-else
-{
+    @if (User.Identity.IsAuthenticated)
+    {
+        <li class="nav-item">
+            @if (User.IsInRole("Cliente"))
+            {
+                var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var cliente = _context.Clientes.FirstOrDefault(c => c.ClienteId.ToString() == userId);
+                byte[] fotoCliente = cliente != null ? Convert.FromBase64String(cliente.Foto) : null;
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @if (fotoCliente != null && fotoCliente.Length > 0)
+                            {
+                                var imgSrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(fotoCliente));
+                            <img src="@imgSrc" alt="Foto de Perfil" class="rounded-circle" style="width: 30px; height: 30px;" />
+                            }
+                            else
+                            {
+                            <span>@User.Identity.Name</span>
+                            }
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" asp-area="" asp-controller="Clientes" asp-action="Perfil">Perfil</a></li>
+                        <li><a class="dropdown-item" asp-area="" asp-controller="Clientes" asp-action="Reserva">Minhas Reservas</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li class="dropdown-item">
+                            <a class="form-inline" asp-area="" asp-controller="Clientes" asp-action="Logout">
+                                Sair
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }            
+            else if (User.IsInRole("Restaurante"))
+            {
+
+                var restauranteId = User.FindFirstValue("RestauranteId");
+                var restaurante = _context.Restaurantes.FirstOrDefault(r => r.RestauranteId.ToString() == restauranteId);
+
+            <li class="nav-item dropdown-center">
+                <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        @if (restaurante != null && restaurante.FotoPerfil != null && restaurante.FotoPerfil.Length > 0)
+                        {
+                            var imgSrc = string.Format("data:image/jpeg;base64,{0}", Convert.ToBase64String(restaurante.FotoPerfil));
+                        <img src="@imgSrc" alt="Foto de Perfil" class="rounded-circle" style="width: 30px; height: 30px;" />
+                        }
+                        else
+                        {
+                        <span>@User.Identity.Name</span>
+                        }
+                </a>
+                <ul class="dropdown-menu dropdown-menu-md-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" asp-area="" asp-controller="Restaurantes" asp-action="Perfil">Perfil</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li class="dropdown-item">
+                        <a class="form-inline" asp-area="" asp-controller="Clientes" asp-action="Logout">
+                            Sair
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            }
+        </li>
+    }
+    else
+    {
         <li class="nav-item px-2">
-        <a class="btn btn-outline-light " asp-area="" asp-controller="Clientes" asp-action="Register">Cadastrar</a>
-    </li>
-    <li class="nav-item">
-        <a class="btn bg-warning text-dark" asp-area="" asp-controller="Clientes" asp-action="Login">Login</a>
-    </li>
-}
+            <a class="btn btn-outline-light" asp-area="" asp-controller="Clientes" asp-action="Register">Cadastrar</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn bg-warning text-dark" asp-area="" asp-controller="Clientes" asp-action="Login">Login</a>
+        </li>
+    }
 </ul>

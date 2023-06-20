@@ -29,10 +29,6 @@ namespace ForkFinder.Migrations
                     b.Property<DateTime>("Data")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Horario")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("MesaId")
                         .HasColumnType("int");
 
@@ -134,7 +130,6 @@ namespace ForkFinder.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Senha")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ClienteId");
@@ -317,10 +312,37 @@ namespace ForkFinder.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RestauranteId")
-                        .IsUnique();
+                    b.HasIndex("RestauranteId");
 
                     b.ToTable("Funcionamentos");
+                });
+
+            modelBuilder.Entity("ForkFinder.Models.Horario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("AgendaId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Agendado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("Hora")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("MesaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AgendaId");
+
+                    b.HasIndex("MesaId");
+
+                    b.ToTable("Horarios");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Mesa", b =>
@@ -329,6 +351,12 @@ namespace ForkFinder.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Agendada")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Descricao")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("QuantidadeMesa")
                         .HasColumnType("int");
@@ -388,6 +416,9 @@ namespace ForkFinder.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AgendaId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
 
@@ -400,24 +431,41 @@ namespace ForkFinder.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("EspecialidadeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HorarioId")
+                        .HasColumnType("int");
+
                     b.Property<int>("MesaId")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Situacao")
-                        .HasColumnType("bit");
+                    b.Property<int>("RestauranteId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Situacao")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AgendaId");
+
                     b.HasIndex("ClienteId");
 
+                    b.HasIndex("EspecialidadeId");
+
+                    b.HasIndex("HorarioId");
+
                     b.HasIndex("MesaId");
+
+                    b.HasIndex("RestauranteId");
 
                     b.ToTable("Reservas");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Restaurante", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RestauranteId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -438,8 +486,8 @@ namespace ForkFinder.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FotoPerfil")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<byte[]>("FotoPerfil")
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -450,10 +498,9 @@ namespace ForkFinder.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Senha")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("RestauranteId");
 
                     b.ToTable("Restaurantes");
                 });
@@ -585,12 +632,27 @@ namespace ForkFinder.Migrations
             modelBuilder.Entity("ForkFinder.Models.Funcionamento", b =>
                 {
                     b.HasOne("ForkFinder.Models.Restaurante", "Restaurante")
-                        .WithOne("Funcionamento")
-                        .HasForeignKey("ForkFinder.Models.Funcionamento", "RestauranteId")
+                        .WithMany("Funcionamento")
+                        .HasForeignKey("RestauranteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Restaurante");
+                });
+
+            modelBuilder.Entity("ForkFinder.Models.Horario", b =>
+                {
+                    b.HasOne("ForkFinder.Models.Agenda", null)
+                        .WithMany("Horarios")
+                        .HasForeignKey("AgendaId");
+
+                    b.HasOne("ForkFinder.Models.Mesa", "Mesas")
+                        .WithMany("Horarios")
+                        .HasForeignKey("MesaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Mesas");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Mesa", b =>
@@ -617,21 +679,58 @@ namespace ForkFinder.Migrations
 
             modelBuilder.Entity("ForkFinder.Models.Reserva", b =>
                 {
+                    b.HasOne("ForkFinder.Models.Agenda", "Agenda")
+                        .WithMany()
+                        .HasForeignKey("AgendaId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("ForkFinder.Models.Cliente", "Cliente")
                         .WithMany("Reservas")
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ForkFinder.Models.Mesa", "Mesa")
-                        .WithMany("Reservas")
-                        .HasForeignKey("MesaId")
+                    b.HasOne("ForkFinder.Models.Especialidade", "Especialidade")
+                        .WithMany()
+                        .HasForeignKey("EspecialidadeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("ForkFinder.Models.Horario", "Horario")
+                        .WithMany()
+                        .HasForeignKey("HorarioId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ForkFinder.Models.Mesa", "Mesa")
+                        .WithMany("Reservas")
+                        .HasForeignKey("MesaId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("ForkFinder.Models.Restaurante", "Restaurante")
+                        .WithMany("Reservas")
+                        .HasForeignKey("RestauranteId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Agenda");
+
                     b.Navigation("Cliente");
 
+                    b.Navigation("Especialidade");
+
+                    b.Navigation("Horario");
+
                     b.Navigation("Mesa");
+
+                    b.Navigation("Restaurante");
+                });
+
+            modelBuilder.Entity("ForkFinder.Models.Agenda", b =>
+                {
+                    b.Navigation("Horarios");
                 });
 
             modelBuilder.Entity("ForkFinder.Models.Categoria", b =>
@@ -661,6 +760,8 @@ namespace ForkFinder.Migrations
                 {
                     b.Navigation("Agendas");
 
+                    b.Navigation("Horarios");
+
                     b.Navigation("Reservas");
                 });
 
@@ -683,6 +784,8 @@ namespace ForkFinder.Migrations
                     b.Navigation("Funcionamento");
 
                     b.Navigation("Mesas");
+
+                    b.Navigation("Reservas");
                 });
 #pragma warning restore 612, 618
         }
