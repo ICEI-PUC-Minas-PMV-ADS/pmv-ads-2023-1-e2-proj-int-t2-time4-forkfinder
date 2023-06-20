@@ -1,18 +1,39 @@
 # Registro de Testes de Software
 
-<span style="color:red">Pré-requisitos: <a href="3-Projeto de Interface.md"> Projeto de Interface</a></span>, <a href="8-Plano de Testes de Software.md"> Plano de Testes de Software</a>
+Casos de Testes (CT-01, CT-02, CT-03, CT-04 )
+- CT-01 - HomePage - teste de responsividade , O teste falhou pois a aplicação apresenta erros  na responsividade   (mobile )
+segue o erro que foi apresentando no teste de responsividade
+<div>
+<img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_20339_localhost.jpeg?raw=true"><p></p>
 
-Aqui está um exemplo de uma tabela de registro de testes de software:
+  <img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_2045_localhost.jpeg?raw=true">
+</div>
+- CT-02 -# Teste de cadastro como Cliente
 
-| ID do Teste | Nome do Teste | Descrição do Teste | Data do Teste | Responsável pelo Teste | Resultado do Teste |
-| --- | --- | --- | --- | --- | --- |
-| 001 | Teste de Login | Verificar se o usuário pode fazer login com sucesso | 01/05/2023 | Natan Fonseca | Passou |
-| 002 | Teste de Cadastro de Usuário | Verificar se o sistema permite que o usuário cadastre uma nova conta | 03/05/2023 | Maria Santos | Passou |
-| 003 | Teste de Cadastro de Restaurante | Verificar se o sistema permite que um restaurante cadastre uma nova conta | 05/05/2023 | José Pereira | Passou |
-| 004 | Teste de Atualização de Perfil | Verificar se o usuário e o restaurante podem atualizar suas informações de perfil com sucesso | 07/05/2023 | Ana Costa | Passou |
-| 005 | Teste de Exclusão de Conta | Verificar se o usuário e o restaurante podem excluir suas contas com sucesso | 09/05/2023 | Carlos Oliveira | Passou |
-| 006 | Teste de Visualização de Restaurante | Verificar se o usuário pode ver informações detalhadas do restaurante, como menu e avaliações | 11/05/2023 | Juliana Alves | Passou |
-| 007 | Teste de Segurança | Verificar se o sistema protege adequadamente as informações dos usuários e restaurante | 13/05/2023 | Lucas Santos | Passou |
-| 008 | Teste de Desempenho | Verificar se o sistema é capaz de lidar com uma carga alta de usuários | 15/05/2023 | Amanda Lima | Passou |
+ Teste feito com sucesso , pois foi possível fazer o cadastro como cliente preenchendo todas as credencias do formulário..
+<div>
+<img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_202437_localhost.jpeg?raw=true">
+</div>
 
-Essa tabela pode ser usada para rastrear os testes que foram realizados, incluindo o nome do teste, a descrição, a data em que foi realizado, quem foi responsável pelo teste e o resultado. Isso pode ajudar a identificar áreas problemáticas no sistema e garantir que todas as funcionalidades estejam funcionando corretamente antes do lançamento.
+- CT-03 - Entrar com as credencias cadastrada
+
+T-03  teste feito com sucesso pois conseguimos entrar com as credencias cadastradas
+<div>
+<img align="center" width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_202517_localhost.jpeg?raw=true">
+</div>
+
+</div>
+
+ CT-04 - Tela logada , Como Cliente logada com sucesso .
+<div>
+<img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_202527_localhost.jpeg?raw=true">
+</div>
+
+ CT-05 - # Cadastro como Restaurante
+
+T-04 Ao realizar teste encontramos um erro , onde não foi possivel prosseguir com o cadastro como Restaurante
+<div>
+<img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_20268_localhost.jpeg?raw=true"><p></p>
+
+  <img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_202619_localhost.jpeg?raw=true">
+</div>
