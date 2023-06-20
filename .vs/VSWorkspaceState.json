@@ -3,18 +3,8 @@
     "",
     "\\src",
     "\\src\\ForkFinder",
-    "\\src\\ForkFinder\\Controllers",
-    "\\src\\ForkFinder\\Data",
-    "\\src\\ForkFinder\\Models",
-    "\\src\\ForkFinder\\Views",
-    "\\src\\ForkFinder\\Views\\Clientes",
-    "\\src\\ForkFinder\\Views\\Reservas",
-    "\\src\\ForkFinder\\Views\\Restaurantes"
+    "\\src\\ForkFinder\\Data"
   ],
-<<<<<<< HEAD
   "SelectedNode": "\\src\\ForkFinder\\ForkFinder.sln",
-=======
-  "SelectedNode": "\\app-web-backend.sln",
->>>>>>> 2f4abf84bea9ac0140257d7aee1cdd178193d854
   "PreviewInSolutionExplorer": false
 }
