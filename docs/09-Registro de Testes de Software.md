@@ -17,7 +17,7 @@ segue o erro que foi apresentando no teste de responsividade
 
 - CT-03 - Entrar com as credencias cadastrada
 
-T-03  teste feito com sucesso pois conseguimos entrar com as credencias cadastradas
+ teste feito com sucesso pois conseguimos entrar com as credencias cadastradas
 <div>
 <img align="center" width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_202517_localhost.jpeg?raw=true">
 </div>
@@ -31,7 +31,7 @@ T-03  teste feito com sucesso pois conseguimos entrar com as credencias cadastra
 
  CT-05 - # Cadastro como Restaurante
 
-T-04 Ao realizar teste encontramos um erro , onde não foi possivel prosseguir com o cadastro como Restaurante
+Ao realizar teste encontramos um erro , onde não foi possivel prosseguir com o cadastro como Restaurante
 <div>
 <img align="center"  width="411px" src="https://github.com/ICEI-PUC-Minas-PMV-ADS/pmv-ads-2023-1-e2-proj-int-t2-time4-forkfinder/blob/main/src/Imagens/Captura%20da%20Web_15-6-2023_20268_localhost.jpeg?raw=true"><p></p>
 
