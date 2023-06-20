@@ -31,7 +31,7 @@ namespace ForkFinder.Models
         public virtual List<Reserva> Reservas { get; set; }
         public List<Categoria> Categorias { get; set; }
         public List<Comentario> Comentarios { get; set; }
-        public Funcionamento Funcionamento { get; set; }
+        public List<Funcionamento> Funcionamento { get; set; }
         public Endereco Endereco { get; set; }
         public List<Foto> Fotos { get; set; }
         public List<Avaliacao> Avaliacoes { get; set; }

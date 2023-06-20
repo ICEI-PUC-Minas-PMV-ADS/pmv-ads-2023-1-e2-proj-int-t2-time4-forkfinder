@@ -11,7 +11,7 @@ using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 
 namespace ForkFinder.Controllers
-{ 
+{
     public class ReservasController : Controller
     {
         private readonly AppDbContext _context;
@@ -20,7 +20,7 @@ namespace ForkFinder.Controllers
         {
             _context = context;
         }
-
+      
         public async Task<IActionResult> Index(bool reservaAprovada = false)
         {
             var restauranteIdClaim = User.FindFirst("RestauranteId")?.Value;
@@ -29,7 +29,7 @@ namespace ForkFinder.Controllers
                 var restaurante = await _context.Restaurantes.FindAsync(restauranteId);
                 if (restaurante != null && restaurante.Papel == Papel.Restaurante)
                 {
-                    // Buscar as mesas do restaurante com suas reservas e relacionamento com Cliente
+                                        // Buscar as mesas do restaurante com suas reservas e relacionamento com Cliente
                     var mesas = _context.Mesas.Where(m => m.RestauranteId == restaurante.RestauranteId)
                         .Include(m => m.Reservas).ThenInclude(r => r.Cliente)
                         .Include(m => m.Reservas).ThenInclude(r => r.Agenda)
@@ -59,6 +59,7 @@ namespace ForkFinder.Controllers
             }
             return RedirectToAction("Index", new { reservaAprovada = true });
         }
+
         public ActionResult RecusarReserva(int id)
         {
             Reserva reserva = _context.Reservas.Find(id);
@@ -76,6 +77,26 @@ namespace ForkFinder.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult RegistroReservas()
+        {
+            var reservas = _context.Reservas
+                .Include(r => r.Agenda)
+                .Include(r => r.Cliente)
+                .OrderByDescending(r => r.DataHoraCriacao)
+                .ToList();
+
+            var reservasViewModel = reservas.Select(r => new ReservaViewModel
+            {
+                Agenda = r.Agenda,
+                Cliente = r.Cliente,
+                Descricao = r.Descricao,
+                Situacao = r.Situacao,
+                DataCriacao = r.DataHoraCriacao
+            }).ToList();
+
+            return View(reservasViewModel);
         }
 
     }

@@ -49,9 +49,14 @@ namespace ForkFinder
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-                    options.AccessDeniedPath = "/Usuarios/AccessDenied/";
-                    options.LoginPath = "/Usuarios/Login/";
+                    options.AccessDeniedPath = "/Clientes/AccessDenied/";
+                    options.LoginPath = "/Clientes/Login/";
                 });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Cliente", policy =>
+                    policy.RequireRole("Cliente"));
+            });
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options =>
             {

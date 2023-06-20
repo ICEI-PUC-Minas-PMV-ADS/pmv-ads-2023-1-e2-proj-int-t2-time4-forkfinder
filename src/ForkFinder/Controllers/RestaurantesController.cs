@@ -25,17 +25,6 @@ namespace ForkFinder.Controllers
         {
             _context = context;
         }
-        /* public async Task<IActionResult> Index()
-         {
-             var data = await _context.Restaurantes
-                 .Include(a => a.Avaliacoes)
-                 .Include(e => e.Endereco)
-                 .Include(er => er.Especialidades_Restaurantes).ThenInclude(es => es.Especialidade)
-                 .ToListAsync();
-
-             return View(data);
-         }*/
-
         public async Task<IActionResult> Index(string especialidade, int? disponibilidade, bool? acessibilidade, int? avaliacao)
         {
             var especialidades = _context.Especialidades.ToList();
@@ -50,7 +39,7 @@ namespace ForkFinder.Controllers
                 .Include(a => a.Avaliacoes)
                 .Include(e => e.Endereco)
                 .Include(er => er.Especialidades_Restaurantes).ThenInclude(es => es.Especialidade)
-                .AsEnumerable(); // Alterado para AsEnumerable()
+                .AsEnumerable();
 
             if (!string.IsNullOrEmpty(especialidade))
             {
@@ -88,33 +77,28 @@ namespace ForkFinder.Controllers
 
             }
 
-            var data = query.ToList(); // Alterado para ToList()
+            var data = query.ToList();
 
             return View(data);
         }
 
 
-
-        [Authorize(Roles = "Cliente")]
-        public async Task<IActionResult> Agenda(int id)
+        public ActionResult RegistroReserva()
         {
-            var restaurante = await _context.Restaurantes
-                .Include(r => r.Agendas)
-                .FirstOrDefaultAsync(n => n.RestauranteId == id);
+            // Filtra e ordena as reservas para a ViewModel
+            /*var reservasViewModel = await _context.Reservas
+                        .Select(r => new ReservaViewModel
+                        {
+                            Agenda = r.Agenda,
+                            Cliente = r.Cliente,
+                            Descricao = r.Descricao,
+                            Situacao = r.Situacao,
+                            DataCriacao = r.DataCriacao
+                        }).ToListAsync();*/
+            var historicoReservas = _context.Reservas.ToList();
 
-            if (restaurante == null)
-            {
-                return NotFound();
-            }
-
-            var viewModel = new AgendaViewModel
-            {
-
-            };
-
-            return View(viewModel);
+            return View(historicoReservas);
         }
-
 
         [AllowAnonymous]
         public async Task<IActionResult> Restaurante(int? id)
@@ -129,7 +113,6 @@ namespace ForkFinder.Controllers
                 .Include(r => r.Avaliacoes)
                 .Include(r => r.Especialidades_Restaurantes)
                 .ThenInclude(er => er.Especialidade)
-                //.Include(r => r.Agendas)
                 .FirstOrDefaultAsync(r => r.RestauranteId == id);
             if (restaurante == null)
             {
@@ -140,7 +123,7 @@ namespace ForkFinder.Controllers
 
 
         }
-        [AllowAnonymous]
+        [Authorize(Roles = "Cliente")]
         public async Task<IActionResult> Mesas(int id)
         {
             var restaurante = await _context.Restaurantes
@@ -195,35 +178,30 @@ namespace ForkFinder.Controllers
         [HttpPost]
         public async Task<IActionResult> EditarPerfil(Restaurante restaurante, IFormFile fotoPerfil)
         {
-            // Recuperar o restaurante do banco de dados
+
             var restauranteIdClaim = User.FindFirst("RestauranteId")?.Value;
             if (restauranteIdClaim != null && int.TryParse(restauranteIdClaim, out int restauranteId))
             {
                 var restauranteExistente = await _context.Restaurantes.FindAsync(restauranteId);
 
-                // Verificar se o restaurante existe
+
                 if (restauranteExistente != null)
                 {
-                    // Atualizar os campos do restaurante com os dados do formulário
                     restauranteExistente.Nome = restaurante.Nome;
                     restauranteExistente.CNPJ = restaurante.CNPJ;                    
                     restauranteExistente.DescricaoRestaurante = restaurante.DescricaoRestaurante;
                     restauranteExistente.Acessibilidade = restaurante.Acessibilidade;
                     restauranteExistente.Papel = (Papel)1;
 
-                    // Consultar a senha atual do restaurante no banco de dados
                     var senhaAtual = await _context.Restaurantes
                         .Where(r => r.RestauranteId == restauranteId)
                         .Select(r => r.Senha)
                         .FirstOrDefaultAsync();
-
-                    // Atribuir a senha atual ao restaurante sendo atualizado
+                   
                     restaurante.Senha = senhaAtual;
-                    /*restauranteExistente.Senha = BCrypt.Net.BCrypt.HashPassword(restaurante.Senha);
-                    */
                     if (fotoPerfil != null)
                 {
-                    // Processar e salvar a imagem de perfil
+
                     restauranteExistente.FotoPerfil = await ProcessarImagemPerfil(fotoPerfil);
                 }
 
@@ -339,7 +317,7 @@ namespace ForkFinder.Controllers
         }
         [Authorize]
         [HttpPost]
-        public IActionResult Reserva(int restauranteId, int mesaId, int horarioId, int agendaId, string descricao)
+        public IActionResult Reserva(int especialidadeId, int restauranteId, int mesaId, int horarioId, int agendaId, string descricao)
         {
             // Recupere o nome do cliente logado usando o mecanismo de autenticação do ASP.NET Core
             var nomeCliente = User.Identity.Name;
@@ -357,9 +335,14 @@ namespace ForkFinder.Controllers
                     var mesa = _context.Mesas.FirstOrDefault(m => m.Id == mesaId);
                     var horario = _context.Horarios.FirstOrDefault(h => h.Id == horarioId);
                     var agenda = _context.Agendas.FirstOrDefault(a => a.Id == agendaId);
+                    // Verificar a existência da especialidade relacionada ao restaurante
+                    var especialidadeRestaurante = _context.Especialidades_Restaurantes
+                        .FirstOrDefault(er => er.RestauranteId == restauranteId);
 
-                    if (restaurante != null && mesa != null && horario != null && agenda != null)
+                    if (restaurante != null && mesa != null && horario != null && agenda != null && especialidadeRestaurante != null)
                     {
+                        // Obter a especialidade relacionada ao restaurante
+                        var especialidade = especialidadeRestaurante.EspecialidadeId;
                         // Crie uma nova reserva e atribua as entidades relacionadas
                         var reserva = new Reserva
                         {
@@ -368,7 +351,8 @@ namespace ForkFinder.Controllers
                             Horario = horario,
                             Agenda = agenda,
                             ClienteId = cliente.ClienteId,
-                            Descricao = descricao
+                            Descricao = descricao,
+                            EspecialidadeId = especialidade
                         };
                         horario.Agendado = true;
 

@@ -57,7 +57,7 @@
                                             {
                                                 <div class="col row align-content-center m-1">
                                                     <div class="rounded btn btn-outline-secondary px-2">
-                                                        <a href="@Url.Action("Reserva", "Restaurantes"@*, new { restauranteId = Model.RestauranteId, mesaId = mesa.Id, horarioId = horario.Id, agendaId = Model.Agendas.First(a => a.Horarios.Any(ha => ha.Id == horario.Id)).Id, clienteId = "ClienteId" }*@)" class="btn-reserva" data-mesa="@mesa.Id" data-horario="@horario.Id" data-agendaid="@Model.Agendas.First(a => a.Horarios.Any(ha => ha.Id == horario.Id)).Id">@horario.Hora.ToString("HH:mm")</a>
+                                                        <a href="@Url.Action("Reserva", "Restaurantes")" class="btn-reserva" data-mesa="@mesa.Id" data-horario="@horario.Id" data-agendaid="@Model.Agendas.First(a => a.Horarios.Any(ha => ha.Id == horario.Id)).Id">@horario.Hora.ToString("HH:mm")</a>
                                                     </div>
                                                 </div>
                                             }
@@ -198,7 +198,7 @@
 
                             // Redirecionar para a página "Clientes/Reservas" após 5 segundos
                             setTimeout(function () {
-                                window.location.href = "/Clientes/Reservas";
+                                window.location.href = "/Clientes/Reserva";
                             }, 5000);
                         },
                         error: function () {

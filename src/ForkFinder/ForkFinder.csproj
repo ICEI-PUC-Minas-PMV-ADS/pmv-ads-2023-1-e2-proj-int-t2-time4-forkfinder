@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Compile Remove="ViewModels\AvaliacaoViewModel.cs" />
+    <Compile Remove="Views\Reservas\RegistroReservas.cs" />
   </ItemGroup>
 
   <ItemGroup>

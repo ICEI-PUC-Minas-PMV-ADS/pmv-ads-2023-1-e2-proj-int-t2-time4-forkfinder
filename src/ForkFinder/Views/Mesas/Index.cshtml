@@ -3,13 +3,11 @@
 @{
     ViewData["Title"] = "AddMesas";
 }
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <div class="container">
     <div class="row justify-content-end mb-3">
         <div class="col-auto">
-            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalCriarMesa">
-                <i class="bi bi-plus-lg"></i> Adicionar Mesa
-            </button>
+                <a class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalCriarMesa" href="#" id="openCreateModal"><i class="bi bi-plus-lg"></i>Adicionar Mesa</a>
         </div>
     </div>
 
@@ -23,16 +21,16 @@
         <div class="col">
             <table class="table table-striped">
                 <thead>
-                    <tr>
-                        <th>Tamanho</th>
-                        <th>Quantidade</th>
+                    <tr class="text-center">
+                        <th class="bi bi-chair-fill">Quantidade de assento(s) da mesa</th>
+                        <th>Quantidade de mesa(s)</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach (var mesaGroup in Model.Mesas.Where(m => !m.Agendada).GroupBy(m => m.TamanhoMesa).OrderBy(g => g.Key))
                     {
-                        <tr>
-                            <td>@mesaGroup.Key</td>
+                        <tr class="text-center">
+                            <td class="my-3 p-0">@mesaGroup.Key</td>
                             <td>@mesaGroup.Sum(m => m.QuantidadeMesa)</td>
                         </tr>
                     }
@@ -61,41 +59,79 @@
                                 <input type="number" class="form-control" id="quantidadeMesa" asp-for="QuantidadeMesa" min="1" value="1">
                             </div>
                         </div>
-                        <button type="button" class="btn btn-primary" onclick="adicionarMesa()">Adicionar Mesa</button>
-
-                        @*@if (Model.Mesas != null)
-                        {
-                            for (int i = 0; i < Model.Mesas.Count; i++)
+                        <ul class="nav nav-tabs" id="diasSemanaTabs" role="tablist">
+                            @{
+                                var diasDaSemana = new List<string>
                             {
-                                var mesa = Model.Mesas[i];
-                                <input type="hidden" asp-for="Mesas[i].Id" value="@mesa.Id" />
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <label class="form-label">Tamanho:</label>
-                                        <input type="text" class="form-control" asp-for="Mesas[i].TamanhoMesa" placeholder="Digite o tamanho da mesa">
-                                    </div>
-                                    <div class="col">
-                                        <label class="form-label">Quantidade:</label>
-                                        <input type="number" class="form-control" asp-for="Mesas[i].QuantidadeMesa" min="1" value="@mesa.QuantidadeMesa">
-                                    </div>
-                                </div>
+                            "Domingo",
+                            "Segunda-feira",
+                            "Terça-feira",
+                            "Quarta-feira",
+                            "Quinta-feira",
+                            "Sexta-feira",
+                            "Sábado"
+                            };
                             }
-                        }
-                        else
-                        {
-                            <p>Nenhuma mesa disponível para exibir.</p>
-                        }*@
-                    </div>
+                            @foreach (var diaDaSemana in diasDaSemana)
+                            {
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="@($"dia{diaDaSemana}Tab")" data-bs-toggle="tab" data-bs-target="@($"#dia{diaDaSemana}")" type="button" role="tab" aria-controls="@($"dia{diaDaSemana}")" aria-selected="false">
+                                        @diaDaSemana.Substring(0, 3)
+                                    </button>
+                                </li>
+                            }
+                        </ul>
+
+                        <div class="tab-content" id="diasSemanaContent">
+                            @{
+                                var nomeDiasDaSemana = new Dictionary<string, DayOfWeek>
+                            {
+                            {"Domingo", DayOfWeek.Sunday},
+                            {"Segunda-feira", DayOfWeek.Monday},
+                            {"Terça-feira", DayOfWeek.Tuesday},
+                            {"Quarta-feira", DayOfWeek.Wednesday},
+                            {"Quinta-feira", DayOfWeek.Thursday},
+                            {"Sexta-feira", DayOfWeek.Friday},
+                            {"Sábado", DayOfWeek.Saturday}
+                            };
+                            }
+                            @foreach (var funcionamento in Model.Restaurante.Funcionamento)
+                            {
+                                var diaDaSemana = nomeDiasDaSemana.GetValueOrDefault(funcionamento.DiaDaSemana, DayOfWeek.Sunday);
+                                TimeSpan horarioInicio;
+                                TimeSpan horarioFim;
+
+                                if (TimeSpan.TryParse(funcionamento.HorarioInicio, out horarioInicio) && TimeSpan.TryParse(funcionamento.HorarioFim, out horarioFim))
+                                {
+                                    <div class="tab-pane fade" id="@($"dia{diaDaSemana}")" role="tabpanel" aria-labelledby="@($"dia{diaDaSemana}Tab")">
+                                        <div class="row mt-3">
+                                            @for (var hora = horarioInicio; hora <= horarioFim; hora = hora.Add(TimeSpan.FromHours(1)))
+                                            {
+                                                <div class="col">
+                                                    <label for="@($"hora{diaDaSemana}{hora:hh\\:mm}")" class="form-label">Horário:</label>
+                                                    <input type="text" class="form-control" id="@($"hora{diaDaSemana}{hora:hh\\:mm}")" value="@hora.ToString("hh\\:mm")" readonly>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    // Lógica para lidar com valores de horário inválidos
+                                }
+                            }
+
+                        </div>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" onclick="salvarMesas()">Salvar</button>
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-
-
+</div>
 
 
 
@@ -121,20 +157,46 @@
             // Função para salvar as mesas no banco de dados
             function salvarMesas() {
                 document.querySelector('#modalCriarMesa form').submit();
-            }
-
-
-            // Função para ativar uma mesa
-            function ativarMesa(mesaId) {
-                // Lógica para ativar a mesa com o ID fornecido
-                // Você pode usar AJAX, Fetch ou outro método para enviar a requisição para o servidor
-            }
-
-            // Função para desativar uma mesa
-            function desativarMesa(mesaId) {
-                // Lógica para desativar a mesa com o ID fornecido
-                // Você pode usar AJAX, Fetch ou outro método para enviar a requisição para o servidor
-            }
+            }            
         </script>
+    <script>
+        $(document).ready(function () {
+            $('#openCreateModal').click(function () {
+                // Limpar os horários existentes antes de carregar novamente
+                $('#horariosSelect').empty();
+
+                // Obter o dia da semana selecionado
+                var diaSemana = $('#diaSemanaSelect').val();
+
+                // Fazer uma requisição AJAX para obter os horários com base no dia da semana
+                $.ajax({
+                    url: '/Mesas/GetHorariosByDiaSemana',
+                    data: { diaSemana: diaSemana },
+                    type: 'GET',
+                    success: function (data) {
+                        // Preencher o dropdown com os horários obtidos
+                        $.each(data, function (index, horario) {
+                            $('#horariosSelect').append($('<option></option>').val(horario).text(horario));
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
+
     }
-</div>
+@*Colocar um modal ou algo para adicionar horário e datas para mesa ou algo equivalente.
+Por exemplo cria mesa e já vem um monte de horário pré-cadastro e o restaurante altera conforme a preferência.
+Crie uma lógica que sempre será exibido oito dias da semana incluindo o dia atual*@
+
+
+@*Tentando colocar nessa view, na modal especificamente cartões acessiveis por tab com dias das semans confrome horario do estabelecimento
+            então ´rá exibir os horarios em uma lista select também confrome o funcionamento, sendo todas marcadas..
+
+lembrar de criar uma edição no menu Gerenciar de alterar o funcionamento de forma temporário, por exemplo feriado etc.
+Criar edição dos dias da semana disponiveis. Checar a questão de se o horrio de funcinamento mudar, tem que mudar o horario de mesas disponiveis.
+bloquear o cadastro de mais de uma mesa com mesmo tamanho*@
+
+
+@*Parece que ta caregando os horário certo, mas não vai nem por reza pra view.*@

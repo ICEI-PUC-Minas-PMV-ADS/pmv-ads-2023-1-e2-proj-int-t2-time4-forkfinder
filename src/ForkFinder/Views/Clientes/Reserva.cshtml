@@ -2,88 +2,89 @@
 
 @{
     ViewData["Title"] = "Minhas Reservas";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>@ViewData["Title"]</h1>
+<div class="container text-center">
+    <h1 class="mt-5">@ViewData["Title"]</h1>
 
-<div class="row mb-3">
-    <div class="col-md-6">
-        <h4>Filtros:</h4>
-        <form method="get" action="@Url.Action("Index")">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="especialidadeId">Especialidade:</label>
-                        <select class="form-control" id="especialidadeId" name="especialidadeId">
-                            <option value="">Todas</option>
-                            @foreach (var especialidade in ViewBag.Especialidades)
-                            {
-                                <option value="@especialidade.EspecialidadeId">@especialidade.Nome</option>
-                            }
-                        </select>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h4>Filtros:</h4>
+            <form method="get" action="@Url.Action("Reserva")">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="especialidadeId">Especialidade:</label>
+                            <select class="form-control" id="especialidadeId" name="especialidadeId">
+                                <option value="">Todas</option>
+                                @foreach (var especialidade in ViewBag.Especialidades)
+                                {
+                                    <option value="@especialidade.Id">@especialidade.NomeEspecialidade</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="restauranteId">Restaurante:</label>
+                            <select class="form-control" id="restauranteId" name="restauranteId">
+                                <option value="">Todos</option>
+                                @foreach (var restaurante in ViewBag.Restaurantes)
+                                {
+                                    <option value="@restaurante.RestauranteId">@restaurante.Nome</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="submit" class="btn btn-primary">Filtrar</button>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="restauranteId">Restaurante:</label>
-                        <select class="form-control" id="restauranteId" name="restauranteId">
-                            <option value="">Todos</option>
-                            @foreach (var restaurante in ViewBag.Restaurantes)
-                            {
-                                <option value="@restaurante.RestauranteId">@restaurante.Nome</option>
-                            }
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <button type="submit" class="btn btn-primary">Filtrar</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
 
-@if (Model.Count > 0)
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Data</th>
-                <th>Horário</th>
-                <th>Restaurante</th>
-                <th>Especialidade</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var reserva in Model)
-            {
+    @if (Model.Count > 0)
+    {
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@reserva.Agenda.Data.ToShortDateString()</td>
-                    <td>@reserva.Horario</td>
-                    <td>@reserva.Restaurante.Nome</td>
-                    <td>@reserva.Especialidade.NomeEspecialidade</td>
-                    <td>
-                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#detalhesModal" data-reserva-id="@reserva.Id">
-                            <i class="bi bi-eye-fill"></i> Detalhes
-                        </button>
-                        @if (reserva.Agenda.Data.AddDays(-1) > DateTime.Now)
-                        {
-                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#cancelarModal" data-reserva-id="@reserva.Id">
-                                <i class="bi bi-x-fill"></i> Cancelar
-                            </button>
-                        }
-                    </td>
+                    <th>Data</th>
+                    <th>Horário</th>
+                    <th>Restaurante</th>
+                    <th>Especialidade</th>
+                    <th>Ações</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>Nenhuma reserva encontrada.</p>
-}
+            </thead>
+            <tbody>
+                @foreach (var reserva in Model)
+                {
+                    <tr>
+                        <td>@reserva.Agenda.Data.ToShortDateString()</td>
+                        <td>@reserva.Horario.Hora.ToString("HH:mm")</td>
+                        <td>@reserva.Restaurante.Nome</td>
+                        <td>@reserva.Especialidade.NomeEspecialidade</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#detalhesModal" data-reserva-id="@reserva.Id">
+                                <i class="bi bi-eye-fill"></i> Detalhes
+                            </button>
+                            @if (reserva.Agenda.Data.AddDays(-1) > DateTime.Now)
+                            {
+                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#cancelarModal" data-reserva-id="@reserva.Id">
+                                    <i class="bi bi-x-fill"></i> Cancelar
+                                </button>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Nenhuma reserva encontrada.</p>
+    }
+</div>
 
 <!-- Modal de detalhes da reserva -->
 <div class="modal fade" id="detalhesModal" tabindex="-1" aria-labelledby="detalhesModalLabel" aria-hidden="true">
@@ -94,7 +95,7 @@ else
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
             <div class="modal-body">
-                <p><strong>Data:</strong> <span id="detalhesData"></span></p>
+                <p><strong>Data Reservada:</strong> <span id="detalhesData"></span></p>
                 <p><strong>Horário:</strong> <span id="detalhesHorario"></span></p>
                 <p><strong>Descrição:</strong> <span id="detalhesDescricao"></span></p>
                 <p><strong>Tamanho da Mesa:</strong> <span id="detalhesTamanhoMesa"></span></p>
@@ -136,7 +137,7 @@ else
 
                 // Realizar uma chamada AJAX para obter os detalhes da reserva
                 $.ajax({
-                    url: '@Url.Action("Detalhes", "Cliente")',
+                    url: '@Url.Action("Detalhes", "Clientes")',
                     type: 'GET',
                     data: { reservaId: reservaId },
                     success: function (reserva) {
@@ -157,7 +158,7 @@ else
                 modal.find('#confirmarCancelar').click(function () {
                     // Realizar uma chamada AJAX para cancelar a reserva
                     $.ajax({
-                        url: '@Url.Action("Cancelar", "Cliente")',
+                        url: '@Url.Action("Cancelar", "Clientes")',
                         type: 'POST',
                         data: { reservaId: reservaId },
                         success: function () {

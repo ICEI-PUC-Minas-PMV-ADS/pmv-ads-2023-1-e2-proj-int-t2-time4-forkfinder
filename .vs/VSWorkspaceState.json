@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\ForkFinder",
+    "\\src\\ForkFinder\\Controllers"
   ],
-  "SelectedNode": "\\ForkFinder.sln",
+  "SelectedNode": "\\src\\ForkFinder\\Controllers\\MesasController.cs",
   "PreviewInSolutionExplorer": false
 }

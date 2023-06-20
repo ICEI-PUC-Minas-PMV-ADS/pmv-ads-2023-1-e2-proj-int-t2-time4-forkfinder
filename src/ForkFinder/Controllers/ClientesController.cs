@@ -150,26 +150,30 @@ namespace ForkFinder.Controllers
         {
             var clienteId = GetSessionClienteId();
 
-            var reservas = _context.Reservas
+            var reservasQuery = _context.Reservas
                 .Include(r => r.Agenda)
                 .Include(r => r.Mesa)
+                .Include(r => r.Horario)
                 .Where(r => r.ClienteId == clienteId);
 
             if (especialidadeId.HasValue)
             {
-                reservas = reservas.Where(r => r.EspecialidadeId == especialidadeId);
+                reservasQuery = reservasQuery.Where(r => r.EspecialidadeId == especialidadeId);
             }
 
             if (restauranteId.HasValue)
             {
-                reservas = reservas.Where(r => r.RestauranteId == restauranteId);
+                reservasQuery = reservasQuery.Where(r => r.RestauranteId == restauranteId);
             }
+
+            var reservas = await reservasQuery.ToListAsync();
 
             ViewBag.Especialidades = await _context.Especialidades.ToListAsync();
             ViewBag.Restaurantes = await _context.Restaurantes.ToListAsync();
 
-            return View(await reservas.ToListAsync());
+            return View(reservas);
         }
+
 
         public async Task<IActionResult> Detalhes(int reservaId)
         {
