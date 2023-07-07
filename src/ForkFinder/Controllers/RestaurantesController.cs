@@ -9,11 +9,8 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using ForkFinder.ViewModels;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.IO;
-using Microsoft.AspNetCore.Identity;
 using System.Dynamic;
 
 namespace ForkFinder.Controllers
@@ -21,10 +18,12 @@ namespace ForkFinder.Controllers
     public class RestaurantesController : Controller
     {
         private readonly AppDbContext _context;
+
         public RestaurantesController(AppDbContext context)
         {
             _context = context;
         }
+
         public async Task<IActionResult> Index(string especialidade, int? disponibilidade, bool? acessibilidade, int? avaliacao)
         {
             var especialidades = _context.Especialidades.ToList();
@@ -33,7 +32,8 @@ namespace ForkFinder.Controllers
             context.Especialidades = especialidades;
             context.Horarios = horarios;
             ViewBag.Context = context;
-
+            ViewBag.Especialidades = especialidades;
+            ViewBag.Horarios = horarios;
 
             var query = _context.Restaurantes
                 .Include(a => a.Avaliacoes)
@@ -116,6 +116,7 @@ namespace ForkFinder.Controllers
                 .FirstOrDefaultAsync(r => r.RestauranteId == id);
             if (restaurante == null)
             {
+                
                 return NotFound();
             }
 

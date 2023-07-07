@@ -3,8 +3,10 @@
     "",
     "\\src",
     "\\src\\ForkFinder",
-    "\\src\\ForkFinder\\Controllers"
+    "\\src\\ForkFinder\\Controllers",
+    "\\src\\ForkFinder\\Views",
+    "\\src\\ForkFinder\\Views\\Restaurantes"
   ],
-  "SelectedNode": "\\src\\ForkFinder\\Controllers\\MesasController.cs",
+  "SelectedNode": "\\src\\ForkFinder\\Controllers\\RestaurantesController.cs",
   "PreviewInSolutionExplorer": false
 }
